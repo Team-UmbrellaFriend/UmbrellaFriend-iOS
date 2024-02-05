@@ -22,7 +22,6 @@
 		A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BAB2B70FE3700883017 /* MakeVibrate.swift */; };
 		A4998BAF2B70FE5400883017 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BAE2B70FE5400883017 /* Config.swift */; };
 		A4998BB22B70FEB300883017 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4998BB12B70FEB300883017 /* SnapKit */; };
-		A4998BB42B70FEB300883017 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A4998BB32B70FEB300883017 /* SnapKit-Dynamic */; };
 		A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BB52B710B0D00883017 /* NSObject+.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4998BB22B70FEB300883017 /* SnapKit in Frameworks */,
-				A4998BB42B70FEB300883017 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,7 +202,6 @@
 			name = "UmbrellaFriend-iOS";
 			packageProductDependencies = (
 				A4998BB12B70FEB300883017 /* SnapKit */,
-				A4998BB32B70FEB300883017 /* SnapKit-Dynamic */,
 			);
 			productName = "UmbrellaFriend-iOS";
 			productReference = A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */;
@@ -345,6 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "우산친구";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -402,6 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "우산친구";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -505,11 +504,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		A4998BB32B70FEB300883017 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
