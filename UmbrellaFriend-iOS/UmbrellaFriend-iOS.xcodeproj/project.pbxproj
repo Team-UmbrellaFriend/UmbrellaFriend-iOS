@@ -12,6 +12,15 @@
 		A43176132B6FFBDE00093F0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43176122B6FFBDE00093F0E /* ViewController.swift */; };
 		A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43176172B6FFBE000093F0E /* Assets.xcassets */; };
 		A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43176192B6FFBE000093F0E /* LaunchScreen.storyboard */; };
+		A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9D2B70FD9D00883017 /* FontLiterals.swift */; };
+		A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */; };
+		A4998BA22B70FDB700883017 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA12B70FDB700883017 /* UIView+.swift */; };
+		A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA32B70FDCC00883017 /* UITextField+.swift */; };
+		A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA52B70FDFD00883017 /* UIStackView+.swift */; };
+		A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA72B70FE2000883017 /* UITableViewRegisterable.swift */; };
+		A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA92B70FE2B00883017 /* UICollectionViewRegisterable.swift */; };
+		A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BAB2B70FE3700883017 /* MakeVibrate.swift */; };
+		A4998BAF2B70FE5400883017 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BAE2B70FE5400883017 /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +31,15 @@
 		A43176172B6FFBE000093F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A431761A2B6FFBE000093F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A431761C2B6FFBE000093F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4998B9D2B70FD9D00883017 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
+		A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
+		A4998BA12B70FDB700883017 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		A4998BA32B70FDCC00883017 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		A4998BA52B70FDFD00883017 /* UIStackView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+.swift"; sourceTree = "<group>"; };
+		A4998BA72B70FE2000883017 /* UITableViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewRegisterable.swift; sourceTree = "<group>"; };
+		A4998BA92B70FE2B00883017 /* UICollectionViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewRegisterable.swift; sourceTree = "<group>"; };
+		A4998BAB2B70FE3700883017 /* MakeVibrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVibrate.swift; sourceTree = "<group>"; };
+		A4998BAE2B70FE5400883017 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +72,111 @@
 		A431760D2B6FFBDE00093F0E /* UmbrellaFriend-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				A431760E2B6FFBDE00093F0E /* AppDelegate.swift */,
-				A43176102B6FFBDE00093F0E /* SceneDelegate.swift */,
-				A43176122B6FFBDE00093F0E /* ViewController.swift */,
-				A43176172B6FFBE000093F0E /* Assets.xcassets */,
-				A43176192B6FFBE000093F0E /* LaunchScreen.storyboard */,
+				A4998B952B70FD1D00883017 /* Application */,
+				A4998B942B70FD1700883017 /* Global */,
+				A4998B932B70FD1000883017 /* Network */,
+				A4998B922B70FD0900883017 /* Presentation */,
 				A431761C2B6FFBE000093F0E /* Info.plist */,
 			);
 			path = "UmbrellaFriend-iOS";
+			sourceTree = "<group>";
+		};
+		A4998B922B70FD0900883017 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				A43176122B6FFBDE00093F0E /* ViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		A4998B932B70FD1000883017 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A4998BAD2B70FE4900883017 /* Environment */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A4998B942B70FD1700883017 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				A4998B962B70FD2C00883017 /* Resources */,
+				A4998B9B2B70FD6B00883017 /* Literals */,
+				A4998B9A2B70FD6500883017 /* Extension */,
+				A4998B992B70FD6000883017 /* Protocols */,
+				A4998B982B70FD5A00883017 /* Utils */,
+				A4998B972B70FD5200883017 /* SupportingFiles */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		A4998B952B70FD1D00883017 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A431760E2B6FFBDE00093F0E /* AppDelegate.swift */,
+				A43176102B6FFBDE00093F0E /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		A4998B962B70FD2C00883017 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A43176172B6FFBE000093F0E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		A4998B972B70FD5200883017 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A43176192B6FFBE000093F0E /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		A4998B982B70FD5A00883017 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A4998BAB2B70FE3700883017 /* MakeVibrate.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A4998B992B70FD6000883017 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A4998BA72B70FE2000883017 /* UITableViewRegisterable.swift */,
+				A4998BA92B70FE2B00883017 /* UICollectionViewRegisterable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A4998B9A2B70FD6500883017 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A4998BA12B70FDB700883017 /* UIView+.swift */,
+				A4998BA32B70FDCC00883017 /* UITextField+.swift */,
+				A4998BA52B70FDFD00883017 /* UIStackView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A4998B9B2B70FD6B00883017 /* Literals */ = {
+			isa = PBXGroup;
+			children = (
+				A4998B9D2B70FD9D00883017 /* FontLiterals.swift */,
+				A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */,
+			);
+			path = Literals;
+			sourceTree = "<group>";
+		};
+		A4998BAD2B70FE4900883017 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				A4998BAE2B70FE5400883017 /* Config.swift */,
+			);
+			path = Environment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +249,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
+				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
+				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
+				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
 				A43176132B6FFBDE00093F0E /* ViewController.swift in Sources */,
+				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
+				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
+				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
+				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
+				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
