@@ -21,6 +21,9 @@
 		A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA92B70FE2B00883017 /* UICollectionViewRegisterable.swift */; };
 		A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BAB2B70FE3700883017 /* MakeVibrate.swift */; };
 		A4998BAF2B70FE5400883017 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BAE2B70FE5400883017 /* Config.swift */; };
+		A4998BB22B70FEB300883017 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4998BB12B70FEB300883017 /* SnapKit */; };
+		A4998BB42B70FEB300883017 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = A4998BB32B70FEB300883017 /* SnapKit-Dynamic */; };
+		A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BB52B710B0D00883017 /* NSObject+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,7 @@
 		A4998BA92B70FE2B00883017 /* UICollectionViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewRegisterable.swift; sourceTree = "<group>"; };
 		A4998BAB2B70FE3700883017 /* MakeVibrate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeVibrate.swift; sourceTree = "<group>"; };
 		A4998BAE2B70FE5400883017 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A4998BB52B710B0D00883017 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4998BB22B70FEB300883017 /* SnapKit in Frameworks */,
+				A4998BB42B70FEB300883017 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +164,7 @@
 				A4998BA12B70FDB700883017 /* UIView+.swift */,
 				A4998BA32B70FDCC00883017 /* UITextField+.swift */,
 				A4998BA52B70FDFD00883017 /* UIStackView+.swift */,
+				A4998BB52B710B0D00883017 /* NSObject+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -195,6 +202,10 @@
 			dependencies = (
 			);
 			name = "UmbrellaFriend-iOS";
+			packageProductDependencies = (
+				A4998BB12B70FEB300883017 /* SnapKit */,
+				A4998BB32B70FEB300883017 /* SnapKit-Dynamic */,
+			);
 			productName = "UmbrellaFriend-iOS";
 			productReference = A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -223,6 +234,9 @@
 				Base,
 			);
 			mainGroup = A43176022B6FFBDE00093F0E;
+			packageReferences = (
+				A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = A431760C2B6FFBDE00093F0E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,6 +273,7 @@
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
+				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 			);
@@ -473,6 +488,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4998BB12B70FEB300883017 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		A4998BB32B70FEB300883017 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A43176032B6FFBDE00093F0E /* Project object */;
 }
