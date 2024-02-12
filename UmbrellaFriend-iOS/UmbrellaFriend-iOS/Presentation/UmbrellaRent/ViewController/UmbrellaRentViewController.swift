@@ -24,14 +24,32 @@ final class UmbrellaRentViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        setAddTarget()
     }
 }
 
 // MARK: - Extensions
 
-extension UmbrellaRentViewController {
+private extension UmbrellaRentViewController {
 
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func setAddTarget() {
+        umbrellaRentView.exitButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        umbrellaRentView.mapButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc
+    func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case umbrellaRentView.exitButton:
+            self.navigationController?.popViewController(animated: true)
+        case umbrellaRentView.mapButton:
+            print("📍")
+        default:
+            break
+        }
     }
 }

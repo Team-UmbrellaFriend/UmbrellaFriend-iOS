@@ -20,6 +20,41 @@ final class UmbrellaRentView: UIView {
     
     // MARK: - UI Components
     
+    let exitButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.imageView?.tintColor = .black
+        return button
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "우산 QR코드 인식"
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = .SUITSemiBold(size: 20)
+        return label
+    }()
+    
+    private let subTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "QR을 사각형에 맞춰 스캔해주세요"
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = .SUITSemiBold(size: 18)
+        return label
+    }()
+    
+    let mapButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("우산위치를 검색하고 싶으신가요?", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = .SUITSemiBold(size: 14)
+        button.titleLabel?.setUnderline(targetString: "우산위치를 검색하고 싶으신가요?")
+        button.backgroundColor = .clear
+        return button
+    }()
+    
     private let backgroundView : UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
@@ -81,9 +116,10 @@ private extension UmbrellaRentView {
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         DispatchQueue.main.async {
-            let viewSize: CGFloat = 259.0
+            let viewSize: CGFloat = SizeLiterals.Screen.screenWidth * 250 / 375
             let xOrigin = (SizeLiterals.Screen.screenWidth - viewSize) / 2
-            let yOrigin = self.safeAreaInsets.top + (SizeLiterals.Screen.screenWidth * 176 / 812)
+            let yOrigin = self.safeAreaInsets.top + 176
+            print(yOrigin)
             self.videoPreviewLayer?.frame = CGRect(x: xOrigin, y: yOrigin, width: viewSize, height: viewSize)
             self.layer.addSublayer(self.videoPreviewLayer!)
         }
@@ -94,12 +130,35 @@ private extension UmbrellaRentView {
     }
     
     func setHierarchy() {
-        addSubviews(backgroundView)
+        addSubviews(backgroundView, exitButton, titleLabel, subTitleLabel, mapButton)
     }
     
     func setLayout() {
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        exitButton.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(5)
+            $0.leading.equalToSuperview().inset(16)
+            $0.size.equalTo(20)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(102)
+            $0.centerX.equalToSuperview()
+        }
+        
+        subTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.centerX.equalToSuperview()
+        }
+        
+        mapButton.snp.makeConstraints {
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 260 / 812)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(188)
+            $0.height.equalTo(24)
         }
     }
 }
