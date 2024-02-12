@@ -28,6 +28,8 @@
 		A4998BE02B77DC3B00883017 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = A4998BDF2B77DC3B00883017 /* RxMoya */; };
 		A4998BE42B77DC6A00883017 /* UmbrellaRentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BE32B77DC6A00883017 /* UmbrellaRentViewController.swift */; };
 		A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BE52B77DC7400883017 /* UmbrellaRentView.swift */; };
+		A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BE92B79EA7200883017 /* UILabel+.swift */; };
+		A4998BED2B79ED4300883017 /* SUIT-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BEC2B79ED4300883017 /* SUIT-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		A4998BB52B710B0D00883017 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 		A4998BE32B77DC6A00883017 /* UmbrellaRentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentViewController.swift; sourceTree = "<group>"; };
 		A4998BE52B77DC7400883017 /* UmbrellaRentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentView.swift; sourceTree = "<group>"; };
+		A4998BE92B79EA7200883017 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		A4998BEC2B79ED4300883017 /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 		A4998B962B70FD2C00883017 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A4998BEB2B79ED3900883017 /* Font */,
 				A43176172B6FFBE000093F0E /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -173,6 +178,7 @@
 				A4998BA32B70FDCC00883017 /* UITextField+.swift */,
 				A4998BA52B70FDFD00883017 /* UIStackView+.swift */,
 				A4998BB52B710B0D00883017 /* NSObject+.swift */,
+				A4998BE92B79EA7200883017 /* UILabel+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -217,6 +223,14 @@
 				A4998BE52B77DC7400883017 /* UmbrellaRentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A4998BEB2B79ED3900883017 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A4998BEC2B79ED4300883017 /* SUIT-SemiBold.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4998BED2B79ED4300883017 /* SUIT-SemiBold.ttf in Resources */,
 				A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */,
 				A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */,
 			);
@@ -312,6 +327,7 @@
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
+				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
 			);
