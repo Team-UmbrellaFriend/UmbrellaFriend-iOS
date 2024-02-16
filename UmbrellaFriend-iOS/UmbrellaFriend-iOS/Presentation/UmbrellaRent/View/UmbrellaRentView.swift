@@ -30,26 +30,26 @@ final class UmbrellaRentView: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "우산 QR코드 인식"
-        label.textColor = .black
+        label.textColor = .umbrellaWhite
         label.textAlignment = .center
-        label.font = .SUITSemiBold(size: 20)
+        label.font = .umbrellaFont(.title1)
         return label
     }()
     
     private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "QR을 사각형에 맞춰 스캔해주세요"
-        label.textColor = .black
+        label.textColor = .umbrellaWhite
         label.textAlignment = .center
-        label.font = .SUITSemiBold(size: 18)
+        label.font = .umbrellaFont(.body3)
         return label
     }()
     
     let mapButton: UIButton = {
         let button = UIButton()
         button.setTitle("우산위치를 검색하고 싶으신가요?", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = .SUITSemiBold(size: 14)
+        button.setTitleColor(.gray300, for: .normal)
+        button.titleLabel?.font = .umbrellaFont(.body5)
         button.titleLabel?.setUnderline(targetString: "우산위치를 검색하고 싶으신가요?")
         button.backgroundColor = .clear
         return button
@@ -57,7 +57,7 @@ final class UmbrellaRentView: UIView {
     
     private let backgroundView : UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor.umbrellaBlack.withAlphaComponent(0.6)
         return view
     }()
     
