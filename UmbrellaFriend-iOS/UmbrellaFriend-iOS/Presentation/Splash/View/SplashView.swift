@@ -65,7 +65,7 @@ private extension SplashView {
     
     func setLayout() {
         subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(188)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 188 / 812)
             $0.centerX.equalToSuperview()
         }
         
