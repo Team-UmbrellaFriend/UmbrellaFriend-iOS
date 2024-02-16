@@ -5,6 +5,10 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>SUIT-SemiBold.ttf</string>
+		<string>SUIT-Bold.ttf</string>
+		<string>SUIT-Medium.ttf</string>
+		<string>SUIT-Regular.ttf</string>
+		<string>TmoneyRoundWindExtraBold.ttf</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>카메라 사용을 허용해주세요</string>
