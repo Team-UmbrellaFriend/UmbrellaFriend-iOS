@@ -31,6 +31,10 @@
 		A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BE92B79EA7200883017 /* UILabel+.swift */; };
 		A4998BED2B79ED4300883017 /* SUIT-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BEC2B79ED4300883017 /* SUIT-SemiBold.ttf */; };
 		A4998BF62B7F403400883017 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4998BF52B7F403400883017 /* Colors.xcassets */; };
+		A4998BFC2B7F431A00883017 /* SUIT-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BF92B7F431A00883017 /* SUIT-Medium.ttf */; };
+		A4998BFD2B7F431A00883017 /* SUIT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFA2B7F431A00883017 /* SUIT-Bold.ttf */; };
+		A4998BFE2B7F431A00883017 /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFB2B7F431A00883017 /* SUIT-Regular.ttf */; };
+		A4998C002B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		A4998BE92B79EA7200883017 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		A4998BEC2B79ED4300883017 /* SUIT-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-SemiBold.ttf"; sourceTree = "<group>"; };
 		A4998BF52B7F403400883017 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		A4998BF92B7F431A00883017 /* SUIT-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Medium.ttf"; sourceTree = "<group>"; };
+		A4998BFA2B7F431A00883017 /* SUIT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.ttf"; sourceTree = "<group>"; };
+		A4998BFB2B7F431A00883017 /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
+		A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TmoneyRoundWindExtraBold.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +239,10 @@
 		A4998BEB2B79ED3900883017 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */,
+				A4998BFA2B7F431A00883017 /* SUIT-Bold.ttf */,
+				A4998BF92B7F431A00883017 /* SUIT-Medium.ttf */,
+				A4998BFB2B7F431A00883017 /* SUIT-Regular.ttf */,
 				A4998BEC2B79ED4300883017 /* SUIT-SemiBold.ttf */,
 			);
 			path = Font;
@@ -305,8 +317,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4998BFD2B7F431A00883017 /* SUIT-Bold.ttf in Resources */,
 				A4998BED2B79ED4300883017 /* SUIT-SemiBold.ttf in Resources */,
+				A4998BFE2B7F431A00883017 /* SUIT-Regular.ttf in Resources */,
+				A4998C002B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf in Resources */,
 				A4998BF62B7F403400883017 /* Colors.xcassets in Resources */,
+				A4998BFC2B7F431A00883017 /* SUIT-Medium.ttf in Resources */,
 				A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */,
 				A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */,
 			);
