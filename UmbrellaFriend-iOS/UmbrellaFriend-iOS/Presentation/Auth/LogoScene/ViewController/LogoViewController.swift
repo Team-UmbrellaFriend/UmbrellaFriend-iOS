@@ -9,27 +9,22 @@ import UIKit
 
 final class LogoViewController: UIViewController {
     
-    // MARK: - Properties
-    
-    
     // MARK: - UI Components
     
+    private let logoView = LogoView()
     
     // MARK: - Life Cycles
     
     override func loadView() {
-        super.loadView()
         
+        view = logoView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
         setUI()
-        setHierarchy()
-        setLayout()
-        setDelegate()
+        setAddTarget()
     }
 }
 
@@ -38,27 +33,23 @@ final class LogoViewController: UIViewController {
 extension LogoViewController {
 
     func setUI() {
-        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
-    func setHierarchy() {
-        
+    func setAddTarget() {
+        logoView.loginButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        logoView.signupButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
-    func setLayout() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-}
-
-// MARK: - Network
-
-extension LogoViewController {
-
-    func getAPI() {
-        
+    @objc
+    func buttonTapped(_ sender: UIButton) {
+        switch sender {
+        case logoView.loginButton:
+            print("login")
+        case logoView.signupButton:
+            print("signup")
+        default:
+            break
+        }
     }
 }

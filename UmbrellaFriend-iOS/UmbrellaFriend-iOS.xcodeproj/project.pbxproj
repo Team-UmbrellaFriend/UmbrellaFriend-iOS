@@ -38,6 +38,7 @@
 		A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C042B7F4B1900883017 /* SplashViewController.swift */; };
 		A4998C072B7F4B2500883017 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C062B7F4B2500883017 /* SplashView.swift */; };
 		A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C0C2B7F4D8900883017 /* LogoViewController.swift */; };
+		A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C0E2B7F50A400883017 /* LogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		A4998C042B7F4B1900883017 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		A4998C062B7F4B2500883017 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A4998C0C2B7F4D8900883017 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
+		A4998C0E2B7F50A400883017 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 		A4998C0B2B7F4D7F00883017 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A4998C0E2B7F50A400883017 /* LogoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
 				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
+				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
