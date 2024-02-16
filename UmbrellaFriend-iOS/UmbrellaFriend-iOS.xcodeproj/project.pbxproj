@@ -35,6 +35,9 @@
 		A4998BFD2B7F431A00883017 /* SUIT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFA2B7F431A00883017 /* SUIT-Bold.ttf */; };
 		A4998BFE2B7F431A00883017 /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFB2B7F431A00883017 /* SUIT-Regular.ttf */; };
 		A4998C002B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */; };
+		A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C042B7F4B1900883017 /* SplashViewController.swift */; };
+		A4998C072B7F4B2500883017 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C062B7F4B2500883017 /* SplashView.swift */; };
+		A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C0C2B7F4D8900883017 /* LogoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +66,9 @@
 		A4998BFA2B7F431A00883017 /* SUIT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.ttf"; sourceTree = "<group>"; };
 		A4998BFB2B7F431A00883017 /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TmoneyRoundWindExtraBold.ttf; sourceTree = "<group>"; };
+		A4998C042B7F4B1900883017 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		A4998C062B7F4B2500883017 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		A4998C0C2B7F4D8900883017 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,8 @@
 		A4998B922B70FD0900883017 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A4998C082B7F4D3D00883017 /* Auth */,
+				A4998C012B7F4ABD00883017 /* Splash */,
 				A4998BD12B77DA5B00883017 /* UmbrellaRent */,
 			);
 			path = Presentation;
@@ -248,6 +256,63 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		A4998C012B7F4ABD00883017 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C032B7F4B0500883017 /* View */,
+				A4998C022B7F4AFD00883017 /* ViewController */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		A4998C022B7F4AFD00883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C042B7F4B1900883017 /* SplashViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C032B7F4B0500883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C062B7F4B2500883017 /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C082B7F4D3D00883017 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C092B7F4D4100883017 /* LogoScene */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A4998C092B7F4D4100883017 /* LogoScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C0B2B7F4D7F00883017 /* View */,
+				A4998C0A2B7F4D7900883017 /* ViewController */,
+			);
+			path = LogoScene;
+			sourceTree = "<group>";
+		};
+		A4998C0A2B7F4D7900883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C0C2B7F4D8900883017 /* LogoViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C0B2B7F4D7F00883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -337,8 +402,10 @@
 			files = (
 				A4998BE42B77DC6A00883017 /* UmbrellaRentViewController.swift in Sources */,
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
+				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
 				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
+				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
@@ -350,6 +417,7 @@
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
+				A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
