@@ -48,7 +48,9 @@ extension LogoViewController {
             let nav = LoginViewController()
             self.navigationController?.pushViewController(nav, animated: true)
         case logoView.signupButton:
-            print("signup")
+            let nav = PhotoAttachViewController()
+            nav.fromLoginView = true
+            self.navigationController?.pushViewController(nav, animated: true)
         default:
             break
         }
