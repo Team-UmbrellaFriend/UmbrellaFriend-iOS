@@ -39,6 +39,11 @@
 		A4998C072B7F4B2500883017 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C062B7F4B2500883017 /* SplashView.swift */; };
 		A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C0C2B7F4D8900883017 /* LogoViewController.swift */; };
 		A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C0E2B7F50A400883017 /* LogoView.swift */; };
+		A4998C142B80501D00883017 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C132B80501D00883017 /* LoginViewController.swift */; };
+		A4998C162B80502900883017 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C152B80502900883017 /* LoginView.swift */; };
+		A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C192B8053E300883017 /* CustomNavigationBar.swift */; };
+		A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C1C2B805AB000883017 /* CustomButton.swift */; };
+		A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C1E2B805AB900883017 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +76,11 @@
 		A4998C062B7F4B2500883017 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		A4998C0C2B7F4D8900883017 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
 		A4998C0E2B7F50A400883017 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		A4998C132B80501D00883017 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A4998C152B80502900883017 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A4998C192B8053E300883017 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		A4998C1C2B805AB000883017 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		A4998C1E2B805AB900883017 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +130,7 @@
 		A4998B922B70FD0900883017 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A4998C172B8053C100883017 /* Common */,
 				A4998C082B7F4D3D00883017 /* Auth */,
 				A4998C012B7F4ABD00883017 /* Splash */,
 				A4998BD12B77DA5B00883017 /* UmbrellaRent */,
@@ -286,6 +297,7 @@
 		A4998C082B7F4D3D00883017 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				A4998C102B80500400883017 /* LoginScene */,
 				A4998C092B7F4D4100883017 /* LogoScene */,
 			);
 			path = Auth;
@@ -314,6 +326,49 @@
 				A4998C0E2B7F50A400883017 /* LogoView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C102B80500400883017 /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C122B80501200883017 /* View */,
+				A4998C112B80500D00883017 /* ViewController */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		A4998C112B80500D00883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C132B80501D00883017 /* LoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C122B80501200883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C152B80502900883017 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C172B8053C100883017 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C1B2B805A7200883017 /* UIComponents */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A4998C1B2B805A7200883017 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C192B8053E300883017 /* CustomNavigationBar.swift */,
+				A4998C1C2B805AB000883017 /* CustomButton.swift */,
+				A4998C1E2B805AB900883017 /* CustomTextField.swift */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,15 +466,20 @@
 				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
+				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
+				A4998C162B80502900883017 /* LoginView.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
+				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
+				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
+				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
 				A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */,
 			);
