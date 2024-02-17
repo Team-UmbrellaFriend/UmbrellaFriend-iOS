@@ -45,7 +45,8 @@ extension LogoViewController {
     func buttonTapped(_ sender: UIButton) {
         switch sender {
         case logoView.loginButton:
-            print("login")
+            let nav = LoginViewController()
+            self.navigationController?.pushViewController(nav, animated: true)
         case logoView.signupButton:
             print("signup")
         default:
