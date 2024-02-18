@@ -36,6 +36,19 @@ final class PhotoAttachView: UIView {
         return button
     }()
     
+    lazy var imageDeleteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(.btnDelete, for: .normal)
+        button.setBackgroundColor(.clear, for: .highlighted)
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    let studentIDImage: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
     lazy var nextButton = CustomButton(status: false, title: "다음")
     
     // MARK: - Life Cycles
@@ -60,10 +73,12 @@ extension PhotoAttachView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        studentIDImage.isHidden = true
+        imageDeleteButton.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, registerTitleLabel, registerButton, nextButton)
+        addSubviews(navigationView, registerTitleLabel, registerButton, nextButton, studentIDImage, imageDeleteButton)
     }
     
     func setLayout() {
@@ -85,6 +100,17 @@ extension PhotoAttachView {
         nextButton.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
             $0.centerX.equalToSuperview()
+        }
+        
+        studentIDImage.snp.makeConstraints {
+            $0.top.equalTo(registerTitleLabel.snp.bottom).offset(40)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(SizeLiterals.Screen.screenWidth - 31)
+        }
+        
+        imageDeleteButton.snp.makeConstraints {
+            $0.top.trailing.equalTo(studentIDImage).inset(12)
+            $0.size.equalTo(20)
         }
     }
 }

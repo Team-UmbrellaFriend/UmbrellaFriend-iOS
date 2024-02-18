@@ -44,8 +44,8 @@
 		A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C192B8053E300883017 /* CustomNavigationBar.swift */; };
 		A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C1C2B805AB000883017 /* CustomButton.swift */; };
 		A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C1E2B805AB900883017 /* CustomTextField.swift */; };
-		A4998C272B80845300883017 /* StudentIDRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C262B80845300883017 /* StudentIDRegisterViewController.swift */; };
-		A4998C292B80846000883017 /* StudentIDRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C282B80846000883017 /* StudentIDRegisterView.swift */; };
+		A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C262B80845300883017 /* PhotoAttachViewController.swift */; };
+		A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C282B80846000883017 /* PhotoAttachView.swift */; };
 		A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2A2B8088A000883017 /* UIButton+.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,8 +84,8 @@
 		A4998C192B8053E300883017 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		A4998C1C2B805AB000883017 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		A4998C1E2B805AB900883017 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		A4998C262B80845300883017 /* StudentIDRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIDRegisterViewController.swift; sourceTree = "<group>"; };
-		A4998C282B80846000883017 /* StudentIDRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIDRegisterView.swift; sourceTree = "<group>"; };
+		A4998C262B80845300883017 /* PhotoAttachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachViewController.swift; sourceTree = "<group>"; };
+		A4998C282B80846000883017 /* PhotoAttachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachView.swift; sourceTree = "<group>"; };
 		A4998C2A2B8088A000883017 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -399,7 +399,7 @@
 		A4998C242B80843A00883017 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A4998C262B80845300883017 /* StudentIDRegisterViewController.swift */,
+				A4998C262B80845300883017 /* PhotoAttachViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -407,7 +407,7 @@
 		A4998C252B80844000883017 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A4998C282B80846000883017 /* StudentIDRegisterView.swift */,
+				A4998C282B80846000883017 /* PhotoAttachView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -519,8 +519,8 @@
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
-				A4998C272B80845300883017 /* StudentIDRegisterViewController.swift in Sources */,
-				A4998C292B80846000883017 /* StudentIDRegisterView.swift in Sources */,
+				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
+				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
 				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
