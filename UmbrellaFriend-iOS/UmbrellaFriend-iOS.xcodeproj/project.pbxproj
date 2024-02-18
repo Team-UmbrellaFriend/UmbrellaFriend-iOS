@@ -47,6 +47,8 @@
 		A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C262B80845300883017 /* PhotoAttachViewController.swift */; };
 		A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C282B80846000883017 /* PhotoAttachView.swift */; };
 		A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2A2B8088A000883017 /* UIButton+.swift */; };
+		A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2E2B81CDFD00883017 /* SignupViewController.swift */; };
+		A4998C312B81CE0900883017 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C302B81CE0900883017 /* SignupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,8 @@
 		A4998C262B80845300883017 /* PhotoAttachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachViewController.swift; sourceTree = "<group>"; };
 		A4998C282B80846000883017 /* PhotoAttachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachView.swift; sourceTree = "<group>"; };
 		A4998C2A2B8088A000883017 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		A4998C2E2B81CDFD00883017 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		A4998C302B81CE0900883017 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +387,8 @@
 		A4998C222B80838B00883017 /* SignupScene */ = {
 			isa = PBXGroup;
 			children = (
+				A4998C2D2B81CDF000883017 /* View */,
+				A4998C2C2B81CDEA00883017 /* ViewController */,
 			);
 			path = SignupScene;
 			sourceTree = "<group>";
@@ -408,6 +414,22 @@
 			isa = PBXGroup;
 			children = (
 				A4998C282B80846000883017 /* PhotoAttachView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C2C2B81CDEA00883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C2E2B81CDFD00883017 /* SignupViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C2D2B81CDF000883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C302B81CE0900883017 /* SignupView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -511,6 +533,7 @@
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
+				A4998C312B81CE0900883017 /* SignupView.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
@@ -521,6 +544,7 @@
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
+				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
 				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
