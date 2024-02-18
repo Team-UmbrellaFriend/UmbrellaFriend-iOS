@@ -40,6 +40,7 @@ extension SignupViewController {
 
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func setDelegate() {

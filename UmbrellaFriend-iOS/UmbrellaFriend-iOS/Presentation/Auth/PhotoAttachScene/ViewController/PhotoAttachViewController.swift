@@ -43,6 +43,7 @@ extension PhotoAttachViewController {
 
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.photoAttachView.registerTitleLabel.text = self.fromLoginView ? "학생증을\n등록해 인증해주세요." : "반납 완료를 위해\n카메라로 인증해주세요"
     }
     
