@@ -69,7 +69,7 @@ final class PhotoAttachView: UIView {
 
 // MARK: - Extensions
 
-extension PhotoAttachView {
+private extension PhotoAttachView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite

@@ -7,11 +7,16 @@
 
 import UIKit
 
+import VisionKit
+import Vision
+
 final class PhotoAttachViewController: UIViewController {
     
     // MARK: - Properties
     
     var fromLoginView: Bool = true
+    var photoName: String = ""
+    var photoId: String = ""
     
     // MARK: - UI Components
     
@@ -66,6 +71,78 @@ extension PhotoAttachViewController {
             break
         }
     }
+    
+    func extractSevenDigitNumbers(from text: String) -> String {
+        let pattern = "\\b\\d{7}\\b"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: pattern)
+            let matches = regex.matches(in: text, range: NSRange(text.startIndex..., in: text))
+            
+            let sevenDigitNumbers = matches.map {
+                String(text[Range($0.range, in: text)!])
+            }.joined(separator: "\n")
+            
+            return sevenDigitNumbers
+        } catch {
+            print("Error creating regular expression: \(error)")
+            return ""
+        }
+    }
+    
+    func extractInfo(image: UIImage?){
+        guard let cgImage = image?.cgImage else { return }
+        
+        let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+        let request = VNRecognizeTextRequest{ [weak self]request, error in
+            guard let observations = request.results as? [VNRecognizedTextObservation],
+                  error == nil else{ return }
+            
+            let text = observations.compactMap({
+                $0.topCandidates(1).first?.string
+            }).joined(separator: "\n")
+            
+            for observation in observations {
+                if let topCandidate = observation.topCandidates(1).first,
+                   let range = topCandidate.string.range(of: "\\b\\d{7}\\b", options: .regularExpression) {
+                    if let line = observation.topCandidates(1).first?.string.components(separatedBy: "\n").first,
+                       range.lowerBound >= line.startIndex && range.upperBound <= line.endIndex {
+                        let koreanPattern = "[가-힣]+"
+                        if let koreanRange = line.range(of: koreanPattern, options: .regularExpression) {
+                            let koreanText = String(line[koreanRange])
+                            self?.photoName = koreanText
+                        }
+                    }
+                }
+            }
+            
+            let sevenDigitNumbers = self?.extractSevenDigitNumbers(from: text)
+            self?.photoId = sevenDigitNumbers ?? ""
+        }
+        
+        if #available(iOS 16.0, *) {
+            let revision3 = VNRecognizeTextRequestRevision3
+            request.revision = revision3
+            request.recognitionLevel = .accurate
+            request.recognitionLanguages = ["ko-KR"]
+            request.usesLanguageCorrection = true
+            
+            do {
+                _ = try request.supportedRecognitionLanguages()
+            } catch {
+                print("Error getting the supported languages.")
+            }
+        } else {
+            request.recognitionLanguages = ["ko-KR"]
+            request.usesLanguageCorrection = true
+        }
+        
+        do{
+            try handler.perform([request])
+        } catch {
+            print(error)
+        }
+    }
 }
 
 extension PhotoAttachViewController: NavigationBarProtocol {
@@ -78,7 +155,10 @@ extension PhotoAttachViewController: NavigationBarProtocol {
 extension PhotoAttachViewController: ButtonProtocol {
     
     func buttonTapped() {
-        print("buttonTapped")
+        let nav = SignupViewController()
+        nav.extractName = self.photoName
+        nav.extractId = self.photoId
+        self.navigationController?.pushViewController(nav, animated: true)
     }
 }
 
@@ -86,6 +166,7 @@ extension PhotoAttachViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
+            self.extractInfo(image: image)
             photoAttachView.studentIDImage.isHidden = false
             photoAttachView.imageDeleteButton.isHidden = false
             photoAttachView.studentIDImage.image = image
