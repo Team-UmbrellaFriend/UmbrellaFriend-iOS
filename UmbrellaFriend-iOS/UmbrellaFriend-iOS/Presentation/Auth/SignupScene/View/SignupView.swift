@@ -116,9 +116,9 @@ private extension SignupView {
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, scrollView)
+        addSubviews(navigationView, signupTitleLabel, scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(signupTitleLabel, nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, pwTitle, pwTextField, pwCheckTextField, completeButton)
+        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, pwTitle, pwTextField, pwCheckTextField, completeButton)
     }
     
     func setLayout() {
@@ -127,8 +127,13 @@ private extension SignupView {
             $0.leading.trailing.equalToSuperview()
         }
         
+        signupTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(navigationView.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().inset(16)
+        }
+        
         scrollView.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom)
+            $0.top.equalTo(signupTitleLabel.snp.bottom).offset(20)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
@@ -138,13 +143,8 @@ private extension SignupView {
             $0.width.equalTo(scrollView.snp.width)
         }
         
-        signupTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
-            $0.leading.equalToSuperview().inset(16)
-        }
-        
         nameTitle.snp.makeConstraints {
-            $0.top.equalTo(signupTitleLabel.snp.bottom).offset(40)
+            $0.top.equalToSuperview().inset(20)
             $0.leading.equalTo(signupTitleLabel.snp.leading)
         }
         

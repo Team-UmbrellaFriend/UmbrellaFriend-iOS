@@ -28,6 +28,13 @@ final class PhotoAttachView: UIView {
         return label
     }()
     
+    let registerSubTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .gray700
+        label.font = .umbrellaFont(.body3)
+        return label
+    }()
+    
     lazy var registerButton: UIButton = {
         let button = UIButton()
         button.setImage(.btnRegister, for: .normal)
@@ -78,7 +85,7 @@ private extension PhotoAttachView {
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, registerTitleLabel, registerButton, nextButton, studentIDImage, imageDeleteButton)
+        addSubviews(navigationView, registerTitleLabel, registerSubTitleLabel, registerButton, nextButton, studentIDImage, imageDeleteButton)
     }
     
     func setLayout() {
@@ -90,6 +97,11 @@ private extension PhotoAttachView {
         registerTitleLabel.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(16)
+        }
+        
+        registerSubTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(registerTitleLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(registerTitleLabel.snp.leading)
         }
         
         registerButton.snp.makeConstraints {
