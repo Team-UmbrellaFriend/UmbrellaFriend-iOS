@@ -25,6 +25,7 @@ final class LogoViewController: UIViewController {
         
         setUI()
         setAddTarget()
+        setDelegate()
     }
 }
 
@@ -38,22 +39,25 @@ extension LogoViewController {
     }
     
     func setAddTarget() {
-        logoView.loginButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        logoView.signupButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        logoView.signupButton.addTarget(self, action: #selector(signupTapped), for: .touchUpInside)
+    }
+    
+    func setDelegate() {
+        logoView.loginButton.delegate = self
     }
     
     @objc
-    func buttonTapped(_ sender: UIButton) {
-        switch sender {
-        case logoView.loginButton:
-            let nav = LoginViewController()
-            self.navigationController?.pushViewController(nav, animated: true)
-        case logoView.signupButton:
-            let nav = PhotoAttachViewController()
-            nav.fromLoginView = true
-            self.navigationController?.pushViewController(nav, animated: true)
-        default:
-            break
-        }
+    func signupTapped() {
+        let nav = PhotoAttachViewController()
+        nav.fromLoginView = true
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+}
+
+extension LogoViewController: ButtonProtocol {
+    
+    func buttonTapped() {
+        let nav = LoginViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
     }
 }

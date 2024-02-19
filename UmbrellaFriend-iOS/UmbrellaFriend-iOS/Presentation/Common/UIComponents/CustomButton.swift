@@ -51,6 +51,7 @@ private extension CustomButton {
         self.setTitleColor(.umbrellaWhite, for: .disabled)
         self.setBackgroundColor(.mainBlue, for: .normal)
         self.setBackgroundColor(.gray300, for: .disabled)
+        self.setBackgroundColor(.darkBlue, for: .highlighted)
         self.titleLabel?.font = .umbrellaFont(.subtitle1)
         self.clipsToBounds = true
         self.layer.cornerRadius = 12

@@ -38,23 +38,15 @@ final class LogoView: UIView {
         return image
     }()
     
-    lazy var loginButton: UIButton = {
-        var button = UIButton()
-        button.setTitle("로그인", for: .normal)
-        button.setTitleColor(.umbrellaWhite, for: .normal)
-        button.titleLabel?.font = .umbrellaFont(.subtitle1)
-        button.backgroundColor = .mainBlue
-        button.clipsToBounds = true
-        button.layer.cornerRadius = 12
-        return button
-    }()
+    lazy var loginButton = CustomButton(status: true, title: "로그인")
     
     lazy var signupButton: UIButton = {
         var button = UIButton()
         button.setTitle("회원가입", for: .normal)
         button.setTitleColor(.mainBlue, for: .normal)
         button.titleLabel?.font = .umbrellaFont(.subtitle1)
-        button.backgroundColor = .lightBlue
+        button.setBackgroundColor(.lightBlue, for: .normal)
+        button.setBackgroundColor(.middleBlue, for: .highlighted)
         button.clipsToBounds = true
         button.layer.cornerRadius = 12
         return button

@@ -37,9 +37,12 @@ final class PhotoAttachView: UIView {
     
     lazy var registerButton: UIButton = {
         let button = UIButton()
-        button.setImage(.btnRegister, for: .normal)
-        button.setBackgroundColor(.clear, for: .highlighted)
+        button.setImage(.icRoundplus, for: .normal)
+        button.setImage(.icRoundplus, for: .highlighted)
+        button.setBackgroundColor(.gray200, for: .normal)
+        button.setBackgroundColor(.gray300, for: .highlighted)
         button.clipsToBounds = true
+        button.layer.cornerRadius = 80
         return button
     }()
     
