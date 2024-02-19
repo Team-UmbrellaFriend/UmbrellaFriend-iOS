@@ -48,8 +48,8 @@ final class PhotoAttachView: UIView {
     
     lazy var imageDeleteButton: UIButton = {
         let button = UIButton()
-        button.setImage(.btnDelete, for: .normal)
-        button.setBackgroundColor(.clear, for: .highlighted)
+        button.setImage(.icCancel, for: .normal)
+        button.setImage(.icCancel, for: .highlighted)
         button.clipsToBounds = true
         return button
     }()
@@ -124,8 +124,8 @@ private extension PhotoAttachView {
         }
         
         imageDeleteButton.snp.makeConstraints {
-            $0.top.trailing.equalTo(studentIDImage).inset(12)
-            $0.size.equalTo(20)
+            $0.top.trailing.equalTo(studentIDImage)
+            $0.size.equalTo(48)
         }
     }
 }

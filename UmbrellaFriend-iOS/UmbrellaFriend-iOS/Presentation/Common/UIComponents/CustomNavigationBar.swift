@@ -31,7 +31,7 @@ final class CustomNavigationBar: UIView {
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(resource: .btnBack), for: .normal)
+        button.setImage(UIImage(resource: .icLeft), for: .normal)
         button.isHidden = true
         button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         return button
@@ -68,13 +68,13 @@ private extension CustomNavigationBar {
     
     func setLayout() {
         self.snp.makeConstraints {
-            $0.height.equalTo(44)
+            $0.height.equalTo(48)
         }
         
         backButton.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview()
-            $0.size.equalTo(24)
+            $0.size.equalTo(48)
         }
     }
     

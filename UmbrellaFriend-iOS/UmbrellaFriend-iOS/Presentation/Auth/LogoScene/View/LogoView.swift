@@ -34,7 +34,7 @@ final class LogoView: UIView {
     
     private let logoImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(resource: .logo)
+        image.image = UIImage(resource: .graphicCharacter)
         return image
     }()
     

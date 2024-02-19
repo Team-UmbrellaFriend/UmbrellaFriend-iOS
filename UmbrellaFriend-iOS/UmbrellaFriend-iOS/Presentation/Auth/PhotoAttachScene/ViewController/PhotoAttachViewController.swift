@@ -68,6 +68,7 @@ extension PhotoAttachViewController {
             photoAttachView.studentIDImage.image = .remove
             photoAttachView.studentIDImage.isHidden = true
             photoAttachView.imageDeleteButton.isHidden = true
+            photoAttachView.registerSubTitleLabel.isHidden = true
             photoAttachView.nextButton.isEnabled = false
         default:
             break
@@ -173,6 +174,7 @@ extension PhotoAttachViewController: UIImagePickerControllerDelegate {
             photoAttachView.imageDeleteButton.isHidden = false
             photoAttachView.studentIDImage.image = image
             photoAttachView.nextButton.isEnabled = true
+            photoAttachView.registerSubTitleLabel.isHidden = true
             photoAttachView.bringSubviewToFront(photoAttachView.imageDeleteButton)
         }
         dismiss(animated: true, completion: nil)
