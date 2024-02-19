@@ -75,6 +75,18 @@ final class SignupView: UIView {
         return label
     }()
     
+    private let emailFormLabel: UILabel = {
+        let label = UILabel()
+        label.text = "@sookmyung.ac.kr"
+        label.textAlignment = .center
+        label.textColor = .gray1100
+        label.font = .umbrellaFont(.body3)
+        label.backgroundColor = .gray100
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 12
+        return label
+    }()
+    
     private let pwTitle: UILabel = {
         let label = UILabel()
         label.text = "비밀번호"
@@ -83,10 +95,19 @@ final class SignupView: UIView {
         return label
     }()
     
+    private let pwInfoTitle: UILabel = {
+        let label = UILabel()
+        label.text = "*영어, 숫자로 이루어진 최소 8자 이상 (특수문자x)"
+        label.textColor = .gray600
+        label.font = .umbrellaFont(.caption1)
+        label.textColor = .gray1000
+        return label
+    }()
+    
     let nameTextField = CustomTextField(placeHolder: "눈송이")
     let idTextField = CustomTextField(placeHolder: "111111")
     let phoneTextField = CustomTextField(placeHolder: "01012341234")
-    let emailTextField = CustomTextField(placeHolder: "woosanfriend@sookmyung.ac.kr")
+    let emailTextField = CustomTextField(placeHolder: "woosanfriend")
     let pwTextField = CustomTextField(placeHolder: "비밀번호")
     let pwCheckTextField = CustomTextField(placeHolder: "비밀번호확인")
     lazy var completeButton = CustomButton(status: false, title: "완료")
@@ -113,12 +134,14 @@ private extension SignupView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        pwTextField.isSecureTextEntry = true
+        pwCheckTextField.isSecureTextEntry = true
     }
     
     func setHierarchy() {
         addSubviews(navigationView, signupTitleLabel, scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, pwTitle, pwTextField, pwCheckTextField, completeButton)
+        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle,  completeButton)
     }
     
     func setLayout() {
@@ -180,7 +203,15 @@ private extension SignupView {
         
         emailTextField.snp.makeConstraints {
             $0.top.equalTo(emailTitle.snp.bottom).offset(10)
-            $0.centerX.equalToSuperview()
+            $0.leading.equalTo(emailTitle.snp.leading)
+            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2 + 3)
+        }
+        
+        emailFormLabel.snp.makeConstraints {
+            $0.top.equalTo(emailTextField.snp.top)
+            $0.leading.equalTo(emailTextField.snp.trailing).offset(8)
+            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2 - 3)
+            $0.height.equalTo(54)
         }
         
         pwTitle.snp.makeConstraints {
@@ -196,6 +227,11 @@ private extension SignupView {
         pwCheckTextField.snp.makeConstraints {
             $0.top.equalTo(pwTextField.snp.bottom).offset(8)
             $0.centerX.equalToSuperview()
+        }
+        
+        pwInfoTitle.snp.makeConstraints {
+            $0.top.equalTo(pwCheckTextField.snp.bottom).offset(8)
+            $0.leading.equalTo(pwCheckTextField.snp.leading).offset(8)
         }
         
         completeButton.snp.makeConstraints {
