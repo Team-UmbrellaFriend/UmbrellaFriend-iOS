@@ -10,6 +10,48 @@ import UIKit
 import SnapKit
 
 final class CustomTextField: UITextField {
+    
+    // MARK: - Properties
+    
+    @frozen
+    enum TexFieldType {
+        case normal
+        case editing
+        case uncorrectedType
+        
+        var borderColor: CGColor? {
+            switch self {
+            case .normal, .editing:
+                return UIColor.clear.cgColor
+            case .uncorrectedType:
+                return UIColor.umbrellaError.cgColor
+            }
+        }
+        
+        var borderWidth: CGFloat {
+            switch self {
+            case .normal, .editing:
+                return 0
+            case .uncorrectedType:
+                return 1
+            }
+        }
+        
+        var textColor: UIColor? {
+            switch self {
+            case .normal, .editing:
+                return UIColor.umbrellaBlack
+            case .uncorrectedType:
+                return UIColor.umbrellaError
+            }
+        }
+    }
+    
+    var textFieldStatus: TexFieldType = .normal {
+        didSet {
+            updateBorderColor()
+        }
+    }
 
     // MARK: - Life Cycles
     
@@ -52,5 +94,11 @@ private extension CustomTextField {
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(54)
         }
+    }
+    
+    func updateBorderColor() {
+        self.layer.borderColor = textFieldStatus.borderColor
+        self.layer.borderWidth = textFieldStatus.borderWidth
+        self.textColor = textFieldStatus.textColor
     }
 }
