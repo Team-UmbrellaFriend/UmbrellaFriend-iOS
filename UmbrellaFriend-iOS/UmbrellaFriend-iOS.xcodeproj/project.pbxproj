@@ -49,6 +49,7 @@
 		A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2A2B8088A000883017 /* UIButton+.swift */; };
 		A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2E2B81CDFD00883017 /* SignupViewController.swift */; };
 		A4998C312B81CE0900883017 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C302B81CE0900883017 /* SignupView.swift */; };
+		A4CBBCB52B83194800D55085 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCB42B83194800D55085 /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		A4998C2A2B8088A000883017 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		A4998C2E2B81CDFD00883017 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A4998C302B81CE0900883017 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		A4CBBCB42B83194800D55085 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				A4998BB52B710B0D00883017 /* NSObject+.swift */,
 				A4998BE92B79EA7200883017 /* UILabel+.swift */,
 				A4998C2A2B8088A000883017 /* UIButton+.swift */,
+				A4CBBCB42B83194800D55085 /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
+				A4CBBCB52B83194800D55085 /* String+.swift in Sources */,
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
