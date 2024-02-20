@@ -12,7 +12,7 @@ enum FontName: String {
     case SUITMedium = "SUIT-Medium"
     case SUITRegular = "SUIT-Regular"
     case SUITSemiBold = "SUIT-SemiBold"
-    case TmoneyRoundWindExtraBold = "TmoneyRoundWindExtraBold"
+    case TmoneyRoundWindExtraBold = "TmoneyRoundWind-ExtraBold"
 }
 
 enum FontLevel {

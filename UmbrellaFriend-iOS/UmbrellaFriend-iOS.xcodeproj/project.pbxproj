@@ -35,6 +35,21 @@
 		A4998BFD2B7F431A00883017 /* SUIT-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFA2B7F431A00883017 /* SUIT-Bold.ttf */; };
 		A4998BFE2B7F431A00883017 /* SUIT-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFB2B7F431A00883017 /* SUIT-Regular.ttf */; };
 		A4998C002B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */; };
+		A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C042B7F4B1900883017 /* SplashViewController.swift */; };
+		A4998C072B7F4B2500883017 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C062B7F4B2500883017 /* SplashView.swift */; };
+		A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C0C2B7F4D8900883017 /* LogoViewController.swift */; };
+		A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C0E2B7F50A400883017 /* LogoView.swift */; };
+		A4998C142B80501D00883017 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C132B80501D00883017 /* LoginViewController.swift */; };
+		A4998C162B80502900883017 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C152B80502900883017 /* LoginView.swift */; };
+		A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C192B8053E300883017 /* CustomNavigationBar.swift */; };
+		A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C1C2B805AB000883017 /* CustomButton.swift */; };
+		A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C1E2B805AB900883017 /* CustomTextField.swift */; };
+		A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C262B80845300883017 /* PhotoAttachViewController.swift */; };
+		A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C282B80846000883017 /* PhotoAttachView.swift */; };
+		A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2A2B8088A000883017 /* UIButton+.swift */; };
+		A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2E2B81CDFD00883017 /* SignupViewController.swift */; };
+		A4998C312B81CE0900883017 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C302B81CE0900883017 /* SignupView.swift */; };
+		A4CBBCB52B83194800D55085 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCB42B83194800D55085 /* String+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +78,21 @@
 		A4998BFA2B7F431A00883017 /* SUIT-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Bold.ttf"; sourceTree = "<group>"; };
 		A4998BFB2B7F431A00883017 /* SUIT-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUIT-Regular.ttf"; sourceTree = "<group>"; };
 		A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TmoneyRoundWindExtraBold.ttf; sourceTree = "<group>"; };
+		A4998C042B7F4B1900883017 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		A4998C062B7F4B2500883017 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		A4998C0C2B7F4D8900883017 /* LogoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoViewController.swift; sourceTree = "<group>"; };
+		A4998C0E2B7F50A400883017 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		A4998C132B80501D00883017 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A4998C152B80502900883017 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A4998C192B8053E300883017 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		A4998C1C2B805AB000883017 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		A4998C1E2B805AB900883017 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		A4998C262B80845300883017 /* PhotoAttachViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachViewController.swift; sourceTree = "<group>"; };
+		A4998C282B80846000883017 /* PhotoAttachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachView.swift; sourceTree = "<group>"; };
+		A4998C2A2B8088A000883017 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		A4998C2E2B81CDFD00883017 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		A4998C302B81CE0900883017 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		A4CBBCB42B83194800D55085 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +142,9 @@
 		A4998B922B70FD0900883017 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A4998C172B8053C100883017 /* Common */,
+				A4998C082B7F4D3D00883017 /* Auth */,
+				A4998C012B7F4ABD00883017 /* Splash */,
 				A4998BD12B77DA5B00883017 /* UmbrellaRent */,
 			);
 			path = Presentation;
@@ -190,6 +223,8 @@
 				A4998BA52B70FDFD00883017 /* UIStackView+.swift */,
 				A4998BB52B710B0D00883017 /* NSObject+.swift */,
 				A4998BE92B79EA7200883017 /* UILabel+.swift */,
+				A4998C2A2B8088A000883017 /* UIButton+.swift */,
+				A4CBBCB42B83194800D55085 /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -246,6 +281,160 @@
 				A4998BEC2B79ED4300883017 /* SUIT-SemiBold.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		A4998C012B7F4ABD00883017 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C032B7F4B0500883017 /* View */,
+				A4998C022B7F4AFD00883017 /* ViewController */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		A4998C022B7F4AFD00883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C042B7F4B1900883017 /* SplashViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C032B7F4B0500883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C062B7F4B2500883017 /* SplashView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C082B7F4D3D00883017 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C092B7F4D4100883017 /* LogoScene */,
+				A4998C102B80500400883017 /* LoginScene */,
+				A4998C232B80839E00883017 /* PhotoAttachScene */,
+				A4998C222B80838B00883017 /* SignupScene */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A4998C092B7F4D4100883017 /* LogoScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C0B2B7F4D7F00883017 /* View */,
+				A4998C0A2B7F4D7900883017 /* ViewController */,
+			);
+			path = LogoScene;
+			sourceTree = "<group>";
+		};
+		A4998C0A2B7F4D7900883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C0C2B7F4D8900883017 /* LogoViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C0B2B7F4D7F00883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C0E2B7F50A400883017 /* LogoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C102B80500400883017 /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C122B80501200883017 /* View */,
+				A4998C112B80500D00883017 /* ViewController */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		A4998C112B80500D00883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C132B80501D00883017 /* LoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C122B80501200883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C152B80502900883017 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C172B8053C100883017 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C1B2B805A7200883017 /* UIComponents */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A4998C1B2B805A7200883017 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C192B8053E300883017 /* CustomNavigationBar.swift */,
+				A4998C1C2B805AB000883017 /* CustomButton.swift */,
+				A4998C1E2B805AB900883017 /* CustomTextField.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		A4998C222B80838B00883017 /* SignupScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C2D2B81CDF000883017 /* View */,
+				A4998C2C2B81CDEA00883017 /* ViewController */,
+			);
+			path = SignupScene;
+			sourceTree = "<group>";
+		};
+		A4998C232B80839E00883017 /* PhotoAttachScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C252B80844000883017 /* View */,
+				A4998C242B80843A00883017 /* ViewController */,
+			);
+			path = PhotoAttachScene;
+			sourceTree = "<group>";
+		};
+		A4998C242B80843A00883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C262B80845300883017 /* PhotoAttachViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C252B80844000883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C282B80846000883017 /* PhotoAttachView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4998C2C2B81CDEA00883017 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C2E2B81CDFD00883017 /* SignupViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4998C2D2B81CDF000883017 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4998C302B81CE0900883017 /* SignupView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,19 +526,34 @@
 			files = (
 				A4998BE42B77DC6A00883017 /* UmbrellaRentViewController.swift in Sources */,
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
+				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
+				A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */,
 				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
+				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
+				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
+				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
+				A4998C312B81CE0900883017 /* SignupView.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
+				A4998C162B80502900883017 /* LoginView.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
+				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
+				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
+				A4CBBCB52B83194800D55085 /* String+.swift in Sources */,
+				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
+				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
+				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
+				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
+				A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
