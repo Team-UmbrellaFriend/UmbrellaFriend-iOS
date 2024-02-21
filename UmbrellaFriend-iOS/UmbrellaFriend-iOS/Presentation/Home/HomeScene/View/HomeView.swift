@@ -153,7 +153,7 @@ final class HomeView: UIView {
     
     private let userProfileIcon = CustomIcon(type: .homeProfile)
     private let rentIcon = CustomIcon(type: .homeRent)
-    private let returnIcon = CustomIcon(type: .homeReturn)
+    let returnIcon = CustomIcon(type: .homeReturn)
     private let mapIcon = CustomIcon(type: .homeMap)
     private let rentBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let returnBackIcon = UIImageView(image: UIImage(resource: .icFoldUmbrellaBig))

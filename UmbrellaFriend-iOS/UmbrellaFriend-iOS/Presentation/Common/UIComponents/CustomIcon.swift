@@ -73,9 +73,21 @@ final class CustomIcon: UIView {
         }
     }
     
+    var returnDay: Int = 0 {
+        didSet {
+            setBorrowUI(day: self.returnDay)
+        }
+    }
+    
     // MARK: - UI Components
     
     private let iconImage = UIImageView()
+    
+    private let dayLabel: UILabel = {
+        let label = UILabel()
+        label.font = .umbrellaFont(.subtitle1)
+        return label
+    }()
     
     // MARK: - Life Cycles
     
@@ -96,20 +108,36 @@ final class CustomIcon: UIView {
 
 // MARK: - Extensions
 
-extension CustomIcon {
+private extension CustomIcon {
     
     func setUI(type: CustomIconType) {
         self.backgroundColor = type.viewColor
         self.layer.cornerRadius = 25
         self.iconImage.image = type.iconImage
         
-        self.addSubview(iconImage)
+        self.addSubviews(iconImage, dayLabel)
         self.snp.makeConstraints {
             $0.size.equalTo(type.viewSize)
         }
         self.iconImage.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.size.equalTo(type.iconSize)
+        }
+        self.dayLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        iconImage.isHidden = false
+        dayLabel.isHidden = true
+    }
+    
+    func setBorrowUI(day: Int) {
+        iconImage.isHidden = true
+        dayLabel.isHidden = false
+        
+        if day == 0 {
+            setUI(type: .homeReturn)
+        } else {
+            dayLabel.text = "D\(day)"
         }
     }
 }
