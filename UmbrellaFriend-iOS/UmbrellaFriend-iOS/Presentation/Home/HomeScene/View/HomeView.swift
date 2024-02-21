@@ -13,6 +13,18 @@ final class HomeView: UIView {
     
     // MARK: - UI Components
     
+    var toastMessageLabel: UILabel = {
+        let label = UILabel()
+        label.text = "로그인되었어요!"
+        label.textColor = .umbrellaWhite
+        label.textAlignment = .center
+        label.font = .umbrellaFont(.body2)
+        label.backgroundColor = .middleBlue
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 8
+        return label
+    }()
+    
     let userView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray200
@@ -187,6 +199,7 @@ private extension HomeView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        toastMessageLabel.isHidden = true
     }
     
     func setHierarchy() {
@@ -195,10 +208,17 @@ private extension HomeView {
         rentView.addSubviews(rentIcon, rentBackIcon, rentTitleLabel, rentSubTitleLabel)
         returnView.addSubviews(returnIcon, returnBackIcon, returnTitleLabel, returnSubTitleLabel)
         mapView.addSubviews(mapIcon, mapBackIcon, mapTitleLabel, mapSubTitleLabel)
-        addSubviews(userView, todayInfoView, rentView, returnView, mapView)
+        addSubviews(userView, todayInfoView, rentView, returnView, mapView, toastMessageLabel)
     }
     
     func setLayout() {
+        toastMessageLabel.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 12 / 812)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(160)
+            $0.height.equalTo(40)
+        }
+        
         userView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 4 / 812)
             $0.centerX.equalToSuperview()

@@ -11,7 +11,7 @@ final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
-    var fromSplash: Bool = false
+    var isFromSplash: Bool = false
     
     // MARK: - UI Components
     
@@ -29,6 +29,7 @@ final class HomeViewController: UIViewController {
         
         setUI()
         setGesture()
+        setToastMessage()
     }
 }
 
@@ -38,6 +39,18 @@ extension HomeViewController {
 
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func setToastMessage() {
+        if isFromSplash {
+            homeView.toastMessageLabel.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+                self.homeView.toastMessageLabel.alpha = 0.0
+            }, completion: {_ in
+                self.homeView.toastMessageLabel.isHidden = true
+                self.homeView.toastMessageLabel.alpha = 1.0
+            })
+        }
     }
     
     func setGesture() {
