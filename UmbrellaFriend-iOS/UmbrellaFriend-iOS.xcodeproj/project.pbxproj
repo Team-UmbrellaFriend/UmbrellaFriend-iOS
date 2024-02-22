@@ -50,6 +50,9 @@
 		A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2E2B81CDFD00883017 /* SignupViewController.swift */; };
 		A4998C312B81CE0900883017 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C302B81CE0900883017 /* SignupView.swift */; };
 		A4CBBCB52B83194800D55085 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCB42B83194800D55085 /* String+.swift */; };
+		A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCC72B85D9D000D55085 /* HomeViewController.swift */; };
+		A4CBBCCC2B85D9E600D55085 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCCB2B85D9E600D55085 /* HomeView.swift */; };
+		A4CBBCD02B85E88500D55085 /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCCF2B85E88500D55085 /* CustomIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,9 @@
 		A4998C2E2B81CDFD00883017 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A4998C302B81CE0900883017 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A4CBBCB42B83194800D55085 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		A4CBBCC72B85D9D000D55085 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A4CBBCCB2B85D9E600D55085 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A4CBBCCF2B85E88500D55085 /* CustomIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,7 @@
 				A4998C172B8053C100883017 /* Common */,
 				A4998C082B7F4D3D00883017 /* Auth */,
 				A4998C012B7F4ABD00883017 /* Splash */,
+				A4CBBCC32B85D9A900D55085 /* Home */,
 				A4998BD12B77DA5B00883017 /* UmbrellaRent */,
 			);
 			path = Presentation;
@@ -383,6 +390,7 @@
 				A4998C192B8053E300883017 /* CustomNavigationBar.swift */,
 				A4998C1C2B805AB000883017 /* CustomButton.swift */,
 				A4998C1E2B805AB900883017 /* CustomTextField.swift */,
+				A4CBBCCF2B85E88500D55085 /* CustomIcon.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -433,6 +441,39 @@
 			isa = PBXGroup;
 			children = (
 				A4998C302B81CE0900883017 /* SignupView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4CBBCC32B85D9A900D55085 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBBCC42B85D9B800D55085 /* HomeScene */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A4CBBCC42B85D9B800D55085 /* HomeScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBBCC62B85D9C400D55085 /* View */,
+				A4CBBCC52B85D9BF00D55085 /* ViewController */,
+			);
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
+		A4CBBCC52B85D9BF00D55085 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBBCC72B85D9D000D55085 /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4CBBCC62B85D9C400D55085 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4CBBCCB2B85D9E600D55085 /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -526,16 +567,19 @@
 			files = (
 				A4998BE42B77DC6A00883017 /* UmbrellaRentViewController.swift in Sources */,
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
+				A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
 				A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */,
 				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
 				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
+				A4CBBCD02B85E88500D55085 /* CustomIcon.swift in Sources */,
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
+				A4CBBCCC2B85D9E600D55085 /* HomeView.swift in Sources */,
 				A4998C312B81CE0900883017 /* SignupView.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,

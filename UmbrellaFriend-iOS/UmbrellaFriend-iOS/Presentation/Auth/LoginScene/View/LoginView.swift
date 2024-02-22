@@ -29,8 +29,8 @@ final class LoginView: UIView {
         return label
     }()
     
-    private let idTextField = CustomTextField(placeHolder: "학번")
-    private let pwTextField = CustomTextField(placeHolder: "비밀번호")
+    let idTextField = CustomTextField(placeHolder: "학번")
+    let pwTextField = CustomTextField(placeHolder: "비밀번호")
     lazy var loginButton = CustomButton(status: true, title: "로그인")
     
     // MARK: - Life Cycles
@@ -55,6 +55,7 @@ extension LoginView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        pwTextField.isSecureTextEntry = true
     }
     
     func setHierarchy() {

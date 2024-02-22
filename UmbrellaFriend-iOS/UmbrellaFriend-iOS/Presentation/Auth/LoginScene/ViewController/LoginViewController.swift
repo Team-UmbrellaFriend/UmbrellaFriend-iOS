@@ -26,6 +26,7 @@ final class LoginViewController: UIViewController {
         
         setUI()
         setDelegate()
+        setGesture()
     }
 }
 
@@ -41,6 +42,17 @@ extension LoginViewController {
     func setDelegate() {
         loginView.navigationView.delegate = self
         loginView.loginButton.delegate = self
+        loginView.idTextField.delegate = self
+        loginView.pwTextField.delegate = self
+    }
+    
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
@@ -55,5 +67,17 @@ extension LoginViewController: ButtonProtocol {
     
     func buttonTapped() {
         print("자동로그인구현")
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
     }
 }
