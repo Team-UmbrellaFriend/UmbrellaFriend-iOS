@@ -11,6 +11,18 @@
 		A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43176102B6FFBDE00093F0E /* SceneDelegate.swift */; };
 		A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43176172B6FFBE000093F0E /* Assets.xcassets */; };
 		A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43176192B6FFBE000093F0E /* LaunchScreen.storyboard */; };
+		A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73912B8A436100B39F21 /* BaseTargetType.swift */; };
+		A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73972B8A43B400B39F21 /* HomeDto.swift */; };
+		A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739A2B8A440D00B39F21 /* HomeAPI.swift */; };
+		A43C739E2B8A443700B39F21 /* HomeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739D2B8A443700B39F21 /* HomeTarget.swift */; };
+		A43C73A12B8A454300B39F21 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73A02B8A454300B39F21 /* HomeViewModel.swift */; };
+		A43C73A42B8A461B00B39F21 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73A32B8A461B00B39F21 /* RxBlocking */; };
+		A43C73A82B8A461B00B39F21 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73A72B8A461B00B39F21 /* RxCocoa */; };
+		A43C73AC2B8A461B00B39F21 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73AB2B8A461B00B39F21 /* RxRelay */; };
+		A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0752B8A410300109CA3 /* GeneralResponse.swift */; };
+		A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */; };
+		A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0792B8A41A200109CA3 /* APIConstant.swift */; };
+		A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D07B2B8A426200109CA3 /* URLConstant.swift */; };
 		A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9D2B70FD9D00883017 /* FontLiterals.swift */; };
 		A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */; };
 		A4998BA22B70FDB700883017 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA12B70FDB700883017 /* UIView+.swift */; };
@@ -55,6 +67,19 @@
 		A4CBBCD02B85E88500D55085 /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCCF2B85E88500D55085 /* CustomIcon.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A43C73AE2B8A50D100B39F21 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UmbrellaFriend-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A431760E2B6FFBDE00093F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +87,16 @@
 		A43176172B6FFBE000093F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A431761A2B6FFBE000093F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A431761C2B6FFBE000093F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A43C73912B8A436100B39F21 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
+		A43C73972B8A43B400B39F21 /* HomeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDto.swift; sourceTree = "<group>"; };
+		A43C739A2B8A440D00B39F21 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		A43C739D2B8A443700B39F21 /* HomeTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTarget.swift; sourceTree = "<group>"; };
+		A43C73A02B8A454300B39F21 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDev.xcconfig; sourceTree = "<group>"; };
+		A471D0752B8A410300109CA3 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
+		A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
+		A471D0792B8A41A200109CA3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
+		A471D07B2B8A426200109CA3 /* URLConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLConstant.swift; sourceTree = "<group>"; };
 		A4998B9D2B70FD9D00883017 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		A4998BA12B70FDB700883017 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -107,10 +141,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A43C73AC2B8A461B00B39F21 /* RxRelay in Frameworks */,
 				A4998BE02B77DC3B00883017 /* RxMoya in Frameworks */,
+				A43C73A42B8A461B00B39F21 /* RxBlocking in Frameworks */,
 				A4998BDA2B77DC3B00883017 /* CombineMoya in Frameworks */,
 				A4998BDE2B77DC3B00883017 /* ReactiveMoya in Frameworks */,
 				A4998BB22B70FEB300883017 /* SnapKit in Frameworks */,
+				A43C73A82B8A461B00B39F21 /* RxCocoa in Frameworks */,
 				A4998BDC2B77DC3B00883017 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +184,74 @@
 			path = "UmbrellaFriend-iOS";
 			sourceTree = "<group>";
 		};
+		A43C73932B8A437400B39F21 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				A43C739C2B8A442E00B39F21 /* Home */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		A43C73942B8A437900B39F21 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73992B8A440500B39F21 /* Home */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A43C73952B8A438500B39F21 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73962B8A43A800B39F21 /* Home */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A43C73962B8A43A800B39F21 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73972B8A43B400B39F21 /* HomeDto.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A43C73992B8A440500B39F21 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A43C739A2B8A440D00B39F21 /* HomeAPI.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A43C739C2B8A442E00B39F21 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A43C739D2B8A443700B39F21 /* HomeTarget.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A43C739F2B8A453B00B39F21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73A02B8A454300B39F21 /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A471D0742B8A40D300109CA3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				A471D0752B8A410300109CA3 /* GeneralResponse.swift */,
+				A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */,
+				A471D0792B8A41A200109CA3 /* APIConstant.swift */,
+				A471D07B2B8A426200109CA3 /* URLConstant.swift */,
+				A43C73912B8A436100B39F21 /* BaseTargetType.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		A4998B922B70FD0900883017 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,7 +267,11 @@
 		A4998B932B70FD1000883017 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A471D0742B8A40D300109CA3 /* Base */,
 				A4998BAD2B70FE4900883017 /* Environment */,
+				A43C73952B8A438500B39F21 /* Data */,
+				A43C73942B8A437900B39F21 /* API */,
+				A43C73932B8A437400B39F21 /* APIService */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -459,6 +568,7 @@
 			isa = PBXGroup;
 			children = (
 				A4CBBCC62B85D9C400D55085 /* View */,
+				A43C739F2B8A453B00B39F21 /* ViewModel */,
 				A4CBBCC52B85D9BF00D55085 /* ViewController */,
 			);
 			path = HomeScene;
@@ -490,6 +600,7 @@
 				A43176072B6FFBDE00093F0E /* Sources */,
 				A43176082B6FFBDE00093F0E /* Frameworks */,
 				A43176092B6FFBDE00093F0E /* Resources */,
+				A43C73AE2B8A50D100B39F21 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -502,6 +613,9 @@
 				A4998BDB2B77DC3B00883017 /* Moya */,
 				A4998BDD2B77DC3B00883017 /* ReactiveMoya */,
 				A4998BDF2B77DC3B00883017 /* RxMoya */,
+				A43C73A32B8A461B00B39F21 /* RxBlocking */,
+				A43C73A72B8A461B00B39F21 /* RxCocoa */,
+				A43C73AB2B8A461B00B39F21 /* RxRelay */,
 			);
 			productName = "UmbrellaFriend-iOS";
 			productReference = A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */;
@@ -534,6 +648,7 @@
 			packageReferences = (
 				A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A4998BD82B77DC3B00883017 /* XCRemoteSwiftPackageReference "Moya" */,
+				A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = A431760C2B6FFBDE00093F0E /* Products */;
 			projectDirPath = "";
@@ -577,25 +692,34 @@
 				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
 				A4CBBCD02B85E88500D55085 /* CustomIcon.swift in Sources */,
+				A43C739E2B8A443700B39F21 /* HomeTarget.swift in Sources */,
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
 				A4CBBCCC2B85D9E600D55085 /* HomeView.swift in Sources */,
+				A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */,
 				A4998C312B81CE0900883017 /* SignupView.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
+				A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
+				A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */,
 				A4998C162B80502900883017 /* LoginView.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
+				A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */,
+				A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
 				A4CBBCB52B83194800D55085 /* String+.swift in Sources */,
+				A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */,
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
+				A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */,
+				A43C73A12B8A454300B39F21 /* HomeViewModel.swift in Sources */,
 				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
 				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
@@ -834,6 +958,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
 		A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -853,6 +985,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A43C73A32B8A461B00B39F21 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		A43C73A72B8A461B00B39F21 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		A43C73AB2B8A461B00B39F21 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
 		A4998BB12B70FEB300883017 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */;
