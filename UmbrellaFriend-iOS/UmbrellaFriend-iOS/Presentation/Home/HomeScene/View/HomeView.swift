@@ -351,3 +351,12 @@ private extension HomeView {
         }
     }
 }
+
+extension HomeView {
+    
+    func configureHomeView(model: HomeDto) {
+        userNameLabel.text = "\(model.user.username)님"
+        todayDateLabel.text = model.weather.date
+        todayRainPercentLabel.text = "\(model.weather.percent)%"
+    }
+}
