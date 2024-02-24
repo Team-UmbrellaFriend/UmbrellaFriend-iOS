@@ -136,8 +136,12 @@ private extension CustomIcon {
         
         if day == 0 {
             setUI(type: .homeReturn)
+        } else if day > 0 {
+            dayLabel.text = "D+\(day)"
+            dayLabel.textColor = .subOrange
         } else {
             dayLabel.text = "D\(day)"
+            dayLabel.textColor = .mainBlue
         }
     }
 }

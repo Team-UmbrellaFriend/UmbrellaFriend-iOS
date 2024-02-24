@@ -51,6 +51,15 @@ extension HomeViewController {
         homeViewModel.outputs.homeData
             .subscribe(onNext: { [weak self] model in
                 self?.homeView.configureHomeView(model: model)
+                if model.dDay.isOverdue {
+                    self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
+                } else {
+                    if model.dDay.daysRemaining < 0 {
+                        self?.homeView.returnIcon.returnDay = 0
+                    } else {
+                        self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }
