@@ -26,40 +26,42 @@ final class UmbrellaMapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
         setUI()
-        setHierarchy()
-        setLayout()
-        setDelegate()
+        setAddTarget()
     }
 }
 
 // MARK: - Extensions
 
 extension UmbrellaMapViewController {
-
+    
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func setHierarchy() {
-        
+    func setAddTarget() {
+        [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3, umbrellaMapView.mapIcon4, umbrellaMapView.mapIcon5, umbrellaMapView.mapIcon6].forEach {
+            $0.addTarget(self, action: #selector(mapIconTapped), for: .touchUpInside)
+        }
     }
     
-    func setLayout() {
-        
-    }
-    
-    func setDelegate() {
-        
-    }
-}
-
-// MARK: - Network
-
-extension UmbrellaMapViewController {
-
-    func getAPI() {
-        
+    @objc
+    func mapIconTapped(_ sender: UIButton) {
+        switch sender {
+        case umbrellaMapView.mapIcon1:
+            print("1")
+        case umbrellaMapView.mapIcon2:
+            print("2")
+        case umbrellaMapView.mapIcon3:
+            print("3")
+        case umbrellaMapView.mapIcon4:
+            print("4")
+        case umbrellaMapView.mapIcon5:
+            print("5")
+        case umbrellaMapView.mapIcon6:
+            print("6")
+        default:
+            break
+        }
     }
 }

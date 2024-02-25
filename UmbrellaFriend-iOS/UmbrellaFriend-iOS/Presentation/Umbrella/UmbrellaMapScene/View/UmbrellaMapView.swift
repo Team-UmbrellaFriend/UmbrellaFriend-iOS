@@ -110,8 +110,7 @@ private extension UmbrellaMapView {
     }
     
     func setHierarchy() {
-        mapImage.addSubviews(mapIcon1, mapIcon2, mapIcon3, mapIcon4, mapIcon5, mapIcon6)
-        horizontalScrollView.addSubview(mapImage)
+        horizontalScrollView.addSubviews(mapImage, mapIcon1, mapIcon2, mapIcon3, mapIcon4, mapIcon5, mapIcon6)
         umbrellaNumberView.addSubviews(umbrellaNumberTitle, umbrellaNumberSubTitle)
         mapDetailView.addSubviews(mapDetailTitle, mapDetailSubTitle, umbrellaNumberView)
         addSubviews(navigationView, horizontalScrollView, mapDetailView)
