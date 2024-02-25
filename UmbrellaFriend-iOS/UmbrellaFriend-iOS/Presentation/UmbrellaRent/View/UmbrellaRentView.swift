@@ -50,7 +50,7 @@ final class UmbrellaRentView: UIView {
         button.setTitle("우산위치를 검색하고 싶으신가요?", for: .normal)
         button.setTitleColor(.gray300, for: .normal)
         button.titleLabel?.font = .umbrellaFont(.body5)
-        button.titleLabel?.setUnderline(targetString: "우산위치를 검색하고 싶으신가요?")
+        button.titleLabel?.setUnderlinePartFontChange(targetString: "우산위치를 검색하고 싶으신가요?", font: .umbrellaFont(.body5))
         button.backgroundColor = .clear
         return button
     }()

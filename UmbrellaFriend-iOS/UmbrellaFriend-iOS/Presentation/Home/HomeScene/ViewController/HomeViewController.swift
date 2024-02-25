@@ -7,11 +7,16 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
 final class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
     var isFromSplash: Bool = false
+    private let homeViewModel = HomeViewModel()
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
@@ -28,6 +33,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindViewModel()
         setGesture()
         setToastMessage()
     }
@@ -39,6 +45,24 @@ extension HomeViewController {
 
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func bindViewModel() {
+        homeViewModel.outputs.homeData
+            .asDriver()
+            .drive(onNext: { [weak self] model in
+                self?.homeView.configureHomeView(model: model)
+                if model.dDay.isOverdue {
+                    self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
+                } else {
+                    if model.dDay.daysRemaining < 0 {
+                        self?.homeView.returnIcon.returnDay = 0
+                    } else {
+                        self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func setToastMessage() {
