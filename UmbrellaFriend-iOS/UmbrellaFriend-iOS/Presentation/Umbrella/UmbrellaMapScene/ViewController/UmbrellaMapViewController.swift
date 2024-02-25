@@ -28,6 +28,7 @@ final class UmbrellaMapViewController: UIViewController {
         
         setUI()
         setAddTarget()
+        setDelegate()
     }
 }
 
@@ -63,5 +64,17 @@ extension UmbrellaMapViewController {
         default:
             break
         }
+    }
+    
+    func setDelegate() {
+        umbrellaMapView.navigationView.delegate = self
+    }
+}
+
+
+extension UmbrellaMapViewController: NavigationBarProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

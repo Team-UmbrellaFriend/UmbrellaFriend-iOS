@@ -102,7 +102,7 @@ extension HomeViewController {
     
     @objc
     func mapTapped() {
-//        let nav = UmbrellaMapViewController()
-//        self.navigationController?.pushViewController(nav, animated: true)
+        let nav = UmbrellaMapViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
     }
 }
