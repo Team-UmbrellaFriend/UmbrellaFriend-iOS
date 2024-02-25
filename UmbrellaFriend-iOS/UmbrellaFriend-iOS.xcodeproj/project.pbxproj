@@ -19,6 +19,8 @@
 		A43C73A42B8A461B00B39F21 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73A32B8A461B00B39F21 /* RxBlocking */; };
 		A43C73A82B8A461B00B39F21 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73A72B8A461B00B39F21 /* RxCocoa */; };
 		A43C73AC2B8A461B00B39F21 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73AB2B8A461B00B39F21 /* RxRelay */; };
+		A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73B72B8B95DF00B39F21 /* UmbrellaMapView.swift */; };
+		A43C73BA2B8B95ED00B39F21 /* UmbrellaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73B92B8B95ED00B39F21 /* UmbrellaMapViewController.swift */; };
 		A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0752B8A410300109CA3 /* GeneralResponse.swift */; };
 		A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */; };
 		A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0792B8A41A200109CA3 /* APIConstant.swift */; };
@@ -92,6 +94,8 @@
 		A43C739A2B8A440D00B39F21 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		A43C739D2B8A443700B39F21 /* HomeTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTarget.swift; sourceTree = "<group>"; };
 		A43C73A02B8A454300B39F21 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		A43C73B72B8B95DF00B39F21 /* UmbrellaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaMapView.swift; sourceTree = "<group>"; };
+		A43C73B92B8B95ED00B39F21 /* UmbrellaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaMapViewController.swift; sourceTree = "<group>"; };
 		A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDev.xcconfig; sourceTree = "<group>"; };
 		A471D0752B8A410300109CA3 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
@@ -240,6 +244,40 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A43C73B32B8B952000B39F21 /* Umbrella */ = {
+			isa = PBXGroup;
+			children = (
+				A4998BD12B77DA5B00883017 /* UmbrellaRentScene */,
+				A43C73B42B8B953C00B39F21 /* UmbrellaMapScene */,
+			);
+			path = Umbrella;
+			sourceTree = "<group>";
+		};
+		A43C73B42B8B953C00B39F21 /* UmbrellaMapScene */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73B62B8B956800B39F21 /* View */,
+				A43C73B52B8B955F00B39F21 /* ViewController */,
+			);
+			path = UmbrellaMapScene;
+			sourceTree = "<group>";
+		};
+		A43C73B52B8B955F00B39F21 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73B92B8B95ED00B39F21 /* UmbrellaMapViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A43C73B62B8B956800B39F21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73B72B8B95DF00B39F21 /* UmbrellaMapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A471D0742B8A40D300109CA3 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,7 +297,7 @@
 				A4998C082B7F4D3D00883017 /* Auth */,
 				A4998C012B7F4ABD00883017 /* Splash */,
 				A4CBBCC32B85D9A900D55085 /* Home */,
-				A4998BD12B77DA5B00883017 /* UmbrellaRent */,
+				A43C73B32B8B952000B39F21 /* Umbrella */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -364,13 +402,13 @@
 			path = Environment;
 			sourceTree = "<group>";
 		};
-		A4998BD12B77DA5B00883017 /* UmbrellaRent */ = {
+		A4998BD12B77DA5B00883017 /* UmbrellaRentScene */ = {
 			isa = PBXGroup;
 			children = (
 				A4998BE22B77DC5A00883017 /* View */,
 				A4998BE12B77DC5100883017 /* ViewController */,
 			);
-			path = UmbrellaRent;
+			path = UmbrellaRentScene;
 			sourceTree = "<group>";
 		};
 		A4998BE12B77DC5100883017 /* ViewController */ = {
@@ -707,11 +745,13 @@
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
 				A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */,
 				A4998C162B80502900883017 /* LoginView.swift in Sources */,
+				A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */,
 				A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
+				A43C73BA2B8B95ED00B39F21 /* UmbrellaMapViewController.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
 				A4CBBCB52B83194800D55085 /* String+.swift in Sources */,
 				A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */,
