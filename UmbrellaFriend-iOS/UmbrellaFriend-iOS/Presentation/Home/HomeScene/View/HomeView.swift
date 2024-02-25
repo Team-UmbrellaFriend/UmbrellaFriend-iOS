@@ -356,7 +356,13 @@ extension HomeView {
     
     func configureHomeView(model: HomeDto) {
         userNameLabel.text = "\(model.user.username)님"
-        todayDateLabel.text = model.weather.date
-        todayRainPercentLabel.text = "\(model.weather.percent)%"
+        userInfoLabel.text = model.weather.message
+        if model.dDay.isOverdue {
+            userInfoLabel.setUnderlinePartFontChange(targetString: "\(model.dDay.overdueDays)일", font: .umbrellaFont(.body1))
+        } else {
+            userInfoLabel.setUnderlinePartFontChange(targetString: "\(model.dDay.daysRemaining)일", font: .umbrellaFont(.body1))
+        }
+        todayDateLabel.text = model.weather.weather.date
+        todayRainPercentLabel.text = "\(model.weather.weather.percent)%"
     }
 }

@@ -42,7 +42,7 @@ extension HomeViewModel {
     
     func getHomeDto() {
         HomeAPI.shared.getHome { [weak self] response in
-            guard let status = response?.status else { return }
+            guard (response?.status) != nil else { return }
             guard self != nil else { return }
             guard let data = response?.data else { return }
             self?.homeData.accept(data)
