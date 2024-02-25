@@ -9,7 +9,7 @@ import Foundation
 
 struct HomeDto: Codable {
     let user: User
-    let weather: Weather
+    let weather: HomeWeather
     let dDay: DDay
 
     enum CodingKeys: String, CodingKey {
@@ -21,6 +21,11 @@ struct HomeDto: Codable {
 struct User: Codable {
     let id: Int
     let username: String
+}
+
+struct HomeWeather: Codable {
+    let weather: Weather
+    let message: String
 }
 
 struct Weather: Codable {
@@ -41,6 +46,6 @@ struct DDay: Codable {
 extension HomeDto {
     
     static func homeDtoInitValue() -> HomeDto {
-        return HomeDto(user: User(id: 0, username: ""), weather: Weather(date: "", percent: ""), dDay: DDay(isOverdue: false, overdueDays: 0, daysRemaining: 0))
+        return HomeDto(user: User(id: 0, username: ""), weather: HomeWeather(weather: Weather(date: "", percent: ""), message: ""), dDay: DDay(isOverdue: false, overdueDays: 0, daysRemaining: 0))
     }
 }
