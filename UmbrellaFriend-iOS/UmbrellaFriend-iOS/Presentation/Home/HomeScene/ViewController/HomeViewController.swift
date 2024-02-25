@@ -49,7 +49,8 @@ extension HomeViewController {
     
     func bindViewModel() {
         homeViewModel.outputs.homeData
-            .subscribe(onNext: { [weak self] model in
+            .asDriver()
+            .drive(onNext: { [weak self] model in
                 self?.homeView.configureHomeView(model: model)
                 if model.dDay.isOverdue {
                     self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
