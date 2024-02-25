@@ -25,6 +25,11 @@ final class CustomNavigationBar: UIView {
         set { backButton.isHidden = !newValue }
     }
     
+    var isTitleLabelIncluded: Bool {
+        get { !titleLabel.isHidden }
+        set { titleLabel.isHidden = !newValue }
+    }
+    
     private var backButtonAction: (() -> Void)?
     
     // MARK: - UI Components
@@ -35,6 +40,15 @@ final class CustomNavigationBar: UIView {
         button.isHidden = true
         button.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         return button
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "우산 대여 지도"
+        label.textColor = .umbrellaBlack
+        label.font = .umbrellaFont(.title1)
+        label.isHidden = true
+        return label
     }()
     
     // MARK: - Life Cycles
@@ -63,7 +77,7 @@ private extension CustomNavigationBar {
     }
     
     func setHierarchy() {
-        addSubview(backButton)
+        addSubviews(backButton, titleLabel)
     }
     
     func setLayout() {
@@ -75,6 +89,10 @@ private extension CustomNavigationBar {
             $0.leading.equalToSuperview()
             $0.centerY.equalToSuperview()
             $0.size.equalTo(48)
+        }
+        
+        titleLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
     
