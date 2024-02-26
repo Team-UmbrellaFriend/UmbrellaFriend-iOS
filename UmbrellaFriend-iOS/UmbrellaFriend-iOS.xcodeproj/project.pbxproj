@@ -21,6 +21,10 @@
 		A43C73AC2B8A461B00B39F21 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73AB2B8A461B00B39F21 /* RxRelay */; };
 		A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73B72B8B95DF00B39F21 /* UmbrellaMapView.swift */; };
 		A43C73BA2B8B95ED00B39F21 /* UmbrellaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73B92B8B95ED00B39F21 /* UmbrellaMapViewController.swift */; };
+		A43C73BD2B8BA30100B39F21 /* UmbrellaMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73BC2B8BA30100B39F21 /* UmbrellaMapViewModel.swift */; };
+		A43C73C02B8BA37100B39F21 /* UmbrellaAvailableDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73BF2B8BA37100B39F21 /* UmbrellaAvailableDto.swift */; };
+		A43C73C32B8BA3A200B39F21 /* UmbrellaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73C22B8BA3A200B39F21 /* UmbrellaTarget.swift */; };
+		A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73C52B8BA46400B39F21 /* UmbrellaAPI.swift */; };
 		A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0752B8A410300109CA3 /* GeneralResponse.swift */; };
 		A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */; };
 		A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0792B8A41A200109CA3 /* APIConstant.swift */; };
@@ -96,6 +100,10 @@
 		A43C73A02B8A454300B39F21 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A43C73B72B8B95DF00B39F21 /* UmbrellaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaMapView.swift; sourceTree = "<group>"; };
 		A43C73B92B8B95ED00B39F21 /* UmbrellaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaMapViewController.swift; sourceTree = "<group>"; };
+		A43C73BC2B8BA30100B39F21 /* UmbrellaMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaMapViewModel.swift; sourceTree = "<group>"; };
+		A43C73BF2B8BA37100B39F21 /* UmbrellaAvailableDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaAvailableDto.swift; sourceTree = "<group>"; };
+		A43C73C22B8BA3A200B39F21 /* UmbrellaTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaTarget.swift; sourceTree = "<group>"; };
+		A43C73C52B8BA46400B39F21 /* UmbrellaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaAPI.swift; sourceTree = "<group>"; };
 		A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDev.xcconfig; sourceTree = "<group>"; };
 		A471D0752B8A410300109CA3 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
@@ -191,6 +199,7 @@
 		A43C73932B8A437400B39F21 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				A43C73C12B8BA39700B39F21 /* Umbrella */,
 				A43C739C2B8A442E00B39F21 /* Home */,
 			);
 			path = APIService;
@@ -199,6 +208,7 @@
 		A43C73942B8A437900B39F21 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A43C73C42B8BA45900B39F21 /* Umbrella */,
 				A43C73992B8A440500B39F21 /* Home */,
 			);
 			path = API;
@@ -207,6 +217,7 @@
 		A43C73952B8A438500B39F21 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A43C73BE2B8BA35200B39F21 /* Umbrella */,
 				A43C73962B8A43A800B39F21 /* Home */,
 			);
 			path = Data;
@@ -257,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				A43C73B62B8B956800B39F21 /* View */,
+				A43C73BB2B8BA2EE00B39F21 /* ViewModel */,
 				A43C73B52B8B955F00B39F21 /* ViewController */,
 			);
 			path = UmbrellaMapScene;
@@ -276,6 +288,38 @@
 				A43C73B72B8B95DF00B39F21 /* UmbrellaMapView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A43C73BB2B8BA2EE00B39F21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73BC2B8BA30100B39F21 /* UmbrellaMapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A43C73BE2B8BA35200B39F21 /* Umbrella */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73BF2B8BA37100B39F21 /* UmbrellaAvailableDto.swift */,
+			);
+			path = Umbrella;
+			sourceTree = "<group>";
+		};
+		A43C73C12B8BA39700B39F21 /* Umbrella */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73C22B8BA3A200B39F21 /* UmbrellaTarget.swift */,
+			);
+			path = Umbrella;
+			sourceTree = "<group>";
+		};
+		A43C73C42B8BA45900B39F21 /* Umbrella */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73C52B8BA46400B39F21 /* UmbrellaAPI.swift */,
+			);
+			path = Umbrella;
 			sourceTree = "<group>";
 		};
 		A471D0742B8A40D300109CA3 /* Base */ = {
@@ -721,9 +765,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4998BE42B77DC6A00883017 /* UmbrellaRentViewController.swift in Sources */,
+				A43C73BD2B8BA30100B39F21 /* UmbrellaMapViewModel.swift in Sources */,
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
 				A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */,
+				A43C73C32B8BA3A200B39F21 /* UmbrellaTarget.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
+				A43C73C02B8BA37100B39F21 /* UmbrellaAvailableDto.swift in Sources */,
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
 				A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */,
 				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
@@ -759,6 +806,7 @@
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */,
+				A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */,
 				A43C73A12B8A454300B39F21 /* HomeViewModel.swift in Sources */,
 				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
 				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
