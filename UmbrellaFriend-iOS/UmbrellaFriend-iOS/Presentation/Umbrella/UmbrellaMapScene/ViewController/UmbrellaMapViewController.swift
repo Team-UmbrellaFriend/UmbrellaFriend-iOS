@@ -7,10 +7,14 @@
 
 import UIKit
 
+import RxSwift
+
 final class UmbrellaMapViewController: UIViewController {
     
     // MARK: - Properties
     
+    private let umbrellaMapViewModel = UmbrellaMapViewModel()
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
@@ -27,7 +31,7 @@ final class UmbrellaMapViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        setAddTarget()
+        bindViewModel()
         setDelegate()
     }
 }
@@ -40,30 +44,24 @@ extension UmbrellaMapViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func setAddTarget() {
-        [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3, umbrellaMapView.mapIcon4, umbrellaMapView.mapIcon5, umbrellaMapView.mapIcon6].forEach {
-            $0.addTarget(self, action: #selector(mapIconTapped), for: .touchUpInside)
+    func bindViewModel() {
+        let mapIcons = [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3, umbrellaMapView.mapIcon4, umbrellaMapView.mapIcon5, umbrellaMapView.mapIcon6]
+        
+        for (index, button) in mapIcons.enumerated() {
+            button.rx.tap
+                .bind { [weak self] in
+                    guard let self = self else { return }
+                    self.umbrellaMapViewModel.inputs.mapIconTapped(with: index + 1)
+                }
+                .disposed(by: disposeBag)
         }
-    }
-    
-    @objc
-    func mapIconTapped(_ sender: UIButton) {
-        switch sender {
-        case umbrellaMapView.mapIcon1:
-            print("1")
-        case umbrellaMapView.mapIcon2:
-            print("2")
-        case umbrellaMapView.mapIcon3:
-            print("3")
-        case umbrellaMapView.mapIcon4:
-            print("4")
-        case umbrellaMapView.mapIcon5:
-            print("5")
-        case umbrellaMapView.mapIcon6:
-            print("6")
-        default:
-            break
-        }
+        
+        umbrellaMapViewModel.outputs.umbrellaAvailableData
+            .asDriver()
+            .drive(onNext: { [weak self] model in
+                self?.umbrellaMapView.configureUmbrellaMapView(model: model)
+            })
+            .disposed(by: disposeBag)
     }
     
     func setDelegate() {
