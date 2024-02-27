@@ -25,6 +25,7 @@
 		A43C73C02B8BA37100B39F21 /* UmbrellaAvailableDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73BF2B8BA37100B39F21 /* UmbrellaAvailableDto.swift */; };
 		A43C73C32B8BA3A200B39F21 /* UmbrellaTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73C22B8BA3A200B39F21 /* UmbrellaTarget.swift */; };
 		A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73C52B8BA46400B39F21 /* UmbrellaAPI.swift */; };
+		A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73CF2B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift */; };
 		A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0752B8A410300109CA3 /* GeneralResponse.swift */; };
 		A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */; };
 		A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0792B8A41A200109CA3 /* APIConstant.swift */; };
@@ -104,6 +105,7 @@
 		A43C73BF2B8BA37100B39F21 /* UmbrellaAvailableDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaAvailableDto.swift; sourceTree = "<group>"; };
 		A43C73C22B8BA3A200B39F21 /* UmbrellaTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaTarget.swift; sourceTree = "<group>"; };
 		A43C73C52B8BA46400B39F21 /* UmbrellaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaAPI.swift; sourceTree = "<group>"; };
+		A43C73CF2B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentBottomSheetView.swift; sourceTree = "<group>"; };
 		A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDev.xcconfig; sourceTree = "<group>"; };
 		A471D0752B8A410300109CA3 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
@@ -467,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				A4998BE52B77DC7400883017 /* UmbrellaRentView.swift */,
+				A43C73CF2B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
+				A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */,
 				A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */,
 				A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
