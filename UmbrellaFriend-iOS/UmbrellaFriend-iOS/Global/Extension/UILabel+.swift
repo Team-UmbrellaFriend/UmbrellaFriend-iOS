@@ -29,4 +29,12 @@ extension UILabel {
         attributedString.addAttribute(.font, value: font, range: range)
         self.attributedText = attributedString
     }
+    
+    func partColorChange(targetString: String, textColor: UIColor) {
+        let fullText = self.text ?? ""
+        let range = (fullText as NSString).range(of: targetString)
+        let attributedString = NSMutableAttributedString(string: fullText)
+        attributedString.addAttribute(.foregroundColor, value: textColor, range: range)
+        self.attributedText = attributedString
+    }
 }
