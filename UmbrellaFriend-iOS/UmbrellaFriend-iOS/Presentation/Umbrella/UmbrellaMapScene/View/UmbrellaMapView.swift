@@ -99,6 +99,7 @@ private extension UmbrellaMapView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        horizontalScrollView.showsHorizontalScrollIndicator = false
          // '명신관': 1, '순헌관': 2, '학생회관': 3, '도서관': 4, '음대': 5, '백주년기념관': 6
         [mapIcon1, mapIcon2, mapIcon3, mapIcon4, mapIcon5, mapIcon6].forEach {
             $0.setImage(.icPlace, for: .normal)
