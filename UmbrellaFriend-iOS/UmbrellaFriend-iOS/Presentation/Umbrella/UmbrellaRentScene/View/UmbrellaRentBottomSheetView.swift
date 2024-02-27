@@ -11,6 +11,10 @@ import SnapKit
 
 final class UmbrellaRentBottomSheetView: UIView {
     
+    // MARK: - Properties
+    
+    private var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 501 / 812
+    
     // MARK: - UI Components
     
     private let backgroundView: UIView = {
@@ -118,6 +122,12 @@ final class UmbrellaRentBottomSheetView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        showBottomSheet()
+    }
 }
 
 // MARK: - Extensions
@@ -141,8 +151,6 @@ private extension UmbrellaRentBottomSheetView {
         
         bottomSheetView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
-            $0.width.equalTo(SizeLiterals.Screen.screenWidth)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 501 / 812)
         }
         
         rentTitleLabel.snp.makeConstraints {
@@ -197,6 +205,19 @@ private extension UmbrellaRentBottomSheetView {
             $0.trailing.equalToSuperview().inset(16)
             $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 54 / 812)
+        }
+    }
+    
+    func showBottomSheet() {
+        DispatchQueue.main.async {
+            self.bottomSheetView.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+                $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight - self.bottomHeight)
+            }
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.backgroundView.backgroundColor = .umbrellaBlack.withAlphaComponent(0.6)
+                self.layoutIfNeeded()
+            })
         }
     }
 }
