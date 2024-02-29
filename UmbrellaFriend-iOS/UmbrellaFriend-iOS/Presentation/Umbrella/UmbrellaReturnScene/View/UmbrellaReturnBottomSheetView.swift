@@ -11,9 +11,6 @@ import SnapKit
 
 final class UmbrellaReturnBottomSheetView: UIView {
 
-    // MARK: - Properties
-    
-    
     // MARK: - UI Components
     
     let backgroundView: UIView = {
