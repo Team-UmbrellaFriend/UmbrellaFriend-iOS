@@ -64,7 +64,7 @@ extension UmbrellaRentViewController: UmbrellaRentDelegate {
     
     func didExtractNumber(_ number: String) {
         umbrellaRentViewModel.umbrellaCheck(number: Int(number) ?? -1)
-        let nav = UmbrellaRentBottomSheetViewController(viewModel: self.umbrellaRentViewModel)
+        let nav = UmbrellaRentBottomSheetViewController(viewModel: self.umbrellaRentViewModel, view: self.umbrellaRentView)
         nav.modalPresentationStyle = .overFullScreen
         self.present(nav, animated: false)
     }

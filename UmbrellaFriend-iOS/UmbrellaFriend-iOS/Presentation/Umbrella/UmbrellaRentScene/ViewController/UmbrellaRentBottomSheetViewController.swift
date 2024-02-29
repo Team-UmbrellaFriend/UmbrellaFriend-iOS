@@ -7,6 +7,7 @@
 
 import UIKit
 
+import SnapKit
 import RxSwift
 
 final class UmbrellaRentBottomSheetViewController: UIViewController {
@@ -14,7 +15,9 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
     // MARK: - Properties
     
     private let umbrellaRentViewModel: UmbrellaRentViewModel
+    private let umbrellaRentView: UmbrellaRentView
     private let disposeBag = DisposeBag()
+    private var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 501 / 812
     
     // MARK: - UI Components
     
@@ -22,8 +25,9 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
     
     // MARK: - Initializer
     
-    init(viewModel: UmbrellaRentViewModel) {
+    init(viewModel: UmbrellaRentViewModel, view: UmbrellaRentView) {
         self.umbrellaRentViewModel = viewModel
+        self.umbrellaRentView = view
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,9 +48,13 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
         getAPI()
         setUI()
         bindViewModel()
-        setHierarchy()
-        setLayout()
-        setDelegate()
+        setDismissAction()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        showBottomSheet()
     }
 }
 
@@ -67,16 +75,48 @@ extension UmbrellaRentBottomSheetViewController {
             .disposed(by: disposeBag)
     }
     
-    func setHierarchy() {
-        
+    func showBottomSheet() {
+        DispatchQueue.main.async {
+            self.umbrellaRentBottomSheetView.bottomSheetView.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+                $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight - self.bottomHeight)
+            }
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.umbrellaRentBottomSheetView.backgroundView.backgroundColor = .umbrellaBlack.withAlphaComponent(0.6)
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     
-    func setLayout() {
-        
+    func hideBottomSheet() {
+        DispatchQueue.main.async {
+            self.umbrellaRentBottomSheetView.bottomSheetView.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.umbrellaRentBottomSheetView.backgroundView.backgroundColor = .clear
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                if self.presentingViewController != nil {
+                    self.umbrellaRentView.isProcessingMetadata = false
+                    self.dismiss(animated: true, completion: nil)
+                }
+            })
+        }
     }
     
-    func setDelegate() {
+    func setDismissAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        umbrellaRentBottomSheetView.backgroundView.addGestureRecognizer(tapGesture)
         
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        swipeGesture.direction = .down
+        umbrellaRentBottomSheetView.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc
+    func hideBottomSheetAction() {
+        hideBottomSheet()
     }
 }
 
