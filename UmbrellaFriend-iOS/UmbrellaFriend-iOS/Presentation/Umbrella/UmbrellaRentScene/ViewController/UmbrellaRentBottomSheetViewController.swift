@@ -7,11 +7,14 @@
 
 import UIKit
 
+import RxSwift
+
 final class UmbrellaRentBottomSheetViewController: UIViewController {
     
     // MARK: - Properties
     
     private let umbrellaRentViewModel: UmbrellaRentViewModel
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
@@ -56,7 +59,12 @@ extension UmbrellaRentBottomSheetViewController {
     }
 
     func bindViewModel() {
-        
+        umbrellaRentViewModel.outputs.umbrellaCheckData
+            .asDriver()
+            .drive(onNext: { [weak self] model in
+                self?.umbrellaRentBottomSheetView.configureBottomSheetView(model: model)
+            })
+            .disposed(by: disposeBag)
     }
     
     func setHierarchy() {

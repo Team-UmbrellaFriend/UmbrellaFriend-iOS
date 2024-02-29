@@ -42,7 +42,6 @@ final class UmbrellaRentBottomSheetView: UIView {
     
     private let umbrellaInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = "우산 번호 01"
         label.textColor = .mainBlue
         label.textAlignment = .center
         label.font = .umbrellaFont(.subtitle1)
@@ -61,7 +60,6 @@ final class UmbrellaRentBottomSheetView: UIView {
     
     private let rentUserNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "눈송이"
         label.textColor = .umbrellaBlack
         label.font = .umbrellaFont(.subtitle1)
         return label
@@ -69,7 +67,6 @@ final class UmbrellaRentBottomSheetView: UIView {
     
     private let rentUserStudentIDLabel: UILabel = {
         let label = UILabel()
-        label.text = "1111111"
         label.textColor = .umbrellaBlack
         label.font = .umbrellaFont(.body4)
         return label
@@ -77,10 +74,8 @@ final class UmbrellaRentBottomSheetView: UIView {
     
     private let rentDateLabel: UILabel = {
         let label = UILabel()
-        label.text = "2024/03/06~2024/03/09 (3일 대여)"
         label.textColor = .umbrellaBlack
         label.font = .umbrellaFont(.body4)
-        label.partColorChange(targetString: "(3일 대여)", textColor: .subOrange)
         return label
     }()
     
@@ -247,5 +242,16 @@ private extension UmbrellaRentBottomSheetView {
     @objc
     func hideBottomSheetAction() {
         hideBottomSheet()
+    }
+}
+
+extension UmbrellaRentBottomSheetView {
+    
+    func configureBottomSheetView(model: UmbrellaCheckDto) {
+        umbrellaInfoLabel.text = model.umbrellaNum < 10 ? "우산 번호 0\(model.umbrellaNum)" : "우산 번호 \(model.umbrellaNum)"
+        rentUserNameLabel.text = model.username
+        rentUserStudentIDLabel.text = "\(model.studentID)"
+        rentDateLabel.text = "\(model.date) (3일 대여)"
+        rentDateLabel.partColorChange(targetString: "(3일 대여)", textColor: .subOrange)
     }
 }
