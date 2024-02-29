@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import AVFoundation
 
+protocol UmbrellaRentDelegate: AnyObject {
+    func didExtractNumber(_ number: String)
+}
+
 final class UmbrellaRentView: UIView {
     
     // MARK: - Properties
@@ -17,6 +21,8 @@ final class UmbrellaRentView: UIView {
     private var captureSession = AVCaptureSession()
     private var cameraDevice: AVCaptureDevice?
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    
+    var delegate: UmbrellaRentDelegate?
     
     // MARK: - UI Components
     
@@ -169,13 +175,16 @@ extension UmbrellaRentView: AVCaptureMetadataOutputObjectsDelegate {
         if metadataObjects.count == 0 { return }
         
         guard let metaDataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else {
-            print("Fail to cast MetaData as AVMetadataMachineReadableCodeObject")
             return
         }
         
         if metaDataObj.type == .qr {
             guard let qrCodeStringData = metaDataObj.stringValue else { return }
-            print(qrCodeStringData)
+            if let numberRange = qrCodeStringData.range(of: "/(\\d+)/", options: .regularExpression) {
+                let number = qrCodeStringData[numberRange].replacingOccurrences(of: "/", with: "")
+                print("추출된 숫자: \(number)")
+                delegate?.didExtractNumber(number)
+            }
         }
     }
 }
