@@ -24,6 +24,7 @@ final class UmbrellaRentView: UIView {
     var isProcessingMetadata: Bool = false
     
     var delegate: UmbrellaRentDelegate?
+    var number: String = ""
     
     // MARK: - UI Components
     
@@ -186,6 +187,7 @@ extension UmbrellaRentView: AVCaptureMetadataOutputObjectsDelegate {
             if let numberRange = qrCodeStringData.range(of: "/(\\d+)/", options: .regularExpression) {
                 let number = qrCodeStringData[numberRange].replacingOccurrences(of: "/", with: "")
                 delegate?.didExtractNumber(number)
+                self.number = number
                 isProcessingMetadata = true
             }
         }

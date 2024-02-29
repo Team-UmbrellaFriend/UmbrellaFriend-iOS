@@ -75,7 +75,7 @@ final class UmbrellaRentBottomSheetView: UIView {
         return label
     }()
     
-    private lazy var rentCancelButton: UIButton = {
+    lazy var rentCancelButton: UIButton = {
         let button = UIButton()
         button.setTitle("취소", for: .normal)
         button.setTitleColor(.umbrellaWhite, for: .normal)
@@ -86,7 +86,7 @@ final class UmbrellaRentBottomSheetView: UIView {
         return button
     }()
     
-    private lazy var rentProgressButton: UIButton = {
+    lazy var rentProgressButton: UIButton = {
         let button = UIButton()
         button.setTitle("대여하기", for: .normal)
         button.setTitleColor(.umbrellaWhite, for: .normal)

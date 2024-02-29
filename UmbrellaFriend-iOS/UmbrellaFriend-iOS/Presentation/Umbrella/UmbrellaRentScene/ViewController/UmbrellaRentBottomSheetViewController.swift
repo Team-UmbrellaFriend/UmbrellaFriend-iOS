@@ -49,6 +49,7 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
         setUI()
         bindViewModel()
         setDismissAction()
+        setAddTarget()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -71,6 +72,19 @@ extension UmbrellaRentBottomSheetViewController {
             .asDriver()
             .drive(onNext: { [weak self] model in
                 self?.umbrellaRentBottomSheetView.configureBottomSheetView(model: model)
+            })
+            .disposed(by: disposeBag)
+        
+        umbrellaRentBottomSheetView.rentProgressButton.rx.tap
+            .subscribe(onNext: {
+                self.umbrellaRentViewModel.inputs.umbrellaLend(number: Int(self.umbrellaRentView.number) ?? 0)
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    if let window = windowScene.windows.first {
+                        let homeViewController = HomeViewController()
+                        let navigationController = UINavigationController(rootViewController: homeViewController)
+                        window.rootViewController = navigationController
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -117,6 +131,10 @@ extension UmbrellaRentBottomSheetViewController {
     @objc
     func hideBottomSheetAction() {
         hideBottomSheet()
+    }
+    
+    func setAddTarget() {
+        umbrellaRentBottomSheetView.rentCancelButton.addTarget(self, action: #selector(hideBottomSheetAction), for: .touchUpInside)
     }
 }
 
