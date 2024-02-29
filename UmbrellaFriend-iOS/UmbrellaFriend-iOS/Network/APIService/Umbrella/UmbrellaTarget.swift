@@ -13,6 +13,7 @@ enum UmbrellaTarget {
     
     case getUmbrellaAvailable
     case getUmbrellaCheck(umbrellaNumber: Int)
+    case postUmbrellaLend(umbrellaNumber: Int)
 }
 
 extension UmbrellaTarget: BaseTargetType {
@@ -25,6 +26,10 @@ extension UmbrellaTarget: BaseTargetType {
             let path = URLConstant.umbrellaCheck
                 .replacingOccurrences(of: "{UmbrellaNumber}", with: String(umbrellaNumber))
             return path
+        case .postUmbrellaLend(umbrellaNumber: let umbrellaNumber):
+            let path = URLConstant.umbrellaLend
+                .replacingOccurrences(of: "{UmbrellaNumber}", with: String(umbrellaNumber))
+            return path
         }
     }
     
@@ -34,6 +39,8 @@ extension UmbrellaTarget: BaseTargetType {
             return .get
         case .getUmbrellaCheck:
             return .get
+        case .postUmbrellaLend:
+            return .post
         }
     }
     
@@ -43,6 +50,8 @@ extension UmbrellaTarget: BaseTargetType {
             return .requestPlain
         case .getUmbrellaCheck:
             return .requestPlain
+        case .postUmbrellaLend:
+            return .requestPlain
         }
     }
     
@@ -51,6 +60,8 @@ extension UmbrellaTarget: BaseTargetType {
         case .getUmbrellaAvailable:
             return nil
         case .getUmbrellaCheck:
+            return APIConstants.headerWithToken
+        case .postUmbrellaLend:
             return APIConstants.headerWithToken
         }
     }

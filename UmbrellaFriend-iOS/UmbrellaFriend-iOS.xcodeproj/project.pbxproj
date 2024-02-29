@@ -29,6 +29,7 @@
 		A43C73D32B8F108C00B39F21 /* UmbrellaRentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73D22B8F108C00B39F21 /* UmbrellaRentViewModel.swift */; };
 		A43C73D52B8F130A00B39F21 /* UmbrellaCheckDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73D42B8F130A00B39F21 /* UmbrellaCheckDto.swift */; };
 		A43C74082B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74072B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift */; };
+		A43C740A2B907E2400B39F21 /* UmbrellaLendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */; };
 		A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0752B8A410300109CA3 /* GeneralResponse.swift */; };
 		A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */; };
 		A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A471D0792B8A41A200109CA3 /* APIConstant.swift */; };
@@ -112,6 +113,7 @@
 		A43C73D22B8F108C00B39F21 /* UmbrellaRentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentViewModel.swift; sourceTree = "<group>"; };
 		A43C73D42B8F130A00B39F21 /* UmbrellaCheckDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaCheckDto.swift; sourceTree = "<group>"; };
 		A43C74072B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentBottomSheetViewController.swift; sourceTree = "<group>"; };
+		A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaLendDto.swift; sourceTree = "<group>"; };
 		A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDev.xcconfig; sourceTree = "<group>"; };
 		A471D0752B8A410300109CA3 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			children = (
 				A43C73BF2B8BA37100B39F21 /* UmbrellaAvailableDto.swift */,
 				A43C73D42B8F130A00B39F21 /* UmbrellaCheckDto.swift */,
+				A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -836,6 +839,7 @@
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
 				A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */,
 				A43C73D32B8F108C00B39F21 /* UmbrellaRentViewModel.swift in Sources */,
+				A43C740A2B907E2400B39F21 /* UmbrellaLendDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,11 +14,13 @@ import Moya
 protocol UmbrellaRentViewModelInputs {
     
     func umbrellaCheck(number: Int)
+    func umbrellaLend(number: Int)
 }
 
 protocol UmbrellaRentViewModelOutputs {
     
     var umbrellaCheckData: BehaviorRelay<UmbrellaCheckDto> { get }
+    var umbrellaLendData: BehaviorRelay<UmbrellaLendDto> { get }
 }
 
 protocol UmbrellaRentViewModelType {
@@ -35,11 +37,19 @@ final class UmbrellaRentViewModel: UmbrellaRentViewModelInputs, UmbrellaRentView
     // output
     
     var umbrellaCheckData: BehaviorRelay<UmbrellaCheckDto> = BehaviorRelay<UmbrellaCheckDto>(value: UmbrellaCheckDto.umbrellaCheckDtoInitValue())
+    var umbrellaLendData: BehaviorRelay<UmbrellaLendDto> = BehaviorRelay<UmbrellaLendDto>(value: UmbrellaLendDto())
     
     // input
     
     func umbrellaCheck(number: Int) {
         self.getUmbrellaCheckDto(number: number)
+    }
+    
+    func umbrellaLend(number: Int) {
+        if number == 0 {
+            return
+        }
+        self.postUmbrellaLendDto(number: number)
     }
     
     init() {
@@ -54,6 +64,15 @@ extension UmbrellaRentViewModel {
             guard self != nil else { return }
             guard let data = response?.data else { return }
             self?.umbrellaCheckData.accept(data)
+        }
+    }
+    
+    func postUmbrellaLendDto(number: Int) {
+        UmbrellaAPI.shared.postUmbrellaLend(number: number) { [weak self] response in
+            guard (response?.status) != nil else { return }
+            guard self != nil else { return }
+            guard let data = response?.data else { return }
+            self?.umbrellaLendData.accept(data)
         }
     }
 }
