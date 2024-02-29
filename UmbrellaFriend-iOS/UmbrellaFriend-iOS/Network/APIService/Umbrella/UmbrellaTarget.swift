@@ -12,6 +12,7 @@ import Moya
 enum UmbrellaTarget {
     
     case getUmbrellaAvailable
+    case getUmbrellaCheck(umbrellaNumber: Int)
 }
 
 extension UmbrellaTarget: BaseTargetType {
@@ -20,12 +21,18 @@ extension UmbrellaTarget: BaseTargetType {
         switch self{
         case .getUmbrellaAvailable:
             return URLConstant.umbrellaAvailable
+        case .getUmbrellaCheck(umbrellaNumber: let umbrellaNumber):
+            let path = URLConstant.umbrellaCheck
+                .replacingOccurrences(of: "{UmbrellaNumber}", with: String(umbrellaNumber))
+            return path
         }
     }
     
     var method: Moya.Method {
         switch self{
         case .getUmbrellaAvailable:
+            return .get
+        case .getUmbrellaCheck:
             return .get
         }
     }
@@ -34,6 +41,8 @@ extension UmbrellaTarget: BaseTargetType {
         switch self{
         case .getUmbrellaAvailable:
             return .requestPlain
+        case .getUmbrellaCheck:
+            return .requestPlain
         }
     }
     
@@ -41,7 +50,8 @@ extension UmbrellaTarget: BaseTargetType {
         switch self{
         case .getUmbrellaAvailable:
             return nil
+        case .getUmbrellaCheck:
+            return APIConstants.headerWithToken
         }
     }
 }
-

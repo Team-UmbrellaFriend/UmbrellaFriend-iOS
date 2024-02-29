@@ -18,6 +18,7 @@ final class UmbrellaAPI {
     private init() {}
     
     public private(set) var umbrellaAvailableData: GeneralResponse<[UmbrellaAvailableDto]>?
+    public private(set) var umbrellaCheckData: GeneralResponse<UmbrellaCheckDto>?
     
     // MARK: - GET
     func getUmbrellaAvailable(completion: @escaping(GeneralResponse<[UmbrellaAvailableDto]>?) -> Void) {
@@ -30,6 +31,26 @@ final class UmbrellaAPI {
                     self.umbrellaAvailableData = try response.map(GeneralResponse<[UmbrellaAvailableDto]>.self)
                     guard let umbrellaAvailableData = self.umbrellaAvailableData else { return }
                     completion(umbrellaAvailableData)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    func getUmbrellaCheck(number: Int,
+                          completion: @escaping(GeneralResponse<UmbrellaCheckDto>?) -> Void) {
+        umbrellaProvider.request(.getUmbrellaCheck(umbrellaNumber: number)) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    self.umbrellaCheckData = try response.map(GeneralResponse<UmbrellaCheckDto>.self)
+                    guard let umbrellaCheckData = self.umbrellaCheckData else { return }
+                    completion(umbrellaCheckData)
                 } catch let err {
                     print(err.localizedDescription, 500)
                 }
