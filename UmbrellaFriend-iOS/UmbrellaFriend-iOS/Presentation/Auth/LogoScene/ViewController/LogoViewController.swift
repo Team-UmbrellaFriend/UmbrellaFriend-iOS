@@ -49,7 +49,6 @@ extension LogoViewController {
     @objc
     func signupTapped() {
         let nav = PhotoAttachViewController()
-        nav.fromLoginView = true
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }

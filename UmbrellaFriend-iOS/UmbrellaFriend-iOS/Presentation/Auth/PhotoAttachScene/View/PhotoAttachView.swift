@@ -21,6 +21,7 @@ final class PhotoAttachView: UIView {
     
     let registerTitleLabel: UILabel = {
         let label = UILabel()
+        label.text = "학생증을\n등록해 인증해주세요."
         label.textAlignment = .left
         label.textColor = .umbrellaBlack
         label.font = .umbrellaFont(.heading3)
@@ -30,6 +31,7 @@ final class PhotoAttachView: UIView {
     
     let registerSubTitleLabel: UILabel = {
         let label = UILabel()
+        label.text = "학번과 이름이 보이게 첨부해주세요"
         label.textColor = .gray700
         label.font = .umbrellaFont(.body3)
         return label
