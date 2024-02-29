@@ -17,12 +17,25 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     private let umbrellaPlace: [UmbrellaPlaceDto] = UmbrellaPlaceDto.umbrellaPlaceDto()
     private let disposeBag = DisposeBag()
     private var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 395 / 812
+    private let returnViewModel: UmbrellaReturnViewModel
+    var selectedIndexPath: IndexPath?
     
     var returnPhotoPlace: Int = 0
     
     // MARK: - UI Components
     
     private let umbrellaReturnBottomSheetView = UmbrellaReturnBottomSheetView()
+    
+    // MARK: - Initializer
+    
+    init(viewModel: UmbrellaReturnViewModel) {
+        self.returnViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycles
     
@@ -34,9 +47,6 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
-        setUI()
-        bindViewModel()
         setCollectionView()
         setDismissAction()
         setAddTarget()
@@ -53,28 +63,61 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
 
 extension UmbrellaReturnBottomSheetViewController {
     
-    func setUI() {
-        
-    }
-    
-    func bindViewModel() {
-        
-    }
-    
     func setCollectionView() {
         Observable.just(umbrellaPlace)
             .bind(to: umbrellaReturnBottomSheetView.returnPlaceCollectionView.rx
                 .items(cellIdentifier: UmbrellaReturnPlaceCollectionViewCell.className,
                        cellType: UmbrellaReturnPlaceCollectionViewCell.self)) { (index, model, cell) in
                 cell.configureCell(model: self.umbrellaPlace[index])
+                cell.isSelected = false
             }
-                       .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
         
         umbrellaReturnBottomSheetView.returnPlaceCollectionView.rx.itemSelected
             .subscribe(onNext: { indexPath in
+                if let selectedIndexPath = self.selectedIndexPath {
+                    self.umbrellaReturnBottomSheetView.returnPlaceCollectionView.deselectItem(at: selectedIndexPath, animated: false)
+                    if let deselectedCell = self.umbrellaReturnBottomSheetView.returnPlaceCollectionView.cellForItem(at: selectedIndexPath) as? UmbrellaReturnPlaceCollectionViewCell {
+                        deselectedCell.setBorder(.nonselected)
+                    }
+                }
+                
                 if self.returnPhotoPlace != indexPath.item + 1 {
                     let nav = UmbrellaReturnAlertViewController()
+                    nav.modalPresentationStyle = .overFullScreen
                     self.present(nav, animated: false)
+                }
+                
+                self.selectedIndexPath = indexPath
+                if let selectedCell = self.umbrellaReturnBottomSheetView.returnPlaceCollectionView.cellForItem(at: indexPath) as? UmbrellaReturnPlaceCollectionViewCell {
+                    selectedCell.setBorder(.selected)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        umbrellaReturnBottomSheetView.returnPlaceCollectionView.rx.itemDeselected
+            .subscribe(onNext: { indexPath in
+                if let deselectedCell = self.umbrellaReturnBottomSheetView.returnPlaceCollectionView.cellForItem(at: indexPath) as? UmbrellaReturnPlaceCollectionViewCell {
+                    deselectedCell.setBorder(.nonselected)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        umbrellaReturnBottomSheetView.returnProgressButton.rx.tap
+            .subscribe(onNext: {
+                self.returnViewModel.umbrellaReturn()
+                self.umbrellaReturnBottomSheetView.umbrellaReturnCompleteView.isHidden = false
+            })
+            .disposed(by: disposeBag)
+        
+        umbrellaReturnBottomSheetView.umbrellaReturnCompleteView.goHomeButton.rx.tap
+            .subscribe(onNext: {
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    if let window = windowScene.windows.first {
+                        let homeViewController = HomeViewController()
+                        let navigationController = UINavigationController(rootViewController: homeViewController)
+                        window.rootViewController = navigationController
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -125,14 +168,5 @@ extension UmbrellaReturnBottomSheetViewController {
     
     func setAddTarget() {
         umbrellaReturnBottomSheetView.returnCancelButton.addTarget(self, action: #selector(hideBottomSheetAction), for: .touchUpInside)
-    }
-}
-
-// MARK: - Network
-
-extension UmbrellaReturnBottomSheetViewController {
-    
-    func getAPI() {
-        
     }
 }

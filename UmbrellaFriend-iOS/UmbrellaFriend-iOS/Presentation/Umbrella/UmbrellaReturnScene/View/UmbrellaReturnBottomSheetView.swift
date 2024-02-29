@@ -13,6 +13,8 @@ final class UmbrellaReturnBottomSheetView: UIView {
 
     // MARK: - UI Components
     
+    let umbrellaReturnCompleteView = UmbrellaReturnCompleteView()
+    
     let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .umbrellaBlack.withAlphaComponent(0.6)
@@ -96,11 +98,12 @@ private extension UmbrellaReturnBottomSheetView {
 
     func setUI() {
         backgroundColor = .clear
+        umbrellaReturnCompleteView.isHidden = true
     }
     
     func setHierarchy() {
         bottomSheetView.addSubviews(returnTitleLabel, returnPlaceCollectionView, returnCancelButton, returnProgressButton)
-        addSubviews(backgroundView, bottomSheetView)
+        addSubviews(backgroundView, bottomSheetView, umbrellaReturnCompleteView)
     }
     
     func setLayout() {
@@ -135,6 +138,10 @@ private extension UmbrellaReturnBottomSheetView {
             $0.trailing.equalToSuperview().inset(16)
             $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 54 / 812)
+        }
+        
+        umbrellaReturnCompleteView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
