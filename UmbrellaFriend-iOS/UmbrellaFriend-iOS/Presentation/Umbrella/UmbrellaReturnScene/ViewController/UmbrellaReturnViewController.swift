@@ -15,6 +15,7 @@ final class UmbrellaReturnViewController: UIViewController {
     // MARK: - Properties
     
     private var photoPlaceNum: Int = 0
+    private let returnViewModel = UmbrellaReturnViewModel()
     
     // MARK: - UI Components
     
@@ -31,7 +32,6 @@ final class UmbrellaReturnViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        bindViewModel()
         setDelegate()
         setAddTarget()
     }
@@ -44,10 +44,6 @@ extension UmbrellaReturnViewController {
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-    }
-
-    func bindViewModel() {
-	
     }
     
     func setDelegate() {
@@ -91,21 +87,46 @@ extension UmbrellaReturnViewController {
             for observation in observations {
                 guard let topCandidate = observation.topCandidates(1).first else { continue }
                 let recognizedText = topCandidate.string
-
+                
                 if recognizedText.contains("명신관") {
                     self?.photoPlaceNum = 1
+                    self?.returnViewModel.umbrellaReturnLocation(location: "명신관")
                 } else if recognizedText.contains("순헌관") {
                     self?.photoPlaceNum = 2
+                    self?.returnViewModel.umbrellaReturnLocation(location: "순헌관")
                 } else if recognizedText.contains("학생회관") {
                     self?.photoPlaceNum = 3
+                    self?.returnViewModel.umbrellaReturnLocation(location: "학생회관")
                 } else if recognizedText.contains("도서관") {
                     self?.photoPlaceNum = 4
-                } else if recognizedText.contains("음악대학") {
+                    self?.returnViewModel.umbrellaReturnLocation(location: "도서관")
+                } else if recognizedText.contains("음대") {
                     self?.photoPlaceNum = 5
+                    self?.returnViewModel.umbrellaReturnLocation(location: "음대")
                 } else if recognizedText.contains("백주년기념관") {
                     self?.photoPlaceNum = 6
+                    self?.returnViewModel.umbrellaReturnLocation(location: "백주년기념관")
                 }
             }
+        }
+        
+        if #available(iOS 16.0, *) {
+            let revision3 = VNRecognizeTextRequestRevision3
+            request.revision = revision3
+            request.recognitionLevel = .accurate
+            request.recognitionLanguages = ["ko-KR"]
+            request.usesLanguageCorrection = true
+            
+            do {
+                var possibleLanguages: Array<String> = []
+                possibleLanguages = try request.supportedRecognitionLanguages()
+                print(possibleLanguages)
+            } catch {
+                print("Error getting the supported languages.")
+            }
+        } else {
+            request.recognitionLanguages = ["ko-KR"]
+            request.usesLanguageCorrection = true
         }
         
         do{
@@ -126,8 +147,9 @@ extension UmbrellaReturnViewController: NavigationBarProtocol {
 extension UmbrellaReturnViewController: ButtonProtocol {
     
     func buttonTapped() {
-        let nav = UmbrellaReturnBottomSheetViewController()
+        let nav = UmbrellaReturnBottomSheetViewController(viewModel: self.returnViewModel)
         nav.returnPhotoPlace = self.photoPlaceNum
+        nav.modalPresentationStyle = .overFullScreen
         self.present(nav, animated: false)
     }
 }
@@ -137,6 +159,9 @@ extension UmbrellaReturnViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.originalImage] as? UIImage {
             self.extractPlaceInfo(image: image)
+            if let imageData = image.jpegData(compressionQuality: 0.5) {
+                returnViewModel.umbrellaReturnImage(img: imageData)
+            }
             umbrellaReturnView.returnImage.isHidden = false
             umbrellaReturnView.imageDeleteButton.isHidden = false
             umbrellaReturnView.returnImage.image = image
