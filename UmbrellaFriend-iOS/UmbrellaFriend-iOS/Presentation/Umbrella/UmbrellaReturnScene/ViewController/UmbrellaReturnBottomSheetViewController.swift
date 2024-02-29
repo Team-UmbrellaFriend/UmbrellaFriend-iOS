@@ -18,6 +18,8 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 395 / 812
     
+    var returnPhotoPlace: Int = 0
+    
     // MARK: - UI Components
     
     private let umbrellaReturnBottomSheetView = UmbrellaReturnBottomSheetView()
@@ -70,7 +72,10 @@ extension UmbrellaReturnBottomSheetViewController {
         
         umbrellaReturnBottomSheetView.returnPlaceCollectionView.rx.itemSelected
             .subscribe(onNext: { indexPath in
-                print("Selected item at indexPath: \(indexPath)")
+                if self.returnPhotoPlace != indexPath.item + 1 {
+                    let nav = UmbrellaReturnAlertViewController()
+                    self.present(nav, animated: false)
+                }
             })
             .disposed(by: disposeBag)
     }
