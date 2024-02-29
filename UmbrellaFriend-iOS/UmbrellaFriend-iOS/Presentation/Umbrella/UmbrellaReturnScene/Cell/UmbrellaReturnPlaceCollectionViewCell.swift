@@ -9,6 +9,29 @@ import UIKit
 
 import SnapKit
 
+enum PlaceSelectType {
+    case nonselected
+    case selected
+    
+    var borderColor: CGColor {
+        switch self {
+        case .nonselected:
+            return UIColor.clear.cgColor
+        case .selected:
+            return UIColor.mainBlue.cgColor
+        }
+    }
+    
+    var labelColor: UIColor {
+        switch self {
+        case .nonselected:
+            return .umbrellaBlack.withAlphaComponent(0.7)
+        case .selected:
+            return .mainBlue
+        }
+    }
+}
+
 final class UmbrellaReturnPlaceCollectionViewCell: UICollectionViewCell, UICollectionViewRegisterable {
     
     // MARK: - Properties
@@ -21,18 +44,21 @@ final class UmbrellaReturnPlaceCollectionViewCell: UICollectionViewCell, UIColle
         let image = UIImageView()
         image.clipsToBounds = true
         image.layer.cornerRadius = 24
+        image.layer.borderWidth = 2
+        image.layer.borderColor = UIColor.clear.cgColor
         return image
     }()
     
     let placeLabel: UILabel = {
         let label = UILabel()
-        label.text = "명신관"
         label.textColor = .umbrellaWhite
         label.textAlignment = .center
         label.font = .umbrellaFont(.body3)
         label.backgroundColor = .umbrellaBlack.withAlphaComponent(0.7)
         label.clipsToBounds = true
         label.layer.cornerRadius = 16
+        label.layer.borderWidth = 2
+        label.layer.borderColor = UIColor.clear.cgColor
         return label
     }()
     
@@ -97,5 +123,10 @@ extension UmbrellaReturnPlaceCollectionViewCell {
         placeLabel.snp.updateConstraints {
             $0.width.equalTo(labelWidth)
         }
+    }
+    
+    func setBorder(_ type: PlaceSelectType) {
+        self.placeImageView.layer.borderColor = type.borderColor
+        self.placeLabel.backgroundColor = type.labelColor
     }
 }
