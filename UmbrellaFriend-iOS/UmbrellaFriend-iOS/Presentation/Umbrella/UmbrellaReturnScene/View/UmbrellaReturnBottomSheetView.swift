@@ -142,6 +142,6 @@ private extension UmbrellaReturnBottomSheetView {
     }
     
     func setRegisterCell() {
-        
+        UmbrellaReturnPlaceCollectionViewCell.register(target: returnPlaceCollectionView)
     }
 }
