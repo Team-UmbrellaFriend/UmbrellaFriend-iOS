@@ -127,6 +127,7 @@ final class UmbrellaRentBottomSheetView: UIView {
         super.layoutSubviews()
         
         showBottomSheet()
+        setDismissAction()
     }
 }
 
@@ -135,7 +136,7 @@ final class UmbrellaRentBottomSheetView: UIView {
 private extension UmbrellaRentBottomSheetView {
 
     func setUI() {
-        backgroundColor = .systemPink
+        backgroundColor = .clear
     }
     
     func setHierarchy() {
@@ -219,5 +220,32 @@ private extension UmbrellaRentBottomSheetView {
                 self.layoutIfNeeded()
             })
         }
+    }
+    
+    func hideBottomSheet() {
+        DispatchQueue.main.async {
+            self.bottomSheetView.snp.remakeConstraints {
+                $0.leading.trailing.bottom.equalToSuperview()
+            }
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                self.backgroundView.backgroundColor = .clear
+                self.layoutIfNeeded()
+            }, completion: { _ in
+            })
+        }
+    }
+    
+    func setDismissAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        backgroundView.addGestureRecognizer(tapGesture)
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
+        swipeGesture.direction = .down
+        self.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc
+    func hideBottomSheetAction() {
+        hideBottomSheet()
     }
 }
