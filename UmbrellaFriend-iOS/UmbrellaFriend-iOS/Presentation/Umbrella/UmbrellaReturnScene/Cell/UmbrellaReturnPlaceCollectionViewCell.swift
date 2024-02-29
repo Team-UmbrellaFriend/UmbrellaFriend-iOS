@@ -24,7 +24,7 @@ final class UmbrellaReturnPlaceCollectionViewCell: UICollectionViewCell, UIColle
         return image
     }()
     
-    private let placeLabel: UILabel = {
+    let placeLabel: UILabel = {
         let label = UILabel()
         label.text = "명신관"
         label.textColor = .umbrellaWhite
@@ -77,6 +77,14 @@ private extension UmbrellaReturnPlaceCollectionViewCell {
             $0.height.equalTo(30)
         }
     }
+    
+    func calculateLabelWidth(for model: UmbrellaPlaceDto) -> CGFloat {
+        let text = model.placeTitle
+        let font = UIFont.umbrellaFont(.body3)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        let textSize = (text as NSString).size(withAttributes: attributes)
+        return textSize.width + 16
+    }
 }
 
 extension UmbrellaReturnPlaceCollectionViewCell {
@@ -84,5 +92,10 @@ extension UmbrellaReturnPlaceCollectionViewCell {
     func configureCell(model: UmbrellaPlaceDto) {
         placeImageView.image = UIImage(named: model.placeImage)
         placeLabel.text = model.placeTitle
+        
+        let labelWidth = calculateLabelWidth(for: model)
+        placeLabel.snp.updateConstraints {
+            $0.width.equalTo(labelWidth)
+        }
     }
 }
