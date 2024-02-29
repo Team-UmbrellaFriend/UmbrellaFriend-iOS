@@ -21,6 +21,7 @@ final class UmbrellaRentView: UIView {
     private var captureSession = AVCaptureSession()
     private var cameraDevice: AVCaptureDevice?
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var isProcessingMetadata: Bool = false
     
     var delegate: UmbrellaRentDelegate?
     
@@ -172,6 +173,8 @@ private extension UmbrellaRentView {
 extension UmbrellaRentView: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        guard !isProcessingMetadata else { return }
+        
         if metadataObjects.count == 0 { return }
         
         guard let metaDataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else {
@@ -182,8 +185,8 @@ extension UmbrellaRentView: AVCaptureMetadataOutputObjectsDelegate {
             guard let qrCodeStringData = metaDataObj.stringValue else { return }
             if let numberRange = qrCodeStringData.range(of: "/(\\d+)/", options: .regularExpression) {
                 let number = qrCodeStringData[numberRange].replacingOccurrences(of: "/", with: "")
-                print("추출된 숫자: \(number)")
                 delegate?.didExtractNumber(number)
+                isProcessingMetadata = true
             }
         }
     }
