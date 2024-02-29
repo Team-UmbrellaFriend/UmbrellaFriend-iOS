@@ -56,11 +56,11 @@ final class CustomNavigationBar: UIView {
         return label
     }()
     
-    private lazy var againButton: UIButton = {
+    lazy var againButton: UIButton = {
         let button = UIButton()
         button.setTitle("다시찍기", for: .normal)
         button.titleLabel?.font = .umbrellaFont(.body2)
-        button.setTitleColor(.gray350, for: .normal)
+        button.setTitleColor(.gray500, for: .normal)
         button.isHidden = true
         return button
     }()
