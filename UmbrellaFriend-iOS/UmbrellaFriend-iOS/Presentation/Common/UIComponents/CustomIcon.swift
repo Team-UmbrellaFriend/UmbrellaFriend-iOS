@@ -71,6 +71,15 @@ final class CustomIcon: UIView {
                 return CGSize(width: 38, height: 62)
             }
         }
+        
+        var cornerRadius: CGFloat {
+            switch self {
+            case .mypageProfile:
+                return 35
+            default:
+                return 25
+            }
+        }
     }
     
     var returnDay: Int = 0 {
@@ -112,7 +121,7 @@ private extension CustomIcon {
     
     func setUI(type: CustomIconType) {
         self.backgroundColor = type.viewColor
-        self.layer.cornerRadius = 25
+        self.layer.cornerRadius = type.cornerRadius
         self.iconImage.image = type.iconImage
         
         self.addSubviews(iconImage, dayLabel)

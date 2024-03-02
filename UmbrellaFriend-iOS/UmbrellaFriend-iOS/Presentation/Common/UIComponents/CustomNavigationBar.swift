@@ -35,6 +35,11 @@ final class CustomNavigationBar: UIView {
         set { againButton.isHidden = !newValue }
     }
     
+    var isLogoutButtonInclued: Bool {
+        get { !logoutButton.isHidden }
+        set { logoutButton.isHidden = !newValue }
+    }
+    
     private var backButtonAction: (() -> Void)?
     
     // MARK: - UI Components
@@ -59,6 +64,15 @@ final class CustomNavigationBar: UIView {
     lazy var againButton: UIButton = {
         let button = UIButton()
         button.setTitle("다시찍기", for: .normal)
+        button.titleLabel?.font = .umbrellaFont(.body2)
+        button.setTitleColor(.gray500, for: .normal)
+        button.isHidden = true
+        return button
+    }()
+    
+    lazy var logoutButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("로그아웃", for: .normal)
         button.titleLabel?.font = .umbrellaFont(.body2)
         button.setTitleColor(.gray500, for: .normal)
         button.isHidden = true
@@ -91,7 +105,7 @@ private extension CustomNavigationBar {
     }
     
     func setHierarchy() {
-        addSubviews(backButton, titleLabel, againButton)
+        addSubviews(backButton, titleLabel, againButton, logoutButton)
     }
     
     func setLayout() {
@@ -110,6 +124,13 @@ private extension CustomNavigationBar {
         }
         
         againButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(69)
+            $0.height.equalTo(48)
+        }
+        
+        logoutButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(16)
             $0.centerY.equalToSuperview()
             $0.width.equalTo(69)
