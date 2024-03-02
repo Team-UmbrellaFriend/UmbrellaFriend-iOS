@@ -15,6 +15,8 @@ final class SignupViewController: UIViewController {
     var extractId: String = ""
     var isAllValid: [Bool] = [true, true, false, false, false, false]
     
+    var fromMypage: Bool = false
+    
     // MARK: - UI Components
     
     private let signupView = SignupView()
