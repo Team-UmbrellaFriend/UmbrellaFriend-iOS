@@ -53,27 +53,7 @@ final class UmbrellaReturnBottomSheetView: UIView {
         return collectionView
     }()
     
-    lazy var returnCancelButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("취소", for: .normal)
-        button.setTitleColor(.umbrellaWhite, for: .normal)
-        button.setBackgroundColor(.gray400, for: .normal)
-        button.setBackgroundColor(.gray500, for: .highlighted)
-        button.layer.cornerRadius = 12
-        button.titleLabel?.font = .umbrellaFont(.subtitle1)
-        return button
-    }()
-    
-    lazy var returnProgressButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("반납 완료", for: .normal)
-        button.setTitleColor(.umbrellaWhite, for: .normal)
-        button.setBackgroundColor(.mainBlue, for: .normal)
-        button.setBackgroundColor(.darkBlue, for: .highlighted)
-        button.layer.cornerRadius = 12
-        button.titleLabel?.font = .umbrellaFont(.subtitle1)
-        return button
-    }()
+    lazy var returnProgressButton = CustomButton(status: false, title: "반납완료")
     
     // MARK: - Life Cycles
     
@@ -102,7 +82,7 @@ private extension UmbrellaReturnBottomSheetView {
     }
     
     func setHierarchy() {
-        bottomSheetView.addSubviews(returnTitleLabel, returnPlaceCollectionView, returnCancelButton, returnProgressButton)
+        bottomSheetView.addSubviews(returnTitleLabel, returnPlaceCollectionView, returnProgressButton)
         addSubviews(backgroundView, bottomSheetView, umbrellaReturnCompleteView)
     }
     
@@ -126,18 +106,9 @@ private extension UmbrellaReturnBottomSheetView {
             $0.height.equalTo(166)
         }
         
-        returnCancelButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(57)
-            $0.leading.equalToSuperview().inset(16)
-            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 54 / 812)
-        }
-        
         returnProgressButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(57)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 54 / 812)
+            $0.top.equalTo(returnPlaceCollectionView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 24 / 812)
+            $0.centerX.equalToSuperview()
         }
         
         umbrellaReturnCompleteView.snp.makeConstraints {

@@ -179,14 +179,14 @@ private extension UmbrellaRentBottomSheetView {
         }
         
         rentCancelButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(57)
+            $0.top.equalTo(rentInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 10 / 812)
             $0.leading.equalToSuperview().inset(16)
             $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 54 / 812)
         }
         
         rentProgressButton.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(57)
+            $0.top.equalTo(rentInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 10 / 812)
             $0.trailing.equalToSuperview().inset(16)
             $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 54 / 812)

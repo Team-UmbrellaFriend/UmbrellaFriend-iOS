@@ -49,7 +49,6 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
         
         setCollectionView()
         setDismissAction()
-        setAddTarget()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -83,9 +82,12 @@ extension UmbrellaReturnBottomSheetViewController {
                 }
                 
                 if self.returnPhotoPlace != indexPath.item + 1 {
+                    self.umbrellaReturnBottomSheetView.returnProgressButton.isEnabled = false
                     let nav = UmbrellaReturnAlertViewController()
                     nav.modalPresentationStyle = .overFullScreen
                     self.present(nav, animated: false)
+                } else {
+                    self.umbrellaReturnBottomSheetView.returnProgressButton.isEnabled = true
                 }
                 
                 self.selectedIndexPath = indexPath
@@ -164,9 +166,5 @@ extension UmbrellaReturnBottomSheetViewController {
     @objc
     func hideBottomSheetAction() {
         hideBottomSheet()
-    }
-    
-    func setAddTarget() {
-        umbrellaReturnBottomSheetView.returnCancelButton.addTarget(self, action: #selector(hideBottomSheetAction), for: .touchUpInside)
     }
 }
