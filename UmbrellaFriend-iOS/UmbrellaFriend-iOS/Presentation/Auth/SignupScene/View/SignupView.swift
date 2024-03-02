@@ -240,3 +240,17 @@ private extension SignupView {
         }
     }
 }
+
+extension SignupView {
+    
+    func configureView(model: UserProfileDto) {
+        nameTextField.text = model.username
+        let email = model.email
+        if let emailID = email.firstIndex(of: "@") {
+            let username = String(email.prefix(upTo: emailID))
+            emailTextField.text = username
+        }
+        idTextField.text = "\(model.profile.studentID)"
+        phoneTextField.text = model.profile.phoneNumber
+    }
+}

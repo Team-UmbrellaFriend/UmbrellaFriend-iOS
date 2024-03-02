@@ -7,6 +7,9 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class SignupViewController: UIViewController {
     
     // MARK: - Properties
@@ -15,11 +18,25 @@ final class SignupViewController: UIViewController {
     var extractId: String = ""
     var isAllValid: [Bool] = [true, true, false, false, false, false]
     
-    var fromMypage: Bool = false
+    var userId: Int = 0
+    
+    private let signupViewModel = SignupViewModel()
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
     private let signupView = SignupView()
+    
+    // MARK: - Initializer
+    
+    init(_ idx: Int) {
+        self.userId = idx
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycles
     
@@ -32,6 +49,7 @@ final class SignupViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindViewModel()
         setDelegate()
         setTextField()
         setGesture()
@@ -45,6 +63,19 @@ extension SignupViewController {
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
+        signupView.signupTitleLabel.text = self.userId > 0  ? "프로필 수정" : "기본 정보를\n입력해주세요."
+    }
+    
+    func bindViewModel() {
+        if self.userId > 0 { // 프로필 수정
+            signupViewModel.inputs.userProfile(id: self.userId)
+            signupViewModel.outputs.userProfileData
+                .subscribe(onNext: { [weak self] model in
+                    self?.signupView.configureView(model: model)
+                })
+                .disposed(by: disposeBag)
+        }
     }
     
     func setDelegate() {

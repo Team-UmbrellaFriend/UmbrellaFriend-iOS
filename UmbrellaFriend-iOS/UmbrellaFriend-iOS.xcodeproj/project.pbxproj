@@ -52,6 +52,10 @@
 		A488FB1C2B930F31004D4A09 /* MypageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB1B2B930F31004D4A09 /* MypageAPI.swift */; };
 		A488FB1F2B930F4C004D4A09 /* MypageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB1E2B930F4C004D4A09 /* MypageTarget.swift */; };
 		A488FB222B930F77004D4A09 /* MypageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB212B930F77004D4A09 /* MypageDto.swift */; };
+		A488FB252B931969004D4A09 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB242B931969004D4A09 /* SignupViewModel.swift */; };
+		A488FB292B931A02004D4A09 /* UserProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB282B931A02004D4A09 /* UserProfileDto.swift */; };
+		A488FB2D2B931A58004D4A09 /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB2C2B931A58004D4A09 /* AuthTarget.swift */; };
+		A488FB312B931AB5004D4A09 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB302B931AB5004D4A09 /* AuthAPI.swift */; };
 		A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9D2B70FD9D00883017 /* FontLiterals.swift */; };
 		A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */; };
 		A4998BA22B70FDB700883017 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA12B70FDB700883017 /* UIView+.swift */; };
@@ -155,6 +159,10 @@
 		A488FB1B2B930F31004D4A09 /* MypageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageAPI.swift; sourceTree = "<group>"; };
 		A488FB1E2B930F4C004D4A09 /* MypageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTarget.swift; sourceTree = "<group>"; };
 		A488FB212B930F77004D4A09 /* MypageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageDto.swift; sourceTree = "<group>"; };
+		A488FB242B931969004D4A09 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		A488FB282B931A02004D4A09 /* UserProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDto.swift; sourceTree = "<group>"; };
+		A488FB2C2B931A58004D4A09 /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
+		A488FB302B931AB5004D4A09 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
 		A4998B9D2B70FD9D00883017 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		A4998BA12B70FDB700883017 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -245,6 +253,7 @@
 		A43C73932B8A437400B39F21 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				A488FB2B2B931A4B004D4A09 /* Auth */,
 				A488FB1D2B930F43004D4A09 /* Mypage */,
 				A43C73C12B8BA39700B39F21 /* Umbrella */,
 				A43C739C2B8A442E00B39F21 /* Home */,
@@ -255,6 +264,7 @@
 		A43C73942B8A437900B39F21 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A488FB2A2B931A46004D4A09 /* Auth */,
 				A488FB1A2B930F24004D4A09 /* Mypage */,
 				A43C73C42B8BA45900B39F21 /* Umbrella */,
 				A43C73992B8A440500B39F21 /* Home */,
@@ -265,6 +275,7 @@
 		A43C73952B8A438500B39F21 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A488FB272B9319EA004D4A09 /* Auth */,
 				A488FB202B930F6F004D4A09 /* Mypage */,
 				A43C73BE2B8BA35200B39F21 /* Umbrella */,
 				A43C73962B8A43A800B39F21 /* Home */,
@@ -509,6 +520,38 @@
 				A488FB212B930F77004D4A09 /* MypageDto.swift */,
 			);
 			path = Mypage;
+			sourceTree = "<group>";
+		};
+		A488FB232B93195A004D4A09 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB242B931969004D4A09 /* SignupViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A488FB272B9319EA004D4A09 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB282B931A02004D4A09 /* UserProfileDto.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A488FB2A2B931A46004D4A09 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB302B931AB5004D4A09 /* AuthAPI.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		A488FB2B2B931A4B004D4A09 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB2C2B931A58004D4A09 /* AuthTarget.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		A4998B922B70FD0900883017 /* Presentation */ = {
@@ -773,6 +816,7 @@
 			isa = PBXGroup;
 			children = (
 				A4998C2D2B81CDF000883017 /* View */,
+				A488FB232B93195A004D4A09 /* ViewModel */,
 				A4998C2C2B81CDEA00883017 /* ViewController */,
 			);
 			path = SignupScene;
@@ -955,14 +999,17 @@
 				A488FB222B930F77004D4A09 /* MypageDto.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A43C73C02B8BA37100B39F21 /* UmbrellaAvailableDto.swift in Sources */,
+				A488FB2D2B931A58004D4A09 /* AuthTarget.swift in Sources */,
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
 				A43C741A2B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift in Sources */,
 				A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */,
 				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
 				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
+				A488FB312B931AB5004D4A09 /* AuthAPI.swift in Sources */,
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
 				A4CBBCD02B85E88500D55085 /* CustomIcon.swift in Sources */,
 				A43C739E2B8A443700B39F21 /* HomeTarget.swift in Sources */,
+				A488FB252B931969004D4A09 /* SignupViewModel.swift in Sources */,
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A43C74082B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift in Sources */,
@@ -976,6 +1023,7 @@
 				A43C74272B90A95000B39F21 /* UmbrellaReturnViewModel.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
+				A488FB292B931A02004D4A09 /* UserProfileDto.swift in Sources */,
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
 				A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,

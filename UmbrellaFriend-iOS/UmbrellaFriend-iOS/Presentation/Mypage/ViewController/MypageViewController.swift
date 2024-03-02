@@ -69,9 +69,12 @@ extension MypageViewController {
         
         mypageView.profileEditButton.rx.tap
             .subscribe(onNext: {
-                let nav = SignupViewController()
-                nav.fromMypage = true
-                self.navigationController?.pushViewController(nav, animated: true)
+                self.mypageViewModel.outputs.mypageData
+                    .subscribe(onNext: { [weak self] model in
+                        let nav = SignupViewController(model.user.id)
+                        self?.navigationController?.pushViewController(nav, animated: true)
+                    })
+                    .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
     }
