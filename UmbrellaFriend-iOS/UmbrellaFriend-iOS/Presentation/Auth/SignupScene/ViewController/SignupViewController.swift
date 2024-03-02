@@ -69,6 +69,8 @@ extension SignupViewController {
     
     func bindViewModel() {
         if self.userId > 0 { // 프로필 수정
+            self.signupView.nameTextField.isUserInteractionEnabled = false
+            self.signupView.idTextField.isUserInteractionEnabled = false
             signupViewModel.inputs.userProfile(id: self.userId)
             signupViewModel.outputs.userProfileData
                 .subscribe(onNext: { [weak self] model in
@@ -76,6 +78,16 @@ extension SignupViewController {
                 })
                 .disposed(by: disposeBag)
         }
+        
+        signupView.completeButton.rx.tap
+            .subscribe(onNext: {
+                if self.userId > 0 {
+                    print("프로필 수정")
+                } else {
+                    print("회원가입")
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     func setDelegate() {
