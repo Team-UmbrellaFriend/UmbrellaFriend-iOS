@@ -14,7 +14,6 @@ final class PhotoAttachViewController: UIViewController {
     
     // MARK: - Properties
     
-    var fromLoginView: Bool = true
     var photoName: String = ""
     var photoId: String = ""
     
@@ -44,8 +43,6 @@ extension PhotoAttachViewController {
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        self.photoAttachView.registerTitleLabel.text = self.fromLoginView ? "학생증을\n등록해 인증해주세요." : "반납 완료를 위해\n카메라로 인증해주세요"
-        self.photoAttachView.registerSubTitleLabel.text = self.fromLoginView ? "학번과 이름이 보이게 첨부해주세요" : "네임택과 반납 장소가 보이게 찍어주세요"
     }
     
     func setDelegate() {

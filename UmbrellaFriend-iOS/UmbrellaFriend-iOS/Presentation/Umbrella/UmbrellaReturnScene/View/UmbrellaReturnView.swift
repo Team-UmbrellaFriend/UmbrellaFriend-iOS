@@ -1,15 +1,15 @@
 //
-//  PhotoAttachView.swift
+//  UmbrellaReturnView.swift
 //  UmbrellaFriend-iOS
 //
-//  Created by 고아라 on 2/17/24.
+//  Created by 고아라 on 2/29/24.
 //
 
 import UIKit
 
 import SnapKit
 
-final class PhotoAttachView: UIView {
+final class UmbrellaReturnView: UIView {
     
     // MARK: - UI Components
     
@@ -19,9 +19,9 @@ final class PhotoAttachView: UIView {
         return nav
     }()
     
-    let registerTitleLabel: UILabel = {
+    let returnTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "학생증을\n등록해 인증해주세요."
+        label.text = "반납 완료를 위해\n카메라로 인증해주세요"
         label.textAlignment = .left
         label.textColor = .umbrellaBlack
         label.font = .umbrellaFont(.heading3)
@@ -29,9 +29,9 @@ final class PhotoAttachView: UIView {
         return label
     }()
     
-    let registerSubTitleLabel: UILabel = {
+    let returnSubTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "학번과 이름이 보이게 첨부해주세요"
+        label.text = "네임택과 반납 장소가 보이게 찍어주세요"
         label.textColor = .gray700
         label.font = .umbrellaFont(.body3)
         return label
@@ -56,12 +56,13 @@ final class PhotoAttachView: UIView {
         return button
     }()
     
-    let studentIDImage: UIImageView = {
+    let returnImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         return image
     }()
-    lazy var nextButton = CustomButton(status: false, title: "다음")
+    
+    lazy var returnButton = CustomButton(status: false, title: "반납하기")
     
     // MARK: - Life Cycles
     
@@ -81,16 +82,16 @@ final class PhotoAttachView: UIView {
 
 // MARK: - Extensions
 
-private extension PhotoAttachView {
+private extension UmbrellaReturnView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
-        studentIDImage.isHidden = true
+        returnImage.isHidden = true
         imageDeleteButton.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, registerTitleLabel, registerSubTitleLabel, registerButton, nextButton, studentIDImage, imageDeleteButton)
+        addSubviews(navigationView, returnTitleLabel, returnSubTitleLabel, registerButton, returnButton, returnImage, imageDeleteButton)
     }
     
     func setLayout() {
@@ -99,14 +100,14 @@ private extension PhotoAttachView {
             $0.leading.trailing.equalToSuperview()
         }
         
-        registerTitleLabel.snp.makeConstraints {
+        returnTitleLabel.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.bottom).offset(20)
             $0.leading.equalToSuperview().inset(16)
         }
         
-        registerSubTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(registerTitleLabel.snp.bottom).offset(8)
-            $0.leading.equalTo(registerTitleLabel.snp.leading)
+        returnSubTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(returnTitleLabel.snp.bottom).offset(8)
+            $0.leading.equalTo(returnTitleLabel.snp.leading)
         }
         
         registerButton.snp.makeConstraints {
@@ -114,19 +115,20 @@ private extension PhotoAttachView {
             $0.size.equalTo(166)
         }
         
-        nextButton.snp.makeConstraints {
+        returnButton.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
             $0.centerX.equalToSuperview()
         }
         
-        studentIDImage.snp.makeConstraints {
-            $0.top.equalTo(registerTitleLabel.snp.bottom).offset(40)
+        returnImage.snp.makeConstraints {
+            $0.top.equalTo(returnTitleLabel.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
-            $0.size.equalTo(SizeLiterals.Screen.screenWidth - 31)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth - 31)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 458 / 812)
         }
         
         imageDeleteButton.snp.makeConstraints {
-            $0.top.trailing.equalTo(studentIDImage)
+            $0.top.trailing.equalTo(returnImage)
             $0.size.equalTo(48)
         }
     }

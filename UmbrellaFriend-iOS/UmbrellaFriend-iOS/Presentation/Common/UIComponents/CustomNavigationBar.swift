@@ -30,6 +30,11 @@ final class CustomNavigationBar: UIView {
         set { titleLabel.isHidden = !newValue }
     }
     
+    var isAgainButtonInclued: Bool {
+        get { !againButton.isHidden }
+        set { againButton.isHidden = !newValue }
+    }
+    
     private var backButtonAction: (() -> Void)?
     
     // MARK: - UI Components
@@ -49,6 +54,15 @@ final class CustomNavigationBar: UIView {
         label.font = .umbrellaFont(.title1)
         label.isHidden = true
         return label
+    }()
+    
+    lazy var againButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("다시찍기", for: .normal)
+        button.titleLabel?.font = .umbrellaFont(.body2)
+        button.setTitleColor(.gray500, for: .normal)
+        button.isHidden = true
+        return button
     }()
     
     // MARK: - Life Cycles
@@ -77,7 +91,7 @@ private extension CustomNavigationBar {
     }
     
     func setHierarchy() {
-        addSubviews(backButton, titleLabel)
+        addSubviews(backButton, titleLabel, againButton)
     }
     
     func setLayout() {
@@ -93,6 +107,13 @@ private extension CustomNavigationBar {
         
         titleLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+        
+        againButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(16)
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(69)
+            $0.height.equalTo(48)
         }
     }
     

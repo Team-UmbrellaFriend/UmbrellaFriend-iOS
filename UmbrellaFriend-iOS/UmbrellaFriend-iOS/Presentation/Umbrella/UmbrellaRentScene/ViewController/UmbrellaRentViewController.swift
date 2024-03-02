@@ -12,6 +12,7 @@ final class UmbrellaRentViewController: UIViewController {
     // MARK: - UI Components
     
     private let umbrellaRentView = UmbrellaRentView()
+    private let umbrellaRentViewModel = UmbrellaRentViewModel()
     
     // MARK: - Life Cycles
     
@@ -25,6 +26,7 @@ final class UmbrellaRentViewController: UIViewController {
         
         setUI()
         setAddTarget()
+        setDelegate()
     }
 }
 
@@ -51,5 +53,19 @@ private extension UmbrellaRentViewController {
         default:
             break
         }
+    }
+    
+    func setDelegate() {
+        umbrellaRentView.delegate = self
+    }
+}
+
+extension UmbrellaRentViewController: UmbrellaRentDelegate {
+    
+    func didExtractNumber(_ number: String) {
+        umbrellaRentViewModel.umbrellaCheck(number: Int(number) ?? -1)
+        let nav = UmbrellaRentBottomSheetViewController(viewModel: self.umbrellaRentViewModel, view: self.umbrellaRentView)
+        nav.modalPresentationStyle = .overFullScreen
+        self.present(nav, animated: false)
     }
 }

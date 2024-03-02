@@ -96,8 +96,8 @@ extension HomeViewController {
     
     @objc
     func returnTapped() {
-//        let nav = UmbrellaReturnViewController()
-//        self.navigationController?.pushViewController(nav, animated: true)
+        let nav = UmbrellaReturnViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
     }
     
     @objc

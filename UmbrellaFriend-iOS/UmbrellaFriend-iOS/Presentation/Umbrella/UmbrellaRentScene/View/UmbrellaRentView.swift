@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 import AVFoundation
 
+protocol UmbrellaRentDelegate: AnyObject {
+    func didExtractNumber(_ number: String)
+}
+
 final class UmbrellaRentView: UIView {
     
     // MARK: - Properties
@@ -17,6 +21,10 @@ final class UmbrellaRentView: UIView {
     private var captureSession = AVCaptureSession()
     private var cameraDevice: AVCaptureDevice?
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var isProcessingMetadata: Bool = false
+    
+    var delegate: UmbrellaRentDelegate?
+    var number: String = ""
     
     // MARK: - UI Components
     
@@ -166,16 +174,22 @@ private extension UmbrellaRentView {
 extension UmbrellaRentView: AVCaptureMetadataOutputObjectsDelegate {
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        guard !isProcessingMetadata else { return }
+        
         if metadataObjects.count == 0 { return }
         
         guard let metaDataObj = metadataObjects[0] as? AVMetadataMachineReadableCodeObject else {
-            print("Fail to cast MetaData as AVMetadataMachineReadableCodeObject")
             return
         }
         
         if metaDataObj.type == .qr {
             guard let qrCodeStringData = metaDataObj.stringValue else { return }
-            print(qrCodeStringData)
+            if let numberRange = qrCodeStringData.range(of: "/(\\d+)/", options: .regularExpression) {
+                let number = qrCodeStringData[numberRange].replacingOccurrences(of: "/", with: "")
+                delegate?.didExtractNumber(number)
+                self.number = number
+                isProcessingMetadata = true
+            }
         }
     }
 }
