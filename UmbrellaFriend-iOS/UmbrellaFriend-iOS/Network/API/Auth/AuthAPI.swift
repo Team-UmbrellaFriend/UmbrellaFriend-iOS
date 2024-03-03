@@ -19,6 +19,7 @@ final class AuthAPI {
     
     public private(set) var userLoginData: GeneralResponse<UserLoginDto>?
     public private(set) var userProfileData: GeneralResponse<UserProfileDto>?
+    public private(set) var userLogoutData: GeneralResponse<UserLogoutDto>?
     
     // MARK: - GET
     func getMypage(id: Int,
@@ -31,6 +32,25 @@ final class AuthAPI {
                     self.userProfileData = try response.map(GeneralResponse<UserProfileDto>.self)
                     guard let userProfileData = self.userProfileData else { return }
                     completion(userProfileData)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    func getLogout(completion: @escaping(GeneralResponse<UserLogoutDto>?) -> Void) {
+        authProvider.request(.getLogout) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    self.userLogoutData = try response.map(GeneralResponse<UserLogoutDto>.self)
+                    guard let userLogoutData = self.userLogoutData else { return }
+                    completion(userLogoutData)
                 } catch let err {
                     print(err.localizedDescription, 500)
                 }

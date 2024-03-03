@@ -13,6 +13,7 @@ enum AuthTarget {
     
     case postLogin(id: String, pw: String)
     case getUserProfile(id: Int)
+    case getLogout
 }
 
 extension AuthTarget: BaseTargetType {
@@ -25,6 +26,8 @@ extension AuthTarget: BaseTargetType {
             let path = URLConstant.userProfile
                 .replacingOccurrences(of: "{UserId}", with: String(id))
             return path
+        case .getLogout:
+            return URLConstant.userLogout
         }
     }
     
@@ -33,6 +36,8 @@ extension AuthTarget: BaseTargetType {
         case .postLogin:
             return .post
         case .getUserProfile:
+            return .get
+        case .getLogout:
             return .get
         }
     }
@@ -44,6 +49,8 @@ extension AuthTarget: BaseTargetType {
                                       encoding: URLEncoding.default)
         case .getUserProfile:
             return .requestPlain
+        case .getLogout:
+            return .requestPlain
         }
     }
     
@@ -52,6 +59,8 @@ extension AuthTarget: BaseTargetType {
         case .postLogin:
             return nil
         case .getUserProfile:
+            return APIConstants.headerWithToken
+        case .getLogout:
             return APIConstants.headerWithToken
         }
     }

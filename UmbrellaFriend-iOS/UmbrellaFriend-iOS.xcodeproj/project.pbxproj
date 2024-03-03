@@ -60,6 +60,7 @@
 		A488FB362B94D047004D4A09 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB352B94D047004D4A09 /* UserManager.swift */; };
 		A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB372B94D571004D4A09 /* UserLoginDto.swift */; };
 		A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */; };
+		A488FB3D2B94DC0B004D4A09 /* UserLogoutDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */; };
 		A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9D2B70FD9D00883017 /* FontLiterals.swift */; };
 		A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */; };
 		A4998BA22B70FDB700883017 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA12B70FDB700883017 /* UIView+.swift */; };
@@ -171,6 +172,7 @@
 		A488FB352B94D047004D4A09 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		A488FB372B94D571004D4A09 /* UserLoginDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginDto.swift; sourceTree = "<group>"; };
 		A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogoutDto.swift; sourceTree = "<group>"; };
 		A4998B9D2B70FD9D00883017 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		A4998BA12B70FDB700883017 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 			children = (
 				A488FB282B931A02004D4A09 /* UserProfileDto.swift */,
 				A488FB372B94D571004D4A09 /* UserLoginDto.swift */,
+				A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A488FB152B930717004D4A09 /* MypageView.swift in Sources */,
+				A488FB3D2B94DC0B004D4A09 /* UserLogoutDto.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A43C73D52B8F130A00B39F21 /* UmbrellaCheckDto.swift in Sources */,
 				A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */,
