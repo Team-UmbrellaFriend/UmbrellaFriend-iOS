@@ -56,6 +56,10 @@
 		A488FB292B931A02004D4A09 /* UserProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB282B931A02004D4A09 /* UserProfileDto.swift */; };
 		A488FB2D2B931A58004D4A09 /* AuthTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB2C2B931A58004D4A09 /* AuthTarget.swift */; };
 		A488FB312B931AB5004D4A09 /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB302B931AB5004D4A09 /* AuthAPI.swift */; };
+		A488FB342B94D03D004D4A09 /* UserDefaultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB332B94D03D004D4A09 /* UserDefaultWrapper.swift */; };
+		A488FB362B94D047004D4A09 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB352B94D047004D4A09 /* UserManager.swift */; };
+		A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB372B94D571004D4A09 /* UserLoginDto.swift */; };
+		A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */; };
 		A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9D2B70FD9D00883017 /* FontLiterals.swift */; };
 		A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */; };
 		A4998BA22B70FDB700883017 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA12B70FDB700883017 /* UIView+.swift */; };
@@ -163,6 +167,10 @@
 		A488FB282B931A02004D4A09 /* UserProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDto.swift; sourceTree = "<group>"; };
 		A488FB2C2B931A58004D4A09 /* AuthTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTarget.swift; sourceTree = "<group>"; };
 		A488FB302B931AB5004D4A09 /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		A488FB332B94D03D004D4A09 /* UserDefaultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultWrapper.swift; sourceTree = "<group>"; };
+		A488FB352B94D047004D4A09 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		A488FB372B94D571004D4A09 /* UserLoginDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginDto.swift; sourceTree = "<group>"; };
+		A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A4998B9D2B70FD9D00883017 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		A4998BA12B70FDB700883017 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -534,6 +542,7 @@
 			isa = PBXGroup;
 			children = (
 				A488FB282B931A02004D4A09 /* UserProfileDto.swift */,
+				A488FB372B94D571004D4A09 /* UserLoginDto.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -552,6 +561,23 @@
 				A488FB2C2B931A58004D4A09 /* AuthTarget.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		A488FB322B94D00B004D4A09 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB332B94D03D004D4A09 /* UserDefaultWrapper.swift */,
+				A488FB352B94D047004D4A09 /* UserManager.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		A488FB392B94D5FD004D4A09 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A4998B922B70FD0900883017 /* Presentation */ = {
@@ -595,6 +621,7 @@
 		A4998B952B70FD1D00883017 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A488FB322B94D00B004D4A09 /* User */,
 				A431760E2B6FFBDE00093F0E /* AppDelegate.swift */,
 				A43176102B6FFBDE00093F0E /* SceneDelegate.swift */,
 			);
@@ -772,6 +799,7 @@
 			isa = PBXGroup;
 			children = (
 				A4998C122B80501200883017 /* View */,
+				A488FB392B94D5FD004D4A09 /* ViewModel */,
 				A4998C112B80500D00883017 /* ViewController */,
 			);
 			path = LoginScene;
@@ -997,6 +1025,7 @@
 				A43C74292B90A9B300B39F21 /* UmbrellaReturnDto.swift in Sources */,
 				A43C742B2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift in Sources */,
 				A488FB222B930F77004D4A09 /* MypageDto.swift in Sources */,
+				A488FB342B94D03D004D4A09 /* UserDefaultWrapper.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A43C73C02B8BA37100B39F21 /* UmbrellaAvailableDto.swift in Sources */,
 				A488FB2D2B931A58004D4A09 /* AuthTarget.swift in Sources */,
@@ -1030,6 +1059,7 @@
 				A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */,
 				A488FB1C2B930F31004D4A09 /* MypageAPI.swift in Sources */,
 				A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */,
+				A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */,
 				A43C74222B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift in Sources */,
 				A43C74202B90A5E000B39F21 /* UmbrellaReturnAlertView.swift in Sources */,
 				A4998C162B80502900883017 /* LoginView.swift in Sources */,
@@ -1053,6 +1083,8 @@
 				A43C73D52B8F130A00B39F21 /* UmbrellaCheckDto.swift in Sources */,
 				A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */,
 				A43C74152B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift in Sources */,
+				A488FB362B94D047004D4A09 /* UserManager.swift in Sources */,
+				A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */,
 				A488FB132B930710004D4A09 /* MypageViewController.swift in Sources */,
 				A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */,
 				A488FB192B930732004D4A09 /* MypageCollectionViewCell.swift in Sources */,

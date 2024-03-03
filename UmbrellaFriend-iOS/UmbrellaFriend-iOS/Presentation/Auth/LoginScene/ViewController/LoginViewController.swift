@@ -7,7 +7,15 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class LoginViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private let loginViewModel = LoginViewModel()
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
@@ -25,6 +33,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindViewModel()
         setDelegate()
         setGesture()
     }
@@ -37,6 +46,16 @@ extension LoginViewController {
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    func bindViewModel() {
+        loginViewModel.outputs.userLoginData
+            .subscribe(onNext: { model in
+                UserManager.shared.updateToken(token: model.token)
+                let nav = HomeViewController()
+                self.navigationController?.pushViewController(nav, animated: false)
+            })
+            .disposed(by: disposeBag)
     }
     
     func setDelegate() {
@@ -66,7 +85,7 @@ extension LoginViewController: NavigationBarProtocol {
 extension LoginViewController: ButtonProtocol {
     
     func buttonTapped() {
-        print("자동로그인구현")
+        loginViewModel.login(id: loginView.idTextField.text ?? "", pw: loginView.pwTextField.text ?? "")
     }
 }
 
