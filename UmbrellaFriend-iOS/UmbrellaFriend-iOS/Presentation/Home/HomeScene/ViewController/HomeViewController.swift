@@ -63,6 +63,13 @@ extension HomeViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
+        homeView.goMyPageButton.rx.tap
+            .subscribe(onNext: {
+                let nav = MypageViewController()
+                self.navigationController?.pushViewController(nav, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
     
     func setToastMessage() {

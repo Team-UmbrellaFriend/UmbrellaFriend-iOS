@@ -155,7 +155,7 @@ extension PhotoAttachViewController: NavigationBarProtocol {
 extension PhotoAttachViewController: ButtonProtocol {
     
     func buttonTapped() {
-        let nav = SignupViewController()
+        let nav = SignupViewController(0)
         nav.extractName = self.photoName
         nav.extractId = self.photoId
         self.navigationController?.pushViewController(nav, animated: true)
