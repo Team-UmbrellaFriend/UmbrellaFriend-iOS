@@ -16,7 +16,7 @@ enum NetworkHeaderKey: String {
 enum APIConstants {
     
     static var type: String = "multipart/form-data"
-    static var token: String = "Token 377c0d6513943714730e76c83ee7ad2ebd6fdb2b"
+    static var token: String = "Token \(UserManager.shared.getToken)"
     
     //MARK: - Header
 
