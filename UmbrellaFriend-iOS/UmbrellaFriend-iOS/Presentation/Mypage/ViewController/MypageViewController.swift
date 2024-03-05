@@ -84,7 +84,7 @@ extension MypageViewController {
             .subscribe(onNext: {
                 self.mypageViewModel.outputs.mypageData
                     .subscribe(onNext: { [weak self] model in
-                        let nav = SignupViewController(model.user.id)
+                        let nav = SignupViewController(idx: model.user.id)
                         self?.navigationController?.pushViewController(nav, animated: true)
                     })
                     .disposed(by: self.disposeBag)

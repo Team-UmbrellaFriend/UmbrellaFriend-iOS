@@ -21,6 +21,7 @@ final class SignupViewController: UIViewController {
     var userId: Int = 0
     
     private let signupViewModel = SignupViewModel()
+    private let photoAttachViewModel: PhotoAttachViewModel
     private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
@@ -29,8 +30,9 @@ final class SignupViewController: UIViewController {
     
     // MARK: - Initializer
     
-    init(_ idx: Int) {
+    init(idx: Int = 0, viewModel: PhotoAttachViewModel? = nil) {
         self.userId = idx
+        self.photoAttachViewModel = viewModel ?? PhotoAttachViewModel()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -88,7 +90,12 @@ extension SignupViewController {
                         pw: self.signupView.pwTextField.text ?? "",
                         phone: self.signupView.phoneTextField.text ?? "")
                 } else {
-                    print("회원가입")
+                    self.photoAttachViewModel.inputs.signup(
+                        username: self.signupView.nameTextField.text ?? "",
+                        email: "\(self.signupView.emailTextField.text ?? "")@sookmyung.ac.kr" ,
+                        pw: self.signupView.pwTextField.text ?? "",
+                        studentId: self.signupView.idTextField.text?.codingKey.intValue ?? 0,
+                        phone: self.signupView.phoneTextField.text ?? "")
                 }
             })
             .disposed(by: disposeBag)
@@ -96,6 +103,19 @@ extension SignupViewController {
         signupViewModel.outputs.editProfileData
             .subscribe(onNext: {_ in 
                 self.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        photoAttachViewModel.outputs.signupData
+            .subscribe(onNext: { model in
+                UserManager.shared.updateToken(model.token)
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    if let window = windowScene.windows.first {
+                        let homeViewController = HomeViewController()
+                        let navigationController = UINavigationController(rootViewController: homeViewController)
+                        window.rootViewController = navigationController
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }
