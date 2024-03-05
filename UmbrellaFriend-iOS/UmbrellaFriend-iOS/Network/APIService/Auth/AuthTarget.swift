@@ -15,6 +15,7 @@ enum AuthTarget {
     case getUserProfile(id: Int)
     case getLogout
     case putUserProfile(id: Int, email: String, pw: String, phone: String)
+    case postSignup(username: String, email: String, pw: String, studentId: Int, img: Data, phone: String)
 }
 
 extension AuthTarget: BaseTargetType {
@@ -29,10 +30,12 @@ extension AuthTarget: BaseTargetType {
             return path
         case .getLogout:
             return URLConstant.userLogout
-        case .putUserProfile(id: let id, email: let email, pw: let pw, phone: let phone):
+        case .putUserProfile(id: let id, email: _, pw: _, phone: _):
             let path = URLConstant.userProfile
                 .replacingOccurrences(of: "{UserId}", with: String(id))
             return path
+        case.postSignup:
+            return URLConstant.userSignup
         }
     }
     
@@ -46,6 +49,8 @@ extension AuthTarget: BaseTargetType {
             return .get
         case .putUserProfile:
             return .put
+        case .postSignup:
+            return .post
         }
     }
     
@@ -58,12 +63,21 @@ extension AuthTarget: BaseTargetType {
             return .requestPlain
         case .getLogout:
             return .requestPlain
-        case .putUserProfile(id: let id, email: let email, pw: let pw, phone: let phone):
+        case .putUserProfile(id: _, email: let email, pw: let pw, phone: let phone):
             let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "eamil")
             let pwData = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password")
             let pwData2 = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password2")
             let phone = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNubmer")
             return .uploadMultipart([emailData, pwData, pwData2, phone])
+        case .postSignup(username: let name, email: let email, pw: let pw, studentId: let id, img: let img, phone: let phone):
+            let nameData = MultipartFormData(provider: .data(name.data(using: .utf8)!), name: "username")
+               let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "email")
+               let pwData = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password")
+               let pwData2 = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password2")
+               let idData = MultipartFormData(provider: .data(id.description.data(using: .ascii)!), name: "profile.studentID")
+               let imgData = MultipartFormData(provider: .data(img), name: "profile.studentCard", fileName: "studentCard.jpg", mimeType: "image/jpeg")
+               let phoneData = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNumber") 
+               return .uploadMultipart([nameData, emailData, pwData, pwData2, idData, imgData, phoneData])
         }
     }
     
@@ -77,6 +91,8 @@ extension AuthTarget: BaseTargetType {
             return APIConstants.headerWithToken
         case .putUserProfile:
             return APIConstants.headerWithTokenType
+        case .postSignup:
+            return nil
         }
     }
 }

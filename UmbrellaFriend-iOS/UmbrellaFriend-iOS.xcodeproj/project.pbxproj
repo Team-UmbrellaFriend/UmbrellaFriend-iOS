@@ -61,6 +61,7 @@
 		A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB372B94D571004D4A09 /* UserLoginDto.swift */; };
 		A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */; };
 		A488FB3D2B94DC0B004D4A09 /* UserLogoutDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */; };
+		A488FB402B973035004D4A09 /* PhotoAttachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3F2B973035004D4A09 /* PhotoAttachViewModel.swift */; };
 		A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9D2B70FD9D00883017 /* FontLiterals.swift */; };
 		A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */; };
 		A4998BA22B70FDB700883017 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998BA12B70FDB700883017 /* UIView+.swift */; };
@@ -173,6 +174,7 @@
 		A488FB372B94D571004D4A09 /* UserLoginDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginDto.swift; sourceTree = "<group>"; };
 		A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogoutDto.swift; sourceTree = "<group>"; };
+		A488FB3F2B973035004D4A09 /* PhotoAttachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachViewModel.swift; sourceTree = "<group>"; };
 		A4998B9D2B70FD9D00883017 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
 		A4998BA12B70FDB700883017 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
@@ -583,6 +585,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A488FB3E2B973022004D4A09 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB3F2B973035004D4A09 /* PhotoAttachViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A4998B922B70FD0900883017 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,6 +867,7 @@
 			isa = PBXGroup;
 			children = (
 				A4998C252B80844000883017 /* View */,
+				A488FB3E2B973022004D4A09 /* ViewModel */,
 				A4998C242B80843A00883017 /* ViewController */,
 			);
 			path = PhotoAttachScene;
@@ -1063,6 +1074,7 @@
 				A488FB1C2B930F31004D4A09 /* MypageAPI.swift in Sources */,
 				A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */,
 				A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */,
+				A488FB402B973035004D4A09 /* PhotoAttachViewModel.swift in Sources */,
 				A43C74222B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift in Sources */,
 				A43C74202B90A5E000B39F21 /* UmbrellaReturnAlertView.swift in Sources */,
 				A4998C162B80502900883017 /* LoginView.swift in Sources */,
