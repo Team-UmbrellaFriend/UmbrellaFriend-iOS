@@ -21,7 +21,7 @@ final class UserManager {
 
 extension UserManager {
     
-    func updateToken(token: String) {
+    func updateToken(_ token: String) {
         self.token = token
     }
     

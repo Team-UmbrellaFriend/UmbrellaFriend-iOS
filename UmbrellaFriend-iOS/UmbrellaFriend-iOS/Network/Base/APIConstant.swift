@@ -16,20 +16,19 @@ enum NetworkHeaderKey: String {
 enum APIConstants {
     
     static var type: String = "multipart/form-data"
-    static var token: String = "Token \(UserManager.shared.getToken)"
     
     //MARK: - Header
 
     static var headerWithToken: [String: String] {
         [
-            NetworkHeaderKey.authorization.rawValue: APIConstants.token
+            NetworkHeaderKey.authorization.rawValue: "Token \(UserManager.shared.getToken)"
         ]
     }
     
     static var headerWithTokenType: [String: String] {
         [
             NetworkHeaderKey.contentType.rawValue: APIConstants.type,
-            NetworkHeaderKey.authorization.rawValue: APIConstants.token
+            NetworkHeaderKey.authorization.rawValue: "Token \(UserManager.shared.getToken)"
         ]
     }
 }

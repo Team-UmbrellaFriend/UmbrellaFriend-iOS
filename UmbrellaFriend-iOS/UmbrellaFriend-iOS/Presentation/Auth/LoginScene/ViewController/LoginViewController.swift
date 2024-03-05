@@ -51,7 +51,7 @@ extension LoginViewController {
     func bindViewModel() {
         loginViewModel.outputs.userLoginData
             .subscribe(onNext: { model in
-                UserManager.shared.updateToken(token: model.token)
+                UserManager.shared.updateToken(model.token)
                 let nav = HomeViewController()
                 self.navigationController?.pushViewController(nav, animated: false)
             })
