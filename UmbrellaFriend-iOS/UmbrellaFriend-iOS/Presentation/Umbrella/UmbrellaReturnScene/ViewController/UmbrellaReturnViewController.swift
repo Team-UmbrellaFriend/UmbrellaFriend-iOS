@@ -96,12 +96,12 @@ extension UmbrellaReturnViewController {
                 } else if recognizedText.contains("순헌관") {
                     self?.photoPlaceNum = 2
                     self?.returnViewModel.umbrellaReturnLocation(location: "순헌관")
-                } else if recognizedText.contains("학생회관") {
-                    self?.photoPlaceNum = 3
-                    self?.returnViewModel.umbrellaReturnLocation(location: "학생회관")
                 } else if recognizedText.contains("도서관") {
-                    self?.photoPlaceNum = 4
+                    self?.photoPlaceNum = 3
                     self?.returnViewModel.umbrellaReturnLocation(location: "도서관")
+                } else if recognizedText.contains("학생회관") {
+                    self?.photoPlaceNum = 4
+                    self?.returnViewModel.umbrellaReturnLocation(location: "학생회관")
                 } else if recognizedText.contains("음대") {
                     self?.photoPlaceNum = 5
                     self?.returnViewModel.umbrellaReturnLocation(location: "음대")
