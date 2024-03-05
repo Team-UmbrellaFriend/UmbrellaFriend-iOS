@@ -19,6 +19,7 @@ final class AuthAPI {
     
     public private(set) var userLoginData: GeneralResponse<UserLoginDto>?
     public private(set) var userProfileData: GeneralResponse<UserProfileDto>?
+    public private(set) var editProfileData: GeneralResponse<UserProfileDto>?
     public private(set) var userLogoutData: GeneralResponse<UserLogoutDto>?
     
     // MARK: - GET
@@ -73,6 +74,27 @@ final class AuthAPI {
                     self.userLoginData = try response.map(GeneralResponse<UserLoginDto>.self)
                     guard let userLoginData = self.userLoginData else { return }
                     completion(userLoginData)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    // MARK: - PUT
+    func putUserProfile(id: Int, email: String, pw: String, phone: String,
+                        completion: @escaping(GeneralResponse<UserProfileDto>?) -> Void) {
+        authProvider.request(.putUserProfile(id: id, email: email, pw: pw, phone: phone)) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    self.editProfileData = try response.map(GeneralResponse<UserProfileDto>.self)
+                    guard let editProfileData = self.editProfileData else { return }
+                    completion(editProfileData)
                 } catch let err {
                     print(err.localizedDescription, 500)
                 }

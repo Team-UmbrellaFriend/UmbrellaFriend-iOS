@@ -14,6 +14,7 @@ enum AuthTarget {
     case postLogin(id: String, pw: String)
     case getUserProfile(id: Int)
     case getLogout
+    case putUserProfile(id: Int, email: String, pw: String, phone: String)
 }
 
 extension AuthTarget: BaseTargetType {
@@ -28,6 +29,10 @@ extension AuthTarget: BaseTargetType {
             return path
         case .getLogout:
             return URLConstant.userLogout
+        case .putUserProfile(id: let id, email: let email, pw: let pw, phone: let phone):
+            let path = URLConstant.userProfile
+                .replacingOccurrences(of: "{UserId}", with: String(id))
+            return path
         }
     }
     
@@ -39,6 +44,8 @@ extension AuthTarget: BaseTargetType {
             return .get
         case .getLogout:
             return .get
+        case .putUserProfile:
+            return .put
         }
     }
     
@@ -51,6 +58,12 @@ extension AuthTarget: BaseTargetType {
             return .requestPlain
         case .getLogout:
             return .requestPlain
+        case .putUserProfile(id: let id, email: let email, pw: let pw, phone: let phone):
+            let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "eamil")
+            let pwData = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password")
+            let pwData2 = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password2")
+            let phone = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNubmer")
+            return .uploadMultipart([emailData, pwData, pwData2, phone])
         }
     }
     
@@ -62,6 +75,8 @@ extension AuthTarget: BaseTargetType {
             return APIConstants.headerWithToken
         case .getLogout:
             return APIConstants.headerWithToken
+        case .putUserProfile:
+            return APIConstants.headerWithTokenType
         }
     }
 }
