@@ -82,10 +82,20 @@ extension SignupViewController {
         signupView.completeButton.rx.tap
             .subscribe(onNext: {
                 if self.userId > 0 {
-                    print("프로필 수정")
+                    self.signupViewModel.inputs.editProfile(
+                        id: self.userId,
+                        email: self.signupView.emailTextField.text ?? "",
+                        pw: self.signupView.pwTextField.text ?? "",
+                        phone: self.signupView.phoneTextField.text ?? "")
                 } else {
                     print("회원가입")
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        signupViewModel.outputs.editProfileData
+            .subscribe(onNext: {_ in 
+                self.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }
