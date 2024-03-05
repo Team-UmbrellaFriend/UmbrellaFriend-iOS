@@ -63,7 +63,20 @@ extension MypageViewController {
         
         mypageView.navigationView.logoutButton.rx.tap
             .subscribe(onNext: {
-                print("logout")
+                self.mypageViewModel.inputs.logout()
+            })
+            .disposed(by: disposeBag)
+        
+        mypageViewModel.outputs.logoutData
+            .subscribe(onNext: { _ in
+                UserManager.shared.clearToken()
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    if let window = windowScene.windows.first {
+                        let homeViewController = SplashViewController()
+                        let navigationController = UINavigationController(rootViewController: homeViewController)
+                        window.rootViewController = navigationController
+                    }
+                }
             })
             .disposed(by: disposeBag)
         
