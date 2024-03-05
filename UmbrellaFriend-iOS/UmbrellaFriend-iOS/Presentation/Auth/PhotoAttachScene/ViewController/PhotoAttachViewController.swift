@@ -67,7 +67,7 @@ extension PhotoAttachViewController {
             photoAttachView.studentIDImage.image = .remove
             photoAttachView.studentIDImage.isHidden = true
             photoAttachView.imageDeleteButton.isHidden = true
-            photoAttachView.registerSubTitleLabel.isHidden = true
+            photoAttachView.registerSubTitleLabel.isHidden = false
             photoAttachView.nextButton.isEnabled = false
         default:
             break
