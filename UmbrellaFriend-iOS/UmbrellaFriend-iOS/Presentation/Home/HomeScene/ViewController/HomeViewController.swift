@@ -53,11 +53,14 @@ extension HomeViewController {
             .drive(onNext: { [weak self] model in
                 self?.homeView.configureHomeView(model: model)
                 if model.dDay.isOverdue {
+                    self?.homeView.rentView.isUserInteractionEnabled = false
                     self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
                 } else {
                     if model.dDay.daysRemaining < 0 {
+                        self?.homeView.rentView.isUserInteractionEnabled = true
                         self?.homeView.returnIcon.returnDay = 0
                     } else {
+                        self?.homeView.rentView.isUserInteractionEnabled = false
                         self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
                     }
                 }

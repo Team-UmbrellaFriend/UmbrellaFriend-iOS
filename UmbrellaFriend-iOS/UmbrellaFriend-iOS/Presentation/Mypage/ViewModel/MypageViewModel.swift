@@ -13,11 +13,13 @@ import Moya
 
 protocol MypageViewModelInputs {
     
+    func logout()
 }
 
 protocol MypageViewModelOutputs {
     
     var mypageData: BehaviorRelay<MypageDto> { get }
+    var logoutData: PublishSubject<UserLogoutDto> { get }
 }
 
 protocol MypageViewModelType {
@@ -31,7 +33,16 @@ final class MypageViewModel: MypageViewModelInputs, MypageViewModelOutputs, Mypa
     var inputs: MypageViewModelInputs { return self }
     var outputs: MypageViewModelOutputs { return self }
  
+    // output
+    
     var mypageData: BehaviorRelay<MypageDto> = BehaviorRelay<MypageDto>(value: MypageDto.mypageDtoInitValue())
+    var logoutData: PublishSubject<UserLogoutDto> = PublishSubject<UserLogoutDto>()
+    
+    // input
+    
+    func logout() {
+        self.getLogout()
+    }
     
     init() {
         self.getMypageDto()
@@ -46,6 +57,17 @@ extension MypageViewModel {
             guard self != nil else { return }
             guard let data = response?.data else { return }
             self?.mypageData.accept(data)
+        }
+    }
+    
+    func getLogout() {
+        AuthAPI.shared.getLogout{ [weak self] response in
+            guard (response?.status) != nil else { return }
+            if response?.status == 200 {
+                guard self != nil else { return }
+                guard let data = response?.data else { return }
+                self?.logoutData.onNext(data)
+            }
         }
     }
 }

@@ -34,7 +34,9 @@ final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewMo
     var homeData: BehaviorRelay<HomeDto> = BehaviorRelay<HomeDto>(value: HomeDto.homeDtoInitValue())
     
     init() {
-        self.getHomeDto()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.getHomeDto()
+        }
     }
 }
 

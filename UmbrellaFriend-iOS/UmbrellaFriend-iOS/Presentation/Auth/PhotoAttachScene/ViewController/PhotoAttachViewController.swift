@@ -17,6 +17,8 @@ final class PhotoAttachViewController: UIViewController {
     var photoName: String = ""
     var photoId: String = ""
     
+    private let photoAttachViewModel = PhotoAttachViewModel()
+    
     // MARK: - UI Components
     
     private let photoAttachView = PhotoAttachView()
@@ -65,7 +67,7 @@ extension PhotoAttachViewController {
             photoAttachView.studentIDImage.image = .remove
             photoAttachView.studentIDImage.isHidden = true
             photoAttachView.imageDeleteButton.isHidden = true
-            photoAttachView.registerSubTitleLabel.isHidden = true
+            photoAttachView.registerSubTitleLabel.isHidden = false
             photoAttachView.nextButton.isEnabled = false
         default:
             break
@@ -155,7 +157,7 @@ extension PhotoAttachViewController: NavigationBarProtocol {
 extension PhotoAttachViewController: ButtonProtocol {
     
     func buttonTapped() {
-        let nav = SignupViewController(0)
+        let nav = SignupViewController(idx: 0, viewModel: self.photoAttachViewModel)
         nav.extractName = self.photoName
         nav.extractId = self.photoId
         self.navigationController?.pushViewController(nav, animated: true)
@@ -167,6 +169,9 @@ extension PhotoAttachViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage {
             self.extractInfo(image: image)
+            if let imageData = image.jpegData(compressionQuality: 0.5) {
+                photoAttachViewModel.signupImage(image: imageData)
+            }
             photoAttachView.studentIDImage.isHidden = false
             photoAttachView.imageDeleteButton.isHidden = false
             photoAttachView.studentIDImage.image = image

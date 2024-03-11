@@ -63,9 +63,16 @@ final class UmbrellaRentView: UIView {
         return button
     }()
     
-    private let backgroundView : UIView = {
+    private let backgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.umbrellaBlack.withAlphaComponent(0.6)
+        view.backgroundColor = UIColor.clear
+        return view
+    }()
+    
+    private let qrView: UIView = {
+        let view = UIView()
+        view.layer.borderColor = UIColor.mainBlue.cgColor
+        view.layer.borderWidth = 4
         return view
     }()
     
@@ -124,12 +131,7 @@ private extension UmbrellaRentView {
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         DispatchQueue.main.async {
-            let viewSize: CGFloat = SizeLiterals.Screen.screenWidth * 250 / 375
-            let xOrigin = (SizeLiterals.Screen.screenWidth - viewSize) / 2
-            let yOrigin = self.safeAreaInsets.top + 176
-            print(yOrigin)
-            self.videoPreviewLayer?.frame = CGRect(x: xOrigin, y: yOrigin, width: viewSize, height: viewSize)
-            self.layer.addSublayer(self.videoPreviewLayer!)
+            self.videoPreviewLayer?.frame = CGRect(x: 0.0, y: 0.0, width: SizeLiterals.Screen.screenWidth, height: SizeLiterals.Screen.screenHeight)
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
@@ -138,12 +140,23 @@ private extension UmbrellaRentView {
     }
     
     func setHierarchy() {
-        addSubviews(backgroundView, exitButton, titleLabel, subTitleLabel, mapButton)
+        if let videoPreviewLayer = self.videoPreviewLayer {
+            self.layer.addSublayer(videoPreviewLayer)
+        }
+        addSubview(backgroundView)
+        backgroundView.addSubview(qrView)
+        addSubviews(exitButton, titleLabel, subTitleLabel, mapButton)
     }
     
     func setLayout() {
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        qrView.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(176)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(SizeLiterals.Screen.screenWidth * 259 / 375)
         }
         
         exitButton.snp.makeConstraints {
