@@ -18,6 +18,7 @@
 		A43B23212BA575E200E15CC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23202BA575E200E15CC3 /* FirebaseStorage */; };
 		A43B23232BA575E200E15CC3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */; };
 		A43B23252BA582AA00E15CC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */; };
+		A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23262BA58E6600E15CC3 /* MakeAlert.swift */; };
 		A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73912B8A436100B39F21 /* BaseTargetType.swift */; };
 		A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73972B8A43B400B39F21 /* HomeDto.swift */; };
 		A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739A2B8A440D00B39F21 /* HomeAPI.swift */; };
@@ -135,6 +136,7 @@
 		A431761C2B6FFBE000093F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43B22EF2BA2D89800E15CC3 /* UmbrellaFriend-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UmbrellaFriend-iOS.entitlements"; sourceTree = "<group>"; };
 		A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A43B23262BA58E6600E15CC3 /* MakeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAlert.swift; sourceTree = "<group>"; };
 		A43C73912B8A436100B39F21 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		A43C73972B8A43B400B39F21 /* HomeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDto.swift; sourceTree = "<group>"; };
 		A43C739A2B8A440D00B39F21 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 			isa = PBXGroup;
 			children = (
 				A4998BAB2B70FE3700883017 /* MakeVibrate.swift */,
+				A43B23262BA58E6600E15CC3 /* MakeAlert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1126,6 +1129,7 @@
 				A43C74152B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift in Sources */,
 				A488FB362B94D047004D4A09 /* UserManager.swift in Sources */,
 				A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */,
+				A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */,
 				A488FB132B930710004D4A09 /* MypageViewController.swift in Sources */,
 				A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */,
 				A488FB192B930732004D4A09 /* MypageCollectionViewCell.swift in Sources */,
