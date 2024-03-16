@@ -10,9 +10,9 @@ import UIKit
 extension String {
     
     func isValidName() -> Bool {
-        let nameRegex = #"^[가-힣]{2,}$"#
-        let nameTest = NSPredicate(format: "SELF MATCHES %@", nameRegex)
-        return nameTest.evaluate(with: self)
+        let pattern = "[가-힣]"
+        guard self.range(of: pattern, options: .regularExpression) != nil else { return false }
+        return true
     }
     
     func isValidStudentID() -> Bool {
