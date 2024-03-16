@@ -98,6 +98,7 @@ final class UmbrellaRentBottomSheetView: UIView {
     }()
     
     private let rentIcon = UIImageView(image: UIImage(resource: .icBigUmbrella))
+    let rentAlertView = CustomAlertView(subTitle: "")
     
     // MARK: - Life Cycles
     
@@ -121,12 +122,13 @@ private extension UmbrellaRentBottomSheetView {
 
     func setUI() {
         backgroundColor = .clear
+        rentAlertView.isHidden = true
     }
     
     func setHierarchy() {
         rentInfoView.addSubviews(rentUserNameLabel, rentUserStudentIDLabel, rentDateLabel)
         bottomSheetView.addSubviews(rentTitleLabel, rentIcon, umbrellaInfoLabel, rentInfoView, rentCancelButton, rentProgressButton)
-        addSubviews(backgroundView, bottomSheetView)
+        addSubviews(backgroundView, bottomSheetView, rentAlertView)
     }
     
     func setLayout() {
@@ -191,6 +193,10 @@ private extension UmbrellaRentBottomSheetView {
             $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 54 / 812)
         }
+        
+        rentAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -202,5 +208,9 @@ extension UmbrellaRentBottomSheetView {
         rentUserStudentIDLabel.text = "\(model.studentID)"
         rentDateLabel.text = "\(model.date) (3일 대여)"
         rentDateLabel.partColorChange(targetString: "(3일 대여)", textColor: .subOrange)
+    }
+    
+    func configureAlertView(subTitle: String) {
+        rentAlertView.alertSubTitleLabel.text = "\(subTitle).\nQR코드를 다시 인식해주세요."
     }
 }

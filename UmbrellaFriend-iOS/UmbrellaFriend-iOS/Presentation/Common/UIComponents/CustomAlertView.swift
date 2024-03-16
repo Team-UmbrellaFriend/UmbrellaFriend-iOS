@@ -24,13 +24,13 @@ final class CustomAlertView: UIView {
     
     // MARK: - UI Components
     
-    let backgroundView: UIView = {
+    private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .umbrellaBlack.withAlphaComponent(0.6)
         return view
     }()
     
-    let alertView: UIView = {
+    private let alertView: UIView = {
         let view = UIView()
         view.backgroundColor = .umbrellaWhite
         view.clipsToBounds = true
@@ -40,12 +40,13 @@ final class CustomAlertView: UIView {
     
     private let alertTitleLabel: UILabel = {
         let label = UILabel()
+        label.text = "잠깐만요!"
         label.textColor = .subOrange
         label.font = .umbrellaFont(.title1)
         return label
     }()
     
-    private let alertSubTitleLabel: UILabel = {
+    let alertSubTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .umbrellaBlack
         label.textAlignment = .center
@@ -54,7 +55,7 @@ final class CustomAlertView: UIView {
         return label
     }()
     
-    lazy var alertCheckButton = CustomButton(status: true, title: "확인")
+    private lazy var alertCheckButton = CustomButton(status: true, title: "확인")
     
     // MARK: - Life Cycles
     
@@ -67,9 +68,9 @@ final class CustomAlertView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(title: String, subTitle: String) {
+    convenience init(subTitle: String) {
         self.init()
-        setUI(title: title, subTitle: subTitle)
+        setUI(subTitle: subTitle)
         setHierarchy()
         setLayout()
     }
@@ -79,9 +80,8 @@ final class CustomAlertView: UIView {
 
 private extension CustomAlertView {
 
-    func setUI(title: String, subTitle: String) {
+    func setUI(subTitle: String) {
         backgroundColor = .clear
-        self.alertTitleLabel.text = title
         self.alertSubTitleLabel.text = subTitle
         
         self.alertCheckButton.rx.tap
@@ -116,13 +116,17 @@ private extension CustomAlertView {
         alertSubTitleLabel.snp.makeConstraints {
             $0.top.equalTo(alertTitleLabel.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
+            $0.height.equalTo(44)
         }
         
         alertCheckButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(14)
             $0.centerX.equalToSuperview()
+        }
+        
+        alertCheckButton.snp.updateConstraints {
             $0.width.equalTo(107)
-            $0.height.equalTo(44)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 44 / 812)
         }
     }
 }
