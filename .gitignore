@@ -77,3 +77,5 @@ Carthage/Build/
 # Accio dependency management
 Dependencies/
 .accio/
+
+UmbrellaFriend-iOS/UmbrellaFriend-iOS/GoogleService-Info.plist
