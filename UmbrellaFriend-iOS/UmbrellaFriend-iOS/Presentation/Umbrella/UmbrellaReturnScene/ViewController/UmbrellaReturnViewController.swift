@@ -49,6 +49,7 @@ extension UmbrellaReturnViewController {
     func setDelegate() {
         umbrellaReturnView.navigationView.delegate = self
         umbrellaReturnView.returnButton.delegate = self
+        umbrellaReturnView.returnAlertView.delegate = self
     }
     
     func setAddTarget() {
@@ -108,6 +109,8 @@ extension UmbrellaReturnViewController {
                 } else if recognizedText.contains("백주년기념관") {
                     self?.photoPlaceNum = 6
                     self?.returnViewModel.umbrellaReturnLocation(location: "백주년기념관")
+                } else {
+                    self?.umbrellaReturnView.returnAlertView.isHidden = false
                 }
             }
         }
@@ -183,4 +186,18 @@ extension UmbrellaReturnViewController: UIImagePickerControllerDelegate {
 
 extension UmbrellaReturnViewController: UINavigationControllerDelegate {
     
+}
+
+extension UmbrellaReturnViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        umbrellaReturnView.returnAlertView.isHidden = true
+        umbrellaReturnView.returnImage.image = .remove
+        umbrellaReturnView.returnImage.isHidden = true
+        umbrellaReturnView.imageDeleteButton.isHidden = true
+        umbrellaReturnView.returnTitleLabel.text = "반납 완료를 위해\n카메라로 인증해주세요"
+        umbrellaReturnView.returnSubTitleLabel.isHidden = false
+        umbrellaReturnView.returnButton.isEnabled = false
+        umbrellaReturnView.navigationView.isAgainButtonInclued = false
+    }
 }
