@@ -47,6 +47,7 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setDelegate()
         setCollectionView()
         setDismissAction()
     }
@@ -61,6 +62,10 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
 // MARK: - Extensions
 
 extension UmbrellaReturnBottomSheetViewController {
+    
+    func setDelegate() {
+        umbrellaReturnBottomSheetView.umbrellaReturnAlertView.delegate = self
+    }
     
     func setCollectionView() {
         Observable.just(umbrellaPlace)
