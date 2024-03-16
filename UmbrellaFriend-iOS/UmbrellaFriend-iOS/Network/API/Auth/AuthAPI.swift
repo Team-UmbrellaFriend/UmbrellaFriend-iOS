@@ -67,7 +67,7 @@ final class AuthAPI {
     func postLogin(id: String,
                    pw: String,
                    completion: @escaping(GeneralResponse<UserLoginDto>?) -> Void) {
-        authProvider.request(.postLogin(id: id, pw: pw)) { [weak self] result in
+        authProvider.request(.postLogin(id: id, pw: pw, fcmToken: UserManager.shared.getFcmToken)) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let response):
@@ -87,7 +87,7 @@ final class AuthAPI {
     
     func postSignup(username: String, email: String, pw: String, studentId: Int, img: Data, phone: String,
                    completion: @escaping(GeneralResponse<UserLoginDto>?) -> Void) {
-        authProvider.request(.postSignup(username: username, email: email, pw: pw, studentId: studentId, img: img, phone: phone)) { [weak self] result in
+        authProvider.request(.postSignup(username: username, email: email, pw: pw, studentId: studentId, img: img, phone: phone, fcmToken: UserManager.shared.getFcmToken)) { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let response):
