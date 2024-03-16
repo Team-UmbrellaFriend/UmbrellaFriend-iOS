@@ -44,8 +44,7 @@
 		A43C74172B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74162B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift */; };
 		A43C741A2B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74192B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift */; };
 		A43C741C2B9098EB00B39F21 /* UmbrellaPlaceDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C741B2B9098EB00B39F21 /* UmbrellaPlaceDto.swift */; };
-		A43C74202B90A5E000B39F21 /* UmbrellaReturnAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C741F2B90A5E000B39F21 /* UmbrellaReturnAlertView.swift */; };
-		A43C74222B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74212B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift */; };
+		A43C74202B90A5E000B39F21 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C741F2B90A5E000B39F21 /* CustomAlertView.swift */; };
 		A43C74272B90A95000B39F21 /* UmbrellaReturnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74262B90A95000B39F21 /* UmbrellaReturnViewModel.swift */; };
 		A43C74292B90A9B300B39F21 /* UmbrellaReturnDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74282B90A9B300B39F21 /* UmbrellaReturnDto.swift */; };
 		A43C742B2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C742A2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift */; };
@@ -159,8 +158,7 @@
 		A43C74162B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnBottomSheetView.swift; sourceTree = "<group>"; };
 		A43C74192B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnPlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		A43C741B2B9098EB00B39F21 /* UmbrellaPlaceDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaPlaceDto.swift; sourceTree = "<group>"; };
-		A43C741F2B90A5E000B39F21 /* UmbrellaReturnAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnAlertView.swift; sourceTree = "<group>"; };
-		A43C74212B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnAlertViewController.swift; sourceTree = "<group>"; };
+		A43C741F2B90A5E000B39F21 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		A43C74262B90A95000B39F21 /* UmbrellaReturnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnViewModel.swift; sourceTree = "<group>"; };
 		A43C74282B90A9B300B39F21 /* UmbrellaReturnDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnDto.swift; sourceTree = "<group>"; };
 		A43C742A2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnCompleteView.swift; sourceTree = "<group>"; };
@@ -442,7 +440,6 @@
 			children = (
 				A43C74102B9087FC00B39F21 /* UmbrellaReturnViewController.swift */,
 				A43C74142B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift */,
-				A43C74212B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -452,7 +449,6 @@
 			children = (
 				A43C740E2B9087ED00B39F21 /* UmbrellaReturnView.swift */,
 				A43C74162B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift */,
-				A43C741F2B90A5E000B39F21 /* UmbrellaReturnAlertView.swift */,
 				A43C742A2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift */,
 			);
 			path = View;
@@ -865,6 +861,7 @@
 		A4998C1B2B805A7200883017 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				A43C741F2B90A5E000B39F21 /* CustomAlertView.swift */,
 				A4998C192B8053E300883017 /* CustomNavigationBar.swift */,
 				A4998C1C2B805AB000883017 /* CustomButton.swift */,
 				A4998C1E2B805AB900883017 /* CustomTextField.swift */,
@@ -1103,8 +1100,7 @@
 				A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */,
 				A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */,
 				A488FB402B973035004D4A09 /* PhotoAttachViewModel.swift in Sources */,
-				A43C74222B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift in Sources */,
-				A43C74202B90A5E000B39F21 /* UmbrellaReturnAlertView.swift in Sources */,
+				A43C74202B90A5E000B39F21 /* CustomAlertView.swift in Sources */,
 				A4998C162B80502900883017 /* LoginView.swift in Sources */,
 				A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,

@@ -54,6 +54,7 @@ final class UmbrellaReturnBottomSheetView: UIView {
     }()
     
     lazy var returnProgressButton = CustomButton(status: false, title: "반납완료")
+    let umbrellaReturnAlertView = CustomAlertView(title: "잠깐만요!", subTitle: "선택한 장소와 일치하지 않아요.\n다시 인증해주세요.")
     
     // MARK: - Life Cycles
     
@@ -79,11 +80,12 @@ private extension UmbrellaReturnBottomSheetView {
     func setUI() {
         backgroundColor = .clear
         umbrellaReturnCompleteView.isHidden = true
+        umbrellaReturnAlertView.isHidden = true
     }
     
     func setHierarchy() {
         bottomSheetView.addSubviews(returnTitleLabel, returnPlaceCollectionView, returnProgressButton)
-        addSubviews(backgroundView, bottomSheetView, umbrellaReturnCompleteView)
+        addSubviews(backgroundView, bottomSheetView, umbrellaReturnAlertView, umbrellaReturnCompleteView)
     }
     
     func setLayout() {
@@ -112,6 +114,10 @@ private extension UmbrellaReturnBottomSheetView {
         }
         
         umbrellaReturnCompleteView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        umbrellaReturnAlertView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }

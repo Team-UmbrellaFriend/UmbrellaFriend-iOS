@@ -8,8 +8,19 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
-final class UmbrellaReturnAlertView: UIView {
+protocol CustomAlertButtonDelegate: AnyObject {
+    func tapCheckButton()
+}
+
+final class CustomAlertView: UIView {
+    
+    // MARK: - Properties
+    
+    weak var delegate: CustomAlertButtonDelegate?
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
@@ -29,7 +40,6 @@ final class UmbrellaReturnAlertView: UIView {
     
     private let alertTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "잠깐만요!"
         label.textColor = .subOrange
         label.font = .umbrellaFont(.title1)
         return label
@@ -37,7 +47,6 @@ final class UmbrellaReturnAlertView: UIView {
     
     private let alertSubTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "선택한 장소와 일치하지 않아요.\n다시 인증해주세요."
         label.textColor = .umbrellaBlack
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -51,24 +60,35 @@ final class UmbrellaReturnAlertView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setUI()
-        setHierarchy()
-        setLayout()
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    convenience init(title: String, subTitle: String) {
+        self.init()
+        setUI(title: title, subTitle: subTitle)
+        setHierarchy()
+        setLayout()
+    }
 }
 
 // MARK: - Extensions
 
-private extension UmbrellaReturnAlertView {
+private extension CustomAlertView {
 
-    func setUI() {
+    func setUI(title: String, subTitle: String) {
         backgroundColor = .clear
+        self.alertTitleLabel.text = title
+        self.alertSubTitleLabel.text = subTitle
+        
+        self.alertCheckButton.rx.tap
+            .bind {
+                self.delegate?.tapCheckButton()
+            }
+            .disposed(by: disposeBag)
     }
     
     func setHierarchy() {
