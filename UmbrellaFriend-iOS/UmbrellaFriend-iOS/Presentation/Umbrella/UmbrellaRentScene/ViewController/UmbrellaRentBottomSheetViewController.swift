@@ -81,7 +81,7 @@ extension UmbrellaRentBottomSheetViewController {
             })
             .disposed(by: disposeBag)
         
-        self.umbrellaRentViewModel.outputs.lendErrorMessage
+        umbrellaRentViewModel.outputs.lendErrorMessage
             .subscribe(onNext: { message in
                 if message == "" {
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {

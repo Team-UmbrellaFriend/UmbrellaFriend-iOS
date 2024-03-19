@@ -20,6 +20,7 @@ protocol PhotoAttachViewModelInputs {
 protocol PhotoAttachViewModelOutputs {
     
     var signupData: PublishSubject<UserLoginDto> { get }
+    var signupErrorMessage: PublishSubject<String> { get }
 }
 
 protocol PhotoAttachViewModelType {
@@ -38,6 +39,7 @@ final class PhotoAttachViewModel: PhotoAttachViewModelInputs, PhotoAttachViewMod
     // output
     
     var signupData: PublishSubject<UserLoginDto> = PublishSubject<UserLoginDto>()
+    var signupErrorMessage: PublishSubject<String> = PublishSubject<String>()
     
     // input
 
@@ -63,6 +65,10 @@ extension PhotoAttachViewModel {
                 guard self != nil else { return }
                 guard let data = response?.data else { return }
                 self?.signupData.onNext(data)
+                self?.signupErrorMessage.onNext("")
+            } else {
+                guard let message = response?.message else { return }
+                self?.signupErrorMessage.onNext(message)
             }
         }
     }

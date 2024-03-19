@@ -106,6 +106,17 @@ extension SignupViewController {
             })
             .disposed(by: disposeBag)
         
+        photoAttachViewModel.outputs.signupErrorMessage
+            .subscribe(onNext: { message in
+                if message == "" {
+                    self.signupView.signupAlertView.isHidden = true
+                } else {
+                    self.signupView.signupAlertView.isHidden = false
+                    self.signupView.configureSignupAlertView(subTitle: message)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         photoAttachViewModel.outputs.signupData
             .subscribe(onNext: { model in
                 UserManager.shared.updateToken(model.token)
@@ -128,6 +139,7 @@ extension SignupViewController {
         signupView.emailTextField.delegate = self
         signupView.pwTextField.delegate = self
         signupView.pwCheckTextField.delegate = self
+        signupView.signupAlertView.delegate = self
     }
     
     func setAddTarget() {
@@ -230,5 +242,12 @@ extension SignupViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()
+    }
+}
+
+extension SignupViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        signupView.signupAlertView.isHidden = true
     }
 }
