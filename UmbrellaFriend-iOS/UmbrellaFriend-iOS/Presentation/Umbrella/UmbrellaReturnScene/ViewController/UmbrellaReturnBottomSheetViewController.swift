@@ -47,6 +47,7 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setDelegate()
         setCollectionView()
         setDismissAction()
     }
@@ -61,6 +62,10 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
 // MARK: - Extensions
 
 extension UmbrellaReturnBottomSheetViewController {
+    
+    func setDelegate() {
+        umbrellaReturnBottomSheetView.umbrellaReturnAlertView.delegate = self
+    }
     
     func setCollectionView() {
         Observable.just(umbrellaPlace)
@@ -83,11 +88,10 @@ extension UmbrellaReturnBottomSheetViewController {
                 
                 if self.returnPhotoPlace != indexPath.item + 1 {
                     self.umbrellaReturnBottomSheetView.returnProgressButton.isEnabled = false
-                    let nav = UmbrellaReturnAlertViewController()
-                    nav.modalPresentationStyle = .overFullScreen
-                    self.present(nav, animated: false)
+                    self.umbrellaReturnBottomSheetView.umbrellaReturnAlertView.isHidden = false
                 } else {
                     self.umbrellaReturnBottomSheetView.returnProgressButton.isEnabled = true
+                    self.umbrellaReturnBottomSheetView.umbrellaReturnAlertView.isHidden = true
                 }
                 
                 self.selectedIndexPath = indexPath
@@ -166,5 +170,12 @@ extension UmbrellaReturnBottomSheetViewController {
     @objc
     func hideBottomSheetAction() {
         hideBottomSheet()
+    }
+}
+
+extension UmbrellaReturnBottomSheetViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        umbrellaReturnBottomSheetView.umbrellaReturnAlertView.isHidden = true
     }
 }

@@ -63,6 +63,7 @@ final class UmbrellaReturnView: UIView {
     }()
     
     lazy var returnButton = CustomButton(status: false, title: "반납하기")
+    let returnAlertView = CustomAlertView(subTitle: "장소가 올바르지 않아요.\n반납 장소가 보이게 다시 찍어주세요.")
     
     // MARK: - Life Cycles
     
@@ -88,10 +89,11 @@ private extension UmbrellaReturnView {
         backgroundColor = .umbrellaWhite
         returnImage.isHidden = true
         imageDeleteButton.isHidden = true
+        returnAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, returnTitleLabel, returnSubTitleLabel, registerButton, returnButton, returnImage, imageDeleteButton)
+        addSubviews(navigationView, returnTitleLabel, returnSubTitleLabel, registerButton, returnButton, returnImage, imageDeleteButton, returnAlertView)
     }
     
     func setLayout() {
@@ -130,6 +132,10 @@ private extension UmbrellaReturnView {
         imageDeleteButton.snp.makeConstraints {
             $0.top.trailing.equalTo(returnImage)
             $0.size.equalTo(48)
+        }
+        
+        returnAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }

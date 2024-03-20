@@ -21,6 +21,7 @@ protocol UmbrellaRentViewModelOutputs {
     
     var umbrellaCheckData: BehaviorRelay<UmbrellaCheckDto> { get }
     var umbrellaLendData: BehaviorRelay<UmbrellaLendDto> { get }
+    var lendErrorMessage: PublishSubject<String> { get }
 }
 
 protocol UmbrellaRentViewModelType {
@@ -38,6 +39,7 @@ final class UmbrellaRentViewModel: UmbrellaRentViewModelInputs, UmbrellaRentView
     
     var umbrellaCheckData: BehaviorRelay<UmbrellaCheckDto> = BehaviorRelay<UmbrellaCheckDto>(value: UmbrellaCheckDto.umbrellaCheckDtoInitValue())
     var umbrellaLendData: BehaviorRelay<UmbrellaLendDto> = BehaviorRelay<UmbrellaLendDto>(value: UmbrellaLendDto())
+    var lendErrorMessage: PublishSubject<String> = PublishSubject<String>()
     
     // input
     
@@ -71,8 +73,14 @@ extension UmbrellaRentViewModel {
         UmbrellaAPI.shared.postUmbrellaLend(number: number) { [weak self] response in
             guard (response?.status) != nil else { return }
             guard self != nil else { return }
-            guard let data = response?.data else { return }
-            self?.umbrellaLendData.accept(data)
+            if response?.status == 200 {
+                guard let data = response?.data else { return }
+                self?.umbrellaLendData.accept(data)
+                self?.lendErrorMessage.onNext("")
+            } else {
+                guard let message = response?.message else { return }
+                self?.lendErrorMessage.onNext(message)
+            }
         }
     }
 }

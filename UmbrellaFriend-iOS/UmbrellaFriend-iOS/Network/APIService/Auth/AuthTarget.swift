@@ -11,11 +11,11 @@ import Moya
 
 enum AuthTarget {
     
-    case postLogin(id: String, pw: String)
+    case postLogin(id: String, pw: String, fcmToken: String)
     case getUserProfile(id: Int)
     case getLogout
     case putUserProfile(id: Int, email: String, pw: String, phone: String)
-    case postSignup(username: String, email: String, pw: String, studentId: Int, img: Data, phone: String)
+    case postSignup(username: String, email: String, pw: String, studentId: Int, img: Data, phone: String, fcmToken: String)
 }
 
 extension AuthTarget: BaseTargetType {
@@ -56,8 +56,8 @@ extension AuthTarget: BaseTargetType {
     
     var task: Moya.Task {
         switch self{
-        case .postLogin(id: let id, pw: let pw):
-            return .requestParameters(parameters: ["studentID": id, "password": pw],
+        case .postLogin(id: let id, pw: let pw, fcmToken: let fcmToken):
+            return .requestParameters(parameters: ["studentID": id, "password": pw, "fcm_token": fcmToken],
                                       encoding: URLEncoding.default)
         case .getUserProfile:
             return .requestPlain
@@ -69,15 +69,16 @@ extension AuthTarget: BaseTargetType {
             let pwData2 = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password2")
             let phone = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNubmer")
             return .uploadMultipart([emailData, pwData, pwData2, phone])
-        case .postSignup(username: let name, email: let email, pw: let pw, studentId: let id, img: let img, phone: let phone):
+        case .postSignup(username: let name, email: let email, pw: let pw, studentId: let id, img: let img, phone: let phone, fcmToken: let fcmToken):
             let nameData = MultipartFormData(provider: .data(name.data(using: .utf8)!), name: "username")
-               let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "email")
-               let pwData = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password")
-               let pwData2 = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password2")
-               let idData = MultipartFormData(provider: .data(id.description.data(using: .ascii)!), name: "profile.studentID")
-               let imgData = MultipartFormData(provider: .data(img), name: "profile.studentCard", fileName: "studentCard.jpg", mimeType: "image/jpeg")
-               let phoneData = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNumber") 
-               return .uploadMultipart([nameData, emailData, pwData, pwData2, idData, imgData, phoneData])
+            let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "email")
+            let pwData = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password")
+            let pwData2 = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password2")
+            let idData = MultipartFormData(provider: .data(id.description.data(using: .ascii)!), name: "profile.studentID")
+            let imgData = MultipartFormData(provider: .data(img), name: "profile.studentCard", fileName: "studentCard.jpg", mimeType: "image/jpeg")
+            let phoneData = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNumber")
+            let fcmData = MultipartFormData(provider: .data(fcmToken.data(using: .utf8)!), name: "fcm_token")
+            return .uploadMultipart([nameData, emailData, pwData, pwData2, idData, imgData, phoneData, fcmData])
         }
     }
     

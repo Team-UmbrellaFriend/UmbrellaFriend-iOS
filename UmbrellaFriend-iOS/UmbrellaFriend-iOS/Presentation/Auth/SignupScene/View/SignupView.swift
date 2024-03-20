@@ -112,6 +112,8 @@ final class SignupView: UIView {
     let pwCheckTextField = CustomTextField(placeHolder: "비밀번호확인")
     lazy var completeButton = CustomButton(status: false, title: "완료")
     
+    let signupAlertView = CustomAlertView(subTitle: "")
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -136,10 +138,11 @@ private extension SignupView {
         backgroundColor = .umbrellaWhite
         pwTextField.isSecureTextEntry = true
         pwCheckTextField.isSecureTextEntry = true
+        signupAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, signupTitleLabel, scrollView)
+        addSubviews(navigationView, signupTitleLabel, scrollView, signupAlertView)
         scrollView.addSubview(contentView)
         contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle,  completeButton)
     }
@@ -204,6 +207,9 @@ private extension SignupView {
         emailTextField.snp.makeConstraints {
             $0.top.equalTo(emailTitle.snp.bottom).offset(10)
             $0.leading.equalTo(emailTitle.snp.leading)
+        }
+        
+        emailTextField.snp.updateConstraints {
             $0.width.equalTo((SizeLiterals.Screen.screenWidth - 40) / 2 + 3)
         }
         
@@ -238,6 +244,10 @@ private extension SignupView {
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
             $0.centerX.equalToSuperview()
         }
+        
+        signupAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -252,5 +262,9 @@ extension SignupView {
         }
         idTextField.text = "\(model.profile.studentID)"
         phoneTextField.text = model.profile.phoneNumber
+    }
+    
+    func configureSignupAlertView(subTitle: String) {
+        signupAlertView.alertSubTitleLabel.text = subTitle
     }
 }

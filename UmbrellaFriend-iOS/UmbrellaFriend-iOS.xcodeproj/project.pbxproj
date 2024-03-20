@@ -11,6 +11,14 @@
 		A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43176102B6FFBDE00093F0E /* SceneDelegate.swift */; };
 		A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43176172B6FFBE000093F0E /* Assets.xcassets */; };
 		A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A43176192B6FFBE000093F0E /* LaunchScreen.storyboard */; };
+		A43B23192BA575E200E15CC3 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23182BA575E200E15CC3 /* FirebaseMessaging */; };
+		A43B231B2BA575E200E15CC3 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = A43B231A2BA575E200E15CC3 /* FirebasePerformance */; };
+		A43B231D2BA575E200E15CC3 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = A43B231C2BA575E200E15CC3 /* FirebaseRemoteConfig */; };
+		A43B231F2BA575E200E15CC3 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A43B231E2BA575E200E15CC3 /* FirebaseRemoteConfigSwift */; };
+		A43B23212BA575E200E15CC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23202BA575E200E15CC3 /* FirebaseStorage */; };
+		A43B23232BA575E200E15CC3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */; };
+		A43B23252BA582AA00E15CC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */; };
+		A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23262BA58E6600E15CC3 /* MakeAlert.swift */; };
 		A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73912B8A436100B39F21 /* BaseTargetType.swift */; };
 		A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73972B8A43B400B39F21 /* HomeDto.swift */; };
 		A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739A2B8A440D00B39F21 /* HomeAPI.swift */; };
@@ -36,8 +44,7 @@
 		A43C74172B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74162B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift */; };
 		A43C741A2B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74192B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift */; };
 		A43C741C2B9098EB00B39F21 /* UmbrellaPlaceDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C741B2B9098EB00B39F21 /* UmbrellaPlaceDto.swift */; };
-		A43C74202B90A5E000B39F21 /* UmbrellaReturnAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C741F2B90A5E000B39F21 /* UmbrellaReturnAlertView.swift */; };
-		A43C74222B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74212B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift */; };
+		A43C74202B90A5E000B39F21 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C741F2B90A5E000B39F21 /* CustomAlertView.swift */; };
 		A43C74272B90A95000B39F21 /* UmbrellaReturnViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74262B90A95000B39F21 /* UmbrellaReturnViewModel.swift */; };
 		A43C74292B90A9B300B39F21 /* UmbrellaReturnDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74282B90A9B300B39F21 /* UmbrellaReturnDto.swift */; };
 		A43C742B2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C742A2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift */; };
@@ -126,6 +133,9 @@
 		A43176172B6FFBE000093F0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A431761A2B6FFBE000093F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A431761C2B6FFBE000093F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A43B22EF2BA2D89800E15CC3 /* UmbrellaFriend-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UmbrellaFriend-iOS.entitlements"; sourceTree = "<group>"; };
+		A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A43B23262BA58E6600E15CC3 /* MakeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAlert.swift; sourceTree = "<group>"; };
 		A43C73912B8A436100B39F21 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		A43C73972B8A43B400B39F21 /* HomeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDto.swift; sourceTree = "<group>"; };
 		A43C739A2B8A440D00B39F21 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
@@ -148,8 +158,7 @@
 		A43C74162B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnBottomSheetView.swift; sourceTree = "<group>"; };
 		A43C74192B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnPlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		A43C741B2B9098EB00B39F21 /* UmbrellaPlaceDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaPlaceDto.swift; sourceTree = "<group>"; };
-		A43C741F2B90A5E000B39F21 /* UmbrellaReturnAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnAlertView.swift; sourceTree = "<group>"; };
-		A43C74212B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnAlertViewController.swift; sourceTree = "<group>"; };
+		A43C741F2B90A5E000B39F21 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		A43C74262B90A95000B39F21 /* UmbrellaReturnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnViewModel.swift; sourceTree = "<group>"; };
 		A43C74282B90A9B300B39F21 /* UmbrellaReturnDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnDto.swift; sourceTree = "<group>"; };
 		A43C742A2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnCompleteView.swift; sourceTree = "<group>"; };
@@ -219,12 +228,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A43B231D2BA575E200E15CC3 /* FirebaseRemoteConfig in Frameworks */,
+				A43B23192BA575E200E15CC3 /* FirebaseMessaging in Frameworks */,
 				A43C73AC2B8A461B00B39F21 /* RxRelay in Frameworks */,
+				A43B231B2BA575E200E15CC3 /* FirebasePerformance in Frameworks */,
 				A4998BE02B77DC3B00883017 /* RxMoya in Frameworks */,
 				A43C73A42B8A461B00B39F21 /* RxBlocking in Frameworks */,
 				A4998BDA2B77DC3B00883017 /* CombineMoya in Frameworks */,
 				A4998BDE2B77DC3B00883017 /* ReactiveMoya in Frameworks */,
+				A43B23232BA575E200E15CC3 /* FirebaseStorageCombine-Community in Frameworks */,
+				A43B23212BA575E200E15CC3 /* FirebaseStorage in Frameworks */,
 				A4998BB22B70FEB300883017 /* SnapKit in Frameworks */,
+				A43B231F2BA575E200E15CC3 /* FirebaseRemoteConfigSwift in Frameworks */,
 				A43C73A82B8A461B00B39F21 /* RxCocoa in Frameworks */,
 				A4998BDC2B77DC3B00883017 /* Moya in Frameworks */,
 			);
@@ -252,6 +267,8 @@
 		A431760D2B6FFBDE00093F0E /* UmbrellaFriend-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */,
+				A43B22EF2BA2D89800E15CC3 /* UmbrellaFriend-iOS.entitlements */,
 				A4998B952B70FD1D00883017 /* Application */,
 				A4998B942B70FD1700883017 /* Global */,
 				A4998B932B70FD1000883017 /* Network */,
@@ -423,7 +440,6 @@
 			children = (
 				A43C74102B9087FC00B39F21 /* UmbrellaReturnViewController.swift */,
 				A43C74142B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift */,
-				A43C74212B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -433,7 +449,6 @@
 			children = (
 				A43C740E2B9087ED00B39F21 /* UmbrellaReturnView.swift */,
 				A43C74162B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift */,
-				A43C741F2B90A5E000B39F21 /* UmbrellaReturnAlertView.swift */,
 				A43C742A2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift */,
 			);
 			path = View;
@@ -663,6 +678,7 @@
 			isa = PBXGroup;
 			children = (
 				A4998BAB2B70FE3700883017 /* MakeVibrate.swift */,
+				A43B23262BA58E6600E15CC3 /* MakeAlert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -845,6 +861,7 @@
 		A4998C1B2B805A7200883017 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				A43C741F2B90A5E000B39F21 /* CustomAlertView.swift */,
 				A4998C192B8053E300883017 /* CustomNavigationBar.swift */,
 				A4998C1C2B805AB000883017 /* CustomButton.swift */,
 				A4998C1E2B805AB900883017 /* CustomTextField.swift */,
@@ -965,6 +982,12 @@
 				A43C73A32B8A461B00B39F21 /* RxBlocking */,
 				A43C73A72B8A461B00B39F21 /* RxCocoa */,
 				A43C73AB2B8A461B00B39F21 /* RxRelay */,
+				A43B23182BA575E200E15CC3 /* FirebaseMessaging */,
+				A43B231A2BA575E200E15CC3 /* FirebasePerformance */,
+				A43B231C2BA575E200E15CC3 /* FirebaseRemoteConfig */,
+				A43B231E2BA575E200E15CC3 /* FirebaseRemoteConfigSwift */,
+				A43B23202BA575E200E15CC3 /* FirebaseStorage */,
+				A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */,
 			);
 			productName = "UmbrellaFriend-iOS";
 			productReference = A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */;
@@ -998,6 +1021,7 @@
 				A4998BB02B70FEB300883017 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				A4998BD82B77DC3B00883017 /* XCRemoteSwiftPackageReference "Moya" */,
 				A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = A431760C2B6FFBDE00093F0E /* Products */;
 			projectDirPath = "";
@@ -1014,6 +1038,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4998BFD2B7F431A00883017 /* SUIT-Bold.ttf in Resources */,
+				A43B23252BA582AA00E15CC3 /* GoogleService-Info.plist in Resources */,
 				A4998BED2B79ED4300883017 /* SUIT-SemiBold.ttf in Resources */,
 				A4998BFE2B7F431A00883017 /* SUIT-Regular.ttf in Resources */,
 				A4998C002B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf in Resources */,
@@ -1075,8 +1100,7 @@
 				A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */,
 				A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */,
 				A488FB402B973035004D4A09 /* PhotoAttachViewModel.swift in Sources */,
-				A43C74222B90A7FF00B39F21 /* UmbrellaReturnAlertViewController.swift in Sources */,
-				A43C74202B90A5E000B39F21 /* UmbrellaReturnAlertView.swift in Sources */,
+				A43C74202B90A5E000B39F21 /* CustomAlertView.swift in Sources */,
 				A4998C162B80502900883017 /* LoginView.swift in Sources */,
 				A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
@@ -1101,6 +1125,7 @@
 				A43C74152B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift in Sources */,
 				A488FB362B94D047004D4A09 /* UserManager.swift in Sources */,
 				A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */,
+				A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */,
 				A488FB132B930710004D4A09 /* MypageViewController.swift in Sources */,
 				A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */,
 				A488FB192B930732004D4A09 /* MypageCollectionViewCell.swift in Sources */,
@@ -1256,6 +1281,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "UmbrellaFriend-iOS/UmbrellaFriend-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1276,7 +1302,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.UmbrellaFriend.UmbrellaFriend-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.UmbrellaFriend.UmbrellaFriend-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = UmbrellaFriendDebug;
@@ -1292,6 +1318,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "UmbrellaFriend-iOS/UmbrellaFriend-iOS.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1312,7 +1339,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.UmbrellaFriend.UmbrellaFriend-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.UmbrellaFriend.UmbrellaFriend-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = UmbrellaFriendDebug;
@@ -1346,6 +1373,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.1;
+			};
+		};
 		A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -1373,6 +1408,36 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A43B23182BA575E200E15CC3 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		A43B231A2BA575E200E15CC3 /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		A43B231C2BA575E200E15CC3 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		A43B231E2BA575E200E15CC3 /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+		A43B23202BA575E200E15CC3 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
 		A43C73A32B8A461B00B39F21 /* RxBlocking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */;

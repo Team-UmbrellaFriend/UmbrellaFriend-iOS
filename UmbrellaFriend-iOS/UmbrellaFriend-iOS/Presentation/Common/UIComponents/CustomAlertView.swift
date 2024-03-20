@@ -8,18 +8,29 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
-final class UmbrellaReturnAlertView: UIView {
+protocol CustomAlertButtonDelegate: AnyObject {
+    func tapCheckButton()
+}
+
+final class CustomAlertView: UIView {
+    
+    // MARK: - Properties
+    
+    weak var delegate: CustomAlertButtonDelegate?
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
-    let backgroundView: UIView = {
+    private let backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .umbrellaBlack.withAlphaComponent(0.6)
         return view
     }()
     
-    let alertView: UIView = {
+    private let alertView: UIView = {
         let view = UIView()
         view.backgroundColor = .umbrellaWhite
         view.clipsToBounds = true
@@ -35,9 +46,8 @@ final class UmbrellaReturnAlertView: UIView {
         return label
     }()
     
-    private let alertSubTitleLabel: UILabel = {
+    let alertSubTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "선택한 장소와 일치하지 않아요.\n다시 인증해주세요."
         label.textColor = .umbrellaBlack
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -45,30 +55,40 @@ final class UmbrellaReturnAlertView: UIView {
         return label
     }()
     
-    lazy var alertCheckButton = CustomButton(status: true, title: "확인")
+    private lazy var alertCheckButton = CustomButton(status: true, title: "확인")
     
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        setUI()
-        setHierarchy()
-        setLayout()
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    convenience init(subTitle: String) {
+        self.init()
+        setUI(subTitle: subTitle)
+        setHierarchy()
+        setLayout()
+    }
 }
 
 // MARK: - Extensions
 
-private extension UmbrellaReturnAlertView {
+private extension CustomAlertView {
 
-    func setUI() {
+    func setUI(subTitle: String) {
         backgroundColor = .clear
+        self.alertSubTitleLabel.text = subTitle
+        
+        self.alertCheckButton.rx.tap
+            .bind {
+                self.delegate?.tapCheckButton()
+            }
+            .disposed(by: disposeBag)
     }
     
     func setHierarchy() {
@@ -96,13 +116,17 @@ private extension UmbrellaReturnAlertView {
         alertSubTitleLabel.snp.makeConstraints {
             $0.top.equalTo(alertTitleLabel.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
+            $0.height.equalTo(44)
         }
         
         alertCheckButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(14)
             $0.centerX.equalToSuperview()
+        }
+        
+        alertCheckButton.snp.updateConstraints {
             $0.width.equalTo(107)
-            $0.height.equalTo(44)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 44 / 812)
         }
     }
 }
