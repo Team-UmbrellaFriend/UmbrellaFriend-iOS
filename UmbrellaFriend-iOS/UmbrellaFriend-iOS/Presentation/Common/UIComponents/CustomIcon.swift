@@ -88,9 +88,15 @@ final class CustomIcon: UIView {
         }
     }
     
+    var isExtend: Bool = false {
+        didSet {
+            setExtendUI()
+        }
+    }
+    
     // MARK: - UI Components
     
-    private let iconImage = UIImageView()
+    let iconImage = UIImageView()
     
     private let dayLabel: UILabel = {
         let label = UILabel()
@@ -151,6 +157,14 @@ private extension CustomIcon {
         } else {
             dayLabel.text = "D\(day)"
             dayLabel.textColor = .mainBlue
+        }
+    }
+    
+    func setExtendUI() {
+        if isExtend {
+            self.iconImage.image = UIImage(resource: .icUnfoldUmbrella).withTintColor(.gray600)
+        } else {
+            self.iconImage.image = UIImage(resource: .icUnfoldUmbrella).withTintColor(.mainBlue)
         }
     }
 }

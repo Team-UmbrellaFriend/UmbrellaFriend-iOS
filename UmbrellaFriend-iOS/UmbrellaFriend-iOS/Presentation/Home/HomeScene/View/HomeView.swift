@@ -188,13 +188,15 @@ final class HomeView: UIView {
     
     private let userProfileIcon = CustomIcon(type: .homeProfile)
     private let rentIcon = CustomIcon(type: .homeRent)
-    private let extendIcon = CustomIcon(type: .homeRent)
+    let extendIcon = CustomIcon(type: .homeRent)
     let returnIcon = CustomIcon(type: .homeReturn)
     private let mapIcon = CustomIcon(type: .homeMap)
     private let rentBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let extendBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let returnBackIcon = UIImageView(image: UIImage(resource: .icFoldUmbrellaBig))
     private let mapBackIcon = UIImageView(image: UIImage(resource: .icUmbrellaMap))
+    
+    let homeAlertView = CustomAlertView(subTitle: "")
     
     // MARK: - Life Cycles
     
@@ -227,6 +229,7 @@ private extension HomeView {
         backgroundColor = .umbrellaWhite
         toastMessageLabel.isHidden = true
         extendView.isHidden = true
+        homeAlertView.isHidden = true
     }
     
     func setHierarchy() {
@@ -236,7 +239,7 @@ private extension HomeView {
         extendView.addSubviews(extendIcon, extendBackIcon, extendTitleLabel, extendSubTitleLabel)
         returnView.addSubviews(returnIcon, returnBackIcon, returnTitleLabel, returnSubTitleLabel)
         mapView.addSubviews(mapIcon, mapBackIcon, mapTitleLabel, mapSubTitleLabel)
-        addSubviews(userView, todayInfoView, rentView, extendView, returnView, mapView, toastMessageLabel)
+        addSubviews(userView, todayInfoView, rentView, extendView, returnView, mapView, toastMessageLabel, homeAlertView)
     }
     
     func setLayout() {
@@ -387,6 +390,10 @@ private extension HomeView {
             $0.bottom.equalTo(mapSubTitleLabel.snp.top).offset(-2)
             $0.leading.equalTo(mapSubTitleLabel.snp.leading)
         }
+        
+        homeAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
 
@@ -402,5 +409,15 @@ extension HomeView {
         }
         todayDateLabel.text = model.weather.weather.date
         todayRainPercentLabel.text = "\(model.weather.weather.percent)%"
+    }
+    
+    func configureHomeAlertView(success: Bool, _ message: String) {
+        if success {
+            homeAlertView.alertTitleLabel.text = "연장이 완료되었습니다!"
+            homeAlertView.alertSubTitleLabel.text = "자동으로 3일이\n추가 연장되었습니다."
+        } else {
+            homeAlertView.alertTitleLabel.text = "잠깐만요!"
+            homeAlertView.alertSubTitleLabel.text = message
+        }
     }
 }

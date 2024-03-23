@@ -36,6 +36,7 @@ final class HomeViewController: UIViewController {
         setUI()
         bindViewModel()
         setToastMessage()
+        setDelegate()
     }
 }
 
@@ -60,6 +61,7 @@ extension HomeViewController {
                     if model.dDay.daysRemaining < 0 {
                         self?.homeView.rentView.isHidden = false
                         self?.homeView.extendView.isHidden = true
+                        self?.homeView.extendIcon.isExtend = false
                         self?.homeView.returnIcon.returnDay = 0
                     } else {
                         self?.homeView.rentView.isHidden = true
@@ -83,6 +85,26 @@ extension HomeViewController {
                 let nav = UmbrellaRentViewController()
                 self.navigationController?.pushViewController(nav, animated: true)
             }
+            .disposed(by: disposeBag)
+        
+        homeView.extendView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                self.homeViewModel.inputs.extendTapped()
+            }
+            .disposed(by: disposeBag)
+        
+        homeViewModel.outputs.extendErrorData
+            .subscribe(onNext: { message in
+                if message == "" { // 연장 성공
+                    self.homeView.homeAlertView.isHidden = false
+                    self.homeView.configureHomeAlertView(success: true, "")
+                    self.homeView.extendIcon.isExtend = true
+                } else {
+                    self.homeView.homeAlertView.isHidden = false
+                    self.homeView.configureHomeAlertView(success: false, message)
+                }
+            })
             .disposed(by: disposeBag)
         
         homeView.returnView.rx.tapGesture()
@@ -112,5 +134,17 @@ extension HomeViewController {
                 self.homeView.toastMessageLabel.alpha = 1.0
             })
         }
+    }
+    
+    func setDelegate() {
+        homeView.homeAlertView.delegate = self
+    }
+}
+
+extension HomeViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        homeView.homeAlertView.isHidden = true
+        homeViewModel.inputs.reloadHomeView()
     }
 }
