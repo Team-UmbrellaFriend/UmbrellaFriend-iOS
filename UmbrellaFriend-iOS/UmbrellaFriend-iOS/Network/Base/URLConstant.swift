@@ -29,6 +29,7 @@ enum URLConstant {
     static let umbrellaCheck = "/umbrella/{UmbrellaNumber}/check/"
     static let umbrellaLend = "/umbrella/{UmbrellaNumber}/lend/"
     static let umbrellaReturn = "/umbrella/return/"
+    static let umbrellaExtend = "/umbrella/extend/"
     
     // users
     
