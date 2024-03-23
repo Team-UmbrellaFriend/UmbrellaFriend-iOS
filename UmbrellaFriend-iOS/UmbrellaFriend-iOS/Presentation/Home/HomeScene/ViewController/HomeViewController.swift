@@ -9,6 +9,7 @@ import UIKit
 
 import RxCocoa
 import RxSwift
+import RxGesture
 
 final class HomeViewController: UIViewController {
     
@@ -34,7 +35,6 @@ final class HomeViewController: UIViewController {
         
         setUI()
         bindViewModel()
-        setGesture()
         setToastMessage()
     }
 }
@@ -53,14 +53,17 @@ extension HomeViewController {
             .drive(onNext: { [weak self] model in
                 self?.homeView.configureHomeView(model: model)
                 if model.dDay.isOverdue {
-                    self?.homeView.rentView.isUserInteractionEnabled = false
+                    self?.homeView.rentView.isHidden = true
+                    self?.homeView.extendView.isHidden = false
                     self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
                 } else {
                     if model.dDay.daysRemaining < 0 {
-                        self?.homeView.rentView.isUserInteractionEnabled = true
+                        self?.homeView.rentView.isHidden = false
+                        self?.homeView.extendView.isHidden = true
                         self?.homeView.returnIcon.returnDay = 0
                     } else {
-                        self?.homeView.rentView.isUserInteractionEnabled = false
+                        self?.homeView.rentView.isHidden = true
+                        self?.homeView.extendView.isHidden = false
                         self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
                     }
                 }
@@ -72,6 +75,30 @@ extension HomeViewController {
                 let nav = MypageViewController()
                 self.navigationController?.pushViewController(nav, animated: true)
             })
+            .disposed(by: disposeBag)
+        
+        homeView.rentView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                let nav = UmbrellaRentViewController()
+                self.navigationController?.pushViewController(nav, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        homeView.returnView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                let nav = UmbrellaReturnViewController()
+                self.navigationController?.pushViewController(nav, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        homeView.mapView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                let nav = UmbrellaMapViewController()
+                self.navigationController?.pushViewController(nav, animated: true)
+            }
             .disposed(by: disposeBag)
     }
     
@@ -85,34 +112,5 @@ extension HomeViewController {
                 self.homeView.toastMessageLabel.alpha = 1.0
             })
         }
-    }
-    
-    func setGesture() {
-        let rentTapGesture = UITapGestureRecognizer(target: self, action: #selector(rentTapped))
-        homeView.rentView.addGestureRecognizer(rentTapGesture)
-        
-        let returnTapGesture = UITapGestureRecognizer(target: self, action: #selector(returnTapped))
-        homeView.returnView.addGestureRecognizer(returnTapGesture)
-        
-        let mapTapGesture = UITapGestureRecognizer(target: self, action: #selector(mapTapped))
-        homeView.mapView.addGestureRecognizer(mapTapGesture)
-    }
-    
-    @objc
-    func rentTapped() {
-        let nav = UmbrellaRentViewController()
-        self.navigationController?.pushViewController(nav, animated: true)
-    }
-    
-    @objc
-    func returnTapped() {
-        let nav = UmbrellaReturnViewController()
-        self.navigationController?.pushViewController(nav, animated: true)
-    }
-    
-    @objc
-    func mapTapped() {
-        let nav = UmbrellaMapViewController()
-        self.navigationController?.pushViewController(nav, animated: true)
     }
 }

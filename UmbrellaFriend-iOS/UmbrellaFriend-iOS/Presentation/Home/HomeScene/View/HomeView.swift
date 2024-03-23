@@ -115,6 +115,29 @@ final class HomeView: UIView {
         return label
     }()
     
+    let extendView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 36
+        return view
+    }()
+    
+    private let extendTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "대여 연장"
+        label.textColor = .umbrellaBlack
+        label.font = .umbrellaFont(.body1)
+        return label
+    }()
+    
+    private let extendSubTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "3일 추가로 연장돼요"
+        label.textColor = .gray700
+        label.font = .umbrellaFont(.caption1)
+        return label
+    }()
+    
     let returnView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray200
@@ -165,9 +188,11 @@ final class HomeView: UIView {
     
     private let userProfileIcon = CustomIcon(type: .homeProfile)
     private let rentIcon = CustomIcon(type: .homeRent)
+    private let extendIcon = CustomIcon(type: .homeRent)
     let returnIcon = CustomIcon(type: .homeReturn)
     private let mapIcon = CustomIcon(type: .homeMap)
     private let rentBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
+    private let extendBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let returnBackIcon = UIImageView(image: UIImage(resource: .icFoldUmbrellaBig))
     private let mapBackIcon = UIImageView(image: UIImage(resource: .icUmbrellaMap))
     
@@ -177,6 +202,7 @@ final class HomeView: UIView {
         super.layoutSubviews()
         
         rentView.applyGradient()
+        extendView.applyGradient()
     }
     
     override init(frame: CGRect) {
@@ -200,15 +226,17 @@ private extension HomeView {
     func setUI() {
         backgroundColor = .umbrellaWhite
         toastMessageLabel.isHidden = true
+        extendView.isHidden = true
     }
     
     func setHierarchy() {
         userView.addSubviews(userProfileIcon, userNameLabel, goMyPageButton, userInfoLabel)
         todayInfoView.addSubviews(todayDateLabel, todayRainTitleLabel, todayRainPercentLabel)
         rentView.addSubviews(rentIcon, rentBackIcon, rentTitleLabel, rentSubTitleLabel)
+        extendView.addSubviews(extendIcon, extendBackIcon, extendTitleLabel, extendSubTitleLabel)
         returnView.addSubviews(returnIcon, returnBackIcon, returnTitleLabel, returnSubTitleLabel)
         mapView.addSubviews(mapIcon, mapBackIcon, mapTitleLabel, mapSubTitleLabel)
-        addSubviews(userView, todayInfoView, rentView, returnView, mapView, toastMessageLabel)
+        addSubviews(userView, todayInfoView, rentView, extendView, returnView, mapView, toastMessageLabel)
     }
     
     func setLayout() {
@@ -271,30 +299,40 @@ private extension HomeView {
             $0.centerX.equalToSuperview()
         }
         
-        rentView.snp.makeConstraints {
-            $0.top.equalTo(todayInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
-            $0.leading.equalToSuperview().inset(16)
-            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 41) / 2)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 166 / 812)
+        [rentView, extendView].forEach {
+            $0.snp.makeConstraints {
+                $0.top.equalTo(todayInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
+                $0.leading.equalToSuperview().inset(16)
+                $0.width.equalTo((SizeLiterals.Screen.screenWidth - 41) / 2)
+                $0.height.equalTo(SizeLiterals.Screen.screenHeight * 166 / 812)
+            }
         }
         
-        rentIcon.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
+        [rentIcon, extendIcon].forEach {
+            $0.snp.makeConstraints {
+                $0.top.leading.equalToSuperview().inset(16)
+            }
         }
         
-        rentBackIcon.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(53)
-            $0.leading.equalToSuperview().inset(16)
-            $0.size.equalTo(192)
+        [rentBackIcon, extendBackIcon].forEach {
+            $0.snp.makeConstraints {
+                $0.top.equalToSuperview().inset(53)
+                $0.leading.equalToSuperview().inset(16)
+                $0.size.equalTo(192)
+            }
         }
         
-        rentSubTitleLabel.snp.makeConstraints {
-            $0.bottom.leading.equalToSuperview().inset(16)
+        [rentSubTitleLabel, extendSubTitleLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.bottom.leading.equalToSuperview().inset(16)
+            }
         }
         
-        rentTitleLabel.snp.makeConstraints {
-            $0.bottom.equalTo(rentSubTitleLabel.snp.top).offset(-2)
-            $0.leading.equalTo(rentSubTitleLabel.snp.leading)
+        [rentTitleLabel, extendTitleLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.bottom.equalTo(rentSubTitleLabel.snp.top).offset(-2)
+                $0.leading.equalTo(rentSubTitleLabel.snp.leading)
+            }
         }
         
         returnView.snp.makeConstraints {
