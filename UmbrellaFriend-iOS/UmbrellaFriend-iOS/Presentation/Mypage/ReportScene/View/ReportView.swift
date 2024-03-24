@@ -199,5 +199,8 @@ extension ReportView {
     
     func configureReportAlert(message: String) {
         reportAlertView.alertSubTitleLabel.text = message
+        if !message.contains("성공") {
+            reportAlertView.alertTitleLabel.text = "잠깐만요!"
+        }
     }
 }

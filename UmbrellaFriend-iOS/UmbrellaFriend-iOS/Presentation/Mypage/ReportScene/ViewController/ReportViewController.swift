@@ -17,6 +17,7 @@ final class ReportViewController: UIViewController {
     private let viewModel: MypageViewModel
     private let disposeBag = DisposeBag()
     private var code: Int = 0
+    private var num: String = ""
     
     // MARK: - UI Components
     
@@ -24,7 +25,8 @@ final class ReportViewController: UIViewController {
     
     // MARK: - Life Cycles
     
-    init(viewModel: MypageViewModel) {
+    init(num: String, viewModel: MypageViewModel) {
+        self.num = num
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -91,7 +93,6 @@ extension ReportViewController {
         
         reportView.reportButton.rx.tap
             .bind {
-                let num = 3
                 var reason = "기타"
                 if let selectedIndexPath = self.reportView.reportCollectionView.indexPathsForSelectedItems?.first {
                     switch selectedIndexPath.item {
@@ -105,7 +106,7 @@ extension ReportViewController {
                         break
                     }
                 }
-                self.viewModel.inputs.report(num: num, reason: reason, description: self.reportView.reportTextView.text)
+                self.viewModel.inputs.report(num: self.num, reason: reason, description: self.reportView.reportTextView.text)
             }
             .disposed(by: disposeBag)
         
@@ -142,7 +143,13 @@ extension ReportViewController: CustomAlertButtonDelegate {
     func tapCheckButton() {
         self.reportView.reportAlertView.isHidden = true
         if code == 201 {
-            self.navigationController?.popViewController(animated: true)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                if let window = windowScene.windows.first {
+                    let homeViewController = HomeViewController()
+                    let navigationController = UINavigationController(rootViewController: homeViewController)
+                    window.rootViewController = navigationController
+                }
+            }
         }
     }
 }

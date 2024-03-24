@@ -13,7 +13,7 @@ import Moya
 
 protocol MypageViewModelInputs {
     func logout()
-    func report(num: Int, reason: String, description: String)
+    func report(num: String, reason: String, description: String)
 }
 
 protocol MypageViewModelOutputs {
@@ -49,7 +49,7 @@ final class MypageViewModel: MypageViewModelInputs, MypageViewModelOutputs, Mypa
         self.getLogout()
     }
     
-    func report(num: Int, reason: String, description: String) {
+    func report(num: String, reason: String, description: String) {
         self.postMypageReport(umbrellaNum: num, reportReason: reason, description: description)
     }
     
@@ -80,7 +80,7 @@ extension MypageViewModel {
         }
     }
     
-    func postMypageReport(umbrellaNum: Int, reportReason: String, description: String) {
+    func postMypageReport(umbrellaNum: String, reportReason: String, description: String) {
         MypageAPI.shared.postMypageReport(umbrellaNum: umbrellaNum, reportReason: reportReason, description: description){ [weak self] response in
             guard (response?.status) != nil else { return }
             guard self != nil else { return }

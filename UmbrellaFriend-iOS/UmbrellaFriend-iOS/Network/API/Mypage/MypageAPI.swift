@@ -43,7 +43,7 @@ final class MypageAPI {
     
     // MARK: - POST
     
-    func postMypageReport(umbrellaNum: Int,
+    func postMypageReport(umbrellaNum: String,
                           reportReason: String,
                           description: String,
                           completion: @escaping(GeneralResponse<MypageReportDto>?) -> Void) {

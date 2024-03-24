@@ -43,6 +43,7 @@ extension MypageViewController {
 
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
     func bindViewModel() {
@@ -94,7 +95,7 @@ extension MypageViewController {
         
         mypageView.reportButton.rx.tap
             .bind {
-                let nav = ReportViewController(viewModel: self.mypageViewModel)
+                let nav = ReportNumberViewController(viewModel: self.mypageViewModel)
                 self.navigationController?.pushViewController(nav, animated: true)
             }
             .disposed(by: disposeBag)
