@@ -12,14 +12,13 @@ import RxCocoa
 import Moya
 
 protocol MypageViewModelInputs {
-    
     func logout()
 }
 
 protocol MypageViewModelOutputs {
-    
     var mypageData: BehaviorRelay<MypageDto> { get }
     var logoutData: PublishSubject<UserLogoutDto> { get }
+    var reportMenuData: BehaviorRelay<[ReportMenuDto]>{ get }
 }
 
 protocol MypageViewModelType {
@@ -37,6 +36,7 @@ final class MypageViewModel: MypageViewModelInputs, MypageViewModelOutputs, Mypa
     
     var mypageData: BehaviorRelay<MypageDto> = BehaviorRelay<MypageDto>(value: MypageDto.mypageDtoInitValue())
     var logoutData: PublishSubject<UserLogoutDto> = PublishSubject<UserLogoutDto>()
+    var reportMenuData: BehaviorRelay<[ReportMenuDto]> = BehaviorRelay<[ReportMenuDto]>(value: ReportMenuDto.reportMenuDtoInitValue())
     
     // input
     

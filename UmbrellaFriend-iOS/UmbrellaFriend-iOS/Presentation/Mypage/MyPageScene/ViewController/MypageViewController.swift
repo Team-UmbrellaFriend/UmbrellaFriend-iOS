@@ -91,6 +91,13 @@ extension MypageViewController {
                     .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
+        
+        mypageView.reportButton.rx.tap
+            .bind {
+                let nav = ReportViewController(viewModel: self.mypageViewModel)
+                self.navigationController?.pushViewController(nav, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
     
     func setDelegate() {
