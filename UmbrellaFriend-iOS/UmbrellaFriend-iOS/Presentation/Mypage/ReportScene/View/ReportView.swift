@@ -11,9 +11,6 @@ import SnapKit
 
 final class ReportView: UIView {
 
-    // MARK: - Properties
-    
-    
     // MARK: - UI Components
     
     let navigationView: CustomNavigationBar = {
@@ -63,6 +60,8 @@ final class ReportView: UIView {
     
     lazy var reportButton = CustomButton(status: false, title: "신고하기")
     
+    let reportAlertView = CustomAlertView(subTitle: "")
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -88,10 +87,12 @@ private extension ReportView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        reportAlertView.alertTitleLabel.text = "접수되었어요!"
+        reportAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, reportTitleLabel, reportCollectionView, reportTextView, reportButton)
+        addSubviews(navigationView, reportTitleLabel, reportCollectionView, reportTextView, reportButton, reportAlertView)
     }
     
     func setLayout() {
@@ -122,6 +123,10 @@ private extension ReportView {
         reportButton.snp.makeConstraints {
             $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
             $0.centerX.equalToSuperview()
+        }
+        
+        reportAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
@@ -187,5 +192,12 @@ extension ReportView: UITextViewDelegate {
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         return true
+    }
+}
+
+extension ReportView {
+    
+    func configureReportAlert(message: String) {
+        reportAlertView.alertSubTitleLabel.text = message
     }
 }

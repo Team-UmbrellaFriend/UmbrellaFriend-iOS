@@ -16,6 +16,7 @@ final class ReportViewController: UIViewController {
     
     private let viewModel: MypageViewModel
     private let disposeBag = DisposeBag()
+    private var code: Int = 0
     
     // MARK: - UI Components
     
@@ -87,18 +88,61 @@ extension ReportViewController {
             }
         })
         .disposed(by: disposeBag)
+        
+        reportView.reportButton.rx.tap
+            .bind {
+                let num = 3
+                var reason = "기타"
+                if let selectedIndexPath = self.reportView.reportCollectionView.indexPathsForSelectedItems?.first {
+                    switch selectedIndexPath.item {
+                    case 0:
+                        reason = "분실"
+                    case 1:
+                        reason = "QR"
+                    case 2:
+                        reason = "파손"
+                    default:
+                        break
+                    }
+                }
+                self.viewModel.inputs.report(num: num, reason: reason, description: self.reportView.reportTextView.text)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.mypageReportMessage
+            .subscribe(onNext: { message in
+                self.reportView.reportAlertView.isHidden = false
+                self.reportView.configureReportAlert(message: message)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.mypageReportCode
+            .subscribe(onNext: { code in
+                self.code = code
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     func setDelegate() {
         reportView.navigationView.delegate = self
+        reportView.reportAlertView.delegate = self
     }
 }
-
-// MARK: - Network
 
 extension ReportViewController: NavigationBarProtocol {
     
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension ReportViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        self.reportView.reportAlertView.isHidden = true
+        if code == 201 {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
