@@ -22,6 +22,7 @@ enum URLConstant {
     // mypage
     
     static let mypage = "/mypage/"
+    static let mypageReport = "/mypage/report/"
     
     // umbrella
     

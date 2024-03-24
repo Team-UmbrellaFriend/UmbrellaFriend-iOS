@@ -114,6 +114,7 @@
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
+		A4C9EDD82BB0066300E46131 /* MypageReportDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */; };
 		A4CBBCB52B83194800D55085 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCB42B83194800D55085 /* String+.swift */; };
 		A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCC72B85D9D000D55085 /* HomeViewController.swift */; };
 		A4CBBCCC2B85D9E600D55085 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCCB2B85D9E600D55085 /* HomeView.swift */; };
@@ -230,6 +231,7 @@
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
+		A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportDto.swift; sourceTree = "<group>"; };
 		A4CBBCB42B83194800D55085 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		A4CBBCC72B85D9D000D55085 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A4CBBCCB2B85D9E600D55085 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -596,6 +598,7 @@
 			children = (
 				A488FB212B930F77004D4A09 /* MypageDto.swift */,
 				A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */,
+				A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1204,6 +1207,7 @@
 				A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */,
 				A43C73D32B8F108C00B39F21 /* UmbrellaRentViewModel.swift in Sources */,
 				A43C740F2B9087ED00B39F21 /* UmbrellaReturnView.swift in Sources */,
+				A4C9EDD82BB0066300E46131 /* MypageReportDto.swift in Sources */,
 				A43C740A2B907E2400B39F21 /* UmbrellaLendDto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
