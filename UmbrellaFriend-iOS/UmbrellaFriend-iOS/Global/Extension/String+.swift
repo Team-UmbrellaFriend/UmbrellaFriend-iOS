@@ -38,4 +38,10 @@ extension String {
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordTest.evaluate(with: self)
     }
+    
+    func isValidNumber() -> Bool {
+        let numberRegex = "^[0-9]+$"
+        let numberTest = NSPredicate(format: "SELF MATCHES %@", numberRegex)
+        return numberTest.evaluate(with: self)
+    }
 }
