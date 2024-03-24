@@ -61,7 +61,6 @@ extension HomeViewController {
                     if model.dDay.daysRemaining < 0 {
                         self?.homeView.rentView.isHidden = false
                         self?.homeView.extendView.isHidden = true
-                        self?.homeView.extendIcon.isExtend = false
                         self?.homeView.returnIcon.returnDay = 0
                     } else {
                         self?.homeView.rentView.isHidden = true
@@ -96,10 +95,9 @@ extension HomeViewController {
         
         homeViewModel.outputs.extendErrorData
             .subscribe(onNext: { message in
-                if message == "" { // 연장 성공
+                if message == "" {
                     self.homeView.homeAlertView.isHidden = false
                     self.homeView.configureHomeAlertView(success: true, "")
-                    self.homeView.extendIcon.isExtend = true
                 } else {
                     self.homeView.homeAlertView.isHidden = false
                     self.homeView.configureHomeAlertView(success: false, message)
