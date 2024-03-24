@@ -67,11 +67,26 @@ extension ReportViewController {
             .subscribe(onNext: { [weak self] indexPath in
                 guard let self = self else { return }
                 if let selectedCell = self.reportView.reportCollectionView.cellForItem(at: indexPath) as? ReportCollectionViewCell {
-                    selectedCell.isSelected = true
+                    selectedCell.isSelected = !selectedCell.isSelected
                 }
-                self.reportView.reportButton.isEnabled = true
+                reportView.reportButton.isEnabled = true
             })
             .disposed(by: disposeBag)
+        
+        Observable.combineLatest(
+            reportView.reportCollectionView.rx.itemSelected,
+            reportView.reportTextView.rx.text.orEmpty
+        )
+        .subscribe(onNext: { [weak self] indexPath, text in
+            guard let self = self else { return }
+            
+            if !text.isEmpty {
+                if let selectedCell = self.reportView.reportCollectionView.cellForItem(at: indexPath) as? ReportCollectionViewCell {
+                    selectedCell.isSelected = false
+                }
+            }
+        })
+        .disposed(by: disposeBag)
     }
     
     func setDelegate() {
