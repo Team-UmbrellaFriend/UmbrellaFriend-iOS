@@ -19,6 +19,8 @@
 		A43B23232BA575E200E15CC3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */; };
 		A43B23252BA582AA00E15CC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */; };
 		A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23262BA58E6600E15CC3 /* MakeAlert.swift */; };
+		A43B23822BAB3C9400E15CC3 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23812BAB3C9400E15CC3 /* ReportView.swift */; };
+		A43B23852BAB3CA600E15CC3 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23842BAB3CA600E15CC3 /* ReportViewController.swift */; };
 		A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73912B8A436100B39F21 /* BaseTargetType.swift */; };
 		A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73972B8A43B400B39F21 /* HomeDto.swift */; };
 		A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739A2B8A440D00B39F21 /* HomeAPI.swift */; };
@@ -107,6 +109,11 @@
 		A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2A2B8088A000883017 /* UIButton+.swift */; };
 		A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2E2B81CDFD00883017 /* SignupViewController.swift */; };
 		A4998C312B81CE0900883017 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C302B81CE0900883017 /* SignupView.swift */; };
+		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
+		A4C9EDCF2BAEB51300E46131 /* UmbrellaExtendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */; };
+		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
+		A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */; };
+		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
 		A4CBBCB52B83194800D55085 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCB42B83194800D55085 /* String+.swift */; };
 		A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCC72B85D9D000D55085 /* HomeViewController.swift */; };
 		A4CBBCCC2B85D9E600D55085 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CBBCCB2B85D9E600D55085 /* HomeView.swift */; };
@@ -136,6 +143,8 @@
 		A43B22EF2BA2D89800E15CC3 /* UmbrellaFriend-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UmbrellaFriend-iOS.entitlements"; sourceTree = "<group>"; };
 		A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A43B23262BA58E6600E15CC3 /* MakeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAlert.swift; sourceTree = "<group>"; };
+		A43B23812BAB3C9400E15CC3 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		A43B23842BAB3CA600E15CC3 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		A43C73912B8A436100B39F21 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
 		A43C73972B8A43B400B39F21 /* HomeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDto.swift; sourceTree = "<group>"; };
 		A43C739A2B8A440D00B39F21 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
@@ -217,6 +226,10 @@
 		A4998C2A2B8088A000883017 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		A4998C2E2B81CDFD00883017 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A4998C302B81CE0900883017 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaExtendDto.swift; sourceTree = "<group>"; };
+		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
+		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
+		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4CBBCB42B83194800D55085 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		A4CBBCC72B85D9D000D55085 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A4CBBCCB2B85D9E600D55085 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -235,6 +248,7 @@
 				A4998BE02B77DC3B00883017 /* RxMoya in Frameworks */,
 				A43C73A42B8A461B00B39F21 /* RxBlocking in Frameworks */,
 				A4998BDA2B77DC3B00883017 /* CombineMoya in Frameworks */,
+				A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */,
 				A4998BDE2B77DC3B00883017 /* ReactiveMoya in Frameworks */,
 				A43B23232BA575E200E15CC3 /* FirebaseStorageCombine-Community in Frameworks */,
 				A43B23212BA575E200E15CC3 /* FirebaseStorage in Frameworks */,
@@ -277,6 +291,43 @@
 				A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */,
 			);
 			path = "UmbrellaFriend-iOS";
+			sourceTree = "<group>";
+		};
+		A43B237D2BAB3C4A00E15CC3 /* MyPageScene */ = {
+			isa = PBXGroup;
+			children = (
+				A488FB112B930704004D4A09 /* Cell */,
+				A488FB102B9306FE004D4A09 /* View */,
+				A488FB0F2B9306FA004D4A09 /* ViewModel */,
+				A488FB0E2B9306F5004D4A09 /* ViewController */,
+			);
+			path = MyPageScene;
+			sourceTree = "<group>";
+		};
+		A43B237E2BAB3C5000E15CC3 /* ReportScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4C9EDD02BAF18C400E46131 /* Cell */,
+				A43B23802BAB3C7500E15CC3 /* View */,
+				A43B237F2BAB3C7100E15CC3 /* ViewController */,
+			);
+			path = ReportScene;
+			sourceTree = "<group>";
+		};
+		A43B237F2BAB3C7100E15CC3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A43B23842BAB3CA600E15CC3 /* ReportViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A43B23802BAB3C7500E15CC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A43B23812BAB3C9400E15CC3 /* ReportView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A43C73932B8A437400B39F21 /* APIService */ = {
@@ -396,6 +447,7 @@
 				A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */,
 				A43C741B2B9098EB00B39F21 /* UmbrellaPlaceDto.swift */,
 				A43C74282B90A9B300B39F21 /* UmbrellaReturnDto.swift */,
+				A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -485,10 +537,8 @@
 		A488FB0D2B9306EB004D4A09 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
-				A488FB112B930704004D4A09 /* Cell */,
-				A488FB102B9306FE004D4A09 /* View */,
-				A488FB0F2B9306FA004D4A09 /* ViewModel */,
-				A488FB0E2B9306F5004D4A09 /* ViewController */,
+				A43B237D2BAB3C4A00E15CC3 /* MyPageScene */,
+				A43B237E2BAB3C5000E15CC3 /* ReportScene */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -545,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				A488FB212B930F77004D4A09 /* MypageDto.swift */,
+				A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -702,6 +753,7 @@
 				A4998BE92B79EA7200883017 /* UILabel+.swift */,
 				A4998C2A2B8088A000883017 /* UIButton+.swift */,
 				A4CBBCB42B83194800D55085 /* String+.swift */,
+				A4C9EDD52BAF25C300E46131 /* UITextView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -922,6 +974,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A4C9EDD02BAF18C400E46131 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		A4CBBCC32B85D9A900D55085 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -988,6 +1048,7 @@
 				A43B231E2BA575E200E15CC3 /* FirebaseRemoteConfigSwift */,
 				A43B23202BA575E200E15CC3 /* FirebaseStorage */,
 				A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */,
+				A4C9EDCC2BAEB3C000E46131 /* RxGesture */,
 			);
 			productName = "UmbrellaFriend-iOS";
 			productReference = A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */;
@@ -1022,6 +1083,7 @@
 				A4998BD82B77DC3B00883017 /* XCRemoteSwiftPackageReference "Moya" */,
 				A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A4C9EDCB2BAEB3C000E46131 /* XCRemoteSwiftPackageReference "RxGesture" */,
 			);
 			productRefGroup = A431760C2B6FFBDE00093F0E /* Products */;
 			projectDirPath = "";
@@ -1058,9 +1120,11 @@
 			files = (
 				A4998BE42B77DC6A00883017 /* UmbrellaRentViewController.swift in Sources */,
 				A43C73BD2B8BA30100B39F21 /* UmbrellaMapViewModel.swift in Sources */,
+				A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */,
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
 				A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */,
 				A43C73C32B8BA3A200B39F21 /* UmbrellaTarget.swift in Sources */,
+				A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */,
 				A43C74292B90A9B300B39F21 /* UmbrellaReturnDto.swift in Sources */,
 				A43C742B2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift in Sources */,
 				A488FB222B930F77004D4A09 /* MypageDto.swift in Sources */,
@@ -1077,6 +1141,7 @@
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
 				A4CBBCD02B85E88500D55085 /* CustomIcon.swift in Sources */,
 				A43C739E2B8A443700B39F21 /* HomeTarget.swift in Sources */,
+				A4C9EDCF2BAEB51300E46131 /* UmbrellaExtendDto.swift in Sources */,
 				A488FB252B931969004D4A09 /* SignupViewModel.swift in Sources */,
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
@@ -1096,6 +1161,7 @@
 				A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
 				A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */,
+				A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */,
 				A488FB1C2B930F31004D4A09 /* MypageAPI.swift in Sources */,
 				A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */,
 				A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */,
@@ -1112,6 +1178,7 @@
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A43C73BA2B8B95ED00B39F21 /* UmbrellaMapViewController.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
+				A43B23822BAB3C9400E15CC3 /* ReportView.swift in Sources */,
 				A43C74172B90952300B39F21 /* UmbrellaReturnBottomSheetView.swift in Sources */,
 				A4CBBCB52B83194800D55085 /* String+.swift in Sources */,
 				A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */,
@@ -1129,6 +1196,7 @@
 				A488FB132B930710004D4A09 /* MypageViewController.swift in Sources */,
 				A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */,
 				A488FB192B930732004D4A09 /* MypageCollectionViewCell.swift in Sources */,
+				A43B23852BAB3CA600E15CC3 /* ReportViewController.swift in Sources */,
 				A43C73A12B8A454300B39F21 /* HomeViewModel.swift in Sources */,
 				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
 				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
@@ -1405,6 +1473,14 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		A4C9EDCB2BAEB3C000E46131 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1477,6 +1553,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4998BD82B77DC3B00883017 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		A4C9EDCC2BAEB3C000E46131 /* RxGesture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4C9EDCB2BAEB3C000E46131 /* XCRemoteSwiftPackageReference "RxGesture" */;
+			productName = RxGesture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
