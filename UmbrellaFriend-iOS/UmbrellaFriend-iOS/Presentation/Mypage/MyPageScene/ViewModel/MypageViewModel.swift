@@ -14,6 +14,7 @@ import Moya
 protocol MypageViewModelInputs {
     func logout()
     func report(num: String, reason: String, description: String)
+    func reloadMypage()
 }
 
 protocol MypageViewModelOutputs {
@@ -51,6 +52,10 @@ final class MypageViewModel: MypageViewModelInputs, MypageViewModelOutputs, Mypa
     
     func report(num: String, reason: String, description: String) {
         self.postMypageReport(umbrellaNum: num, reportReason: reason, description: description)
+    }
+    
+    func reloadMypage() {
+        self.getMypageDto()
     }
     
     init() {

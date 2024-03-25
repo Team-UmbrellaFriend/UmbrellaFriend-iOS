@@ -16,6 +16,7 @@ final class MypageViewController: UIViewController {
     
     private let mypageViewModel = MypageViewModel()
     private let disposeBag = DisposeBag()
+    private var id: Int = 0
     
     // MARK: - UI Components
     
@@ -26,6 +27,11 @@ final class MypageViewController: UIViewController {
     override func loadView() {
         
         view = mypageView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mypageViewModel.inputs.reloadMypage()
     }
     
     override func viewDidLoad() {
@@ -51,6 +57,7 @@ extension MypageViewController {
             .asDriver()
             .drive(onNext: { [weak self] model in
                 self?.mypageView.configureView(model: model)
+                self?.id = model.user.id
             })
             .disposed(by: disposeBag)
         
@@ -83,13 +90,9 @@ extension MypageViewController {
         
         mypageView.profileEditButton.rx.tap
             .subscribe(onNext: {
-                self.mypageViewModel.outputs.mypageData
-                    .subscribe(onNext: { [weak self] model in
-                        let nav = SignupViewController(idx: model.user.id)
-                        nav.isAllValid = [true, true, true, true, false, false]
-                        self?.navigationController?.pushViewController(nav, animated: true)
-                    })
-                    .disposed(by: self.disposeBag)
+                let nav = SignupViewController(idx: self.id)
+                nav.isAllValid = [true, true, true, true, false, false]
+                self.navigationController?.pushViewController(nav, animated: true)
             })
             .disposed(by: disposeBag)
         
