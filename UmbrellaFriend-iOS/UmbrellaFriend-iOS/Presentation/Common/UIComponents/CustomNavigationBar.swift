@@ -110,7 +110,7 @@ private extension CustomNavigationBar {
     
     func setLayout() {
         self.snp.makeConstraints {
-            $0.height.equalTo(48)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 48 / 812)
         }
         
         backButton.snp.makeConstraints {

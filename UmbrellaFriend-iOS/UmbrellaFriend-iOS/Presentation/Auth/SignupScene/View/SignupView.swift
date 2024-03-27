@@ -154,7 +154,7 @@ private extension SignupView {
         }
         
         signupTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom).offset(20)
+            $0.top.equalTo(navigationView.snp.bottom).offset(13)
             $0.leading.equalToSuperview().inset(16)
         }
         

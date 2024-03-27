@@ -12,20 +12,39 @@ import Moya
 enum MypageTarget {
     
     case getMypage
+    case postMypageReport(umbrellaNum: String, reportReason: String, description: String)
 }
 
 extension MypageTarget: BaseTargetType {
     
     var path: String {
-        return URLConstant.mypage
+        switch self {
+        case .getMypage:
+            return URLConstant.mypage
+        case .postMypageReport:
+            return URLConstant.mypageReport
+        }
     }
     
     var method: Moya.Method {
-        return .get
+        switch self {
+        case .getMypage:
+            return .get
+        case .postMypageReport:
+            return .post
+        }
     }
     
     var task: Moya.Task {
-        return .requestPlain
+        switch self {
+        case .getMypage:
+            return .requestPlain
+        case .postMypageReport(umbrellaNum: let umbrellaNum, reportReason: let reportReason, description: let description):
+            let umbrellaNumData = MultipartFormData(provider: .data(umbrellaNum.data(using: .ascii)!), name: "umbrella_number")
+            let reportReasonData = MultipartFormData(provider: .data(reportReason.data(using: .utf8)!), name: "report_reason")
+            let descriptionData = MultipartFormData(provider: .data(description.data(using: .utf8)!), name: "description")
+            return .uploadMultipart([umbrellaNumData, reportReasonData, descriptionData])
+        }
     }
     
     var headers: [String : String]? {

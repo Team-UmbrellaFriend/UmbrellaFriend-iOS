@@ -112,6 +112,14 @@ final class MypageView: UIView {
         return label
     }()
     
+    let reportButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("신고하기", for: .normal)
+        button.titleLabel?.font = .umbrellaFont(.body2)
+        button.setTitleColor(.gray500, for: .normal)
+        return button
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -140,7 +148,7 @@ private extension MypageView {
     func setHierarchy() {
         userProfileView.addSubviews(userNameLabel, userIDLabel, userPhoneLabel, userEmailLabel, profileEditButton)
         historyView.addSubviews(historyTitleLabel, historyCollectionView)
-        addSubviews(navigationView, userProfileView, userProfileIcon, historyView, emptyImage, emptyTitleLabel)
+        addSubviews(navigationView, userProfileView, userProfileIcon, historyView, emptyImage, emptyTitleLabel, reportButton)
     }
     
     func setLayout() {
@@ -215,6 +223,11 @@ private extension MypageView {
         emptyTitleLabel.snp.makeConstraints {
             $0.top.equalTo(emptyImage.snp.bottom).offset(11)
             $0.centerX.equalToSuperview()
+        }
+        
+        reportButton.snp.makeConstraints {
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-32)
+            $0.leading.equalToSuperview().inset(36)
         }
     }
     

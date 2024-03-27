@@ -82,11 +82,11 @@ extension SignupViewController {
         }
         
         signupView.completeButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(with: self) { owner, _ in
                 if self.userId > 0 {
                     self.signupViewModel.inputs.editProfile(
                         id: self.userId,
-                        email: self.signupView.emailTextField.text ?? "",
+                        email: "\(self.signupView.emailTextField.text ?? "")@sookmyung.ac.kr" ,
                         pw: self.signupView.pwTextField.text ?? "",
                         phone: self.signupView.phoneTextField.text ?? "")
                 } else {
@@ -97,7 +97,7 @@ extension SignupViewController {
                         studentId: self.signupView.idTextField.text?.codingKey.intValue ?? 0,
                         phone: self.signupView.phoneTextField.text ?? "")
                 }
-            })
+            }
             .disposed(by: disposeBag)
         
         signupViewModel.outputs.editProfileData
