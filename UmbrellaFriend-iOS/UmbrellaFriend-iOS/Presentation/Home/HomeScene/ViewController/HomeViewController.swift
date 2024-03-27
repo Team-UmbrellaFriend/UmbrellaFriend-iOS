@@ -30,6 +30,11 @@ final class HomeViewController: UIViewController {
         view = homeView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        homeViewModel.inputs.reloadHomeView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -23,13 +23,11 @@ protocol HomeViewModelOutputs {
 }
 
 protocol HomeViewModelType {
-    
     var inputs: HomeViewModelInputs { get }
     var outputs: HomeViewModelOutputs { get }
 }
 
 final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewModelType {
-    
     var inputs: HomeViewModelInputs { return self }
     var outputs: HomeViewModelOutputs { return self }
  
@@ -38,7 +36,7 @@ final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewMo
     var extendErrorData: PublishSubject<String> = PublishSubject<String>()
     
     func reloadHomeView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.getHomeDto()
         }
     }
@@ -48,7 +46,7 @@ final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewMo
     }
     
     init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.getHomeDto()
         }
     }
