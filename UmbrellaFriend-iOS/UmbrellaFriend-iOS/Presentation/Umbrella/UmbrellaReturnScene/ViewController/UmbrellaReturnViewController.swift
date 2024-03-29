@@ -67,6 +67,7 @@ extension UmbrellaReturnViewController {
             cameraVC.delegate = self
             self.present(cameraVC, animated: true, completion: nil)
         case umbrellaReturnView.imageDeleteButton:
+            self.photoPlaceNum = 0
             umbrellaReturnView.returnImage.image = .remove
             umbrellaReturnView.returnImage.isHidden = true
             umbrellaReturnView.imageDeleteButton.isHidden = true
@@ -109,8 +110,6 @@ extension UmbrellaReturnViewController {
                 } else if recognizedText.contains("백주년기념관") {
                     self?.photoPlaceNum = 6
                     self?.returnViewModel.umbrellaReturnLocation(location: "백주년기념관")
-                } else {
-                    self?.umbrellaReturnView.returnAlertView.isHidden = false
                 }
             }
         }
@@ -153,9 +152,13 @@ extension UmbrellaReturnViewController: ButtonProtocol {
     
     func buttonTapped() {
         let nav = UmbrellaReturnBottomSheetViewController(viewModel: self.returnViewModel)
-        nav.returnPhotoPlace = self.photoPlaceNum
-        nav.modalPresentationStyle = .overFullScreen
-        self.present(nav, animated: false)
+        if photoPlaceNum == 0 {
+            self.umbrellaReturnView.returnAlertView.isHidden = false
+        } else {
+            nav.returnPhotoPlace = self.photoPlaceNum
+            nav.modalPresentationStyle = .overFullScreen
+            self.present(nav, animated: false)
+        }
     }
 }
 

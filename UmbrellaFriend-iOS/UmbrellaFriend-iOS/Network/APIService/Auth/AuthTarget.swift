@@ -64,11 +64,11 @@ extension AuthTarget: BaseTargetType {
         case .getLogout:
             return .requestPlain
         case .putUserProfile(id: _, email: let email, pw: let pw, phone: let phone):
-            let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "eamil")
+            let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "email")
             let pwData = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password")
             let pwData2 = MultipartFormData(provider: .data(pw.data(using: .utf8)!), name: "password2")
-            let phone = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNubmer")
-            return .uploadMultipart([emailData, pwData, pwData2, phone])
+            let phoneData = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNumber")
+            return .uploadMultipart([emailData, pwData, pwData2, phoneData])
         case .postSignup(username: let name, email: let email, pw: let pw, studentId: let id, img: let img, phone: let phone, fcmToken: let fcmToken):
             let nameData = MultipartFormData(provider: .data(name.data(using: .utf8)!), name: "username")
             let emailData = MultipartFormData(provider: .data(email.data(using: .utf8)!), name: "email")

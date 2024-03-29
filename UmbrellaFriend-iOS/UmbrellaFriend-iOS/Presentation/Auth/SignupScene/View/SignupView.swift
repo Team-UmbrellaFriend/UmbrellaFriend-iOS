@@ -154,7 +154,7 @@ private extension SignupView {
         }
         
         signupTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(navigationView.snp.bottom).offset(20)
+            $0.top.equalTo(navigationView.snp.bottom).offset(13)
             $0.leading.equalToSuperview().inset(16)
         }
         
@@ -266,5 +266,23 @@ extension SignupView {
     
     func configureSignupAlertView(subTitle: String) {
         signupAlertView.alertSubTitleLabel.text = subTitle
+        if subTitle.contains("완료") {
+            signupAlertView.alertTitleLabel.text = "반가워요!"
+            signupAlertView.alertTitleLabel.textColor = .mainBlue
+        } else {
+            signupAlertView.alertTitleLabel.text = "잠깐만요!"
+            signupAlertView.alertTitleLabel.textColor = .subOrange
+        }
+    }
+    
+    func configureEditProfileAlertView(subTitle: String) {
+        signupAlertView.alertSubTitleLabel.text = subTitle
+        if subTitle.contains("수정되었습니다") {
+            signupAlertView.alertTitleLabel.text = "수정되었어요!"
+            signupAlertView.alertTitleLabel.textColor = .mainBlue
+        } else {
+            signupAlertView.alertTitleLabel.text = "잠깐만요!"
+            signupAlertView.alertTitleLabel.textColor = .subOrange
+        }
     }
 }

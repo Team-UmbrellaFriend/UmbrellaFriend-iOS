@@ -21,6 +21,7 @@ protocol SignupViewModelOutputs {
     
     var userProfileData: BehaviorRelay<UserProfileDto> { get }
     var editProfileData: PublishSubject<UserProfileDto> { get }
+    var editProfileMessage: PublishSubject<String> { get }
 }
 
 protocol SignupViewModelType {
@@ -38,6 +39,7 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
     
     var userProfileData: BehaviorRelay<UserProfileDto> = BehaviorRelay<UserProfileDto>(value: UserProfileDto.userProfileDtoInitValue())
     var editProfileData: PublishSubject<UserProfileDto> = PublishSubject<UserProfileDto>()
+    var editProfileMessage: PublishSubject<String> = PublishSubject<String>()
     
     // input
     
@@ -68,6 +70,8 @@ extension SignupViewModel {
     func putUserProfileDto(id: Int, email: String, pw: String, phone: String) {
         AuthAPI.shared.putUserProfile(id: id, email: email, pw: pw, phone: phone) { [weak self] response in
             guard (response?.status) != nil else { return }
+            guard let message = response?.message else { return }
+            self?.editProfileMessage.onNext(message)
             if response?.status == 200 {
                 guard self != nil else { return }
                 guard let data = response?.data else { return }

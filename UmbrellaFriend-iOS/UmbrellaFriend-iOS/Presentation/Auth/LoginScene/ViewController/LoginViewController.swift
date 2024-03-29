@@ -16,6 +16,7 @@ final class LoginViewController: UIViewController {
     
     private let loginViewModel = LoginViewModel()
     private let disposeBag = DisposeBag()
+    private var code: Int = 0
     
     // MARK: - UI Components
     
@@ -52,8 +53,16 @@ extension LoginViewController {
         loginViewModel.outputs.userLoginData
             .subscribe(onNext: { model in
                 UserManager.shared.updateToken(model.token)
-                let nav = HomeViewController()
-                self.navigationController?.pushViewController(nav, animated: false)
+            })
+            .disposed(by: disposeBag)
+        
+        loginViewModel.outputs.loginMessage
+            .subscribe(onNext: { message in
+                if message.contains("로그인되었습니다") {
+                    self.code = 200
+                }
+                self.loginView.loginAlertView.isHidden = false
+                self.loginView.configureAlertView(message: message)
             })
             .disposed(by: disposeBag)
     }
@@ -63,6 +72,7 @@ extension LoginViewController {
         loginView.loginButton.delegate = self
         loginView.idTextField.delegate = self
         loginView.pwTextField.delegate = self
+        loginView.loginAlertView.delegate = self
     }
     
     func setGesture() {
@@ -98,5 +108,18 @@ extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()
+    }
+}
+
+extension LoginViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        if code > 0 {
+            let nav = HomeViewController()
+            self.navigationController?.pushViewController(nav, animated: false)
+        } else {
+            self.loginView.loginAlertView.isHidden = true
+
+        }
     }
 }

@@ -90,7 +90,7 @@ final class CustomIcon: UIView {
     
     // MARK: - UI Components
     
-    private let iconImage = UIImageView()
+    let iconImage = UIImageView()
     
     private let dayLabel: UILabel = {
         let label = UILabel()

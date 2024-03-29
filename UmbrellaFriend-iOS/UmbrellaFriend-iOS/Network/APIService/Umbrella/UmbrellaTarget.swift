@@ -15,6 +15,7 @@ enum UmbrellaTarget {
     case getUmbrellaCheck(umbrellaNumber: Int)
     case postUmbrellaLend(umbrellaNumber: Int)
     case postUmbrellaReturn(location: String, data: Data)
+    case getUmbrellaExtend
 }
 
 extension UmbrellaTarget: BaseTargetType {
@@ -33,6 +34,8 @@ extension UmbrellaTarget: BaseTargetType {
             return path
         case .postUmbrellaReturn:
             return URLConstant.umbrellaReturn
+        case .getUmbrellaExtend:
+            return URLConstant.umbrellaExtend
         }
     }
     
@@ -46,6 +49,8 @@ extension UmbrellaTarget: BaseTargetType {
             return .post
         case .postUmbrellaReturn:
             return .post
+        case .getUmbrellaExtend:
+            return .get
         }
     }
     
@@ -61,6 +66,8 @@ extension UmbrellaTarget: BaseTargetType {
             let locationData = MultipartFormData(provider: .data(location.data(using: .utf8)!), name: "location")
             let imgData = MultipartFormData(provider: .data(data), name: "return_image", fileName: "img.jpg", mimeType: "image/jpg")
             return .uploadMultipart([locationData, imgData])
+        case .getUmbrellaExtend:
+            return .requestPlain
         }
     }
     
@@ -73,6 +80,8 @@ extension UmbrellaTarget: BaseTargetType {
         case .postUmbrellaLend:
             return APIConstants.headerWithToken
         case .postUmbrellaReturn:
+            return APIConstants.headerWithToken
+        case .getUmbrellaExtend:
             return APIConstants.headerWithToken
         }
     }

@@ -32,6 +32,7 @@ final class LoginView: UIView {
     let idTextField = CustomTextField(placeHolder: "학번")
     let pwTextField = CustomTextField(placeHolder: "비밀번호")
     lazy var loginButton = CustomButton(status: true, title: "로그인")
+    let loginAlertView = CustomAlertView(subTitle: "")
     
     // MARK: - Life Cycles
     
@@ -56,10 +57,11 @@ extension LoginView {
     func setUI() {
         backgroundColor = .umbrellaWhite
         pwTextField.isSecureTextEntry = true
+        loginAlertView.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, loginTitleLabel, idTextField, pwTextField, loginButton)
+        addSubviews(navigationView, loginTitleLabel, idTextField, pwTextField, loginButton, loginAlertView)
     }
     
     func setLayout() {
@@ -86,6 +88,25 @@ extension LoginView {
         loginButton.snp.makeConstraints {
             $0.top.equalTo(pwTextField.snp.bottom).offset(36)
             $0.centerX.equalToSuperview()
+        }
+        
+        loginAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+}
+
+extension LoginView {
+    
+    func configureAlertView(message: String) {
+        if message.contains("로그인되었습니다") {
+            self.loginAlertView.alertTitleLabel.text = "성공!"
+            self.loginAlertView.alertTitleLabel.textColor = .mainBlue
+            self.loginAlertView.alertSubTitleLabel.text = message
+        } else {
+            self.loginAlertView.alertTitleLabel.text = "실패"
+            self.loginAlertView.alertTitleLabel.textColor = .subOrange
+            self.loginAlertView.alertSubTitleLabel.text = "다시 로그인해주세요"
         }
     }
 }

@@ -23,6 +23,8 @@ final class SignupViewController: UIViewController {
     private let signupViewModel = SignupViewModel()
     private let photoAttachViewModel: PhotoAttachViewModel
     private let disposeBag = DisposeBag()
+    private var signupCode: Int = 0
+    private var editProfileCode: Int = 0
     
     // MARK: - UI Components
     
@@ -82,11 +84,11 @@ extension SignupViewController {
         }
         
         signupView.completeButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(with: self) { owner, _ in
                 if self.userId > 0 {
                     self.signupViewModel.inputs.editProfile(
                         id: self.userId,
-                        email: self.signupView.emailTextField.text ?? "",
+                        email: "\(self.signupView.emailTextField.text ?? "")@sookmyung.ac.kr" ,
                         pw: self.signupView.pwTextField.text ?? "",
                         phone: self.signupView.phoneTextField.text ?? "")
                 } else {
@@ -97,36 +99,38 @@ extension SignupViewController {
                         studentId: self.signupView.idTextField.text?.codingKey.intValue ?? 0,
                         phone: self.signupView.phoneTextField.text ?? "")
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        signupViewModel.outputs.editProfileMessage
+            .subscribe(onNext: { message in
+                if message.contains("수정되었습니다") {
+                    self.editProfileCode = 200
+                }
+                self.signupView.signupAlertView.isHidden = false
+                self.signupView.configureEditProfileAlertView(subTitle: message)
             })
             .disposed(by: disposeBag)
         
         signupViewModel.outputs.editProfileData
             .subscribe(onNext: {_ in 
-                self.navigationController?.popViewController(animated: true)
+                self.signupView.signupAlertView.isHidden = false
             })
             .disposed(by: disposeBag)
         
         photoAttachViewModel.outputs.signupErrorMessage
             .subscribe(onNext: { message in
-                if message == "" {
-                    self.signupView.signupAlertView.isHidden = true
-                } else {
-                    self.signupView.signupAlertView.isHidden = false
-                    self.signupView.configureSignupAlertView(subTitle: message)
+                if message.contains("완료") {
+                    self.signupCode = 201
                 }
+                self.signupView.signupAlertView.isHidden = false
+                self.signupView.configureSignupAlertView(subTitle: message)
             })
             .disposed(by: disposeBag)
         
         photoAttachViewModel.outputs.signupData
             .subscribe(onNext: { model in
                 UserManager.shared.updateToken(model.token)
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                    if let window = windowScene.windows.first {
-                        let homeViewController = HomeViewController()
-                        let navigationController = UINavigationController(rootViewController: homeViewController)
-                        window.rootViewController = navigationController
-                    }
-                }
             })
             .disposed(by: disposeBag)
     }
@@ -249,5 +253,19 @@ extension SignupViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
         signupView.signupAlertView.isHidden = true
+        if signupCode > 0 {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                if let window = windowScene.windows.first {
+                    let homeViewController = HomeViewController()
+                    let navigationController = UINavigationController(rootViewController: homeViewController)
+                    window.rootViewController = navigationController
+                }
+            }
+        }
+        if self.userId > 0 { // 프로필 수정
+            if editProfileCode > 0 {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 }

@@ -38,7 +38,7 @@ final class CustomAlertView: UIView {
         return view
     }()
     
-    private let alertTitleLabel: UILabel = {
+    let alertTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "잠깐만요!"
         label.textColor = .subOrange

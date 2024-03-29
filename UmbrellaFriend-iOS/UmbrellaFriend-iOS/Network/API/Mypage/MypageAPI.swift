@@ -18,8 +18,10 @@ final class MypageAPI {
     private init() {}
     
     public private(set) var mypageData: GeneralResponse<MypageDto>?
+    public private(set) var mypageReportData: GeneralResponse<MypageReportDto>?
     
     // MARK: - GET
+    
     func getMypage(completion: @escaping(GeneralResponse<MypageDto>?) -> Void) {
         mypageProvider.request(.getMypage) { [weak self] result in
             guard let self else { return }
@@ -29,6 +31,30 @@ final class MypageAPI {
                     self.mypageData = try response.map(GeneralResponse<MypageDto>.self)
                     guard let mypageData = self.mypageData else { return }
                     completion(mypageData)
+                } catch let err {
+                    print(err.localizedDescription, 500)
+                }
+            case .failure(let err):
+                print(err.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    // MARK: - POST
+    
+    func postMypageReport(umbrellaNum: String,
+                          reportReason: String,
+                          description: String,
+                          completion: @escaping(GeneralResponse<MypageReportDto>?) -> Void) {
+        mypageProvider.request(.postMypageReport(umbrellaNum: umbrellaNum, reportReason: reportReason, description: description)) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let response):
+                do {
+                    self.mypageReportData = try response.map(GeneralResponse<MypageReportDto>.self)
+                    guard let mypageReportData = self.mypageReportData else { return }
+                    completion(mypageReportData)
                 } catch let err {
                     print(err.localizedDescription, 500)
                 }

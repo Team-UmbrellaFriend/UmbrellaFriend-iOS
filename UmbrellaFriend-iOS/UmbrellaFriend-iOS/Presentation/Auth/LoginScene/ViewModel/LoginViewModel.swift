@@ -19,6 +19,7 @@ protocol LoginViewModelInputs {
 protocol LoginViewModelOutputs {
     
     var userLoginData: PublishSubject<UserLoginDto> { get }
+    var loginMessage: PublishSubject<String> { get }
 }
 
 protocol LoginViewModelType {
@@ -35,6 +36,7 @@ final class LoginViewModel: LoginViewModelInputs, LoginViewModelOutputs, LoginVi
     // output
     
     var userLoginData: PublishSubject<UserLoginDto> = PublishSubject<UserLoginDto>()
+    var loginMessage: PublishSubject<String> = PublishSubject<String>()
     
     // input
     
@@ -52,11 +54,11 @@ extension LoginViewModel {
     func postLogin(id: String, pw: String) {
         AuthAPI.shared.postLogin(id: id, pw: pw) { [weak self] response in
             guard (response?.status) != nil else { return }
-            if response?.status == 200 {
-                guard self != nil else { return }
-                guard let data = response?.data else { return }
-                self?.userLoginData.onNext(data)
-            }
+            guard self != nil else { return }
+            guard let message = response?.message else { return }
+            self?.loginMessage.onNext(message)
+            guard let data = response?.data else { return }
+            self?.userLoginData.onNext(data)
         }
     }
 }
