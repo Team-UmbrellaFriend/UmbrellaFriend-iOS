@@ -87,7 +87,6 @@ private extension ReportView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
-        reportAlertView.alertTitleLabel.text = "접수되었어요!"
         reportAlertView.isHidden = true
     }
     
@@ -201,6 +200,10 @@ extension ReportView {
         reportAlertView.alertSubTitleLabel.text = message
         if !message.contains("성공") {
             reportAlertView.alertTitleLabel.text = "잠깐만요!"
+            reportAlertView.alertTitleLabel.textColor = .subOrange
+        } else {
+            reportAlertView.alertTitleLabel.text = "접수되었어요!"
+            reportAlertView.alertTitleLabel.textColor = .mainBlue
         }
     }
 }

@@ -61,11 +61,12 @@ extension PhotoAttachViewModel {
     func postSignup(username: String, email: String, pw: String, studentId: Int, phone: String) {
         AuthAPI.shared.postSignup(username: username, email: email, pw: pw, studentId: studentId, img: self.image ?? Data(), phone: phone) { [weak self] response in
             guard (response?.status) != nil else { return }
+            guard let message = response?.message else { return }
             if response?.status == 201 {
                 guard self != nil else { return }
+                self?.signupErrorMessage.onNext(message)
                 guard let data = response?.data else { return }
                 self?.signupData.onNext(data)
-                self?.signupErrorMessage.onNext("")
             } else {
                 guard let message = response?.message else { return }
                 self?.signupErrorMessage.onNext(message)

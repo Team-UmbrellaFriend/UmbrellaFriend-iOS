@@ -50,6 +50,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
 
     func setUI() {
+        self.homeView.extendView.isHidden = true
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
@@ -62,15 +63,18 @@ extension HomeViewController {
                 if model.dDay.isOverdue {
                     self?.homeView.rentView.isHidden = true
                     self?.homeView.extendView.isHidden = false
+                    self?.homeView.returnView.isUserInteractionEnabled = true
                     self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
                 } else {
                     if model.dDay.daysRemaining < 0 {
                         self?.homeView.rentView.isHidden = false
                         self?.homeView.extendView.isHidden = true
+                        self?.homeView.returnView.isUserInteractionEnabled = false
                         self?.homeView.returnIcon.returnDay = 0
                     } else {
                         self?.homeView.rentView.isHidden = true
                         self?.homeView.extendView.isHidden = false
+                        self?.homeView.returnView.isUserInteractionEnabled = true
                         self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
                     }
                 }
@@ -104,6 +108,7 @@ extension HomeViewController {
                 if message == "" {
                     self.homeView.homeAlertView.isHidden = false
                     self.homeView.configureHomeAlertView(success: true, "")
+                    self.homeViewModel.inputs.reloadHomeView()
                 } else {
                     self.homeView.homeAlertView.isHidden = false
                     self.homeView.configureHomeAlertView(success: false, message)
