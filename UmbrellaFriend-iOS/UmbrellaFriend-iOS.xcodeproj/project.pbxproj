@@ -109,6 +109,7 @@
 		A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2A2B8088A000883017 /* UIButton+.swift */; };
 		A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2E2B81CDFD00883017 /* SignupViewController.swift */; };
 		A4998C312B81CE0900883017 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C302B81CE0900883017 /* SignupView.swift */; };
+		A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDCF2BAEB51300E46131 /* UmbrellaExtendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
@@ -229,6 +230,7 @@
 		A4998C2A2B8088A000883017 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		A4998C2E2B81CDFD00883017 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A4998C302B81CE0900883017 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaExtendDto.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				A4998B922B70FD0900883017 /* Presentation */,
 				A431761C2B6FFBE000093F0E /* Info.plist */,
 				A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */,
+				A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */,
 			);
 			path = "UmbrellaFriend-iOS";
 			sourceTree = "<group>";
@@ -1116,6 +1119,7 @@
 				A4998BF62B7F403400883017 /* Colors.xcassets in Resources */,
 				A4998BFC2B7F431A00883017 /* SUIT-Medium.ttf in Resources */,
 				A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */,
+				A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */,
 				A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
