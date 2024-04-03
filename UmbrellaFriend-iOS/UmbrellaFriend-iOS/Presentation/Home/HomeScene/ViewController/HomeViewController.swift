@@ -16,14 +16,24 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var isFromSplash: Bool = false
-    private let homeViewModel = HomeViewModel()
+    private let homeViewModel: HomeViewModel
     private let disposeBag = DisposeBag()
+    private let umbrellaExtendSubject = PublishSubject<Void>()
     
     // MARK: - UI Components
     
     private let homeView = HomeView()
     
     // MARK: - Life Cycles
+    
+    init(viewModel: HomeViewModel) {
+        self.homeViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         
@@ -32,7 +42,7 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        homeViewModel.inputs.reloadHomeView()
+//        homeViewModel.inputs.reloadHomeView()
     }
     
     override func viewDidLoad() {
@@ -56,30 +66,51 @@ extension HomeViewController {
     }
     
     func bindViewModel() {
-        homeViewModel.outputs.homeData
-            .asDriver()
-            .drive(onNext: { [weak self] model in
-                self?.homeView.configureHomeView(model: model)
-                if model.dDay.isOverdue {
-                    self?.homeView.rentView.isHidden = true
-                    self?.homeView.extendView.isHidden = false
-                    self?.homeView.returnView.isUserInteractionEnabled = true
-                    self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
-                } else {
-                    if model.dDay.daysRemaining < 0 {
-                        self?.homeView.rentView.isHidden = false
-                        self?.homeView.extendView.isHidden = true
-                        self?.homeView.returnView.isUserInteractionEnabled = false
-                        self?.homeView.returnIcon.returnDay = 0
-                    } else {
-                        self?.homeView.rentView.isHidden = true
-                        self?.homeView.extendView.isHidden = false
-                        self?.homeView.returnView.isUserInteractionEnabled = true
-                        self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
-                    }
-                }
+        
+        self.homeView.extendView.rx.tapGesture()
+            .bind(onNext: { _ in
+                self.umbrellaExtendSubject.onNext(())
             })
             .disposed(by: disposeBag)
+        
+        let input = HomeViewModel.Input(
+            viewWillAppearEvent: self.rx.viewWillAppear.asObservable(),
+            extendButtonTapped: self.umbrellaExtendSubject.asObserver()
+        )
+        
+        let output = self.homeViewModel.transform(from: input, disposeBag: self.disposeBag)
+        
+        output.homeData
+            .asDriver(onErrorJustReturn: HomeEntity.homeDtoInitValue())
+            .drive(with: self, onNext: { owner, home in
+                owner.homeView.configureHomeView(model: home)
+            })
+            .disposed(by: disposeBag)
+        
+//        homeViewModel.outputs.homeData
+//            .asDriver()
+//            .drive(onNext: { [weak self] model in
+//                self?.homeView.configureHomeView(model: model)
+//                if model.dDay.isOverdue {
+//                    self?.homeView.rentView.isHidden = true
+//                    self?.homeView.extendView.isHidden = false
+//                    self?.homeView.returnView.isUserInteractionEnabled = true
+//                    self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
+//                } else {
+//                    if model.dDay.daysRemaining < 0 {
+//                        self?.homeView.rentView.isHidden = false
+//                        self?.homeView.extendView.isHidden = true
+//                        self?.homeView.returnView.isUserInteractionEnabled = false
+//                        self?.homeView.returnIcon.returnDay = 0
+//                    } else {
+//                        self?.homeView.rentView.isHidden = true
+//                        self?.homeView.extendView.isHidden = false
+//                        self?.homeView.returnView.isUserInteractionEnabled = true
+//                        self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
+//                    }
+//                }
+//            })
+//            .disposed(by: disposeBag)
         
         homeView.goMyPageButton.rx.tap
             .subscribe(onNext: {
@@ -96,25 +127,25 @@ extension HomeViewController {
             }
             .disposed(by: disposeBag)
         
-        homeView.extendView.rx.tapGesture()
-            .when(.recognized)
-            .bind { _ in
-                self.homeViewModel.inputs.extendTapped()
-            }
-            .disposed(by: disposeBag)
-        
-        homeViewModel.outputs.extendErrorData
-            .subscribe(onNext: { message in
-                if message == "" {
-                    self.homeView.homeAlertView.isHidden = false
-                    self.homeView.configureHomeAlertView(success: true, "")
-                    self.homeViewModel.inputs.reloadHomeView()
-                } else {
-                    self.homeView.homeAlertView.isHidden = false
-                    self.homeView.configureHomeAlertView(success: false, message)
-                }
-            })
-            .disposed(by: disposeBag)
+//        homeView.extendView.rx.tapGesture()
+//            .when(.recognized)
+//            .bind { _ in
+//                self.homeViewModel.inputs.extendTapped()
+//            }
+//            .disposed(by: disposeBag)
+//        
+//        homeViewModel.outputs.extendErrorData
+//            .subscribe(onNext: { message in
+//                if message == "" {
+//                    self.homeView.homeAlertView.isHidden = false
+//                    self.homeView.configureHomeAlertView(success: true, "")
+//                    self.homeViewModel.inputs.reloadHomeView()
+//                } else {
+//                    self.homeView.homeAlertView.isHidden = false
+//                    self.homeView.configureHomeAlertView(success: false, message)
+//                }
+//            })
+//            .disposed(by: disposeBag)
         
         homeView.returnView.rx.tapGesture()
             .when(.recognized)
@@ -154,6 +185,6 @@ extension HomeViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
         homeView.homeAlertView.isHidden = true
-        homeViewModel.inputs.reloadHomeView()
+//        homeViewModel.inputs.reloadHomeView()
     }
 }

@@ -399,7 +399,7 @@ private extension HomeView {
 
 extension HomeView {
     
-    func configureHomeView(model: HomeDto) {
+    func configureHomeView(model: HomeEntity) {
         userNameLabel.text = "\(model.user.username)님"
         userInfoLabel.text = model.weather.message
         if model.dDay.isOverdue {

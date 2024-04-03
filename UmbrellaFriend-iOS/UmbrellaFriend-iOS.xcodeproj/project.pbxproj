@@ -22,8 +22,8 @@
 		A43B23822BAB3C9400E15CC3 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23812BAB3C9400E15CC3 /* ReportView.swift */; };
 		A43B23852BAB3CA600E15CC3 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23842BAB3CA600E15CC3 /* ReportViewController.swift */; };
 		A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73912B8A436100B39F21 /* BaseTargetType.swift */; };
-		A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73972B8A43B400B39F21 /* HomeDto.swift */; };
-		A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739A2B8A440D00B39F21 /* HomeAPI.swift */; };
+		A43C73982B8A43B400B39F21 /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73972B8A43B400B39F21 /* HomeEntity.swift */; };
+		A43C739B2B8A440D00B39F21 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739A2B8A440D00B39F21 /* HomeService.swift */; };
 		A43C739E2B8A443700B39F21 /* HomeTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C739D2B8A443700B39F21 /* HomeTarget.swift */; };
 		A43C73A12B8A454300B39F21 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73A02B8A454300B39F21 /* HomeViewModel.swift */; };
 		A43C73A42B8A461B00B39F21 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = A43C73A32B8A461B00B39F21 /* RxBlocking */; };
@@ -110,6 +110,13 @@
 		A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C2E2B81CDFD00883017 /* SignupViewController.swift */; };
 		A4998C312B81CE0900883017 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998C302B81CE0900883017 /* SignupView.swift */; };
 		A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */; };
+		A4BA86BE2BBA6E5C0078FC4B /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86BD2BBA6E5C0078FC4B /* ViewModelType.swift */; };
+		A4BA86C02BBA7C630078FC4B /* Single+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86BF2BBA7C630078FC4B /* Single+.swift */; };
+		A4BA86C22BBA7C950078FC4B /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C12BBA7C950078FC4B /* NetworkServiceError.swift */; };
+		A4BA86C42BBA7DAC0078FC4B /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C32BBA7DAC0078FC4B /* HomeRepository.swift */; };
+		A4BA86C62BBA7F9C0078FC4B /* DefaultHomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C52BBA7F9C0078FC4B /* DefaultHomeUseCase.swift */; };
+		A4BA86C82BBA7FC50078FC4B /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */; };
+		A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C92BBAB4160078FC4B /* Reactive+.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDCF2BAEB51300E46131 /* UmbrellaExtendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
@@ -150,8 +157,8 @@
 		A43B23812BAB3C9400E15CC3 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		A43B23842BAB3CA600E15CC3 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		A43C73912B8A436100B39F21 /* BaseTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTargetType.swift; sourceTree = "<group>"; };
-		A43C73972B8A43B400B39F21 /* HomeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDto.swift; sourceTree = "<group>"; };
-		A43C739A2B8A440D00B39F21 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
+		A43C73972B8A43B400B39F21 /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
+		A43C739A2B8A440D00B39F21 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		A43C739D2B8A443700B39F21 /* HomeTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTarget.swift; sourceTree = "<group>"; };
 		A43C73A02B8A454300B39F21 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A43C73B72B8B95DF00B39F21 /* UmbrellaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaMapView.swift; sourceTree = "<group>"; };
@@ -231,6 +238,13 @@
 		A4998C2E2B81CDFD00883017 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		A4998C302B81CE0900883017 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A4BA86BD2BBA6E5C0078FC4B /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
+		A4BA86BF2BBA7C630078FC4B /* Single+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+.swift"; sourceTree = "<group>"; };
+		A4BA86C12BBA7C950078FC4B /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
+		A4BA86C32BBA7DAC0078FC4B /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
+		A4BA86C52BBA7F9C0078FC4B /* DefaultHomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeUseCase.swift; sourceTree = "<group>"; };
+		A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
+		A4BA86C92BBAB4160078FC4B /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaExtendDto.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
@@ -292,6 +306,8 @@
 				A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */,
 				A43B22EF2BA2D89800E15CC3 /* UmbrellaFriend-iOS.entitlements */,
 				A4998B952B70FD1D00883017 /* Application */,
+				A4BA86CB2BBAD62C0078FC4B /* Data */,
+				A4BA86CE2BBAD65F0078FC4B /* Domain */,
 				A4998B942B70FD1700883017 /* Global */,
 				A4998B932B70FD1000883017 /* Network */,
 				A4998B922B70FD0900883017 /* Presentation */,
@@ -358,7 +374,6 @@
 				A488FB2A2B931A46004D4A09 /* Auth */,
 				A488FB1A2B930F24004D4A09 /* Mypage */,
 				A43C73C42B8BA45900B39F21 /* Umbrella */,
-				A43C73992B8A440500B39F21 /* Home */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -369,7 +384,6 @@
 				A488FB272B9319EA004D4A09 /* Auth */,
 				A488FB202B930F6F004D4A09 /* Mypage */,
 				A43C73BE2B8BA35200B39F21 /* Umbrella */,
-				A43C73962B8A43A800B39F21 /* Home */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -377,15 +391,7 @@
 		A43C73962B8A43A800B39F21 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A43C73972B8A43B400B39F21 /* HomeDto.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		A43C73992B8A440500B39F21 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				A43C739A2B8A440D00B39F21 /* HomeAPI.swift */,
+				A43C73972B8A43B400B39F21 /* HomeEntity.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				A43C739D2B8A443700B39F21 /* HomeTarget.swift */,
+				A43C739A2B8A440D00B39F21 /* HomeService.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -541,6 +548,7 @@
 				A471D0792B8A41A200109CA3 /* APIConstant.swift */,
 				A471D07B2B8A426200109CA3 /* URLConstant.swift */,
 				A43C73912B8A436100B39F21 /* BaseTargetType.swift */,
+				A4BA86C12BBA7C950078FC4B /* NetworkServiceError.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -751,6 +759,7 @@
 			children = (
 				A4998BA72B70FE2000883017 /* UITableViewRegisterable.swift */,
 				A4998BA92B70FE2B00883017 /* UICollectionViewRegisterable.swift */,
+				A4BA86BD2BBA6E5C0078FC4B /* ViewModelType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -758,6 +767,8 @@
 		A4998B9A2B70FD6500883017 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA86BF2BBA7C630078FC4B /* Single+.swift */,
+				A4BA86C92BBAB4160078FC4B /* Reactive+.swift */,
 				A4998BA12B70FDB700883017 /* UIView+.swift */,
 				A4998BA32B70FDCC00883017 /* UITextField+.swift */,
 				A4998BA52B70FDFD00883017 /* UIStackView+.swift */,
@@ -986,6 +997,72 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A4BA86CB2BBAD62C0078FC4B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86CD2BBAD6470078FC4B /* Repository */,
+				A4BA86CC2BBAD63D0078FC4B /* DTO */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		A4BA86CC2BBAD63D0078FC4B /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		A4BA86CD2BBAD6470078FC4B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86C32BBA7DAC0078FC4B /* HomeRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		A4BA86CE2BBAD65F0078FC4B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86D02BBAD6730078FC4B /* Entity */,
+				A4BA86CF2BBAD66E0078FC4B /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A4BA86CF2BBAD66E0078FC4B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86D62BBD141E0078FC4B /* Home */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		A4BA86D02BBAD6730078FC4B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				A43C73962B8A43A800B39F21 /* Home */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		A4BA86D62BBD141E0078FC4B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86D72BBD14230078FC4B /* Protocol */,
+				A4BA86C52BBA7F9C0078FC4B /* DefaultHomeUseCase.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A4BA86D72BBD14230078FC4B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1143,6 +1220,7 @@
 				A488FB222B930F77004D4A09 /* MypageDto.swift in Sources */,
 				A488FB342B94D03D004D4A09 /* UserDefaultWrapper.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
+				A4BA86C42BBA7DAC0078FC4B /* HomeRepository.swift in Sources */,
 				A4C9EDDC2BB0930A00E46131 /* ReportNumberViewController.swift in Sources */,
 				A43C73C02B8BA37100B39F21 /* UmbrellaAvailableDto.swift in Sources */,
 				A488FB2D2B931A58004D4A09 /* AuthTarget.swift in Sources */,
@@ -1160,6 +1238,7 @@
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A43C74082B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift in Sources */,
+				A4BA86C82BBA7FC50078FC4B /* HomeUseCase.swift in Sources */,
 				A43C741C2B9098EB00B39F21 /* UmbrellaPlaceDto.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
@@ -1174,7 +1253,8 @@
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
 				A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
-				A43C73982B8A43B400B39F21 /* HomeDto.swift in Sources */,
+				A4BA86C22BBA7C950078FC4B /* NetworkServiceError.swift in Sources */,
+				A43C73982B8A43B400B39F21 /* HomeEntity.swift in Sources */,
 				A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */,
 				A488FB1C2B930F31004D4A09 /* MypageAPI.swift in Sources */,
 				A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */,
@@ -1183,12 +1263,13 @@
 				A43C74202B90A5E000B39F21 /* CustomAlertView.swift in Sources */,
 				A4998C162B80502900883017 /* LoginView.swift in Sources */,
 				A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */,
+				A4BA86C62BBA7F9C0078FC4B /* DefaultHomeUseCase.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
 				A488FB1F2B930F4C004D4A09 /* MypageTarget.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */,
 				A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */,
-				A43C739B2B8A440D00B39F21 /* HomeAPI.swift in Sources */,
+				A43C739B2B8A440D00B39F21 /* HomeService.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A43C73BA2B8B95ED00B39F21 /* UmbrellaMapViewController.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
@@ -1199,11 +1280,13 @@
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A488FB152B930717004D4A09 /* MypageView.swift in Sources */,
+				A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */,
 				A488FB3D2B94DC0B004D4A09 /* UserLogoutDto.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A43C73D52B8F130A00B39F21 /* UmbrellaCheckDto.swift in Sources */,
 				A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */,
 				A43C74152B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift in Sources */,
+				A4BA86C02BBA7C630078FC4B /* Single+.swift in Sources */,
 				A488FB362B94D047004D4A09 /* UserManager.swift in Sources */,
 				A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */,
 				A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */,
@@ -1221,6 +1304,7 @@
 				A4C9EDDA2BB0920100E46131 /* ReportNumberView.swift in Sources */,
 				A4C9EDD82BB0066300E46131 /* MypageReportDto.swift in Sources */,
 				A43C740A2B907E2400B39F21 /* UmbrellaLendDto.swift in Sources */,
+				A4BA86BE2BBA6E5C0078FC4B /* ViewModelType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,7 +64,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                   let keyWindow = windowScene.windows.first else {
                 return
             }
-            let homeVC = HomeViewController()
+            let homeVC = HomeViewController(viewModel: HomeViewModel(homeUseCase: DefaultHomeUseCase(homeRepository: DefaultHomeRepository.shared)))
             keyWindow.rootViewController = UINavigationController(rootViewController: homeVC)
         }
         completionHandler()

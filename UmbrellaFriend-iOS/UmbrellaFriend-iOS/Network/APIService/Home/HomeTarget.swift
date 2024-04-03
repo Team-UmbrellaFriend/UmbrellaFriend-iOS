@@ -10,7 +10,6 @@ import Foundation
 import Moya
 
 enum HomeTarget {
-    
     case getHome
 }
 
