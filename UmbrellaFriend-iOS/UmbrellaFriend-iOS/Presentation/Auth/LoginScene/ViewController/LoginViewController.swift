@@ -115,7 +115,7 @@ extension LoginViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
         if code > 0 {
-            let nav = HomeViewController(viewModel: HomeViewModel(homeUseCase: DefaultHomeUseCase(homeRepository: DefaultHomeRepository.shared)))
+            let nav = DIContainer.shared.makeHomeVC()
             self.navigationController?.pushViewController(nav, animated: false)
         } else {
             self.loginView.loginAlertView.isHidden = true

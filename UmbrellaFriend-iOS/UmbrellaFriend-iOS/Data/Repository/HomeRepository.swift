@@ -30,7 +30,7 @@ final class DefaultHomeRepository {
     
     //MARK: - Life Cycle
     
-    private init(homeService: HomeService) {
+    init(homeService: HomeService) {
         self.homeService = homeService
     }
 }

@@ -40,7 +40,7 @@ extension SplashViewController {
 
     func showNextPage() {
         if UserManager.shared.hasToken {
-            let nav = HomeViewController(viewModel: HomeViewModel(homeUseCase: DefaultHomeUseCase(homeRepository: DefaultHomeRepository.shared)))
+            let nav = DIContainer.shared.makeHomeVC()
             nav.isFromSplash = true
             self.navigationController?.pushViewController(nav, animated: true)
         } else {

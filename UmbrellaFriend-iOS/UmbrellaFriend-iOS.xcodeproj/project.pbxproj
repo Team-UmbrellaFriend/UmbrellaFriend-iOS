@@ -117,6 +117,7 @@
 		A4BA86C62BBA7F9C0078FC4B /* DefaultHomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C52BBA7F9C0078FC4B /* DefaultHomeUseCase.swift */; };
 		A4BA86C82BBA7FC50078FC4B /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */; };
 		A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C92BBAB4160078FC4B /* Reactive+.swift */; };
+		A4BA86D92BBD16A60078FC4B /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86D82BBD16A60078FC4B /* DIContainer.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDCF2BAEB51300E46131 /* UmbrellaExtendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
@@ -245,6 +246,7 @@
 		A4BA86C52BBA7F9C0078FC4B /* DefaultHomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHomeUseCase.swift; sourceTree = "<group>"; };
 		A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		A4BA86C92BBAB4160078FC4B /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
+		A4BA86D82BBD16A60078FC4B /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaExtendDto.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
@@ -707,6 +709,7 @@
 		A4998B942B70FD1700883017 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA86D82BBD16A60078FC4B /* DIContainer.swift */,
 				A4998B962B70FD2C00883017 /* Resources */,
 				A4998B9B2B70FD6B00883017 /* Literals */,
 				A4998B9A2B70FD6500883017 /* Extension */,
@@ -1278,6 +1281,7 @@
 				A4CBBCB52B83194800D55085 /* String+.swift in Sources */,
 				A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */,
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
+				A4BA86D92BBD16A60078FC4B /* DIContainer.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A488FB152B930717004D4A09 /* MypageView.swift in Sources */,
 				A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */,

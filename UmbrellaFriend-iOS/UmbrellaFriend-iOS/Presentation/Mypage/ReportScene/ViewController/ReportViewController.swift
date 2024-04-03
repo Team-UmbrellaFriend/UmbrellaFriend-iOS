@@ -145,7 +145,7 @@ extension ReportViewController: CustomAlertButtonDelegate {
         if code == 201 {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 if let window = windowScene.windows.first {
-                    let homeViewController = HomeViewController(viewModel: HomeViewModel(homeUseCase: DefaultHomeUseCase(homeRepository: DefaultHomeRepository.shared)))
+                    let homeViewController = DIContainer.shared.makeHomeVC()
                     let navigationController = UINavigationController(rootViewController: homeViewController)
                     window.rootViewController = navigationController
                 }
