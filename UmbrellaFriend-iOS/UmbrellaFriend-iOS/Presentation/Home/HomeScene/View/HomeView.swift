@@ -395,11 +395,32 @@ private extension HomeView {
             $0.edges.equalToSuperview()
         }
     }
+    
+    func updateUI(_ dday: DDay) {
+        if dday.isOverdue {
+            rentView.isHidden = true
+            extendView.isHidden = false
+            returnView.isUserInteractionEnabled = true
+            returnIcon.returnDay = dday.overdueDays
+        } else {
+            if dday.daysRemaining < 0 {
+                rentView.isHidden = false
+                extendView.isHidden = true
+                returnView.isUserInteractionEnabled = false
+                returnIcon.returnDay = 0
+            } else {
+                rentView.isHidden = true
+                extendView.isHidden = false
+                returnView.isUserInteractionEnabled = true
+                returnIcon.returnDay = -dday.daysRemaining
+            }
+        }
+    }
 }
 
 extension HomeView {
     
-    func configureHomeView(model: HomeEntity) {
+    func configureHomeView(_ model: HomeEntity) {
         userNameLabel.text = "\(model.user.username)님"
         userInfoLabel.text = model.weather.message
         if model.dDay.isOverdue {
@@ -409,6 +430,7 @@ extension HomeView {
         }
         todayDateLabel.text = model.weather.weather.date
         todayRainPercentLabel.text = "\(model.weather.weather.percent)%"
+        updateUI(model.dDay)
     }
     
     func configureHomeAlertView(success: Bool, _ message: String) {

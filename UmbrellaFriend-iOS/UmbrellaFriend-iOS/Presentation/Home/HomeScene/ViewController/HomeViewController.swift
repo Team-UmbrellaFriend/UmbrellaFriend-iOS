@@ -49,6 +49,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindUI()
         bindViewModel()
         setToastMessage()
         setDelegate()
@@ -65,13 +66,38 @@ extension HomeViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func bindViewModel() {
+    func bindUI() {
+//        homeView.extendView.rx.tapGesture()
+//            .bind(onNext: { _ in
+//                self.umbrellaExtendSubject.onNext(())
+//            })
+//            .disposed(by: disposeBag)
         
-        self.homeView.extendView.rx.tapGesture()
-            .bind(onNext: { _ in
-                self.umbrellaExtendSubject.onNext(())
-            })
-            .disposed(by: disposeBag)
+        homeView.rentView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.pushToUmbrellaRentVC()
+            }).disposed(by: disposeBag)
+        
+        homeView.returnView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.pushToUmbrellaReturnVC()
+            }).disposed(by: disposeBag)
+        
+        homeView.mapView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.pushToUmbrellaMapVC()
+            }).disposed(by: disposeBag)
+        
+        homeView.goMyPageButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.pushToMypageVC()
+            }).disposed(by: disposeBag)
+    }
+    
+    func bindViewModel() {
         
         let input = HomeViewModel.Input(
             viewWillAppearEvent: self.rx.viewWillAppear.asObservable(),
@@ -83,48 +109,8 @@ extension HomeViewController {
         output.homeData
             .asDriver(onErrorJustReturn: HomeEntity.homeDtoInitValue())
             .drive(with: self, onNext: { owner, home in
-                owner.homeView.configureHomeView(model: home)
+                owner.homeView.configureHomeView(home)
             })
-            .disposed(by: disposeBag)
-        
-//        homeViewModel.outputs.homeData
-//            .asDriver()
-//            .drive(onNext: { [weak self] model in
-//                self?.homeView.configureHomeView(model: model)
-//                if model.dDay.isOverdue {
-//                    self?.homeView.rentView.isHidden = true
-//                    self?.homeView.extendView.isHidden = false
-//                    self?.homeView.returnView.isUserInteractionEnabled = true
-//                    self?.homeView.returnIcon.returnDay = model.dDay.overdueDays
-//                } else {
-//                    if model.dDay.daysRemaining < 0 {
-//                        self?.homeView.rentView.isHidden = false
-//                        self?.homeView.extendView.isHidden = true
-//                        self?.homeView.returnView.isUserInteractionEnabled = false
-//                        self?.homeView.returnIcon.returnDay = 0
-//                    } else {
-//                        self?.homeView.rentView.isHidden = true
-//                        self?.homeView.extendView.isHidden = false
-//                        self?.homeView.returnView.isUserInteractionEnabled = true
-//                        self?.homeView.returnIcon.returnDay = -model.dDay.daysRemaining
-//                    }
-//                }
-//            })
-//            .disposed(by: disposeBag)
-        
-        homeView.goMyPageButton.rx.tap
-            .subscribe(onNext: {
-                let nav = MypageViewController()
-                self.navigationController?.pushViewController(nav, animated: true)
-            })
-            .disposed(by: disposeBag)
-        
-        homeView.rentView.rx.tapGesture()
-            .when(.recognized)
-            .bind { _ in
-                let nav = UmbrellaRentViewController()
-                self.navigationController?.pushViewController(nav, animated: true)
-            }
             .disposed(by: disposeBag)
         
 //        homeView.extendView.rx.tapGesture()
@@ -146,22 +132,6 @@ extension HomeViewController {
 //                }
 //            })
 //            .disposed(by: disposeBag)
-        
-        homeView.returnView.rx.tapGesture()
-            .when(.recognized)
-            .bind { _ in
-                let nav = UmbrellaReturnViewController()
-                self.navigationController?.pushViewController(nav, animated: true)
-            }
-            .disposed(by: disposeBag)
-        
-        homeView.mapView.rx.tapGesture()
-            .when(.recognized)
-            .bind { _ in
-                let nav = UmbrellaMapViewController()
-                self.navigationController?.pushViewController(nav, animated: true)
-            }
-            .disposed(by: disposeBag)
     }
     
     func setToastMessage() {
@@ -186,5 +156,28 @@ extension HomeViewController: CustomAlertButtonDelegate {
     func tapCheckButton() {
         homeView.homeAlertView.isHidden = true
 //        homeViewModel.inputs.reloadHomeView()
+    }
+}
+
+extension HomeViewController {
+    
+    private func pushToUmbrellaRentVC() {
+        let nav = UmbrellaRentViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    private func pushToUmbrellaReturnVC() {
+        let nav = UmbrellaReturnViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    private func pushToUmbrellaMapVC() {
+        let nav = UmbrellaMapViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    private func pushToMypageVC() {
+        let nav = MypageViewController()
+        self.navigationController?.pushViewController(nav, animated: true)
     }
 }
