@@ -433,13 +433,8 @@ extension HomeView {
         updateUI(model.dDay)
     }
     
-    func configureHomeAlertView(success: Bool, _ message: String) {
-        if success {
-            homeAlertView.alertTitleLabel.text = "연장이 완료되었습니다!"
-            homeAlertView.alertSubTitleLabel.text = "자동으로 3일이\n추가 연장되었습니다."
-        } else {
-            homeAlertView.alertTitleLabel.text = "잠깐만요!"
-            homeAlertView.alertSubTitleLabel.text = message
-        }
+    func configureHomeAlertView(_ message: String) {
+        homeAlertView.alertSubTitleLabel.text = message
+        homeAlertView.alertTitleLabel.text = message.contains("성공") ? "연장이 완료되었습니다!" : "잠깐만요!"
     }
 }

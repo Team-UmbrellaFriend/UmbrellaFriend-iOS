@@ -42,7 +42,6 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        homeViewModel.inputs.reloadHomeView()
     }
     
     override func viewDidLoad() {
@@ -67,11 +66,11 @@ extension HomeViewController {
     }
     
     func bindUI() {
-//        homeView.extendView.rx.tapGesture()
-//            .bind(onNext: { _ in
-//                self.umbrellaExtendSubject.onNext(())
-//            })
-//            .disposed(by: disposeBag)
+        homeView.extendView.rx.tapGesture()
+            .bind(onNext: { _ in
+                self.umbrellaExtendSubject.onNext(())
+            })
+            .disposed(by: disposeBag)
         
         homeView.rentView.rx.tapGesture()
             .when(.recognized)
@@ -113,25 +112,12 @@ extension HomeViewController {
             })
             .disposed(by: disposeBag)
         
-//        homeView.extendView.rx.tapGesture()
-//            .when(.recognized)
-//            .bind { _ in
-//                self.homeViewModel.inputs.extendTapped()
-//            }
-//            .disposed(by: disposeBag)
-//        
-//        homeViewModel.outputs.extendErrorData
-//            .subscribe(onNext: { message in
-//                if message == "" {
-//                    self.homeView.homeAlertView.isHidden = false
-//                    self.homeView.configureHomeAlertView(success: true, "")
-//                    self.homeViewModel.inputs.reloadHomeView()
-//                } else {
-//                    self.homeView.homeAlertView.isHidden = false
-//                    self.homeView.configureHomeAlertView(success: false, message)
-//                }
-//            })
-//            .disposed(by: disposeBag)
+        output.extendMessageData
+            .subscribe(onNext: { message in
+                self.homeView.homeAlertView.isHidden = false
+                self.homeView.configureHomeAlertView(message)
+            })
+            .disposed(by: disposeBag)
     }
     
     func setToastMessage() {
@@ -155,7 +141,10 @@ extension HomeViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
         homeView.homeAlertView.isHidden = true
-//        homeViewModel.inputs.reloadHomeView()
+        let homeVC = UINavigationController(
+            rootViewController: DIContainer.shared.makeHomeVC()
+        )
+        UIApplication.shared.changeRootViewController(homeVC)
     }
 }
 

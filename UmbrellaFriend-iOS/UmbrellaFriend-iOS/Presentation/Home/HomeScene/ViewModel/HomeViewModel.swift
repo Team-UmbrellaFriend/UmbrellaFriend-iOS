@@ -14,9 +14,14 @@ import Moya
 final class HomeViewModel: ViewModelType {
     
     private let homeUseCase: HomeUseCase
+    private let umbrellaUseCase: UmbrellaUseCase
     
-    init(homeUseCase: HomeUseCase) {
+    init(
+        homeUseCase: HomeUseCase,
+        umbrellaUseCase: UmbrellaUseCase
+    ) {
         self.homeUseCase = homeUseCase
+        self.umbrellaUseCase = umbrellaUseCase
     }
     
     struct Input {
@@ -26,7 +31,7 @@ final class HomeViewModel: ViewModelType {
     
     struct Output {
         var homeData = PublishRelay<HomeEntity>()
-        var extendErrorData = PublishRelay<String>()
+        var extendMessageData = PublishRelay<String>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -38,10 +43,10 @@ final class HomeViewModel: ViewModelType {
         })
         .disposed(by: disposeBag)
         
-//        input.extendButtonTapped.subscribe(with: self, onNext: { owner, _ in
-//            owner.getUmbrellaExtendDto()
-//        })
-//        .disposed(by: disposeBag)
+        input.extendButtonTapped.subscribe(with: self, onNext: { owner, _ in
+            owner.umbrellaUseCase.getUmbrellaExtend()
+        })
+        .disposed(by: disposeBag)
         
         return output
     }
@@ -50,32 +55,11 @@ final class HomeViewModel: ViewModelType {
         homeUseCase.homeData
             .bind(to: output.homeData)
             .disposed(by: disposeBag)
+        
+        umbrellaUseCase.umbrellaExtendData
+            .subscribe(onNext: { message in
+                output.extendMessageData.accept(message)
+            })
+            .disposed(by: disposeBag)
     }
 }
-
-//extension HomeViewModel {
-//    
-//    func getHomeDto(output: Output) {
-//        HomeAPI.shared.getHome { [weak self] response in
-//            guard (response?.status) != nil else { return }
-//            guard self != nil else { return }
-//            guard let data = response?.data else { return }
-//            output.homeData.accept(data)
-//        }
-//    }
-    
-//    func getUmbrellaExtendDto() {
-//        UmbrellaAPI.shared.getUmbrellaExtend { [weak self] response in
-//            guard (response?.status) != nil else { return }
-//            guard self != nil else { return }
-//            if response?.status == 200 {
-//                guard let data = response?.data else { return }
-//                self?.extendData.onNext(data)
-//                self?.extendErrorData.onNext("")
-//            } else {
-//                guard let message = response?.message else { return }
-//                self?.extendErrorData.onNext(message)
-//            }
-//        }
-//    }
-//}
