@@ -118,8 +118,13 @@
 		A4BA86C82BBA7FC50078FC4B /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */; };
 		A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C92BBAB4160078FC4B /* Reactive+.swift */; };
 		A4BA86D92BBD16A60078FC4B /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86D82BBD16A60078FC4B /* DIContainer.swift */; };
+		A4BA86DC2BBD23A60078FC4B /* UmbrellaExtendEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86DB2BBD23A60078FC4B /* UmbrellaExtendEntity.swift */; };
+		A4BA86DE2BBD23CE0078FC4B /* UmbrellaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86DD2BBD23CE0078FC4B /* UmbrellaRepository.swift */; };
+		A4BA86FC2BC7AEFC0078FC4B /* UmbrellaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86FB2BC7AEFC0078FC4B /* UmbrellaService.swift */; };
+		A4BA86FE2BC7B1290078FC4B /* DefaultUmbrellaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86FD2BC7B1290078FC4B /* DefaultUmbrellaUseCase.swift */; };
+		A4BA87002BC7B1330078FC4B /* UmbrellaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86FF2BC7B1330078FC4B /* UmbrellaUseCase.swift */; };
+		A4BA87022BC824B40078FC4B /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87012BC824B40078FC4B /* UIApplication+.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
-		A4C9EDCF2BAEB51300E46131 /* UmbrellaExtendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -247,7 +252,12 @@
 		A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 		A4BA86C92BBAB4160078FC4B /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		A4BA86D82BBD16A60078FC4B /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
-		A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaExtendDto.swift; sourceTree = "<group>"; };
+		A4BA86DB2BBD23A60078FC4B /* UmbrellaExtendEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaExtendEntity.swift; sourceTree = "<group>"; };
+		A4BA86DD2BBD23CE0078FC4B /* UmbrellaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRepository.swift; sourceTree = "<group>"; };
+		A4BA86FB2BC7AEFC0078FC4B /* UmbrellaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaService.swift; sourceTree = "<group>"; };
+		A4BA86FD2BC7B1290078FC4B /* DefaultUmbrellaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUmbrellaUseCase.swift; sourceTree = "<group>"; };
+		A4BA86FF2BC7B1330078FC4B /* UmbrellaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaUseCase.swift; sourceTree = "<group>"; };
+		A4BA87012BC824B40078FC4B /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
@@ -467,7 +477,6 @@
 				A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */,
 				A43C741B2B9098EB00B39F21 /* UmbrellaPlaceDto.swift */,
 				A43C74282B90A9B300B39F21 /* UmbrellaReturnDto.swift */,
-				A4C9EDCE2BAEB51300E46131 /* UmbrellaExtendDto.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -476,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				A43C73C22B8BA3A200B39F21 /* UmbrellaTarget.swift */,
+				A4BA86FB2BC7AEFC0078FC4B /* UmbrellaService.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -780,6 +790,7 @@
 				A4998C2A2B8088A000883017 /* UIButton+.swift */,
 				A4CBBCB42B83194800D55085 /* String+.swift */,
 				A4C9EDD52BAF25C300E46131 /* UITextView+.swift */,
+				A4BA87012BC824B40078FC4B /* UIApplication+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1020,6 +1031,7 @@
 			isa = PBXGroup;
 			children = (
 				A4BA86C32BBA7DAC0078FC4B /* HomeRepository.swift */,
+				A4BA86DD2BBD23CE0078FC4B /* UmbrellaRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1036,6 +1048,7 @@
 		A4BA86CF2BBAD66E0078FC4B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA86DF2BBD23D50078FC4B /* Umbrella */,
 				A4BA86D62BBD141E0078FC4B /* Home */,
 			);
 			path = UseCase;
@@ -1044,6 +1057,7 @@
 		A4BA86D02BBAD6730078FC4B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA86DA2BBD23940078FC4B /* Umbrella */,
 				A43C73962B8A43A800B39F21 /* Home */,
 			);
 			path = Entity;
@@ -1062,6 +1076,31 @@
 			isa = PBXGroup;
 			children = (
 				A4BA86C72BBA7FC50078FC4B /* HomeUseCase.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A4BA86DA2BBD23940078FC4B /* Umbrella */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86DB2BBD23A60078FC4B /* UmbrellaExtendEntity.swift */,
+			);
+			path = Umbrella;
+			sourceTree = "<group>";
+		};
+		A4BA86DF2BBD23D50078FC4B /* Umbrella */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86E02BBD23DB0078FC4B /* Protocol */,
+				A4BA86FD2BC7B1290078FC4B /* DefaultUmbrellaUseCase.swift */,
+			);
+			path = Umbrella;
+			sourceTree = "<group>";
+		};
+		A4BA86E02BBD23DB0078FC4B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA86FF2BC7B1330078FC4B /* UmbrellaUseCase.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1221,6 +1260,7 @@
 				A43C74292B90A9B300B39F21 /* UmbrellaReturnDto.swift in Sources */,
 				A43C742B2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift in Sources */,
 				A488FB222B930F77004D4A09 /* MypageDto.swift in Sources */,
+				A4BA87002BC7B1330078FC4B /* UmbrellaUseCase.swift in Sources */,
 				A488FB342B94D03D004D4A09 /* UserDefaultWrapper.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A4BA86C42BBA7DAC0078FC4B /* HomeRepository.swift in Sources */,
@@ -1236,8 +1276,9 @@
 				A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */,
 				A4CBBCD02B85E88500D55085 /* CustomIcon.swift in Sources */,
 				A43C739E2B8A443700B39F21 /* HomeTarget.swift in Sources */,
-				A4C9EDCF2BAEB51300E46131 /* UmbrellaExtendDto.swift in Sources */,
 				A488FB252B931969004D4A09 /* SignupViewModel.swift in Sources */,
+				A4BA87022BC824B40078FC4B /* UIApplication+.swift in Sources */,
+				A4BA86FC2BC7AEFC0078FC4B /* UmbrellaService.swift in Sources */,
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
 				A43C74082B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift in Sources */,
@@ -1271,9 +1312,11 @@
 				A488FB1F2B930F4C004D4A09 /* MypageTarget.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */,
+				A4BA86FE2BC7B1290078FC4B /* DefaultUmbrellaUseCase.swift in Sources */,
 				A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */,
 				A43C739B2B8A440D00B39F21 /* HomeService.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
+				A4BA86DE2BBD23CE0078FC4B /* UmbrellaRepository.swift in Sources */,
 				A43C73BA2B8B95ED00B39F21 /* UmbrellaMapViewController.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
 				A43B23822BAB3C9400E15CC3 /* ReportView.swift in Sources */,
@@ -1282,6 +1325,7 @@
 				A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */,
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4BA86D92BBD16A60078FC4B /* DIContainer.swift in Sources */,
+				A4BA86DC2BBD23A60078FC4B /* UmbrellaExtendEntity.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A488FB152B930717004D4A09 /* MypageView.swift in Sources */,
 				A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */,

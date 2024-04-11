@@ -12,7 +12,7 @@ import Moya
 
 extension PrimitiveSequenceType where Trait == SingleTrait {
     
-    public func fapSubscribe<Object: AnyObject>(
+    public func umbrellaFriendSubscribe<Object: AnyObject>(
         with object: Object,
         onSuccess: ((Object, Element) -> Void)? = nil,
         onFailure: ((Object, NetworkServiceError?) -> Void)? = nil,
