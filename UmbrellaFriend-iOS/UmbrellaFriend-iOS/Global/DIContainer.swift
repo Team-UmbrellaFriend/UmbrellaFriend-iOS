@@ -17,10 +17,13 @@ extension DIContainer {
     
     func makeHomeVC() -> HomeViewController {
         let homeService = DefaultHomeService()
+        let umbrellaService = DefaultUmbrellaService()
         let homeRepo = DefaultHomeRepository(homeService: homeService)
+        let umbrellaRepo = DefaultUmbrellaRepository(umbrellaService: umbrellaService)
         let homeUsecase = DefaultHomeUseCase(homeRepository: homeRepo)
+        let umbrellaUsecase = DefaultUmbrellaUseCase(umbrellaRepository: umbrellaRepo)
         
-        let vm = HomeViewModel(homeUseCase: homeUsecase)
+        let vm = HomeViewModel(homeUseCase: homeUsecase, umbrellaUseCase: umbrellaUsecase)
         let vc = HomeViewController(viewModel: vm)
         return vc
     }
