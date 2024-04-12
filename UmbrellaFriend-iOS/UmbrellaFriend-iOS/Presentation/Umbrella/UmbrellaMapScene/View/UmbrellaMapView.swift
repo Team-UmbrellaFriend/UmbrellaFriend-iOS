@@ -198,7 +198,7 @@ private extension UmbrellaMapView {
 
 extension UmbrellaMapView {
     
-    func configureUmbrellaMapView(model: UmbrellaAvailableDto){
+    func configureUmbrellaMapView(model: UmbrellaAvailableEntity){
         mapDetailTitle.text = "\(model.locationName) 우산 잔여 개수"
         umbrellaNumberSubTitle.text = "\(model.numUmbrellas)"
     }
