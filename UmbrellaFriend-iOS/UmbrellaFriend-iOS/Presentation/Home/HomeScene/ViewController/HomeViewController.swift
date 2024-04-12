@@ -161,7 +161,7 @@ extension HomeViewController {
     }
     
     private func pushToUmbrellaMapVC() {
-        let nav = UmbrellaMapViewController()
+        let nav = DIContainer.shared.makeUmbrellaMapVC()
         self.navigationController?.pushViewController(nav, animated: true)
     }
     

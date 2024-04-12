@@ -49,7 +49,7 @@ private extension UmbrellaRentViewController {
         case umbrellaRentView.exitButton:
             self.navigationController?.popViewController(animated: true)
         case umbrellaRentView.mapButton:
-            let nav = UmbrellaMapViewController()
+            let nav = DIContainer.shared.makeUmbrellaMapVC()
             self.navigationController?.pushViewController(nav, animated: true)
         default:
             break

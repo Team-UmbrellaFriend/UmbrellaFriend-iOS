@@ -15,6 +15,15 @@ final class DIContainer {
 
 extension DIContainer {
     
+    func makeUmbrellaMapVC() -> UmbrellaMapViewController {
+        let umbrellaService = DefaultUmbrellaService()
+        let umbrellaRepo = DefaultUmbrellaRepository(umbrellaService: umbrellaService)
+        let umbrellaUsecase = DefaultUmbrellaUseCase(umbrellaRepository: umbrellaRepo)
+        let vm = UmbrellaMapViewModel(umbrellaUseCase: umbrellaUsecase)
+        let vc = UmbrellaMapViewController(viewModel: vm)
+        return vc
+    }
+    
     func makeHomeVC() -> HomeViewController {
         let homeService = DefaultHomeService()
         let umbrellaService = DefaultUmbrellaService()
