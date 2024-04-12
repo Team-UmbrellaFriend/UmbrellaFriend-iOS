@@ -13,6 +13,7 @@ protocol UmbrellaRepository {
     var umbrellaExtendResult: String? { get set }
     
     func getUmbrellaExtend() -> Observable<String>
+    func getUmbrellaAvailabe() -> Observable<[UmbrellaAvailableEntity]>
 }
 
 final class DefaultUmbrellaRepository {
@@ -27,6 +28,7 @@ final class DefaultUmbrellaRepository {
     private let disposeBag = DisposeBag()
     
     var umbrellaExtendResult: String?
+    var umbrellaAvailableResult: [UmbrellaAvailableEntity]?
     
     //MARK: - Life Cycle
     
@@ -40,6 +42,12 @@ extension DefaultUmbrellaRepository: UmbrellaRepository {
     func getUmbrellaExtend() -> Observable<String> {
         umbrellaService.getUmbrellaExtend()
             .do(onSuccess: { [weak self] in self?.umbrellaExtendResult = $0 } )
+            .asObservable()
+    }
+    
+    func getUmbrellaAvailabe() -> Observable<[UmbrellaAvailableEntity]> {
+        umbrellaService.getUmbrellaAvailable()
+            .do(onSuccess: { [weak self] in self?.umbrellaAvailableResult = $0 } )
             .asObservable()
     }
 }

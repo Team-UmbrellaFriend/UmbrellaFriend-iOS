@@ -19,6 +19,8 @@ final class DefaultUmbrellaUseCase: UmbrellaUseCase {
     }
     
     var umbrellaExtendData = PublishRelay<String>()
+    var umbrellaAvailableData = PublishRelay<[UmbrellaAvailableEntity]>()
+    var umbrellaMapTappedData = PublishRelay<UmbrellaAvailableEntity>()
 }
 
 extension DefaultUmbrellaUseCase {
@@ -27,6 +29,13 @@ extension DefaultUmbrellaUseCase {
         umbrellaRepository.getUmbrellaExtend()
             .subscribe(with: self, onNext: { owner, umbrellaExtend in
                 owner.umbrellaExtendData.accept(umbrellaExtend)
+            }).disposed(by: disposeBag)
+    }
+    
+    func getUmbrellaAvailable() {
+        umbrellaRepository.getUmbrellaAvailabe()
+            .subscribe(with: self, onNext: { owner, umbrellaAvailable in
+                owner.umbrellaAvailableData.accept(umbrellaAvailable)
             }).disposed(by: disposeBag)
     }
 }

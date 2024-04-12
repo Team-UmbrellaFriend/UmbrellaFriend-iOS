@@ -13,6 +13,8 @@ import RxCocoa
 protocol UmbrellaUseCase {
     
     var umbrellaExtendData: PublishRelay<String> { get }
+    var umbrellaAvailableData: PublishRelay<[UmbrellaAvailableEntity]> { get }
     
     func getUmbrellaExtend()
+    func getUmbrellaAvailable()
 }

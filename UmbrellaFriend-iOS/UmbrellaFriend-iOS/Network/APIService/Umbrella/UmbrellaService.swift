@@ -14,6 +14,7 @@ import RxMoya
 protocol UmbrellaService {
     
     func getUmbrellaExtend() -> Single<String>
+    func getUmbrellaAvailable() -> Single<[UmbrellaAvailableEntity]>
 }
 
 final class DefaultUmbrellaService: NSObject {
@@ -29,5 +30,11 @@ extension DefaultUmbrellaService: UmbrellaService {
                 let genericResponse = try response.map(GeneralResponse<UmbrellaExtendEntity>.self)
                 return genericResponse.message
             }
+    }
+    
+    func getUmbrellaAvailable() -> Single<[UmbrellaAvailableEntity]> {
+        umbrellaProvider.rx.request(.getUmbrellaAvailable)
+            .filterSuccessfulStatusCodes()
+            .mapGenericResponse([UmbrellaAvailableEntity].self)
     }
 }
