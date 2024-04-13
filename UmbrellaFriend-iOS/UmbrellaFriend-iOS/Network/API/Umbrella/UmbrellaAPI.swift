@@ -17,31 +17,8 @@ final class UmbrellaAPI {
     
     private init() {}
     
-    public private(set) var umbrellaCheckData: GeneralResponse<UmbrellaCheckDto>?
     public private(set) var umbrellaLendData: GeneralResponse<UmbrellaLendDto>?
     public private(set) var umbrellaReturnData: GeneralResponse<UmbrellaReturnDto>?
-    
-    // MARK: - GET
-    
-    func getUmbrellaCheck(number: Int,
-                          completion: @escaping(GeneralResponse<UmbrellaCheckDto>?) -> Void) {
-        umbrellaProvider.request(.getUmbrellaCheck(umbrellaNumber: number)) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let response):
-                do {
-                    self.umbrellaCheckData = try response.map(GeneralResponse<UmbrellaCheckDto>.self)
-                    guard let umbrellaCheckData = self.umbrellaCheckData else { return }
-                    completion(umbrellaCheckData)
-                } catch let err {
-                    print(err.localizedDescription, 500)
-                }
-            case .failure(let err):
-                print(err.localizedDescription)
-                completion(nil)
-            }
-        }
-    }
     
     // MARK: - POST
     

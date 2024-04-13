@@ -11,9 +11,11 @@ import RxSwift
 protocol UmbrellaRepository {
     
     var umbrellaExtendResult: String? { get set }
+    var umbrellaCheckResult: UmbrellaCheckEntity? { get set }
     
     func getUmbrellaExtend() -> Observable<String>
     func getUmbrellaAvailabe() -> Observable<[UmbrellaAvailableEntity]>
+    func getUmbrellaCheck(umbrellaNum: Int) -> Observable<UmbrellaCheckEntity>
 }
 
 final class DefaultUmbrellaRepository {
@@ -29,6 +31,7 @@ final class DefaultUmbrellaRepository {
     
     var umbrellaExtendResult: String?
     var umbrellaAvailableResult: [UmbrellaAvailableEntity]?
+    var umbrellaCheckResult: UmbrellaCheckEntity?
     
     //MARK: - Life Cycle
     
@@ -48,6 +51,12 @@ extension DefaultUmbrellaRepository: UmbrellaRepository {
     func getUmbrellaAvailabe() -> Observable<[UmbrellaAvailableEntity]> {
         umbrellaService.getUmbrellaAvailable()
             .do(onSuccess: { [weak self] in self?.umbrellaAvailableResult = $0 } )
+            .asObservable()
+    }
+    
+    func getUmbrellaCheck(umbrellaNum: Int) -> Observable<UmbrellaCheckEntity> {
+        umbrellaService.getUmbrellaCheck(umbrellaNum: umbrellaNum)
+            .do(onSuccess: { [weak self] in self?.umbrellaCheckResult = $0 } )
             .asObservable()
     }
 }

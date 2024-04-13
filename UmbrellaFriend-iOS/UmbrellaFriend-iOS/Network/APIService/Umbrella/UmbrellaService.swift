@@ -15,6 +15,7 @@ protocol UmbrellaService {
     
     func getUmbrellaExtend() -> Single<String>
     func getUmbrellaAvailable() -> Single<[UmbrellaAvailableEntity]>
+    func getUmbrellaCheck(umbrellaNum: Int) -> Single<UmbrellaCheckEntity>
 }
 
 final class DefaultUmbrellaService: NSObject {
@@ -36,5 +37,11 @@ extension DefaultUmbrellaService: UmbrellaService {
         umbrellaProvider.rx.request(.getUmbrellaAvailable)
             .filterSuccessfulStatusCodes()
             .mapGenericResponse([UmbrellaAvailableEntity].self)
+    }
+    
+    func getUmbrellaCheck(umbrellaNum: Int) -> Single<UmbrellaCheckEntity> {
+        umbrellaProvider.rx.request(.getUmbrellaCheck(umbrellaNumber: umbrellaNum))
+            .filterSuccessfulStatusCodes()
+            .mapGenericResponse(UmbrellaCheckEntity.self)
     }
 }

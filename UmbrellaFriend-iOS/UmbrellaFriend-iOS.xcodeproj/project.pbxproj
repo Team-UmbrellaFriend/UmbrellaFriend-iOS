@@ -124,6 +124,7 @@
 		A4BA87002BC7B1330078FC4B /* UmbrellaUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86FF2BC7B1330078FC4B /* UmbrellaUseCase.swift */; };
 		A4BA87022BC824B40078FC4B /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87012BC824B40078FC4B /* UIApplication+.swift */; };
 		A4BA87072BC8D6930078FC4B /* UmbrellaAvailableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87062BC8D6930078FC4B /* UmbrellaAvailableEntity.swift */; };
+		A4BA87092BCA3D330078FC4B /* UmbrellaCheckEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87082BCA3D330078FC4B /* UmbrellaCheckEntity.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */; };
@@ -258,6 +259,7 @@
 		A4BA86FF2BC7B1330078FC4B /* UmbrellaUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaUseCase.swift; sourceTree = "<group>"; };
 		A4BA87012BC824B40078FC4B /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		A4BA87062BC8D6930078FC4B /* UmbrellaAvailableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaAvailableEntity.swift; sourceTree = "<group>"; };
+		A4BA87082BCA3D330078FC4B /* UmbrellaCheckEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaCheckEntity.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
@@ -1084,6 +1086,7 @@
 			children = (
 				A4BA86DB2BBD23A60078FC4B /* UmbrellaExtendEntity.swift */,
 				A4BA87062BC8D6930078FC4B /* UmbrellaAvailableEntity.swift */,
+				A4BA87082BCA3D330078FC4B /* UmbrellaCheckEntity.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				A43C742B2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift in Sources */,
 				A488FB222B930F77004D4A09 /* MypageDto.swift in Sources */,
 				A4BA87002BC7B1330078FC4B /* UmbrellaUseCase.swift in Sources */,
+				A4BA87092BCA3D330078FC4B /* UmbrellaCheckEntity.swift in Sources */,
 				A488FB342B94D03D004D4A09 /* UserDefaultWrapper.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A4BA86C42BBA7DAC0078FC4B /* HomeRepository.swift in Sources */,
