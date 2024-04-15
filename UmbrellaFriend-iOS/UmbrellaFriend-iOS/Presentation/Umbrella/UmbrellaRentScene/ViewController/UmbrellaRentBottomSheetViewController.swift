@@ -9,12 +9,14 @@ import UIKit
 
 import SnapKit
 import RxSwift
+import RxCocoa
 
 final class UmbrellaRentBottomSheetViewController: UIViewController {
     
     // MARK: - Properties
     
     private let umbrellaRentViewModel: UmbrellaRentViewModel
+    private var umbrellaNum: Int = -1
     private let umbrellaRentView: UmbrellaRentView
     private let disposeBag = DisposeBag()
     private var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 501 / 812
@@ -25,9 +27,10 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
     
     // MARK: - Initializer
     
-    init(viewModel: UmbrellaRentViewModel, view: UmbrellaRentView) {
+    init(viewModel: UmbrellaRentViewModel, view: UmbrellaRentView, umbrellaNum: Int) {
         self.umbrellaRentViewModel = viewModel
         self.umbrellaRentView = view
+        self.umbrellaNum = umbrellaNum
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -68,35 +71,41 @@ extension UmbrellaRentBottomSheetViewController {
     }
 
     func bindViewModel() {
-        umbrellaRentViewModel.outputs.umbrellaCheckData
-            .asDriver()
-            .drive(onNext: { [weak self] model in
-                self?.umbrellaRentBottomSheetView.configureBottomSheetView(model: model)
-            })
-            .disposed(by: disposeBag)
+        let input = UmbrellaRentViewModel.Input(
+            qrCodeCaptured: Observable.just(self.umbrellaNum)
+        )
         
-        umbrellaRentBottomSheetView.rentProgressButton.rx.tap
-            .subscribe(onNext: { [self] in
-                self.umbrellaRentViewModel.inputs.umbrellaLend(number: Int(self.umbrellaRentView.number) ?? 0)
-            })
-            .disposed(by: disposeBag)
+        let output = umbrellaRentViewModel.transform(from: input, disposeBag: disposeBag)
         
-        umbrellaRentViewModel.outputs.lendErrorMessage
-            .subscribe(onNext: { message in
-                if message == "" {
-                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                        if let window = windowScene.windows.first {
-                            let homeViewController = DIContainer.shared.makeHomeVC()
-                            let navigationController = UINavigationController(rootViewController: homeViewController)
-                            window.rootViewController = navigationController
-                        }
-                    }
-                } else {
-                    self.umbrellaRentBottomSheetView.rentAlertView.isHidden = false
-                    self.umbrellaRentBottomSheetView.configureAlertView(subTitle: message)
-                }
+        output.umbrellaCheckData
+            .asDriver(onErrorJustReturn: UmbrellaCheckEntity.umbrellaCheckInitValue())
+            .drive(with: self, onNext: { owner, checkData in
+                owner.umbrellaRentBottomSheetView.configureBottomSheetView(checkData)
             })
             .disposed(by: disposeBag)
+//        
+//        umbrellaRentBottomSheetView.rentProgressButton.rx.tap
+//            .subscribe(onNext: { [self] in
+//                self.umbrellaRentViewModel.inputs.umbrellaLend(number: Int(self.umbrellaRentView.number) ?? 0)
+//            })
+//            .disposed(by: disposeBag)
+//        
+//        umbrellaRentViewModel.outputs.lendErrorMessage
+//            .subscribe(onNext: { message in
+//                if message == "" {
+//                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+//                        if let window = windowScene.windows.first {
+//                            let homeViewController = DIContainer.shared.makeHomeVC()
+//                            let navigationController = UINavigationController(rootViewController: homeViewController)
+//                            window.rootViewController = navigationController
+//                        }
+//                    }
+//                } else {
+//                    self.umbrellaRentBottomSheetView.rentAlertView.isHidden = false
+//                    self.umbrellaRentBottomSheetView.configureAlertView(subTitle: message)
+//                }
+//            })
+//            .disposed(by: disposeBag)
     }
     
     func showBottomSheet() {

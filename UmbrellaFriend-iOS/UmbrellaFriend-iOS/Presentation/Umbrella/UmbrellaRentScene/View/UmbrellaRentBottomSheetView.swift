@@ -202,7 +202,7 @@ private extension UmbrellaRentBottomSheetView {
 
 extension UmbrellaRentBottomSheetView {
     
-    func configureBottomSheetView(model: UmbrellaCheckDto) {
+    func configureBottomSheetView(_ model: UmbrellaCheckEntity) {
         umbrellaInfoLabel.text = model.umbrellaNum < 10 ? "우산 번호 0\(model.umbrellaNum)" : "우산 번호 \(model.umbrellaNum)"
         rentUserNameLabel.text = model.username
         rentUserStudentIDLabel.text = "\(model.studentID)"
