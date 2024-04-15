@@ -36,9 +36,7 @@
 		A43C73C62B8BA46400B39F21 /* UmbrellaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73C52B8BA46400B39F21 /* UmbrellaAPI.swift */; };
 		A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73CF2B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift */; };
 		A43C73D32B8F108C00B39F21 /* UmbrellaRentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73D22B8F108C00B39F21 /* UmbrellaRentViewModel.swift */; };
-		A43C73D52B8F130A00B39F21 /* UmbrellaCheckDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C73D42B8F130A00B39F21 /* UmbrellaCheckDto.swift */; };
 		A43C74082B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74072B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift */; };
-		A43C740A2B907E2400B39F21 /* UmbrellaLendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */; };
 		A43C740F2B9087ED00B39F21 /* UmbrellaReturnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C740E2B9087ED00B39F21 /* UmbrellaReturnView.swift */; };
 		A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74102B9087FC00B39F21 /* UmbrellaReturnViewController.swift */; };
 		A43C74152B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C74142B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift */; };
@@ -125,6 +123,7 @@
 		A4BA87022BC824B40078FC4B /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87012BC824B40078FC4B /* UIApplication+.swift */; };
 		A4BA87072BC8D6930078FC4B /* UmbrellaAvailableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87062BC8D6930078FC4B /* UmbrellaAvailableEntity.swift */; };
 		A4BA87092BCA3D330078FC4B /* UmbrellaCheckEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87082BCA3D330078FC4B /* UmbrellaCheckEntity.swift */; };
+		A4BA870F2BCD3F3F0078FC4B /* UmbrellaLendEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA870E2BCD3F3F0078FC4B /* UmbrellaLendEntity.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */; };
@@ -175,9 +174,7 @@
 		A43C73C52B8BA46400B39F21 /* UmbrellaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaAPI.swift; sourceTree = "<group>"; };
 		A43C73CF2B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentBottomSheetView.swift; sourceTree = "<group>"; };
 		A43C73D22B8F108C00B39F21 /* UmbrellaRentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentViewModel.swift; sourceTree = "<group>"; };
-		A43C73D42B8F130A00B39F21 /* UmbrellaCheckDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaCheckDto.swift; sourceTree = "<group>"; };
 		A43C74072B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaRentBottomSheetViewController.swift; sourceTree = "<group>"; };
-		A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaLendDto.swift; sourceTree = "<group>"; };
 		A43C740E2B9087ED00B39F21 /* UmbrellaReturnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnView.swift; sourceTree = "<group>"; };
 		A43C74102B9087FC00B39F21 /* UmbrellaReturnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnViewController.swift; sourceTree = "<group>"; };
 		A43C74142B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnBottomSheetViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +257,7 @@
 		A4BA87012BC824B40078FC4B /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		A4BA87062BC8D6930078FC4B /* UmbrellaAvailableEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaAvailableEntity.swift; sourceTree = "<group>"; };
 		A4BA87082BCA3D330078FC4B /* UmbrellaCheckEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaCheckEntity.swift; sourceTree = "<group>"; };
+		A4BA870E2BCD3F3F0078FC4B /* UmbrellaLendEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaLendEntity.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
@@ -474,8 +472,6 @@
 		A43C73BE2B8BA35200B39F21 /* Umbrella */ = {
 			isa = PBXGroup;
 			children = (
-				A43C73D42B8F130A00B39F21 /* UmbrellaCheckDto.swift */,
-				A43C74092B907E2400B39F21 /* UmbrellaLendDto.swift */,
 				A43C741B2B9098EB00B39F21 /* UmbrellaPlaceDto.swift */,
 				A43C74282B90A9B300B39F21 /* UmbrellaReturnDto.swift */,
 			);
@@ -1087,6 +1083,7 @@
 				A4BA86DB2BBD23A60078FC4B /* UmbrellaExtendEntity.swift */,
 				A4BA87062BC8D6930078FC4B /* UmbrellaAvailableEntity.swift */,
 				A4BA87082BCA3D330078FC4B /* UmbrellaCheckEntity.swift */,
+				A4BA870E2BCD3F3F0078FC4B /* UmbrellaLendEntity.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -1258,6 +1255,7 @@
 				A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */,
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
 				A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */,
+				A4BA870F2BCD3F3F0078FC4B /* UmbrellaLendEntity.swift in Sources */,
 				A43C73C32B8BA3A200B39F21 /* UmbrellaTarget.swift in Sources */,
 				A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */,
 				A43C74292B90A9B300B39F21 /* UmbrellaReturnDto.swift in Sources */,
@@ -1334,7 +1332,6 @@
 				A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */,
 				A488FB3D2B94DC0B004D4A09 /* UserLogoutDto.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
-				A43C73D52B8F130A00B39F21 /* UmbrellaCheckDto.swift in Sources */,
 				A4BA87072BC8D6930078FC4B /* UmbrellaAvailableEntity.swift in Sources */,
 				A43C73922B8A436100B39F21 /* BaseTargetType.swift in Sources */,
 				A43C74152B90950100B39F21 /* UmbrellaReturnBottomSheetViewController.swift in Sources */,
@@ -1355,7 +1352,6 @@
 				A43C740F2B9087ED00B39F21 /* UmbrellaReturnView.swift in Sources */,
 				A4C9EDDA2BB0920100E46131 /* ReportNumberView.swift in Sources */,
 				A4C9EDD82BB0066300E46131 /* MypageReportDto.swift in Sources */,
-				A43C740A2B907E2400B39F21 /* UmbrellaLendDto.swift in Sources */,
 				A4BA86BE2BBA6E5C0078FC4B /* ViewModelType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
