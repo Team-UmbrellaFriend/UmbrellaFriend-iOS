@@ -15,6 +15,15 @@ final class DIContainer {
 
 extension DIContainer {
     
+    func makeUmbrellaRentVC() -> UmbrellaRentViewController {
+        let umbrellaService = DefaultUmbrellaService()
+        let umbrellaRepo = DefaultUmbrellaRepository(umbrellaService: umbrellaService)
+        let umbrellaUsecase = DefaultUmbrellaUseCase(umbrellaRepository: umbrellaRepo)
+        let vm = UmbrellaRentViewModel(umbrellaUseCase: umbrellaUsecase)
+        let vc = UmbrellaRentViewController(viewModel: vm)
+        return vc
+    }
+    
     func makeUmbrellaMapVC() -> UmbrellaMapViewController {
         let umbrellaService = DefaultUmbrellaService()
         let umbrellaRepo = DefaultUmbrellaRepository(umbrellaService: umbrellaService)

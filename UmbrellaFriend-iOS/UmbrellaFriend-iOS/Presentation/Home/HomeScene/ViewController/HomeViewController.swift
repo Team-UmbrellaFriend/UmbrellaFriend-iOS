@@ -151,7 +151,7 @@ extension HomeViewController: CustomAlertButtonDelegate {
 extension HomeViewController {
     
     private func pushToUmbrellaRentVC() {
-        let nav = UmbrellaRentViewController()
+        let nav = DIContainer.shared.makeUmbrellaRentVC()
         self.navigationController?.pushViewController(nav, animated: true)
     }
     
