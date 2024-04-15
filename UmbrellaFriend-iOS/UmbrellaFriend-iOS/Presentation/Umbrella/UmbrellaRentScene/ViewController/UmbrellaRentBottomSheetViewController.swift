@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RxGesture
 
 final class UmbrellaRentBottomSheetViewController: UIViewController {
     
@@ -20,6 +21,8 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
     private let umbrellaRentView: UmbrellaRentView
     private let disposeBag = DisposeBag()
     private var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 501 / 812
+    private let umbrellaLendSubject = PublishSubject<Int>()
+    private var isSuccessLend: Bool = false
     
     // MARK: - UI Components
     
@@ -49,9 +52,8 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindUI()
         bindViewModel()
-        setDismissAction()
-        setAddTarget()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,15 +66,43 @@ final class UmbrellaRentBottomSheetViewController: UIViewController {
 // MARK: - Extensions
 
 extension UmbrellaRentBottomSheetViewController {
-
+    
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
         self.umbrellaRentBottomSheetView.rentAlertView.delegate = self
     }
-
+    
+    func bindUI() {
+        umbrellaRentBottomSheetView.rentProgressButton.rx.tap
+            .map { self.umbrellaNum }
+            .bind(to: umbrellaLendSubject)
+            .disposed(by: disposeBag)
+        
+        umbrellaRentBottomSheetView.rentCancelButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.hideBottomSheet()
+            })
+            .disposed(by: disposeBag)
+        
+        umbrellaRentBottomSheetView.backgroundView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                self.hideBottomSheet()
+            }
+            .disposed(by: disposeBag)
+        
+        umbrellaRentBottomSheetView.bottomSheetView.rx.swipeGesture(.down)
+            .when(.recognized)
+            .bind { _ in
+                self.hideBottomSheet()
+            }
+            .disposed(by: disposeBag)
+    }
+    
     func bindViewModel() {
         let input = UmbrellaRentViewModel.Input(
-            qrCodeCaptured: Observable.just(self.umbrellaNum)
+            qrCodeCaptured: Observable.just(self.umbrellaNum),
+            lendButtonTapped: self.umbrellaLendSubject.asObserver()
         )
         
         let output = umbrellaRentViewModel.transform(from: input, disposeBag: disposeBag)
@@ -83,29 +113,13 @@ extension UmbrellaRentBottomSheetViewController {
                 owner.umbrellaRentBottomSheetView.configureBottomSheetView(checkData)
             })
             .disposed(by: disposeBag)
-//        
-//        umbrellaRentBottomSheetView.rentProgressButton.rx.tap
-//            .subscribe(onNext: { [self] in
-//                self.umbrellaRentViewModel.inputs.umbrellaLend(number: Int(self.umbrellaRentView.number) ?? 0)
-//            })
-//            .disposed(by: disposeBag)
-//        
-//        umbrellaRentViewModel.outputs.lendErrorMessage
-//            .subscribe(onNext: { message in
-//                if message == "" {
-//                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-//                        if let window = windowScene.windows.first {
-//                            let homeViewController = DIContainer.shared.makeHomeVC()
-//                            let navigationController = UINavigationController(rootViewController: homeViewController)
-//                            window.rootViewController = navigationController
-//                        }
-//                    }
-//                } else {
-//                    self.umbrellaRentBottomSheetView.rentAlertView.isHidden = false
-//                    self.umbrellaRentBottomSheetView.configureAlertView(subTitle: message)
-//                }
-//            })
-//            .disposed(by: disposeBag)
+        
+        output.umbrellaLendMessage
+            .subscribe(onNext: { message in
+                self.umbrellaRentBottomSheetView.rentAlertView.isHidden = false
+                self.isSuccessLend = self.umbrellaRentBottomSheetView.configureAlertView(message: message)
+            })
+            .disposed(by: disposeBag)
     }
     
     func showBottomSheet() {
@@ -138,28 +152,24 @@ extension UmbrellaRentBottomSheetViewController {
         }
     }
     
-    func setDismissAction() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
-        umbrellaRentBottomSheetView.backgroundView.addGestureRecognizer(tapGesture)
-        
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(hideBottomSheetAction))
-        swipeGesture.direction = .down
-        umbrellaRentBottomSheetView.addGestureRecognizer(swipeGesture)
-    }
-    
-    @objc
-    func hideBottomSheetAction() {
-        hideBottomSheet()
-    }
-    
-    func setAddTarget() {
-        umbrellaRentBottomSheetView.rentCancelButton.addTarget(self, action: #selector(hideBottomSheetAction), for: .touchUpInside)
+    func changeRootToHomeVC() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                let homeViewController = DIContainer.shared.makeHomeVC()
+                let navigationController = UINavigationController(rootViewController: homeViewController)
+                window.rootViewController = navigationController
+            }
+        }
     }
 }
 
 extension UmbrellaRentBottomSheetViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
-        umbrellaRentBottomSheetView.rentAlertView.isHidden = true
+        if isSuccessLend {
+            changeRootToHomeVC()
+        } else {
+            umbrellaRentBottomSheetView.rentAlertView.isHidden = true
+        }
     }
 }
