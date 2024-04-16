@@ -35,8 +35,6 @@ final class DefaultMypageRepository {
     }
 }
 
-//MARK: - Home Repository
-
 extension DefaultMypageRepository: MypageRepository {
     
     func getMypage() -> Observable<MypageEntity> {
@@ -45,4 +43,3 @@ extension DefaultMypageRepository: MypageRepository {
             .asObservable()
     }
 }
-
