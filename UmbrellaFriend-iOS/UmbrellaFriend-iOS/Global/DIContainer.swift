@@ -45,4 +45,13 @@ extension DIContainer {
         let vc = HomeViewController(viewModel: vm)
         return vc
     }
+    
+    func makeMypageVC() -> MypageViewController {
+        let mypageService = DefaultMypageService()
+        let mypageRepo = DefaultMypageRepository(mypageService: mypageService)
+        let mypageUseCase = DefaultMypageUseCase(mypageRepository: mypageRepo)
+        let vm = MypageViewModel(mypageUseCase: mypageUseCase)
+        let vc = MypageViewController(viewModel: vm)
+        return vc
+    }
 }

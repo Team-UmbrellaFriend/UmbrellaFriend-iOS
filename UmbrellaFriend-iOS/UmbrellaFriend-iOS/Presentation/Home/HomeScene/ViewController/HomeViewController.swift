@@ -40,10 +40,6 @@ final class HomeViewController: UIViewController {
         view = homeView
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -166,7 +162,7 @@ extension HomeViewController {
     }
     
     private func pushToMypageVC() {
-        let nav = MypageViewController()
+        let nav = DIContainer.shared.makeMypageVC()
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
