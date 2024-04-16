@@ -14,19 +14,24 @@ import Moya
 final class MypageViewModel: ViewModelType {
     
     private let mypageUseCase: MypageUseCase
+    private let authUseCase: AuthUseCase
     
     init(
-        mypageUseCase: MypageUseCase
+        mypageUseCase: MypageUseCase,
+        authUseCase: AuthUseCase
     ) {
         self.mypageUseCase = mypageUseCase
+        self.authUseCase = authUseCase
     }
     
     struct Input {
         let viewWillAppearEvent: Observable<Void>
+        let logoutButtonTapped: Observable<Void>
     }
     
     struct Output {
         var mypageData = PublishRelay<MypageEntity>()
+        var logoutData = PublishRelay<BlankEntity>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {
@@ -38,12 +43,21 @@ final class MypageViewModel: ViewModelType {
         })
         .disposed(by: disposeBag)
         
+        input.logoutButtonTapped.subscribe(with: self, onNext: { owner, _ in
+            owner.authUseCase.getLogout()
+        })
+        .disposed(by: disposeBag)
+        
         return output
     }
     
     private func bindOutput(output: Output, disposeBag: DisposeBag) {
         mypageUseCase.mypageData
             .bind(to: output.mypageData)
+            .disposed(by: disposeBag)
+        
+        authUseCase.logoutData
+            .bind(to: output.logoutData)
             .disposed(by: disposeBag)
     }
 }

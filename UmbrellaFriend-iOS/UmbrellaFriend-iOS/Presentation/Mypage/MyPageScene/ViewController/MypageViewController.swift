@@ -17,6 +17,7 @@ final class MypageViewController: UIViewController {
     private let mypageViewModel: MypageViewModel
     private let disposeBag = DisposeBag()
     private var id = BehaviorRelay(value: 0)
+    private let mypageLogoutSubject = PublishSubject<Void>()
     
     // MARK: - UI Components
     
@@ -42,6 +43,7 @@ final class MypageViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindUI()
         bindViewModel()
         setDelegate()
     }
@@ -55,10 +57,31 @@ extension MypageViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+    
+    func bindUI() {
+        mypageView.profileEditButton.rx.tap
+            .subscribe(onNext: {
+                self.pushToSignupVC()
+            })
+            .disposed(by: disposeBag)
+        
+        mypageView.reportButton.rx.tap
+            .subscribe(onNext: {
+                self.pushToReportVC()
+            })
+            .disposed(by: disposeBag)
+        
+        mypageView.navigationView.logoutButton.rx.tap
+            .subscribe(onNext: {
+                self.mypageLogoutSubject.onNext(())
+            })
+            .disposed(by: disposeBag)
+    }
 
     func bindViewModel() {
         let input = MypageViewModel.Input(
-            viewWillAppearEvent: self.rx.viewWillAppear.asObservable()
+            viewWillAppearEvent: self.rx.viewWillAppear.asObservable(),
+            logoutButtonTapped: self.mypageLogoutSubject.asObserver()
         )
         
         let output = self.mypageViewModel.transform(from: input, disposeBag: self.disposeBag)
@@ -82,45 +105,38 @@ extension MypageViewController {
                 cell.configureCell(model: model)
             }
             .disposed(by: disposeBag)
-
-//        
-//        mypageView.navigationView.logoutButton.rx.tap
-//            .subscribe(onNext: {
-//                self.mypageViewModel.inputs.logout()
-//            })
-//            .disposed(by: disposeBag)
-//        
-//        mypageViewModel.outputs.logoutData
-//            .subscribe(onNext: { _ in
-//                UserManager.shared.clearToken()
-//                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-//                    if let window = windowScene.windows.first {
-//                        let homeViewController = SplashViewController()
-//                        let navigationController = UINavigationController(rootViewController: homeViewController)
-//                        window.rootViewController = navigationController
-//                    }
-//                }
-//            })
-//            .disposed(by: disposeBag)
-//        
-//        mypageView.profileEditButton.rx.tap
-//            .subscribe(onNext: {
-//                let nav = SignupViewController(idx: self.id)
-//                nav.isAllValid = [true, true, true, true, false, false]
-//                self.navigationController?.pushViewController(nav, animated: true)
-//            })
-//            .disposed(by: disposeBag)
-//        
-//        mypageView.reportButton.rx.tap
-//            .bind {
-//                let nav = ReportNumberViewController(viewModel: self.mypageViewModel)
-//                self.navigationController?.pushViewController(nav, animated: true)
-//            }
-//            .disposed(by: disposeBag)
+        
+        output.logoutData
+            .subscribe(onNext: { _ in
+                UserManager.shared.clearToken()
+                self.changeRootToSplashVC()
+            })
+            .disposed(by: disposeBag)
     }
     
     func setDelegate() {
         mypageView.navigationView.delegate = self
+    }
+    
+    func pushToSignupVC() {
+        let nav = SignupViewController(idx: self.id.value)
+        nav.isAllValid = [true, true, true, true, false, false]
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func pushToReportVC() {
+        let nav = ReportNumberViewController(viewModel: self.mypageViewModel)
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func changeRootToSplashVC() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                let spalshVC = SplashViewController()
+                let navigationController = UINavigationController(rootViewController: spalshVC)
+                window.rootViewController = navigationController
+            }
+        }
     }
 }
 
