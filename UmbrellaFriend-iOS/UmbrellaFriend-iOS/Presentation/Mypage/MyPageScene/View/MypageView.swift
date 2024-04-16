@@ -238,7 +238,7 @@ private extension MypageView {
 
 extension MypageView {
 
-    func configureView(model: MypageDto) {
+    func configureView(model: MypageEntity) {
         userNameLabel.text = model.user.username
         userIDLabel.text = "\(model.user.studentID)"
         userPhoneLabel.text = model.user.phoneNumber
