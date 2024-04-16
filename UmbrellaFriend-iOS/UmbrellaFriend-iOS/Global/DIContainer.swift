@@ -48,9 +48,12 @@ extension DIContainer {
     
     func makeMypageVC() -> MypageViewController {
         let mypageService = DefaultMypageService()
+        let authService = DefaultAuthService()
         let mypageRepo = DefaultMypageRepository(mypageService: mypageService)
+        let authRepo = DefaultAuthRepository(authService: authService)
         let mypageUseCase = DefaultMypageUseCase(mypageRepository: mypageRepo)
-        let vm = MypageViewModel(mypageUseCase: mypageUseCase)
+        let authUseCase = DefaultAuthUseCase(authRepository: authRepo)
+        let vm = MypageViewModel(mypageUseCase: mypageUseCase, authUseCase: authUseCase)
         let vc = MypageViewController(viewModel: vm)
         return vc
     }
