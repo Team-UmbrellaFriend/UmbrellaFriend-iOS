@@ -76,6 +76,13 @@ extension MypageViewController {
                 self.mypageLogoutSubject.onNext(())
             })
             .disposed(by: disposeBag)
+        
+        self.rx.viewWillAppear
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                LoadingView.shared.show(self.view)
+            })
+            .disposed(by: disposeBag)
     }
 
     func bindViewModel() {
@@ -91,6 +98,9 @@ extension MypageViewController {
             .asDriver(onErrorJustReturn: MypageEntity.mypageEntityInitValue())
             .drive(with: self, onNext: { owner, mypage in
                 owner.mypageView.configureView(model: mypage)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                    LoadingView.shared.hide()
+                }
             })
             .disposed(by: disposeBag)
         
