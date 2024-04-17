@@ -14,6 +14,7 @@ import RxMoya
 protocol MypageService {
     
     func getMypage() -> Single<MypageEntity>
+    func postMypageReport(requestDto: MypageReportRequestDto) -> Single<String>
 }
 
 final class DefaultMypageService: NSObject {
@@ -27,5 +28,13 @@ extension DefaultMypageService: MypageService {
         mypageProvider.rx.request(.getMypage)
             .filterSuccessfulStatusCodes()
             .mapGenericResponse(MypageEntity.self)
+    }
+    
+    func postMypageReport(requestDto: MypageReportRequestDto) -> Single<String> {
+        mypageProvider.rx.request(.postMypageReport(reportData: requestDto))
+            .map { response in
+                let genericResponse = try response.map(GeneralResponse<BlankEntity>.self)
+                return genericResponse.message
+            }
     }
 }

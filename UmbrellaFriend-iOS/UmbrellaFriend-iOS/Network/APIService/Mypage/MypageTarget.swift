@@ -12,7 +12,7 @@ import Moya
 enum MypageTarget {
     
     case getMypage
-    case postMypageReport(umbrellaNum: String, reportReason: String, description: String)
+    case postMypageReport(reportData: MypageReportRequestDto)
 }
 
 extension MypageTarget: BaseTargetType {
@@ -39,10 +39,10 @@ extension MypageTarget: BaseTargetType {
         switch self {
         case .getMypage:
             return .requestPlain
-        case .postMypageReport(umbrellaNum: let umbrellaNum, reportReason: let reportReason, description: let description):
-            let umbrellaNumData = MultipartFormData(provider: .data(umbrellaNum.data(using: .ascii)!), name: "umbrella_number")
-            let reportReasonData = MultipartFormData(provider: .data(reportReason.data(using: .utf8)!), name: "report_reason")
-            let descriptionData = MultipartFormData(provider: .data(description.data(using: .utf8)!), name: "description")
+        case .postMypageReport(reportData: let reportData):
+            let umbrellaNumData = MultipartFormData(provider: .data(reportData.umbrellaNumber.data(using: .ascii)!), name: "umbrella_number")
+            let reportReasonData = MultipartFormData(provider: .data(reportData.reportReason.data(using: .utf8)!), name: "report_reason")
+            let descriptionData = MultipartFormData(provider: .data(reportData.description.data(using: .utf8)!), name: "description")
             return .uploadMultipart([umbrellaNumData, reportReasonData, descriptionData])
         }
     }
