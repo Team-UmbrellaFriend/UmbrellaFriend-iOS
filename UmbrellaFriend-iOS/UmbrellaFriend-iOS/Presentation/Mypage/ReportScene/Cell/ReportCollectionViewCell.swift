@@ -108,7 +108,7 @@ private extension ReportCollectionViewCell {
 
 extension ReportCollectionViewCell {
 
-    func configureCell(model: ReportMenuDto) {
+    func configureCell(model: MypageReportEntity) {
         reportTitle.text = model.title
     }
 }

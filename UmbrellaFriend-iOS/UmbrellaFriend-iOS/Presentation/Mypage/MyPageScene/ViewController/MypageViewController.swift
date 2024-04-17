@@ -81,7 +81,8 @@ extension MypageViewController {
     func bindViewModel() {
         let input = MypageViewModel.Input(
             viewWillAppearEvent: self.rx.viewWillAppear.asObservable(),
-            logoutButtonTapped: self.mypageLogoutSubject.asObserver()
+            logoutButtonTapped: self.mypageLogoutSubject.asObserver(),
+            reportButtonTapped: Observable.empty()
         )
         
         let output = self.mypageViewModel.transform(from: input, disposeBag: self.disposeBag)
