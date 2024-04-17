@@ -19,6 +19,7 @@ final class DefaultMypageUseCase: MypageUseCase {
     }
     
     var mypageData = PublishRelay<MypageEntity>()
+    var mypageReportData = PublishRelay<String>()
 }
 
 extension DefaultMypageUseCase {
@@ -27,6 +28,13 @@ extension DefaultMypageUseCase {
         mypageRepository.getMypage()
             .subscribe(with: self, onNext: { owner, mypage in
                 owner.mypageData.accept(mypage)
+            }).disposed(by: disposeBag)
+    }
+    
+    func postMypageReport(requestDto: MypageReportRequestDto) {
+        mypageRepository.postMypageReport(requestDto: requestDto)
+            .subscribe(with: self, onNext: { owner, mypageReport in
+                owner.mypageReportData.accept(mypageReport)
             }).disposed(by: disposeBag)
     }
 }

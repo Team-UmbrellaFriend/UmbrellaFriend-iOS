@@ -11,8 +11,10 @@ import RxSwift
 protocol MypageRepository {
     
     var mypageResult: MypageEntity? { get set }
+    var mypageReportResult: String? { get set }
     
     func getMypage() -> Observable<MypageEntity>
+    func postMypageReport(requestDto: MypageReportRequestDto) -> Observable<String>
 }
 
 final class DefaultMypageRepository {
@@ -27,6 +29,7 @@ final class DefaultMypageRepository {
     private let disposeBag = DisposeBag()
     
     var mypageResult: MypageEntity?
+    var mypageReportResult: String?
     
     //MARK: - Life Cycle
     
@@ -40,6 +43,12 @@ extension DefaultMypageRepository: MypageRepository {
     func getMypage() -> Observable<MypageEntity> {
         mypageService.getMypage()
             .do(onSuccess: { [weak self] in self?.mypageResult = $0 } )
+            .asObservable()
+    }
+    
+    func postMypageReport(requestDto: MypageReportRequestDto) -> Observable<String> {
+        mypageService.postMypageReport(requestDto: requestDto)
+            .do(onSuccess: { [weak self] in self?.mypageReportResult = $0 } )
             .asObservable()
     }
 }

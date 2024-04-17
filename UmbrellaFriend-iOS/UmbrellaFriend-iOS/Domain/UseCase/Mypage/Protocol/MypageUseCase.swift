@@ -13,6 +13,8 @@ import RxCocoa
 protocol MypageUseCase {
     
     var mypageData: PublishRelay<MypageEntity> { get }
+    var mypageReportData: PublishRelay<String> { get }
     
     func getMypage()
+    func postMypageReport(requestDto: MypageReportRequestDto)
 }

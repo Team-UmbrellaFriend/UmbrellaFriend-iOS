@@ -55,7 +55,6 @@
 		A488FB152B930717004D4A09 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB142B930717004D4A09 /* MypageView.swift */; };
 		A488FB172B930725004D4A09 /* MypageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB162B930725004D4A09 /* MypageViewModel.swift */; };
 		A488FB192B930732004D4A09 /* MypageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB182B930732004D4A09 /* MypageCollectionViewCell.swift */; };
-		A488FB1C2B930F31004D4A09 /* MypageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB1B2B930F31004D4A09 /* MypageAPI.swift */; };
 		A488FB1F2B930F4C004D4A09 /* MypageTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB1E2B930F4C004D4A09 /* MypageTarget.swift */; };
 		A488FB252B931969004D4A09 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB242B931969004D4A09 /* SignupViewModel.swift */; };
 		A488FB292B931A02004D4A09 /* UserProfileDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB282B931A02004D4A09 /* UserProfileDto.swift */; };
@@ -65,7 +64,6 @@
 		A488FB362B94D047004D4A09 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB352B94D047004D4A09 /* UserManager.swift */; };
 		A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB372B94D571004D4A09 /* UserLoginDto.swift */; };
 		A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */; };
-		A488FB3D2B94DC0B004D4A09 /* UserLogoutDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */; };
 		A488FB402B973035004D4A09 /* PhotoAttachViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A488FB3F2B973035004D4A09 /* PhotoAttachViewModel.swift */; };
 		A4998B9E2B70FD9D00883017 /* FontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9D2B70FD9D00883017 /* FontLiterals.swift */; };
 		A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */; };
@@ -133,9 +131,10 @@
 		A4BA87242BCEA0C70078FC4B /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87232BCEA0C70078FC4B /* AuthRepository.swift */; };
 		A4BA87282BCEA1FF0078FC4B /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87272BCEA1FF0078FC4B /* AuthUseCase.swift */; };
 		A4BA872A2BCEA2070078FC4B /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */; };
+		A4BA872D2BCECBEE0078FC4B /* MypageReportRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */; };
+		A4BA872F2BCF58400078FC4B /* MypageReportEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
-		A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
 		A4C9EDD82BB0066300E46131 /* MypageReportDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */; };
 		A4C9EDDA2BB0920100E46131 /* ReportNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD92BB0920100E46131 /* ReportNumberView.swift */; };
@@ -203,7 +202,6 @@
 		A488FB142B930717004D4A09 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		A488FB162B930725004D4A09 /* MypageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewModel.swift; sourceTree = "<group>"; };
 		A488FB182B930732004D4A09 /* MypageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageCollectionViewCell.swift; sourceTree = "<group>"; };
-		A488FB1B2B930F31004D4A09 /* MypageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageAPI.swift; sourceTree = "<group>"; };
 		A488FB1E2B930F4C004D4A09 /* MypageTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTarget.swift; sourceTree = "<group>"; };
 		A488FB242B931969004D4A09 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		A488FB282B931A02004D4A09 /* UserProfileDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDto.swift; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 		A488FB352B94D047004D4A09 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		A488FB372B94D571004D4A09 /* UserLoginDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginDto.swift; sourceTree = "<group>"; };
 		A488FB3A2B94D606004D4A09 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogoutDto.swift; sourceTree = "<group>"; };
 		A488FB3F2B973035004D4A09 /* PhotoAttachViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAttachViewModel.swift; sourceTree = "<group>"; };
 		A4998B9D2B70FD9D00883017 /* FontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontLiterals.swift; sourceTree = "<group>"; };
 		A4998B9F2B70FDAA00883017 /* SizeLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeLiterals.swift; sourceTree = "<group>"; };
@@ -276,8 +273,9 @@
 		A4BA87232BCEA0C70078FC4B /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		A4BA87272BCEA1FF0078FC4B /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
+		A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportRequestDto.swift; sourceTree = "<group>"; };
+		A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportEntity.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
-		A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportMenuDto.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportDto.swift; sourceTree = "<group>"; };
 		A4C9EDD92BB0920100E46131 /* ReportNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNumberView.swift; sourceTree = "<group>"; };
@@ -402,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				A488FB2A2B931A46004D4A09 /* Auth */,
-				A488FB1A2B930F24004D4A09 /* Mypage */,
 				A43C73C42B8BA45900B39F21 /* Umbrella */,
 			);
 			path = API;
@@ -621,14 +618,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		A488FB1A2B930F24004D4A09 /* Mypage */ = {
-			isa = PBXGroup;
-			children = (
-				A488FB1B2B930F31004D4A09 /* MypageAPI.swift */,
-			);
-			path = Mypage;
-			sourceTree = "<group>";
-		};
 		A488FB1D2B930F43004D4A09 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,7 +630,6 @@
 		A488FB202B930F6F004D4A09 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
-				A4C9EDD32BAF1E5E00E46131 /* ReportMenuDto.swift */,
 				A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */,
 			);
 			path = Mypage;
@@ -660,7 +648,6 @@
 			children = (
 				A488FB282B931A02004D4A09 /* UserProfileDto.swift */,
 				A488FB372B94D571004D4A09 /* UserLoginDto.swift */,
-				A488FB3C2B94DC0B004D4A09 /* UserLogoutDto.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1039,6 +1026,7 @@
 		A4BA86CC2BBAD63D0078FC4B /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA872B2BCECBBF0078FC4B /* Mypage */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1134,6 +1122,7 @@
 			isa = PBXGroup;
 			children = (
 				A4BA87152BCE41E80078FC4B /* MypageEntity.swift */,
+				A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1170,6 +1159,14 @@
 				A4BA87272BCEA1FF0078FC4B /* AuthUseCase.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A4BA872B2BCECBBF0078FC4B /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */,
+			);
+			path = Mypage;
 			sourceTree = "<group>";
 		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
@@ -1319,7 +1316,6 @@
 			files = (
 				A4998BE42B77DC6A00883017 /* UmbrellaRentViewController.swift in Sources */,
 				A43C73BD2B8BA30100B39F21 /* UmbrellaMapViewModel.swift in Sources */,
-				A4C9EDD42BAF1E5E00E46131 /* ReportMenuDto.swift in Sources */,
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
 				A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */,
 				A4BA870F2BCD3F3F0078FC4B /* UmbrellaLendEntity.swift in Sources */,
@@ -1371,7 +1367,6 @@
 				A4BA86C22BBA7C950078FC4B /* NetworkServiceError.swift in Sources */,
 				A43C73982B8A43B400B39F21 /* HomeEntity.swift in Sources */,
 				A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */,
-				A488FB1C2B930F31004D4A09 /* MypageAPI.swift in Sources */,
 				A43C74112B9087FC00B39F21 /* UmbrellaReturnViewController.swift in Sources */,
 				A488FB382B94D571004D4A09 /* UserLoginDto.swift in Sources */,
 				A488FB402B973035004D4A09 /* PhotoAttachViewModel.swift in Sources */,
@@ -1395,13 +1390,13 @@
 				A4CBBCB52B83194800D55085 /* String+.swift in Sources */,
 				A471D0782B8A419200109CA3 /* NetworkLoggerPlugin.swift in Sources */,
 				A4BA87202BCEA02C0078FC4B /* AuthService.swift in Sources */,
+				A4BA872F2BCF58400078FC4B /* MypageReportEntity.swift in Sources */,
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4BA86D92BBD16A60078FC4B /* DIContainer.swift in Sources */,
 				A4BA86DC2BBD23A60078FC4B /* UmbrellaExtendEntity.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A488FB152B930717004D4A09 /* MypageView.swift in Sources */,
 				A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */,
-				A488FB3D2B94DC0B004D4A09 /* UserLogoutDto.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
 				A4BA87132BCE41A80078FC4B /* MypageService.swift in Sources */,
 				A4BA87072BC8D6930078FC4B /* UmbrellaAvailableEntity.swift in Sources */,
@@ -1420,6 +1415,7 @@
 				A43B23852BAB3CA600E15CC3 /* ReportViewController.swift in Sources */,
 				A43C73A12B8A454300B39F21 /* HomeViewModel.swift in Sources */,
 				A4998C1F2B805AB900883017 /* CustomTextField.swift in Sources */,
+				A4BA872D2BCECBEE0078FC4B /* MypageReportRequestDto.swift in Sources */,
 				A4998C1A2B8053E300883017 /* CustomNavigationBar.swift in Sources */,
 				A4BA871C2BCE42B30078FC4B /* DefaultMypageUseCase.swift in Sources */,
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
