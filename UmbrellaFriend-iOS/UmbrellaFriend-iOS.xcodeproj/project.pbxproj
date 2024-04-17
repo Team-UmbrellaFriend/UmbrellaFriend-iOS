@@ -133,6 +133,9 @@
 		A4BA872A2BCEA2070078FC4B /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */; };
 		A4BA872D2BCECBEE0078FC4B /* MypageReportRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */; };
 		A4BA872F2BCF58400078FC4B /* MypageReportEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */; };
+		A4BA87352BCF88F20078FC4B /* Lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA87342BCF88F20078FC4B /* Lottie.json */; };
+		A4BA87382BCF8A4E0078FC4B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA87372BCF8A4E0078FC4B /* Lottie */; };
+		A4BA873B2BCF8B060078FC4B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA873A2BCF8B060078FC4B /* Kingfisher */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -275,6 +278,7 @@
 		A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportRequestDto.swift; sourceTree = "<group>"; };
 		A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportEntity.swift; sourceTree = "<group>"; };
+		A4BA87342BCF88F20078FC4B /* Lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lottie.json; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportDto.swift; sourceTree = "<group>"; };
@@ -298,12 +302,14 @@
 				A4998BE02B77DC3B00883017 /* RxMoya in Frameworks */,
 				A43C73A42B8A461B00B39F21 /* RxBlocking in Frameworks */,
 				A4998BDA2B77DC3B00883017 /* CombineMoya in Frameworks */,
+				A4BA87382BCF8A4E0078FC4B /* Lottie in Frameworks */,
 				A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */,
 				A4998BDE2B77DC3B00883017 /* ReactiveMoya in Frameworks */,
 				A43B23232BA575E200E15CC3 /* FirebaseStorageCombine-Community in Frameworks */,
 				A43B23212BA575E200E15CC3 /* FirebaseStorage in Frameworks */,
 				A4998BB22B70FEB300883017 /* SnapKit in Frameworks */,
 				A43B231F2BA575E200E15CC3 /* FirebaseRemoteConfigSwift in Frameworks */,
+				A4BA873B2BCF8B060078FC4B /* Kingfisher in Frameworks */,
 				A43C73A82B8A461B00B39F21 /* RxCocoa in Frameworks */,
 				A4998BDC2B77DC3B00883017 /* Moya in Frameworks */,
 			);
@@ -746,6 +752,7 @@
 		A4998B962B70FD2C00883017 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA87332BCF88E30078FC4B /* Lottie */,
 				A4998BEB2B79ED3900883017 /* Font */,
 				A43176172B6FFBE000093F0E /* Assets.xcassets */,
 				A4998BF52B7F403400883017 /* Colors.xcassets */,
@@ -1169,6 +1176,14 @@
 			path = Mypage;
 			sourceTree = "<group>";
 		};
+		A4BA87332BCF88E30078FC4B /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA87342BCF88F20078FC4B /* Lottie.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1244,6 +1259,8 @@
 				A43B23202BA575E200E15CC3 /* FirebaseStorage */,
 				A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */,
 				A4C9EDCC2BAEB3C000E46131 /* RxGesture */,
+				A4BA87372BCF8A4E0078FC4B /* Lottie */,
+				A4BA873A2BCF8B060078FC4B /* Kingfisher */,
 			);
 			productName = "UmbrellaFriend-iOS";
 			productReference = A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */;
@@ -1279,6 +1296,8 @@
 				A43C73A22B8A461B00B39F21 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				A43B23172BA575E200E15CC3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A4C9EDCB2BAEB3C000E46131 /* XCRemoteSwiftPackageReference "RxGesture" */,
+				A4BA87362BCF8A4E0078FC4B /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				A4BA87392BCF8B060078FC4B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A431760C2B6FFBDE00093F0E /* Products */;
 			projectDirPath = "";
@@ -1302,6 +1321,7 @@
 				A4998BF62B7F403400883017 /* Colors.xcassets in Resources */,
 				A4998BFC2B7F431A00883017 /* SUIT-Medium.ttf in Resources */,
 				A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */,
+				A4BA87352BCF88F20078FC4B /* Lottie.json in Resources */,
 				A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */,
 				A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */,
 			);
@@ -1693,6 +1713,22 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		A4BA87362BCF8A4E0078FC4B /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.4.3;
+			};
+		};
+		A4BA87392BCF8B060078FC4B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 		A4C9EDCB2BAEB3C000E46131 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
@@ -1773,6 +1809,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4998BD82B77DC3B00883017 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = RxMoya;
+		};
+		A4BA87372BCF8A4E0078FC4B /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4BA87362BCF8A4E0078FC4B /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		A4BA873A2BCF8B060078FC4B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4BA87392BCF8B060078FC4B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		A4C9EDCC2BAEB3C000E46131 /* RxGesture */ = {
 			isa = XCSwiftPackageProductDependency;
