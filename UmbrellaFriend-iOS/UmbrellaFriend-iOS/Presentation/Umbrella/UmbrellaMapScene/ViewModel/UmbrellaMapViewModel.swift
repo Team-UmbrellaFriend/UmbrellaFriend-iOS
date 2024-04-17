@@ -11,48 +11,47 @@ import RxSwift
 import RxCocoa
 import Moya
 
-protocol UmbrellaMapViewModelInputs {
+final class UmbrellaMapViewModel: ViewModelType {
     
-    func mapIconTapped(with index: Int)
-}
-
-protocol UmbrellaMapViewModelOutputs {
+    private let umbrellaUseCase: UmbrellaUseCase
     
-    var umbrellaAvailableData: BehaviorRelay<UmbrellaAvailableDto> { get }
-}
-
-protocol UmbrellaMapViewModelType {
-    
-    var inputs: UmbrellaMapViewModelInputs { get }
-    var outputs: UmbrellaMapViewModelOutputs { get }
-}
-
-final class UmbrellaMapViewModel: UmbrellaMapViewModelInputs, UmbrellaMapViewModelOutputs, UmbrellaMapViewModelType {
-    
-    var inputs: UmbrellaMapViewModelInputs { return self }
-    var outputs: UmbrellaMapViewModelOutputs { return self }
- 
-    var responseData : [UmbrellaAvailableDto] = []
-    var umbrellaAvailableData: BehaviorRelay<UmbrellaAvailableDto> = BehaviorRelay<UmbrellaAvailableDto>(value: UmbrellaAvailableDto.umbrellaAvailableDtoInitValue())
-    
-    init() {
-        self.getUmbrellaAvailable()
+    init(umbrellaUseCase: UmbrellaUseCase) {
+        self.umbrellaUseCase = umbrellaUseCase
     }
     
-    func mapIconTapped(with index: Int) {
-        self.umbrellaAvailableData.accept(responseData[index - 1])
+    struct Input {
+        let viewWillAppearEvent: Observable<Void>
+        let mapIconTapped: Observable<Int>
     }
-}
-
-extension UmbrellaMapViewModel {
     
-    func getUmbrellaAvailable() {
-        UmbrellaAPI.shared.getUmbrellaAvailable { [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            guard let data = response?.data else { return }
-            self?.responseData = data
-            self?.umbrellaAvailableData.accept(data[0])
-        }
+    struct Output {
+        var umbrellaAvailableData = PublishRelay<[UmbrellaAvailableEntity]>()
+        var umbrellaMapData = PublishRelay<UmbrellaAvailableEntity>()
+    }
+    
+    func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
+        self.bindOutput(output: output, disposeBag: disposeBag)
+        
+        input.viewWillAppearEvent
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.umbrellaUseCase.getUmbrellaAvailable()
+            })
+            .disposed(by: disposeBag)
+        
+        input.mapIconTapped
+            .withLatestFrom(umbrellaUseCase.umbrellaAvailableData) { index, data in
+                return data[index]
+            }
+            .bind(to: output.umbrellaMapData)
+            .disposed(by: disposeBag)
+        
+        return output
+    }
+    
+    private func bindOutput(output: Output, disposeBag: DisposeBag) {
+        umbrellaUseCase.umbrellaAvailableData
+            .bind(to: output.umbrellaAvailableData)
+            .disposed(by: disposeBag)
     }
 }

@@ -395,11 +395,32 @@ private extension HomeView {
             $0.edges.equalToSuperview()
         }
     }
+    
+    func updateUI(_ dday: DDay) {
+        if dday.isOverdue {
+            rentView.isHidden = true
+            extendView.isHidden = false
+            returnView.isUserInteractionEnabled = true
+            returnIcon.returnDay = dday.overdueDays
+        } else {
+            if dday.daysRemaining < 0 {
+                rentView.isHidden = false
+                extendView.isHidden = true
+                returnView.isUserInteractionEnabled = false
+                returnIcon.returnDay = 0
+            } else {
+                rentView.isHidden = true
+                extendView.isHidden = false
+                returnView.isUserInteractionEnabled = true
+                returnIcon.returnDay = -dday.daysRemaining
+            }
+        }
+    }
 }
 
 extension HomeView {
     
-    func configureHomeView(model: HomeDto) {
+    func configureHomeView(_ model: HomeEntity) {
         userNameLabel.text = "\(model.user.username)님"
         userInfoLabel.text = model.weather.message
         if model.dDay.isOverdue {
@@ -409,15 +430,11 @@ extension HomeView {
         }
         todayDateLabel.text = model.weather.weather.date
         todayRainPercentLabel.text = "\(model.weather.weather.percent)%"
+        updateUI(model.dDay)
     }
     
-    func configureHomeAlertView(success: Bool, _ message: String) {
-        if success {
-            homeAlertView.alertTitleLabel.text = "연장이 완료되었습니다!"
-            homeAlertView.alertSubTitleLabel.text = "자동으로 3일이\n추가 연장되었습니다."
-        } else {
-            homeAlertView.alertTitleLabel.text = "잠깐만요!"
-            homeAlertView.alertSubTitleLabel.text = message
-        }
+    func configureHomeAlertView(_ message: String) {
+        homeAlertView.alertSubTitleLabel.text = message
+        homeAlertView.alertTitleLabel.text = message.contains("성공") ? "연장이 완료되었습니다!" : "잠깐만요!"
     }
 }

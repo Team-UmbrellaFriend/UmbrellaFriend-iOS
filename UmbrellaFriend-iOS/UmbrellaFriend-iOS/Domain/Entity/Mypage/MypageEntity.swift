@@ -1,13 +1,13 @@
 //
-//  MypageDto.swift
+//  MypageEntity.swift
 //  UmbrellaFriend-iOS
 //
-//  Created by 고아라 on 3/2/24.
+//  Created by 고아라 on 4/16/24.
 //
 
 import Foundation
 
-struct MypageDto: Codable, Sequence {
+struct MypageEntity: Codable, Sequence {
     let user: MypageUser
     let history: [History]
     
@@ -32,9 +32,9 @@ struct History: Codable {
     }
 }
 
-extension MypageDto {
+extension MypageEntity {
     
-    static func mypageDtoInitValue() -> MypageDto {
-        return MypageDto(user: MypageUser(id: 0, username: "", studentID: 0, phoneNumber: "", email: ""), history: [])
+    static func mypageEntityInitValue() -> MypageEntity {
+        return MypageEntity(user: MypageUser(id: 0, username: "", studentID: 0, phoneNumber: "", email: ""), history: [])
     }
 }

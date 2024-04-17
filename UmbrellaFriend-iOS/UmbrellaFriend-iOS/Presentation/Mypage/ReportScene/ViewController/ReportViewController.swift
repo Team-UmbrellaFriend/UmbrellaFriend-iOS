@@ -16,8 +16,11 @@ final class ReportViewController: UIViewController {
     
     private let viewModel: MypageViewModel
     private let disposeBag = DisposeBag()
-    private var code: Int = 0
     private var num: String = ""
+    private var isSuccessReport: Bool = false
+    
+    private let mypageReportSubject = PublishSubject<MypageReportRequestDto>()
+    private let reportMenuData = BehaviorRelay<[MypageReportEntity]>(value: MypageReportEntity.mypageReportEntityInitValue())
     
     // MARK: - UI Components
     
@@ -44,6 +47,7 @@ final class ReportViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindUI()
         bindViewModel()
         setDelegate()
     }
@@ -52,19 +56,19 @@ final class ReportViewController: UIViewController {
 // MARK: - Extensions
 
 extension ReportViewController {
-
+    
     func setUI() {
         self.navigationController?.navigationBar.isHidden = true
     }
-
-    func bindViewModel() {
-        viewModel.outputs.reportMenuData
+    
+    func bindUI() {
+        self.reportMenuData
             .bind(to: reportView.reportCollectionView.rx
                 .items(cellIdentifier: ReportCollectionViewCell.className,
                        cellType: ReportCollectionViewCell.self)) { (index, model, cell) in
                 cell.configureCell(model: model)
             }
-            .disposed(by: disposeBag)
+                       .disposed(by: disposeBag)
         
         reportView.reportCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
@@ -91,43 +95,65 @@ extension ReportViewController {
         })
         .disposed(by: disposeBag)
         
-        reportView.reportButton.rx.tap
-            .bind {
-                var reason = "기타"
-                if let selectedIndexPath = self.reportView.reportCollectionView.indexPathsForSelectedItems?.first {
-                    switch selectedIndexPath.item {
-                    case 0:
-                        reason = "분실"
-                    case 1:
-                        reason = "QR"
-                    case 2:
-                        reason = "파손"
-                    default:
-                        break
-                    }
-                }
-                self.viewModel.inputs.report(num: self.num, reason: reason, description: self.reportView.reportTextView.text)
-            }
-            .disposed(by: disposeBag)
+        let reportButtonTapped = reportView.reportButton.rx.tap.asObservable()
         
-        viewModel.outputs.mypageReportMessage
+        let selectedIndexPathObservable = reportView.reportCollectionView.rx.itemSelected
+            .map { $0.item }
+            .startWith(-1)
+        
+        let reasonObservable = selectedIndexPathObservable.map { selectedIndex in
+            switch selectedIndex {
+            case 0:
+                return "분실"
+            case 1:
+                return "QR"
+            case 2:
+                return "파손"
+            default:
+                return "기타"
+            }
+        }
+        
+        let descriptionObservable = reportView.reportTextView.rx.text.orEmpty.asObservable()
+        
+        Observable.combineLatest(reportButtonTapped, reasonObservable, descriptionObservable)
+            .subscribe(onNext: { [weak self] _, reason, description in
+                guard let self = self else { return }
+                self.mypageReportSubject.onNext(MypageReportRequestDto(umbrellaNumber: self.num, reportReason: reason, description: description))
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func bindViewModel() {
+        let input = MypageViewModel.Input(
+            viewWillAppearEvent: Observable.empty(),
+            logoutButtonTapped: Observable.empty(),
+            reportButtonTapped: self.mypageReportSubject.asObserver()
+        )
+        
+        let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)
+        
+        output.mypageReportData
             .subscribe(onNext: { message in
                 self.reportView.reportAlertView.isHidden = false
-                self.reportView.configureReportAlert(message: message)
+                self.isSuccessReport = self.reportView.configureReportAlert(message: message)
             })
             .disposed(by: disposeBag)
-        
-        viewModel.outputs.mypageReportCode
-            .subscribe(onNext: { code in
-                self.code = code
-            })
-            .disposed(by: disposeBag)
-        
     }
     
     func setDelegate() {
         reportView.navigationView.delegate = self
         reportView.reportAlertView.delegate = self
+    }
+    
+    func changeRootToHomeVC() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                let homeVC = DIContainer.shared.makeHomeVC()
+                let navigationController = UINavigationController(rootViewController: homeVC)
+                window.rootViewController = navigationController
+            }
+        }
     }
 }
 
@@ -141,15 +167,9 @@ extension ReportViewController: NavigationBarProtocol {
 extension ReportViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
-        self.reportView.reportAlertView.isHidden = true
-        if code == 201 {
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                if let window = windowScene.windows.first {
-                    let homeViewController = HomeViewController()
-                    let navigationController = UINavigationController(rootViewController: homeViewController)
-                    window.rootViewController = navigationController
-                }
-            }
+        reportView.reportAlertView.isHidden = true
+        if isSuccessReport {
+            changeRootToHomeVC()
         }
     }
 }

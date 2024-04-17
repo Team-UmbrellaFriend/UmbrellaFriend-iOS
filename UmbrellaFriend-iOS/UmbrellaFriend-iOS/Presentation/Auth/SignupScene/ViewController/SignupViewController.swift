@@ -256,7 +256,7 @@ extension SignupViewController: CustomAlertButtonDelegate {
         if signupCode > 0 {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 if let window = windowScene.windows.first {
-                    let homeViewController = HomeViewController()
+                    let homeViewController = DIContainer.shared.makeHomeVC()
                     let navigationController = UINavigationController(rootViewController: homeViewController)
                     window.rootViewController = navigationController
                 }

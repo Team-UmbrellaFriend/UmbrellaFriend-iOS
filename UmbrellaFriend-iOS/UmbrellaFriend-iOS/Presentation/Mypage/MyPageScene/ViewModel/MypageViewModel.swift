@@ -11,90 +11,64 @@ import RxSwift
 import RxCocoa
 import Moya
 
-protocol MypageViewModelInputs {
-    func logout()
-    func report(num: String, reason: String, description: String)
-    func reloadMypage()
-}
-
-protocol MypageViewModelOutputs {
-    var mypageData: BehaviorRelay<MypageDto> { get }
-    var logoutData: PublishSubject<UserLogoutDto> { get }
-    var reportMenuData: BehaviorRelay<[ReportMenuDto]>{ get }
-    var mypageReportMessage: PublishSubject<String> { get }
-    var mypageReportCode: PublishSubject<Int> { get }
-}
-
-protocol MypageViewModelType {
+final class MypageViewModel: ViewModelType {
     
-    var inputs: MypageViewModelInputs { get }
-    var outputs: MypageViewModelOutputs { get }
-}
-
-final class MypageViewModel: MypageViewModelInputs, MypageViewModelOutputs, MypageViewModelType {
+    private let mypageUseCase: MypageUseCase
+    private let authUseCase: AuthUseCase
     
-    var inputs: MypageViewModelInputs { return self }
-    var outputs: MypageViewModelOutputs { return self }
- 
-    // output
-    
-    var mypageData: BehaviorRelay<MypageDto> = BehaviorRelay<MypageDto>(value: MypageDto.mypageDtoInitValue())
-    var logoutData: PublishSubject<UserLogoutDto> = PublishSubject<UserLogoutDto>()
-    var reportMenuData: BehaviorRelay<[ReportMenuDto]> = BehaviorRelay<[ReportMenuDto]>(value: ReportMenuDto.reportMenuDtoInitValue())
-    var mypageReportMessage: PublishSubject<String> = PublishSubject<String>()
-    var mypageReportCode: PublishSubject<Int> =  PublishSubject<Int>()
-    
-    // input
-    
-    func logout() {
-        self.getLogout()
+    init(
+        mypageUseCase: MypageUseCase,
+        authUseCase: AuthUseCase
+    ) {
+        self.mypageUseCase = mypageUseCase
+        self.authUseCase = authUseCase
     }
     
-    func report(num: String, reason: String, description: String) {
-        self.postMypageReport(umbrellaNum: num, reportReason: reason, description: description)
+    struct Input {
+        let viewWillAppearEvent: Observable<Void>
+        let logoutButtonTapped: Observable<Void>
+        let reportButtonTapped: Observable<MypageReportRequestDto>
     }
     
-    func reloadMypage() {
-        self.getMypageDto()
+    struct Output {
+        var mypageData = PublishRelay<MypageEntity>()
+        var logoutData = PublishRelay<BlankEntity>()
+        var mypageReportData = PublishRelay<String>()
     }
     
-    init() {
-        self.getMypageDto()
-    }
-}
-
-extension MypageViewModel {
-    
-    func getMypageDto() {
-        MypageAPI.shared.getMypage { [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            guard let data = response?.data else { return }
-            self?.mypageData.accept(data)
-        }
-    }
-    
-    func getLogout() {
-        AuthAPI.shared.getLogout{ [weak self] response in
-            guard (response?.status) != nil else { return }
-            if response?.status == 200 {
-                guard self != nil else { return }
-                guard let data = response?.data else { return }
-                self?.logoutData.onNext(data)
-            }
-        }
+    func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
+        self.bindOutput(output: output, disposeBag: disposeBag)
+        
+        input.viewWillAppearEvent.subscribe(with: self, onNext: { owner, _ in
+            owner.mypageUseCase.getMypage()
+        })
+        .disposed(by: disposeBag)
+        
+        input.logoutButtonTapped.subscribe(with: self, onNext: { owner, _ in
+            owner.authUseCase.getLogout()
+        })
+        .disposed(by: disposeBag)
+        
+        input.reportButtonTapped.subscribe(with: self, onNext: { owner, dto in
+            owner.mypageUseCase.postMypageReport(requestDto: dto)
+        })
+        .disposed(by: disposeBag)
+        
+        return output
     }
     
-    func postMypageReport(umbrellaNum: String, reportReason: String, description: String) {
-        MypageAPI.shared.postMypageReport(umbrellaNum: umbrellaNum, reportReason: reportReason, description: description){ [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            guard let message = response?.message else { return }
-            self?.mypageReportMessage.onNext(message)
-            if response?.status == 201 {
-                guard let code = response?.status else { return }
-                self?.mypageReportCode.onNext(code)
-            }
-        }
+    private func bindOutput(output: Output, disposeBag: DisposeBag) {
+        mypageUseCase.mypageData
+            .bind(to: output.mypageData)
+            .disposed(by: disposeBag)
+        
+        authUseCase.logoutData
+            .bind(to: output.logoutData)
+            .disposed(by: disposeBag)
+        
+        mypageUseCase.mypageReportData
+            .bind(to: output.mypageReportData)
+            .disposed(by: disposeBag)
     }
 }

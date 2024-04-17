@@ -11,70 +11,55 @@ import RxSwift
 import RxCocoa
 import Moya
 
-protocol HomeViewModelInputs {
-    func reloadHomeView()
-    func extendTapped()
-}
-
-protocol HomeViewModelOutputs {
-    var homeData: BehaviorRelay<HomeDto> { get }
-    var extendData: PublishSubject<UmbrellaExtendDto> { get }
-    var extendErrorData: PublishSubject<String> { get }
-}
-
-protocol HomeViewModelType {
-    var inputs: HomeViewModelInputs { get }
-    var outputs: HomeViewModelOutputs { get }
-}
-
-final class HomeViewModel: HomeViewModelInputs, HomeViewModelOutputs, HomeViewModelType {
-    var inputs: HomeViewModelInputs { return self }
-    var outputs: HomeViewModelOutputs { return self }
- 
-    var homeData: BehaviorRelay<HomeDto> = BehaviorRelay<HomeDto>(value: HomeDto.homeDtoInitValue())
-    var extendData: PublishSubject<UmbrellaExtendDto> = PublishSubject<UmbrellaExtendDto>()
-    var extendErrorData: PublishSubject<String> = PublishSubject<String>()
+final class HomeViewModel: ViewModelType {
     
-    func reloadHomeView() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.getHomeDto()
-        }
+    private let homeUseCase: HomeUseCase
+    private let umbrellaUseCase: UmbrellaUseCase
+    
+    init(
+        homeUseCase: HomeUseCase,
+        umbrellaUseCase: UmbrellaUseCase
+    ) {
+        self.homeUseCase = homeUseCase
+        self.umbrellaUseCase = umbrellaUseCase
     }
     
-    func extendTapped() {
-        self.getUmbrellaExtendDto()
+    struct Input {
+        let viewWillAppearEvent: Observable<Void>
+        let extendButtonTapped: Observable<Void>
     }
     
-    init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.getHomeDto()
-        }
-    }
-}
-
-extension HomeViewModel {
-    
-    func getHomeDto() {
-        HomeAPI.shared.getHome { [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            guard let data = response?.data else { return }
-            self?.homeData.accept(data)
-        }
+    struct Output {
+        var homeData = PublishRelay<HomeEntity>()
+        var extendMessageData = PublishRelay<String>()
     }
     
-    func getUmbrellaExtendDto() {
-        UmbrellaAPI.shared.getUmbrellaExtend { [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            if response?.status == 200 {
-                guard let data = response?.data else { return }
-                self?.extendData.onNext(data)
-                self?.extendErrorData.onNext("")
-            } else {
-                guard let message = response?.message else { return }
-                self?.extendErrorData.onNext(message)
-            }
-        }
+    func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
+        self.bindOutput(output: output, disposeBag: disposeBag)
+        
+        input.viewWillAppearEvent.subscribe(with: self, onNext: { owner, _ in
+            owner.homeUseCase.getHome()
+        })
+        .disposed(by: disposeBag)
+        
+        input.extendButtonTapped.subscribe(with: self, onNext: { owner, _ in
+            owner.umbrellaUseCase.getUmbrellaExtend()
+        })
+        .disposed(by: disposeBag)
+        
+        return output
+    }
+    
+    private func bindOutput(output: Output, disposeBag: DisposeBag) {
+        homeUseCase.homeData
+            .bind(to: output.homeData)
+            .disposed(by: disposeBag)
+        
+        umbrellaUseCase.umbrellaExtendData
+            .subscribe(onNext: { message in
+                output.extendMessageData.accept(message)
+            })
+            .disposed(by: disposeBag)
     }
 }

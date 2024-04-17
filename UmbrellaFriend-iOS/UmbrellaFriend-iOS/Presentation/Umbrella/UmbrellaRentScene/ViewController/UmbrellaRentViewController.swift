@@ -7,14 +7,30 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 final class UmbrellaRentViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    private let umbrellaRentViewModel: UmbrellaRentViewModel
+    private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
     
     private let umbrellaRentView = UmbrellaRentView()
-    private let umbrellaRentViewModel = UmbrellaRentViewModel()
     
     // MARK: - Life Cycles
+    
+    init(viewModel: UmbrellaRentViewModel) {
+        self.umbrellaRentViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         
@@ -25,7 +41,7 @@ final class UmbrellaRentViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
-        setAddTarget()
+        bindUI()
         setDelegate()
     }
 }
@@ -38,22 +54,16 @@ private extension UmbrellaRentViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func setAddTarget() {
-        umbrellaRentView.exitButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        umbrellaRentView.mapButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    }
-    
-    @objc
-    func buttonTapped(_ sender: UIButton) {
-        switch sender {
-        case umbrellaRentView.exitButton:
-            self.navigationController?.popViewController(animated: true)
-        case umbrellaRentView.mapButton:
-            let nav = UmbrellaMapViewController()
-            self.navigationController?.pushViewController(nav, animated: true)
-        default:
-            break
-        }
+    func bindUI() {
+        umbrellaRentView.exitButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.popVC()
+            }).disposed(by: disposeBag)
+        
+        umbrellaRentView.mapButton.rx.tap
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.pushToUmbrellaMapVC()
+            }).disposed(by: disposeBag)
     }
     
     func setDelegate() {
@@ -64,9 +74,24 @@ private extension UmbrellaRentViewController {
 extension UmbrellaRentViewController: UmbrellaRentDelegate {
     
     func didExtractNumber(_ number: String) {
-        umbrellaRentViewModel.umbrellaCheck(number: Int(number) ?? -1)
-        let nav = UmbrellaRentBottomSheetViewController(viewModel: self.umbrellaRentViewModel, view: self.umbrellaRentView)
+        presentUmbrellaRentBottomSheetVC(num: Int(number) ?? -1)
+    }
+}
+
+extension UmbrellaRentViewController {
+    
+    func presentUmbrellaRentBottomSheetVC(num: Int) {
+        let nav = UmbrellaRentBottomSheetViewController(viewModel: self.umbrellaRentViewModel, view: self.umbrellaRentView, umbrellaNum: num)
         nav.modalPresentationStyle = .overFullScreen
         self.present(nav, animated: false)
+    }
+    
+    func pushToUmbrellaMapVC() {
+        let nav = DIContainer.shared.makeUmbrellaMapVC()
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func popVC() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

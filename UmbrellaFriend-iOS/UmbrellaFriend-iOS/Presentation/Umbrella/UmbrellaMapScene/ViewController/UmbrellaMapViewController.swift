@@ -8,19 +8,30 @@
 import UIKit
 
 import RxSwift
+import RxCocoa
 
 final class UmbrellaMapViewController: UIViewController {
     
     // MARK: - Properties
     
-    private let umbrellaMapViewModel = UmbrellaMapViewModel()
+    private let umbrellaMapViewModel: UmbrellaMapViewModel
     private let disposeBag = DisposeBag()
+    private let mapTappedSubject = PublishSubject<Int>()
     
     // MARK: - UI Components
     
     private let umbrellaMapView = UmbrellaMapView()
     
     // MARK: - Life Cycles
+    
+    init(viewModel: UmbrellaMapViewModel) {
+        self.umbrellaMapViewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         
@@ -31,6 +42,7 @@ final class UmbrellaMapViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        bindUI()
         bindViewModel()
         setDelegate()
     }
@@ -44,22 +56,34 @@ extension UmbrellaMapViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func bindViewModel() {
+    func bindUI() {
         let mapIcons = [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3, umbrellaMapView.mapIcon4, umbrellaMapView.mapIcon5, umbrellaMapView.mapIcon6]
-        
-        for (index, button) in mapIcons.enumerated() {
-            button.rx.tap
-                .bind { [weak self] in
-                    guard let self = self else { return }
-                    self.umbrellaMapViewModel.inputs.mapIconTapped(with: index + 1)
-                }
+
+        mapIcons.enumerated().forEach { index, mapBtn in
+            mapBtn.rx.tap
+                .map { index }
+                .bind(to: mapTappedSubject)
                 .disposed(by: disposeBag)
         }
+    }
+    
+    func bindViewModel() {
+        let input = UmbrellaMapViewModel.Input(
+            viewWillAppearEvent: self.rx.viewWillAppear.asObservable(),
+            mapIconTapped: self.mapTappedSubject.asObserver()
+        )
         
-        umbrellaMapViewModel.outputs.umbrellaAvailableData
-            .asDriver()
-            .drive(onNext: { [weak self] model in
-                self?.umbrellaMapView.configureUmbrellaMapView(model: model)
+        let output = self.umbrellaMapViewModel.transform(from: input, disposeBag: self.disposeBag)
+        
+        output.umbrellaAvailableData
+            .subscribe(onNext: { data in
+                self.umbrellaMapView.configureUmbrellaMapView(model: data[0])
+            })
+            .disposed(by: disposeBag)
+        
+        output.umbrellaMapData
+            .subscribe(onNext: { mapData in
+                self.umbrellaMapView.configureUmbrellaMapView(model: mapData)
             })
             .disposed(by: disposeBag)
     }

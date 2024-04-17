@@ -11,76 +11,50 @@ import RxSwift
 import RxCocoa
 import Moya
 
-protocol UmbrellaRentViewModelInputs {
+final class UmbrellaRentViewModel: ViewModelType {
     
-    func umbrellaCheck(number: Int)
-    func umbrellaLend(number: Int)
-}
-
-protocol UmbrellaRentViewModelOutputs {
+    private let umbrellaUseCase: UmbrellaUseCase
     
-    var umbrellaCheckData: BehaviorRelay<UmbrellaCheckDto> { get }
-    var umbrellaLendData: BehaviorRelay<UmbrellaLendDto> { get }
-    var lendErrorMessage: PublishSubject<String> { get }
-}
-
-protocol UmbrellaRentViewModelType {
-    
-    var inputs: UmbrellaRentViewModelInputs { get }
-    var outputs: UmbrellaRentViewModelOutputs { get }
-}
-
-final class UmbrellaRentViewModel: UmbrellaRentViewModelInputs, UmbrellaRentViewModelOutputs, UmbrellaRentViewModelType {
-    
-    var inputs: UmbrellaRentViewModelInputs { return self }
-    var outputs: UmbrellaRentViewModelOutputs { return self }
- 
-    // output
-    
-    var umbrellaCheckData: BehaviorRelay<UmbrellaCheckDto> = BehaviorRelay<UmbrellaCheckDto>(value: UmbrellaCheckDto.umbrellaCheckDtoInitValue())
-    var umbrellaLendData: BehaviorRelay<UmbrellaLendDto> = BehaviorRelay<UmbrellaLendDto>(value: UmbrellaLendDto())
-    var lendErrorMessage: PublishSubject<String> = PublishSubject<String>()
-    
-    // input
-    
-    func umbrellaCheck(number: Int) {
-        self.getUmbrellaCheckDto(number: number)
+    init(umbrellaUseCase: UmbrellaUseCase) {
+        self.umbrellaUseCase = umbrellaUseCase
     }
     
-    func umbrellaLend(number: Int) {
-        if number == 0 {
-            return
-        }
-        self.postUmbrellaLendDto(number: number)
+    struct Input {
+        let qrCodeCaptured: Observable<Int>
+        let lendButtonTapped: Observable<Int>
     }
     
-    init() {
-    }
-}
-
-extension UmbrellaRentViewModel {
-    
-    func getUmbrellaCheckDto(number: Int) {
-        UmbrellaAPI.shared.getUmbrellaCheck(number: number) { [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            guard let data = response?.data else { return }
-            self?.umbrellaCheckData.accept(data)
-        }
+    struct Output {
+        var umbrellaCheckData = PublishRelay<UmbrellaCheckEntity>()
+        var umbrellaLendMessage = PublishRelay<String>()
     }
     
-    func postUmbrellaLendDto(number: Int) {
-        UmbrellaAPI.shared.postUmbrellaLend(number: number) { [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            if response?.status == 200 {
-                guard let data = response?.data else { return }
-                self?.umbrellaLendData.accept(data)
-                self?.lendErrorMessage.onNext("")
-            } else {
-                guard let message = response?.message else { return }
-                self?.lendErrorMessage.onNext(message)
-            }
-        }
+    func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
+        self.bindOutput(output: output, disposeBag: disposeBag)
+        
+        input.qrCodeCaptured
+            .subscribe(with: self, onNext: { owner, num in
+                owner.umbrellaUseCase.getUmbrellaCheck(umbrellaNum: num)
+            })
+            .disposed(by: disposeBag)
+        
+        input.lendButtonTapped
+            .subscribe(with: self, onNext: { owner, num in
+                owner.umbrellaUseCase.postUmbrellaLend(umbrellaNum: num)
+            })
+            .disposed(by: disposeBag)
+        
+        return output
+    }
+    
+    private func bindOutput(output: Output, disposeBag: DisposeBag) {
+        umbrellaUseCase.umbrellaCheckData
+            .bind(to: output.umbrellaCheckData)
+            .disposed(by: disposeBag)
+        
+        umbrellaUseCase.umbrellaLendData
+            .bind(to: output.umbrellaLendMessage)
+            .disposed(by: disposeBag)   
     }
 }

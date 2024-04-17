@@ -1,5 +1,5 @@
 //
-//  HomeDto.swift
+//  HomeEntity.swift
 //  UmbrellaFriend-iOS
 //
 //  Created by 고아라 on 2/25/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HomeDto: Codable {
+struct HomeEntity: Codable {
     let user: User
     let weather: HomeWeather
     let dDay: DDay
@@ -43,9 +43,9 @@ struct DDay: Codable {
     }
 }
 
-extension HomeDto {
+extension HomeEntity {
     
-    static func homeDtoInitValue() -> HomeDto {
-        return HomeDto(user: User(id: 0, username: ""), weather: HomeWeather(weather: Weather(date: "", percent: ""), message: ""), dDay: DDay(isOverdue: false, overdueDays: 0, daysRemaining: 0))
+    static func homeDtoInitValue() -> HomeEntity {
+        return HomeEntity(user: User(id: 0, username: ""), weather: HomeWeather(weather: Weather(date: "", percent: ""), message: ""), dDay: DDay(isOverdue: false, overdueDays: 0, daysRemaining: 0))
     }
 }
