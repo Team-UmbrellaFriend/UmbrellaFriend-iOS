@@ -133,9 +133,10 @@
 		A4BA872A2BCEA2070078FC4B /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */; };
 		A4BA872D2BCECBEE0078FC4B /* MypageReportRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */; };
 		A4BA872F2BCF58400078FC4B /* MypageReportEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */; };
-		A4BA87352BCF88F20078FC4B /* Lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA87342BCF88F20078FC4B /* Lottie.json */; };
 		A4BA87382BCF8A4E0078FC4B /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA87372BCF8A4E0078FC4B /* Lottie */; };
 		A4BA873B2BCF8B060078FC4B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA873A2BCF8B060078FC4B /* Kingfisher */; };
+		A4BA873E2BCF8FF20078FC4B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA873D2BCF8FF20078FC4B /* LoadingView.swift */; };
+		A4BA87402BCFB2370078FC4B /* LoadingLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA873F2BCFB2370078FC4B /* LoadingLottie.json */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -278,7 +279,8 @@
 		A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
 		A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportRequestDto.swift; sourceTree = "<group>"; };
 		A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportEntity.swift; sourceTree = "<group>"; };
-		A4BA87342BCF88F20078FC4B /* Lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Lottie.json; sourceTree = "<group>"; };
+		A4BA873D2BCF8FF20078FC4B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		A4BA873F2BCFB2370078FC4B /* LoadingLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingLottie.json; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD72BB0066300E46131 /* MypageReportDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageReportDto.swift; sourceTree = "<group>"; };
@@ -952,6 +954,7 @@
 		A4998C172B8053C100883017 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA873C2BCF8FE90078FC4B /* Loading */,
 				A4998C1B2B805A7200883017 /* UIComponents */,
 			);
 			path = Common;
@@ -1179,9 +1182,17 @@
 		A4BA87332BCF88E30078FC4B /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				A4BA87342BCF88F20078FC4B /* Lottie.json */,
+				A4BA873F2BCFB2370078FC4B /* LoadingLottie.json */,
 			);
 			path = Lottie;
+			sourceTree = "<group>";
+		};
+		A4BA873C2BCF8FE90078FC4B /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA873D2BCF8FF20078FC4B /* LoadingView.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
@@ -1318,10 +1329,10 @@
 				A4998BED2B79ED4300883017 /* SUIT-SemiBold.ttf in Resources */,
 				A4998BFE2B7F431A00883017 /* SUIT-Regular.ttf in Resources */,
 				A4998C002B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf in Resources */,
+				A4BA87402BCFB2370078FC4B /* LoadingLottie.json in Resources */,
 				A4998BF62B7F403400883017 /* Colors.xcassets in Resources */,
 				A4998BFC2B7F431A00883017 /* SUIT-Medium.ttf in Resources */,
 				A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */,
-				A4BA87352BCF88F20078FC4B /* Lottie.json in Resources */,
 				A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */,
 				A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */,
 			);
@@ -1339,6 +1350,7 @@
 				A4998BA22B70FDB700883017 /* UIView+.swift in Sources */,
 				A4CBBCC82B85D9D000D55085 /* HomeViewController.swift in Sources */,
 				A4BA870F2BCD3F3F0078FC4B /* UmbrellaLendEntity.swift in Sources */,
+				A4BA873E2BCF8FF20078FC4B /* LoadingView.swift in Sources */,
 				A43C73C32B8BA3A200B39F21 /* UmbrellaTarget.swift in Sources */,
 				A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */,
 				A43C74292B90A9B300B39F21 /* UmbrellaReturnDto.swift in Sources */,

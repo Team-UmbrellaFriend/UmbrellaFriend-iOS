@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
     
     private let loginViewModel = LoginViewModel()
     private let disposeBag = DisposeBag()
-    private var code: Int = 0
+    private var isSuccessLogin: Bool = false
     
     // MARK: - UI Components
     
@@ -58,11 +58,10 @@ extension LoginViewController {
         
         loginViewModel.outputs.loginMessage
             .subscribe(onNext: { message in
-                if message.contains("로그인되었습니다") {
-                    self.code = 200
+                self.isSuccessLogin = self.loginView.configureLoginView(message: message)
+                if self.isSuccessLogin {
+                    self.pushToHomeVC()
                 }
-                self.loginView.loginAlertView.isHidden = false
-                self.loginView.configureAlertView(message: message)
             })
             .disposed(by: disposeBag)
     }
@@ -72,7 +71,6 @@ extension LoginViewController {
         loginView.loginButton.delegate = self
         loginView.idTextField.delegate = self
         loginView.pwTextField.delegate = self
-        loginView.loginAlertView.delegate = self
     }
     
     func setGesture() {
@@ -82,6 +80,11 @@ extension LoginViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func pushToHomeVC() {
+        let nav = DIContainer.shared.makeHomeVC()
+        self.navigationController?.pushViewController(nav, animated: false)
     }
 }
 
@@ -108,18 +111,5 @@ extension LoginViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.becomeFirstResponder()
-    }
-}
-
-extension LoginViewController: CustomAlertButtonDelegate {
-    
-    func tapCheckButton() {
-        if code > 0 {
-            let nav = DIContainer.shared.makeHomeVC()
-            self.navigationController?.pushViewController(nav, animated: false)
-        } else {
-            self.loginView.loginAlertView.isHidden = true
-
-        }
     }
 }

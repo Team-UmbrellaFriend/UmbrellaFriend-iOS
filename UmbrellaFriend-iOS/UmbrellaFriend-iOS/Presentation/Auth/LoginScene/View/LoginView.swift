@@ -29,10 +29,18 @@ final class LoginView: UIView {
         return label
     }()
     
+    private let loginErrorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "* 학번과 비밀번호를 다시 확인하세요."
+        label.textAlignment = .left
+        label.textColor = .umbrellaError
+        label.font = .umbrellaFont(.body5)
+        return label
+    }()
+    
     let idTextField = CustomTextField(placeHolder: "학번")
     let pwTextField = CustomTextField(placeHolder: "비밀번호")
     lazy var loginButton = CustomButton(status: true, title: "로그인")
-    let loginAlertView = CustomAlertView(subTitle: "")
     
     // MARK: - Life Cycles
     
@@ -57,11 +65,11 @@ extension LoginView {
     func setUI() {
         backgroundColor = .umbrellaWhite
         pwTextField.isSecureTextEntry = true
-        loginAlertView.isHidden = true
+        loginErrorLabel.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, loginTitleLabel, idTextField, pwTextField, loginButton, loginAlertView)
+        addSubviews(navigationView, loginTitleLabel, idTextField, pwTextField, loginErrorLabel, loginButton)
     }
     
     func setLayout() {
@@ -85,28 +93,26 @@ extension LoginView {
             $0.centerX.equalToSuperview()
         }
         
+        loginErrorLabel.snp.makeConstraints {
+            $0.top.equalTo(pwTextField.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
+            $0.leading.equalTo(pwTextField.snp.leading)
+        }
+        
         loginButton.snp.makeConstraints {
             $0.top.equalTo(pwTextField.snp.bottom).offset(36)
             $0.centerX.equalToSuperview()
-        }
-        
-        loginAlertView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
         }
     }
 }
 
 extension LoginView {
     
-    func configureAlertView(message: String) {
+    func configureLoginView(message: String) -> Bool {
         if message.contains("로그인되었습니다") {
-            self.loginAlertView.alertTitleLabel.text = "성공!"
-            self.loginAlertView.alertTitleLabel.textColor = .mainBlue
-            self.loginAlertView.alertSubTitleLabel.text = message
+            return true
         } else {
-            self.loginAlertView.alertTitleLabel.text = "실패"
-            self.loginAlertView.alertTitleLabel.textColor = .subOrange
-            self.loginAlertView.alertSubTitleLabel.text = "다시 로그인해주세요"
+            self.loginErrorLabel.isHidden = false
+            return false
         }
     }
 }

@@ -90,6 +90,13 @@ extension HomeViewController {
             .subscribe(with: self, onNext: { owner, _ in
                 owner.pushToMypageVC()
             }).disposed(by: disposeBag)
+        
+        self.rx.viewWillAppear
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                LoadingView.shared.show(self.view)
+            })
+            .disposed(by: disposeBag)
     }
     
     func bindViewModel() {
@@ -105,6 +112,9 @@ extension HomeViewController {
             .asDriver(onErrorJustReturn: HomeEntity.homeDtoInitValue())
             .drive(with: self, onNext: { owner, home in
                 owner.homeView.configureHomeView(home)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                    LoadingView.shared.hide()
+                }
             })
             .disposed(by: disposeBag)
         
