@@ -112,7 +112,7 @@ extension HomeViewController {
             .asDriver(onErrorJustReturn: HomeEntity.homeDtoInitValue())
             .drive(with: self, onNext: { owner, home in
                 owner.homeView.configureHomeView(home)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     LoadingView.shared.hide()
                 }
             })
