@@ -49,7 +49,6 @@ extension UmbrellaReturnViewController {
     func setDelegate() {
         umbrellaReturnView.navigationView.delegate = self
         umbrellaReturnView.returnButton.delegate = self
-        umbrellaReturnView.returnAlertView.delegate = self
     }
     
     func setAddTarget() {
@@ -152,13 +151,9 @@ extension UmbrellaReturnViewController: ButtonProtocol {
     
     func buttonTapped() {
         let nav = UmbrellaReturnBottomSheetViewController(viewModel: self.returnViewModel)
-        if photoPlaceNum == 0 {
-            self.umbrellaReturnView.returnAlertView.isHidden = false
-        } else {
-            nav.returnPhotoPlace = self.photoPlaceNum
-            nav.modalPresentationStyle = .overFullScreen
-            self.present(nav, animated: false)
-        }
+        nav.returnPhotoPlace = self.photoPlaceNum
+        nav.modalPresentationStyle = .overFullScreen
+        self.present(nav, animated: false)
     }
 }
 
@@ -189,18 +184,4 @@ extension UmbrellaReturnViewController: UIImagePickerControllerDelegate {
 
 extension UmbrellaReturnViewController: UINavigationControllerDelegate {
     
-}
-
-extension UmbrellaReturnViewController: CustomAlertButtonDelegate {
-    
-    func tapCheckButton() {
-        umbrellaReturnView.returnAlertView.isHidden = true
-        umbrellaReturnView.returnImage.image = .remove
-        umbrellaReturnView.returnImage.isHidden = true
-        umbrellaReturnView.imageDeleteButton.isHidden = true
-        umbrellaReturnView.returnTitleLabel.text = "반납 완료를 위해\n카메라로 인증해주세요"
-        umbrellaReturnView.returnSubTitleLabel.isHidden = false
-        umbrellaReturnView.returnButton.isEnabled = false
-        umbrellaReturnView.navigationView.isAgainButtonInclued = false
-    }
 }

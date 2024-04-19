@@ -60,7 +60,7 @@ final class ReportView: UIView {
     
     lazy var reportButton = CustomButton(status: false, title: "신고하기")
     
-    let reportAlertView = CustomAlertView(subTitle: "")
+    let reportAlertView = CustomAlertView(type: .fail, title: "신고하기 실패", subTitle: "")
     
     // MARK: - Life Cycles
     
