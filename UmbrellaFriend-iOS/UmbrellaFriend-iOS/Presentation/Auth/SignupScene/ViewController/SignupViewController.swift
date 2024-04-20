@@ -122,9 +122,18 @@ extension SignupViewController {
             .subscribe(onNext: { message in
                 if message.contains("완료") {
                     self.signupCode = 201
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                        if let window = windowScene.windows.first {
+                            let homeViewController = DIContainer.shared.makeHomeVC()
+                            let navigationController = UINavigationController(rootViewController: homeViewController)
+                            window.rootViewController = navigationController
+                        }
+                    }
+                } else {
+                    self.signupCode = 400
+                    self.signupView.signupAlertView.isHidden = false
+                    self.signupView.configureSignupAlertView(subTitle: message)
                 }
-                self.signupView.signupAlertView.isHidden = false
-                self.signupView.configureSignupAlertView(subTitle: message)
             })
             .disposed(by: disposeBag)
         
@@ -254,13 +263,7 @@ extension SignupViewController: CustomAlertButtonDelegate {
     func tapCheckButton() {
         signupView.signupAlertView.isHidden = true
         if signupCode > 0 {
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                if let window = windowScene.windows.first {
-                    let homeViewController = DIContainer.shared.makeHomeVC()
-                    let navigationController = UINavigationController(rootViewController: homeViewController)
-                    window.rootViewController = navigationController
-                }
-            }
+            signupView.signupAlertView.isHidden = true
         }
         if self.userId > 0 { // 프로필 수정
             if editProfileCode > 0 {
