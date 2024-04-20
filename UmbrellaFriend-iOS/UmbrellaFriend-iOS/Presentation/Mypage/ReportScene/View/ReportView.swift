@@ -194,17 +194,19 @@ extension ReportView: UITextViewDelegate {
     }
 }
 
+
 extension ReportView {
     
     func configureReportAlert(message: String) -> Bool {
-        reportAlertView.alertSubTitleLabel.text = message
         if !message.contains("성공") {
-            reportAlertView.alertTitleLabel.text = "잠깐만요!"
-            reportAlertView.alertTitleLabel.textColor = .subOrange
+            reportAlertView.alertIcon.image = .icAlertFail
+            reportAlertView.alertTitleLabel.text = "신고 접수 실패"
+            reportAlertView.changedSubtitle = message
             return false
         } else {
-            reportAlertView.alertTitleLabel.text = "접수되었어요!"
-            reportAlertView.alertTitleLabel.textColor = .mainBlue
+            reportAlertView.alertIcon.image = .icAlertCheck
+            reportAlertView.alertTitleLabel.text = "신고 접수 완료"
+            reportAlertView.changedSubtitle = "신고해 주셔서 감사합니다!\n이른 시일 내에 해결하겠습니다."
             return true
         }
     }

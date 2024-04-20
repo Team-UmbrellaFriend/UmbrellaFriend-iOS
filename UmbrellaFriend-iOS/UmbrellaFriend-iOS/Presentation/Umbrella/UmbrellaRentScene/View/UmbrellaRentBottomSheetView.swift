@@ -214,12 +214,12 @@ extension UmbrellaRentBottomSheetView {
         if message.contains("대여했습니다") {
             rentAlertView.alertTitleLabel.text = "대여완료!"
             rentAlertView.alertTitleLabel.textColor = .mainBlue
-            rentAlertView.alertSubTitleLabel.text = "\(message)."
+            rentAlertView.changedSubtitle = "\(message)."
             return true
         } else {
             rentAlertView.alertTitleLabel.text = "잠깐만요!"
             rentAlertView.alertTitleLabel.textColor = .subOrange
-            rentAlertView.alertSubTitleLabel.text = "\(message).\nQR코드를 다시 인식해주세요."
+            rentAlertView.changedSubtitle = "\(message).\nQR코드를 다시 인식해주세요."
             return false
         }
     }

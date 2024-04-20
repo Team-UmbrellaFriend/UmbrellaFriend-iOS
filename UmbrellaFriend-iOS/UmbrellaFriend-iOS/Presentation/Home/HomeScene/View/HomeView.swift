@@ -434,7 +434,7 @@ extension HomeView {
     }
     
     func configureHomeAlertView(_ message: String) {
-        homeAlertView.alertSubTitleLabel.text = message
+        homeAlertView.changedSubtitle = message
         homeAlertView.alertTitleLabel.text = message.contains("성공") ? "대여 연장 완료" : "대여 연장 실패"
         homeAlertView.alertIcon.image = message.contains("성공") ? UIImage(resource: .icAlertCheck) : UIImage(resource: .icAlertFail)
     }
