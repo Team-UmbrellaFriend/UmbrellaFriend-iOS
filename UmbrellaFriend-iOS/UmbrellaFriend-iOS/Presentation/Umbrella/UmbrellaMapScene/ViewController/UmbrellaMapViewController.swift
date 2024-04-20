@@ -57,7 +57,7 @@ extension UmbrellaMapViewController {
     }
     
     func bindUI() {
-        let mapIcons = [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3, umbrellaMapView.mapIcon4, umbrellaMapView.mapIcon5, umbrellaMapView.mapIcon6]
+        let mapIcons = [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3]
 
         mapIcons.enumerated().forEach { index, mapBtn in
             mapBtn.rx.tap
@@ -74,12 +74,6 @@ extension UmbrellaMapViewController {
         )
         
         let output = self.umbrellaMapViewModel.transform(from: input, disposeBag: self.disposeBag)
-        
-        output.umbrellaAvailableData
-            .subscribe(onNext: { data in
-                self.umbrellaMapView.configureUmbrellaMapView(model: data[0])
-            })
-            .disposed(by: disposeBag)
         
         output.umbrellaMapData
             .subscribe(onNext: { mapData in
