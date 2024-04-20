@@ -75,6 +75,16 @@ final class CustomAlertView: UIView {
     
     private lazy var alertCheckButton = CustomButton(status: true, title: "확인")
     
+    var changedSubtitle: String = "" {
+        didSet {
+            alertSubTitleLabel.text = changedSubtitle
+            self.alertView.snp.updateConstraints {
+                $0.height.equalTo(changedSubtitle.contains("\n") ? SizeLiterals.Screen.screenHeight * 226 / 812 : SizeLiterals.Screen.screenHeight * 204 / 812)
+            }
+            setNeedsLayout()
+        }
+    }
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
