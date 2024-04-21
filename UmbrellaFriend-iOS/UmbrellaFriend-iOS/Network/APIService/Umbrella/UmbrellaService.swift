@@ -17,6 +17,7 @@ protocol UmbrellaService {
     func getUmbrellaAvailable() -> Single<[UmbrellaAvailableEntity]>
     func getUmbrellaCheck(umbrellaNum: Int) -> Single<UmbrellaCheckEntity>
     func postUmbrellaLend(umbrellaNum: Int) -> Single<String>
+    func postUmbrellaReturn(requestDto: UmbrellaReturnRequestDto) -> Single<Int>
 }
 
 final class DefaultUmbrellaService: NSObject {
@@ -51,6 +52,14 @@ extension DefaultUmbrellaService: UmbrellaService {
             .map { response in
                 let genericResponse = try response.map(GeneralResponse<UmbrellaLendEntity>.self)
                 return genericResponse.message
+            }
+    }
+    
+    func postUmbrellaReturn(requestDto: UmbrellaReturnRequestDto) -> Single<Int> {
+        umbrellaProvider.rx.request(.postUmbrellaReturn(returnData: requestDto))
+            .map { response in
+                let genericResponse = try response.map(GeneralResponse<BlankEntity>.self)
+                return genericResponse.status
             }
     }
 }

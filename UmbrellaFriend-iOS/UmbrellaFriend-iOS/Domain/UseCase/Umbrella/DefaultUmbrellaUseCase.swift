@@ -23,6 +23,7 @@ final class DefaultUmbrellaUseCase: UmbrellaUseCase {
     var umbrellaMapTappedData = PublishRelay<UmbrellaAvailableEntity>()
     var umbrellaCheckData = PublishRelay<UmbrellaCheckEntity>()
     var umbrellaLendData = PublishRelay<String>()
+    var umbrellaReturnData = PublishRelay<Int>()
 }
 
 extension DefaultUmbrellaUseCase {
@@ -52,6 +53,13 @@ extension DefaultUmbrellaUseCase {
         umbrellaRepository.postUmbrellaLend(umbrellaNum: umbrellaNum)
             .subscribe(with: self, onNext: { owner, umbrellaLend in
                 owner.umbrellaLendData.accept(umbrellaLend)
+            }).disposed(by: disposeBag)
+    }
+    
+    func postUmbrellaReturn(requestDto: UmbrellaReturnRequestDto) {
+        umbrellaRepository.postUmbrellaReturn(requestDto: requestDto)
+            .subscribe(with: self, onNext: { owner, umbrellaReturn in
+                owner.umbrellaReturnData.accept(umbrellaReturn)
             }).disposed(by: disposeBag)
     }
 }

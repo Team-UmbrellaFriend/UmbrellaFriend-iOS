@@ -17,6 +17,7 @@ protocol UmbrellaRepository {
     func getUmbrellaAvailabe() -> Observable<[UmbrellaAvailableEntity]>
     func getUmbrellaCheck(umbrellaNum: Int) -> Observable<UmbrellaCheckEntity>
     func postUmbrellaLend(umbrellaNum: Int) -> Observable<String>
+    func postUmbrellaReturn(requestDto: UmbrellaReturnRequestDto) -> Observable<Int>
 }
 
 final class DefaultUmbrellaRepository {
@@ -34,6 +35,7 @@ final class DefaultUmbrellaRepository {
     var umbrellaAvailableResult: [UmbrellaAvailableEntity]?
     var umbrellaCheckResult: UmbrellaCheckEntity?
     var umbrellaLendResult: String?
+    var umbrellaReturnResult: Int?
     
     //MARK: - Life Cycle
     
@@ -65,6 +67,12 @@ extension DefaultUmbrellaRepository: UmbrellaRepository {
     func postUmbrellaLend(umbrellaNum: Int) -> Observable<String> {
         umbrellaService.postUmbrellaLend(umbrellaNum: umbrellaNum)
             .do(onSuccess: { [weak self] in self?.umbrellaLendResult = $0 })
+            .asObservable()
+    }
+    
+    func postUmbrellaReturn(requestDto: UmbrellaReturnRequestDto) -> Observable<Int> {
+        umbrellaService.postUmbrellaReturn(requestDto: requestDto)
+            .do(onSuccess: { [weak self] in self?.umbrellaReturnResult = $0 } )
             .asObservable()
     }
 }
