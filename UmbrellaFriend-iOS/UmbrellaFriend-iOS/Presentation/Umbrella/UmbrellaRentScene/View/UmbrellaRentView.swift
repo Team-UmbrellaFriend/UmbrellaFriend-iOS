@@ -31,7 +31,7 @@ final class UmbrellaRentView: UIView {
     let exitButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.imageView?.tintColor = .black
+        button.imageView?.tintColor = .umbrellaWhite
         return button
     }()
     
