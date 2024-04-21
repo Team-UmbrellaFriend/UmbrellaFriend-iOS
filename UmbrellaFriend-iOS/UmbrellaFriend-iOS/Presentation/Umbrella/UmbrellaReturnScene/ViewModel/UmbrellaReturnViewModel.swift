@@ -11,59 +11,38 @@ import RxSwift
 import RxCocoa
 import Moya
 
-protocol UmbrellaReturnViewModelInputs {
+final class UmbrellaReturnViewModel: ViewModelType {
     
-    func umbrellaReturnLocation(location: String)
-    func umbrellaReturnImage(img: Data)
-    func umbrellaReturn()
-}
-
-protocol UmbrellaReturnViewModelOutputs {
+    private let umbrellaUseCase: UmbrellaUseCase
     
-    var umbrellaReturnData: BehaviorRelay<UmbrellaReturnDto> { get }
-}
-
-protocol UmbrellaReturnViewModelType {
-    
-    var inputs: UmbrellaReturnViewModelInputs { get }
-    var outputs: UmbrellaReturnViewModelOutputs { get }
-}
-
-final class UmbrellaReturnViewModel: UmbrellaReturnViewModelInputs, UmbrellaReturnViewModelOutputs, UmbrellaReturnViewModelType {
-    
-    var inputs: UmbrellaReturnViewModelInputs { return self }
-    var outputs: UmbrellaReturnViewModelOutputs { return self }
-    
-    var image: Data?
-    var location: String = ""
- 
-    // output
-    
-    var umbrellaReturnData: BehaviorRelay<UmbrellaReturnDto> = BehaviorRelay<UmbrellaReturnDto>(value: UmbrellaReturnDto())
-    
-    // input
-    
-    func umbrellaReturn() {
-        self.postUmbrellaReturnDto(location: self.location, image: self.image ?? Data())
+    init(umbrellaUseCase: UmbrellaUseCase) {
+        self.umbrellaUseCase = umbrellaUseCase
     }
     
-    func umbrellaReturnLocation(location: String) {
-        self.location = location
+    struct Input {
+        let returnQrCodeCaptured: Observable<UmbrellaReturnRequestDto>
     }
     
-    func umbrellaReturnImage(img: Data) {
-        self.image = img
+    struct Output {
+        var umbrellaReturnCode = PublishRelay<Int>()
     }
-}
-
-extension UmbrellaReturnViewModel {
     
-    func postUmbrellaReturnDto(location: String, image: Data) {
-        UmbrellaAPI.shared.postUmbrellaReturn(location: location, image: image) { [weak self] response in
-            guard (response?.status) != nil else { return }
-            guard self != nil else { return }
-            guard let data = response?.data else { return }
-            self?.umbrellaReturnData.accept(data)
-        }
+    func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
+        self.bindOutput(output: output, disposeBag: disposeBag)
+        
+        input.returnQrCodeCaptured
+            .subscribe(with: self, onNext: { owner, dto in
+                owner.umbrellaUseCase.postUmbrellaReturn(requestDto: dto)
+            })
+            .disposed(by: disposeBag)
+        
+        return output
+    }
+    
+    private func bindOutput(output: Output, disposeBag: DisposeBag) {
+        umbrellaUseCase.umbrellaReturnData
+            .bind(to: output.umbrellaReturnCode)
+            .disposed(by: disposeBag)
     }
 }
