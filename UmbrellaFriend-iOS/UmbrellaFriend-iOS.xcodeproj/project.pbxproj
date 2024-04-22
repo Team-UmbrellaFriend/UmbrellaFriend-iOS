@@ -124,7 +124,6 @@
 		A4BA871C2BCE42B30078FC4B /* DefaultMypageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA871B2BCE42B30078FC4B /* DefaultMypageUseCase.swift */; };
 		A4BA871E2BCE431D0078FC4B /* MypageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA871D2BCE431D0078FC4B /* MypageRepository.swift */; };
 		A4BA87202BCEA02C0078FC4B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA871F2BCEA02C0078FC4B /* AuthService.swift */; };
-		A4BA87222BCEA0640078FC4B /* BlankEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87212BCEA0640078FC4B /* BlankEntity.swift */; };
 		A4BA87242BCEA0C70078FC4B /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87232BCEA0C70078FC4B /* AuthRepository.swift */; };
 		A4BA87282BCEA1FF0078FC4B /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87272BCEA1FF0078FC4B /* AuthUseCase.swift */; };
 		A4BA872A2BCEA2070078FC4B /* DefaultAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */; };
@@ -136,6 +135,7 @@
 		A4BA87402BCFB2370078FC4B /* LoadingLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = A4BA873F2BCFB2370078FC4B /* LoadingLottie.json */; };
 		A4BA87432BD42F920078FC4B /* UmbrellaReturnRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87422BD42F920078FC4B /* UmbrellaReturnRequestDto.swift */; };
 		A4BA87452BD438250078FC4B /* UmbrellaReturnPlaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87442BD438250078FC4B /* UmbrellaReturnPlaceEntity.swift */; };
+		A4BA87472BD6A22E0078FC4B /* BlankEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87462BD6A22E0078FC4B /* BlankEntity.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -268,7 +268,6 @@
 		A4BA871B2BCE42B30078FC4B /* DefaultMypageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMypageUseCase.swift; sourceTree = "<group>"; };
 		A4BA871D2BCE431D0078FC4B /* MypageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageRepository.swift; sourceTree = "<group>"; };
 		A4BA871F2BCEA02C0078FC4B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		A4BA87212BCEA0640078FC4B /* BlankEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlankEntity.swift; path = ../../../../../../Documents/BlankEntity.swift; sourceTree = "<group>"; };
 		A4BA87232BCEA0C70078FC4B /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
 		A4BA87272BCEA1FF0078FC4B /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		A4BA87292BCEA2070078FC4B /* DefaultAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthUseCase.swift; sourceTree = "<group>"; };
@@ -278,6 +277,7 @@
 		A4BA873F2BCFB2370078FC4B /* LoadingLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LoadingLottie.json; sourceTree = "<group>"; };
 		A4BA87422BD42F920078FC4B /* UmbrellaReturnRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnRequestDto.swift; sourceTree = "<group>"; };
 		A4BA87442BD438250078FC4B /* UmbrellaReturnPlaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnPlaceEntity.swift; sourceTree = "<group>"; };
+		A4BA87462BD6A22E0078FC4B /* BlankEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankEntity.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD92BB0920100E46131 /* ReportNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNumberView.swift; sourceTree = "<group>"; };
@@ -1047,7 +1047,7 @@
 				A4BA87142BCE41D70078FC4B /* Mypage */,
 				A4BA86DA2BBD23940078FC4B /* Umbrella */,
 				A43C73962B8A43A800B39F21 /* Home */,
-				A4BA87212BCEA0640078FC4B /* BlankEntity.swift */,
+				A4BA87462BD6A22E0078FC4B /* BlankEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1334,6 +1334,7 @@
 				A43C742B2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift in Sources */,
 				A4BA87002BC7B1330078FC4B /* UmbrellaUseCase.swift in Sources */,
 				A4BA87092BCA3D330078FC4B /* UmbrellaCheckEntity.swift in Sources */,
+				A4BA87472BD6A22E0078FC4B /* BlankEntity.swift in Sources */,
 				A488FB342B94D03D004D4A09 /* UserDefaultWrapper.swift in Sources */,
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A4BA86C42BBA7DAC0078FC4B /* HomeRepository.swift in Sources */,
@@ -1416,7 +1417,6 @@
 				A4BA87452BD438250078FC4B /* UmbrellaReturnPlaceEntity.swift in Sources */,
 				A488FB362B94D047004D4A09 /* UserManager.swift in Sources */,
 				A488FB3B2B94D606004D4A09 /* LoginViewModel.swift in Sources */,
-				A4BA87222BCEA0640078FC4B /* BlankEntity.swift in Sources */,
 				A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */,
 				A488FB132B930710004D4A09 /* MypageViewController.swift in Sources */,
 				A488FB192B930732004D4A09 /* MypageCollectionViewCell.swift in Sources */,
