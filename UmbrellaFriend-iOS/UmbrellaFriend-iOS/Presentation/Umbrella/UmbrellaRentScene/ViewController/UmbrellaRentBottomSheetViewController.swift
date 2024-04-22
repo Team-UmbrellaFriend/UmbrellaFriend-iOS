@@ -116,8 +116,12 @@ extension UmbrellaRentBottomSheetViewController {
         
         output.umbrellaLendMessage
             .subscribe(onNext: { message in
-                self.umbrellaRentBottomSheetView.rentAlertView.isHidden = false
                 self.isSuccessLend = self.umbrellaRentBottomSheetView.configureAlertView(message: message)
+                if !self.isSuccessLend {
+                    self.umbrellaRentBottomSheetView.rentAlertView.isHidden = false
+                } else {
+                    self.changeRootToHomeVC()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -166,10 +170,6 @@ extension UmbrellaRentBottomSheetViewController {
 extension UmbrellaRentBottomSheetViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
-        if isSuccessLend {
-            changeRootToHomeVC()
-        } else {
-            umbrellaRentBottomSheetView.rentAlertView.isHidden = true
-        }
+        umbrellaRentBottomSheetView.rentAlertView.isHidden = true
     }
 }

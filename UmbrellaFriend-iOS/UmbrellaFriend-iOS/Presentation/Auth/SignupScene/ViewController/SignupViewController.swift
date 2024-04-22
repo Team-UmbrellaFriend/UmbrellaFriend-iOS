@@ -105,16 +105,11 @@ extension SignupViewController {
         signupViewModel.outputs.editProfileMessage
             .subscribe(onNext: { message in
                 if message.contains("수정되었습니다") {
-                    self.editProfileCode = 200
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.signupView.signupAlertView.isHidden = false
+                    self.signupView.configureEditProfileAlertView(subTitle: message)
                 }
-                self.signupView.signupAlertView.isHidden = false
-                self.signupView.configureEditProfileAlertView(subTitle: message)
-            })
-            .disposed(by: disposeBag)
-        
-        signupViewModel.outputs.editProfileData
-            .subscribe(onNext: {_ in 
-                self.signupView.signupAlertView.isHidden = false
             })
             .disposed(by: disposeBag)
         
@@ -153,15 +148,6 @@ extension SignupViewController {
         signupView.pwTextField.delegate = self
         signupView.pwCheckTextField.delegate = self
         signupView.signupAlertView.delegate = self
-    }
-    
-    func setAddTarget() {
-        signupView.completeButton.addTarget(self, action: #selector(completeTapped), for: .touchUpInside)
-    }
-    
-    @objc
-    func completeTapped() {
-        
     }
     
     func setTextField() {
@@ -262,13 +248,5 @@ extension SignupViewController: CustomAlertButtonDelegate {
     
     func tapCheckButton() {
         signupView.signupAlertView.isHidden = true
-        if signupCode > 0 {
-            signupView.signupAlertView.isHidden = true
-        }
-        if self.userId > 0 { // 프로필 수정
-            if editProfileCode > 0 {
-                self.navigationController?.popViewController(animated: true)
-            }
-        }
     }
 }

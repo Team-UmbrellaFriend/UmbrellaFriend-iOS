@@ -270,12 +270,6 @@ extension SignupView {
     
     func configureEditProfileAlertView(subTitle: String) {
         signupAlertView.changedSubtitle = subTitle
-        if subTitle.contains("수정되었습니다") {
-            signupAlertView.alertTitleLabel.text = "수정되었어요!"
-            signupAlertView.alertTitleLabel.textColor = .mainBlue
-        } else {
-            signupAlertView.alertTitleLabel.text = "잠깐만요!"
-            signupAlertView.alertTitleLabel.textColor = .subOrange
-        }
+        signupAlertView.alertTitleLabel.text = "프로필 수정 실패"
     }
 }
