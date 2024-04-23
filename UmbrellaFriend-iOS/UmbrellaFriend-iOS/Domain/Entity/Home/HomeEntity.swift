@@ -35,17 +35,21 @@ struct Weather: Codable {
 struct DDay: Codable {
     let isOverdue: Bool
     let overdueDays, daysRemaining: Int
+    let hasUmbrella: Bool
+    let extensionCount: Int
 
     enum CodingKeys: String, CodingKey {
         case isOverdue = "is_overdue"
         case overdueDays = "overdue_days"
         case daysRemaining = "days_remaining"
+        case hasUmbrella = "has_umbrella"
+        case extensionCount = "extension_count:"
     }
 }
 
 extension HomeEntity {
     
     static func homeDtoInitValue() -> HomeEntity {
-        return HomeEntity(user: User(id: 0, username: ""), weather: HomeWeather(weather: Weather(date: "", percent: ""), message: ""), dDay: DDay(isOverdue: false, overdueDays: 0, daysRemaining: 0))
+        return HomeEntity(user: User(id: 0, username: ""), weather: HomeWeather(weather: Weather(date: "", percent: ""), message: ""), dDay: DDay(isOverdue: false, overdueDays: 0, daysRemaining: 0, hasUmbrella: false, extensionCount: 0))
     }
 }
