@@ -66,7 +66,7 @@ extension ReportViewController {
             .bind(to: reportView.reportCollectionView.rx
                 .items(cellIdentifier: ReportCollectionViewCell.className,
                        cellType: ReportCollectionViewCell.self)) { (index, model, cell) in
-                cell.configureCell(model: model)
+                cell.configureReportCell(model: model)
             }
                        .disposed(by: disposeBag)
         
@@ -128,7 +128,8 @@ extension ReportViewController {
         let input = MypageViewModel.Input(
             viewWillAppearEvent: Observable.empty(),
             logoutButtonTapped: Observable.empty(),
-            reportButtonTapped: self.mypageReportSubject.asObserver()
+            reportButtonTapped: self.mypageReportSubject.asObserver(), 
+            withdrawButtonTapped: Observable.empty()
         )
         
         let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)

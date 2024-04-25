@@ -19,6 +19,7 @@ final class DefaultAuthUseCase: AuthUseCase {
     }
     
     var logoutData = PublishRelay<BlankEntity>()
+    var withdrawMessage = PublishRelay<String>()
 }
 
 extension DefaultAuthUseCase {
@@ -27,6 +28,13 @@ extension DefaultAuthUseCase {
         authRepository.getLogout()
             .subscribe(with: self, onNext: { owner, logout in
                 owner.logoutData.accept(logout)
+            }).disposed(by: disposeBag)
+    }
+    
+    func delWithdraw() {
+        authRepository.delWithdraw()
+            .subscribe(with: self, onNext: { owner, withdraw in
+                owner.withdrawMessage.accept(withdraw)
             }).disposed(by: disposeBag)
     }
 }

@@ -16,9 +16,11 @@ protocol UmbrellaUseCase {
     var umbrellaAvailableData: PublishRelay<[UmbrellaAvailableEntity]> { get }
     var umbrellaCheckData: PublishRelay<UmbrellaCheckEntity> { get }
     var umbrellaLendData: PublishRelay<String> { get }
+    var umbrellaReturnData: PublishRelay<Int> { get }
     
     func getUmbrellaExtend()
     func getUmbrellaAvailable()
     func getUmbrellaCheck(umbrellaNum: Int)
     func postUmbrellaLend(umbrellaNum: Int)
+    func postUmbrellaReturn(requestDto: UmbrellaReturnRequestDto)
 }

@@ -98,7 +98,7 @@ final class UmbrellaRentBottomSheetView: UIView {
     }()
     
     private let rentIcon = UIImageView(image: UIImage(resource: .icBigUmbrella))
-    let rentAlertView = CustomAlertView(subTitle: "")
+    let rentAlertView = CustomAlertView(type: .notice, title: "잠시만요!", subTitle: "선택한 장소와 일치하지 않아요.\n다시 인증해주세요.")
     
     // MARK: - Life Cycles
     
@@ -214,12 +214,12 @@ extension UmbrellaRentBottomSheetView {
         if message.contains("대여했습니다") {
             rentAlertView.alertTitleLabel.text = "대여완료!"
             rentAlertView.alertTitleLabel.textColor = .mainBlue
-            rentAlertView.alertSubTitleLabel.text = "\(message)."
+            rentAlertView.changedSubtitle = "\(message)."
             return true
         } else {
             rentAlertView.alertTitleLabel.text = "잠깐만요!"
             rentAlertView.alertTitleLabel.textColor = .subOrange
-            rentAlertView.alertSubTitleLabel.text = "\(message).\nQR코드를 다시 인식해주세요."
+            rentAlertView.changedSubtitle = "\(message).\nQR코드를 다시 인식해주세요."
             return false
         }
     }

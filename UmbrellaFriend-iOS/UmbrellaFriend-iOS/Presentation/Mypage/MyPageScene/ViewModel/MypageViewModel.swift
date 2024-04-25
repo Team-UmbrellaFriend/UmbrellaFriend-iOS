@@ -28,12 +28,14 @@ final class MypageViewModel: ViewModelType {
         let viewWillAppearEvent: Observable<Void>
         let logoutButtonTapped: Observable<Void>
         let reportButtonTapped: Observable<MypageReportRequestDto>
+        let withdrawButtonTapped: Observable<Void>
     }
     
     struct Output {
         var mypageData = PublishRelay<MypageEntity>()
         var logoutData = PublishRelay<BlankEntity>()
         var mypageReportData = PublishRelay<String>()
+        var withdrawData = PublishRelay<String>()
     }
     
     func transform(from input: Input, disposeBag: DisposeBag) -> Output {

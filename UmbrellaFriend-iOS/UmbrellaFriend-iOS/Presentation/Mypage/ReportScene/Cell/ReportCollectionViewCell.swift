@@ -104,11 +104,15 @@ private extension ReportCollectionViewCell {
         reportCheckView.backgroundColor = isSelected ? .mainBlue : .gray300
         reportCheckImage.isHidden = isSelected ? false : true
     }
-}
+}	
 
 extension ReportCollectionViewCell {
 
-    func configureCell(model: MypageReportEntity) {
+    func configureReportCell(model: MypageReportEntity) {
+        reportTitle.text = model.title
+    }
+    
+    func configureWithdrawCell(model: MypageWithdrawEntity) {
         reportTitle.text = model.title
     }
 }

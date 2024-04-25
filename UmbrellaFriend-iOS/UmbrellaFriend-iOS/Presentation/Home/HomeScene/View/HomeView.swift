@@ -196,7 +196,7 @@ final class HomeView: UIView {
     private let returnBackIcon = UIImageView(image: UIImage(resource: .icFoldUmbrellaBig))
     private let mapBackIcon = UIImageView(image: UIImage(resource: .icUmbrellaMap))
     
-    let homeAlertView = CustomAlertView(subTitle: "")
+    let homeAlertView = CustomAlertView(type: .success, title: "대여 연장 완료", subTitle: "")
     
     // MARK: - Life Cycles
     
@@ -434,7 +434,8 @@ extension HomeView {
     }
     
     func configureHomeAlertView(_ message: String) {
-        homeAlertView.alertSubTitleLabel.text = message
-        homeAlertView.alertTitleLabel.text = message.contains("성공") ? "연장이 완료되었습니다!" : "잠깐만요!"
+        homeAlertView.changedSubtitle = message
+        homeAlertView.alertTitleLabel.text = message.contains("자동으로 3일") ? "대여 연장 완료" : "대여 연장 실패"
+        homeAlertView.alertIcon.image = message.contains("자동으로 3일") ? UIImage(resource: .icAlertCheck) : UIImage(resource: .icAlertFail)
     }
 }

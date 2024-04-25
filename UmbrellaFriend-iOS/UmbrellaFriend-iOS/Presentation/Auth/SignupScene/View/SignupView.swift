@@ -112,7 +112,7 @@ final class SignupView: UIView {
     let pwCheckTextField = CustomTextField(placeHolder: "비밀번호확인")
     lazy var completeButton = CustomButton(status: false, title: "완료")
     
-    let signupAlertView = CustomAlertView(subTitle: "")
+    let signupAlertView = CustomAlertView(type: .fail, title: "회원가입 실패", subTitle: "")
     
     // MARK: - Life Cycles
     
@@ -265,24 +265,11 @@ extension SignupView {
     }
     
     func configureSignupAlertView(subTitle: String) {
-        signupAlertView.alertSubTitleLabel.text = subTitle
-        if subTitle.contains("완료") {
-            signupAlertView.alertTitleLabel.text = "반가워요!"
-            signupAlertView.alertTitleLabel.textColor = .mainBlue
-        } else {
-            signupAlertView.alertTitleLabel.text = "잠깐만요!"
-            signupAlertView.alertTitleLabel.textColor = .subOrange
-        }
+        signupAlertView.changedSubtitle = subTitle
     }
     
     func configureEditProfileAlertView(subTitle: String) {
-        signupAlertView.alertSubTitleLabel.text = subTitle
-        if subTitle.contains("수정되었습니다") {
-            signupAlertView.alertTitleLabel.text = "수정되었어요!"
-            signupAlertView.alertTitleLabel.textColor = .mainBlue
-        } else {
-            signupAlertView.alertTitleLabel.text = "잠깐만요!"
-            signupAlertView.alertTitleLabel.textColor = .subOrange
-        }
+        signupAlertView.changedSubtitle = subTitle
+        signupAlertView.alertTitleLabel.text = "프로필 수정 실패"
     }
 }

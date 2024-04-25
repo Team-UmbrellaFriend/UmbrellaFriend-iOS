@@ -13,6 +13,8 @@ import RxCocoa
 protocol AuthUseCase {
     
     var logoutData: PublishRelay<BlankEntity> { get }
+    var withdrawMessage: PublishRelay<String> { get }
     
     func getLogout()
+    func delWithdraw()
 }

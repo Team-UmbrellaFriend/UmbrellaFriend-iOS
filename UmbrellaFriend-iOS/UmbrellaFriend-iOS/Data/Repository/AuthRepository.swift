@@ -11,8 +11,10 @@ import RxSwift
 protocol AuthRepository {
     
     var logoutResult: BlankEntity? { get set }
+    var withdrawResult: String? { get set }
     
     func getLogout() -> Observable<BlankEntity>
+    func delWithdraw() -> Observable<String>
 }
 
 final class DefaultAuthRepository {
@@ -27,6 +29,7 @@ final class DefaultAuthRepository {
     private let disposeBag = DisposeBag()
     
     var logoutResult: BlankEntity?
+    var withdrawResult: String?
     
     //MARK: - Life Cycle
     
@@ -40,6 +43,12 @@ extension DefaultAuthRepository: AuthRepository {
     func getLogout() -> Observable<BlankEntity> {
         authService.getLogout()
             .do(onSuccess: { [weak self] in self?.logoutResult = $0 } )
+            .asObservable()
+    }
+    
+    func delWithdraw() -> Observable<String> {
+        authService.delWithdraw()
+            .do(onSuccess: { [weak self] in self?.withdrawResult = $0 } )
             .asObservable()
     }
 }

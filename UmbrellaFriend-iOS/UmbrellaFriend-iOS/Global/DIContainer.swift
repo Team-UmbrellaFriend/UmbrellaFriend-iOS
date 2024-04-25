@@ -24,6 +24,15 @@ extension DIContainer {
         return vc
     }
     
+    func makeUmbrellaReturnVC() -> UmbrellaReturnViewController {
+        let umbrellaService = DefaultUmbrellaService()
+        let umbrellaRepo = DefaultUmbrellaRepository(umbrellaService: umbrellaService)
+        let umbrellaUsecase = DefaultUmbrellaUseCase(umbrellaRepository: umbrellaRepo)
+        let vm = UmbrellaReturnViewModel(umbrellaUseCase: umbrellaUsecase)
+        let vc = UmbrellaReturnViewController(viewModel: vm)
+        return vc
+    }
+    
     func makeUmbrellaMapVC() -> UmbrellaMapViewController {
         let umbrellaService = DefaultUmbrellaService()
         let umbrellaRepo = DefaultUmbrellaRepository(umbrellaService: umbrellaService)

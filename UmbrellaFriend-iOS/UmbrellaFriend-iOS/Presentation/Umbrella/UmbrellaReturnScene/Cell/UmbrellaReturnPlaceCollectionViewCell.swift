@@ -108,7 +108,7 @@ private extension UmbrellaReturnPlaceCollectionViewCell {
         }
     }
     
-    func calculateLabelWidth(for model: UmbrellaPlaceDto) -> CGFloat {
+    func calculateLabelWidth(for model: UmbrellaReturnPlaceEntity) -> CGFloat {
         let text = model.placeTitle
         let font = UIFont.umbrellaFont(.body3)
         let attributes: [NSAttributedString.Key: Any] = [.font: font]
@@ -119,7 +119,7 @@ private extension UmbrellaReturnPlaceCollectionViewCell {
 
 extension UmbrellaReturnPlaceCollectionViewCell {
 
-    func configureCell(model: UmbrellaPlaceDto) {
+    func configureCell(model: UmbrellaReturnPlaceEntity) {
         placeImageView.image = UIImage(named: model.placeImage)
         placeLabel.text = model.placeTitle
         

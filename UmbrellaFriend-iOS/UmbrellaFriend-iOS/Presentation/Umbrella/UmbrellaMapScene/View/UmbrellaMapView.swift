@@ -25,21 +25,10 @@ final class UmbrellaMapView: UIView {
     lazy var mapIcon1 = UIButton()
     lazy var mapIcon2 = UIButton()
     lazy var mapIcon3 = UIButton()
-    lazy var mapIcon4 = UIButton()
-    lazy var mapIcon5 = UIButton()
-    lazy var mapIcon6 = UIButton()
-    
-    private let mapDetailView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray100.withAlphaComponent(0.85)
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 35
-        return view
-    }()
     
     private let mapDetailTitle: UILabel = {
         let label = UILabel()
-        label.text = "명신관 우산 잔여 개수"
+        label.text = "대여 장소를 선택해주세요."
         label.textColor = .gray800
         label.font = .umbrellaFont(.subtitle1)
         return label
@@ -47,33 +36,21 @@ final class UmbrellaMapView: UIView {
     
     private let mapDetailSubTitle: UILabel = {
         let label = UILabel()
-        label.text = "정확한 위치 정보"
+        label.text = "세부 장소를 알려드려요."
         label.textColor = .gray800
         label.font = .umbrellaFont(.body5)
         return label
     }()
     
-    private let umbrellaNumberView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .mainBlue
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 42
-        return view
-    }()
-    
     private let umbrellaNumberTitle: UILabel = {
         let label = UILabel()
-        label.text = "현재 개수"
+        label.text = "0개"
         label.textColor = .umbrellaWhite
-        label.font = .umbrellaFont(.body2)
-        return label
-    }()
-    
-    private let umbrellaNumberSubTitle: UILabel = {
-        let label = UILabel()
-        label.text = "3"
-        label.textColor = .umbrellaWhite
-        label.font = .umbrellaFont(.heading2)
+        label.textAlignment = .center
+        label.font = .umbrellaFont(.heading3)
+        label.backgroundColor = .gray500
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 24
         return label
     }()
     
@@ -100,8 +77,9 @@ private extension UmbrellaMapView {
     func setUI() {
         backgroundColor = .umbrellaWhite
         horizontalScrollView.showsHorizontalScrollIndicator = false
-         // '명신관': 1, '순헌관': 2, '학생회관': 3, '도서관': 4, '음대': 5, '백주년기념관': 6
-        [mapIcon1, mapIcon2, mapIcon3, mapIcon4, mapIcon5, mapIcon6].forEach {
+        horizontalScrollView.bounces = false
+         // '명신관': 1, '르네상스관': 2, '과학관': 3
+        [mapIcon1, mapIcon2, mapIcon3].forEach {
             $0.setImage(.icPlace, for: .normal)
             $0.setImage(.icPlace, for: .highlighted)
             $0.snp.makeConstraints {
@@ -111,10 +89,8 @@ private extension UmbrellaMapView {
     }
     
     func setHierarchy() {
-        horizontalScrollView.addSubviews(mapImage, mapIcon1, mapIcon2, mapIcon3, mapIcon4, mapIcon5, mapIcon6)
-        umbrellaNumberView.addSubviews(umbrellaNumberTitle, umbrellaNumberSubTitle)
-        mapDetailView.addSubviews(mapDetailTitle, mapDetailSubTitle, umbrellaNumberView)
-        addSubviews(navigationView, horizontalScrollView, mapDetailView)
+        horizontalScrollView.addSubviews(mapImage, mapIcon1, mapIcon2, mapIcon3)
+        addSubviews(navigationView, horizontalScrollView, mapDetailTitle, mapDetailSubTitle, umbrellaNumberTitle)
     }
     
     func setLayout() {
@@ -138,39 +114,18 @@ private extension UmbrellaMapView {
         }
         
         mapIcon2.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(264)
-            $0.trailing.equalToSuperview().inset(258)
+            $0.top.equalToSuperview().inset(155)
+            $0.leading.equalToSuperview().inset(275)
         }
         
         mapIcon3.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(406)
-            $0.bottom.equalToSuperview().inset(228)
-        }
-        
-        mapIcon4.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(168)
-            $0.bottom.equalToSuperview().inset(151)
-        }
-        
-        mapIcon5.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(155)
-            $0.leading.equalToSuperview().inset(190)
-        }
-        
-        mapIcon6.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(320)
-            $0.leading.equalToSuperview().inset(69)
-        }
-        
-        mapDetailView.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 36 / 812)
-            $0.centerX.equalToSuperview()
-            $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
-            $0.height.equalTo(120)
+            $0.leading.equalToSuperview().inset(220)
+            $0.bottom.equalToSuperview().inset(60)
         }
         
         mapDetailTitle.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(20)
+            $0.top.equalTo(mapImage.snp.bottom).offset(28)
+            $0.leading.equalToSuperview().inset(28)
         }
         
         mapDetailSubTitle.snp.makeConstraints {
@@ -178,20 +133,11 @@ private extension UmbrellaMapView {
             $0.leading.equalTo(mapDetailTitle.snp.leading)
         }
         
-        umbrellaNumberView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.trailing.equalToSuperview().inset(16)
-            $0.size.equalTo(88)
-        }
-        
         umbrellaNumberTitle.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(20)
-            $0.centerX.equalToSuperview()
-        }
-        
-        umbrellaNumberSubTitle.snp.makeConstraints {
-            $0.top.equalTo(umbrellaNumberTitle.snp.bottom)
-            $0.centerX.equalToSuperview()
+            $0.top.equalTo(mapImage.snp.bottom).offset(19)
+            $0.trailing.equalToSuperview().inset(28)
+            $0.width.equalTo(SizeLiterals.Screen.screenWidth * 84 / 375)
+            $0.height.equalTo(64)
         }
     }
 }
@@ -200,6 +146,16 @@ extension UmbrellaMapView {
     
     func configureUmbrellaMapView(model: UmbrellaAvailableEntity){
         mapDetailTitle.text = "\(model.locationName) 우산 잔여 개수"
-        umbrellaNumberSubTitle.text = "\(model.numUmbrellas)"
+        mapDetailSubTitle.text = model.locationDetail
+        umbrellaNumberTitle.text = "\(model.numUmbrellas)개"
+        umbrellaNumberTitle.backgroundColor =
+        switch model.numUmbrellas {
+        case 0:
+            UIColor.umbrellaError
+        case 1, 2:
+            UIColor.subOrange
+        default:
+            UIColor.mainBlue
+        }
     }
 }

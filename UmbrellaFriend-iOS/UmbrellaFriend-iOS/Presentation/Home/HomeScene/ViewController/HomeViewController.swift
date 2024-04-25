@@ -162,7 +162,7 @@ extension HomeViewController {
     }
     
     private func pushToUmbrellaReturnVC() {
-        let nav = UmbrellaReturnViewController()
+        let nav = DIContainer.shared.makeUmbrellaReturnVC()
         self.navigationController?.pushViewController(nav, animated: true)
     }
     
