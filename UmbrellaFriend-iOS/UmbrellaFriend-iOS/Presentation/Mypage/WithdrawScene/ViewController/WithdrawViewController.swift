@@ -76,21 +76,21 @@ extension WithdrawViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(
-            withdrawView.
-            withdrawView.withdrawReasonCollectionView.rx.itemSelected,
-            withdrawView.withdrawReasonTextView.rx.text.orEmpty
-        )
-        .subscribe(onNext: { [weak self] indexPath, text in
-            guard let self = self else { return }
-            
-            if !text.isEmpty {
-                if let selectedCell = self.reportView.reportCollectionView.cellForItem(at: indexPath) as? ReportCollectionViewCell {
-                    selectedCell.isSelected = false
-                }
-            }
-        })
-        .disposed(by: disposeBag)
+//        Observable.combineLatest(
+//            withdrawView.
+//            withdrawView.withdrawReasonCollectionView.rx.itemSelected,
+//            withdrawView.withdrawReasonTextView.rx.text.orEmpty
+//        )
+//        .subscribe(onNext: { [weak self] indexPath, text in
+//            guard let self = self else { return }
+//            
+//            if !text.isEmpty {
+//                if let selectedCell = self.reportView.reportCollectionView.cellForItem(at: indexPath) as? ReportCollectionViewCell {
+//                    selectedCell.isSelected = false
+//                }
+//            }
+//        })
+//        .disposed(by: disposeBag)
     }
     
     func setHierarchy() {

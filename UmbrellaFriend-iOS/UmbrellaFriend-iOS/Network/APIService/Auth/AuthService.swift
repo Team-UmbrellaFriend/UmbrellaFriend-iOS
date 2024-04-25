@@ -14,6 +14,7 @@ import RxMoya
 protocol AuthService {
     
     func getLogout() -> Single<BlankEntity>
+    func delWithdraw() -> Single<String>
 }
 
 final class DefaultAuthService: NSObject {
@@ -27,5 +28,13 @@ extension DefaultAuthService: AuthService {
         authProvider.rx.request(.getLogout)
             .filterSuccessfulStatusCodes()
             .mapGenericResponse(BlankEntity.self)
+    }
+    
+    func delWithdraw() -> Single<String> {
+        authProvider.rx.request(.delWithdraw)
+            .map { response in
+                let genericResponse = try response.map(GeneralResponse<BlankEntity>.self)
+                return genericResponse.message
+            }
     }
 }

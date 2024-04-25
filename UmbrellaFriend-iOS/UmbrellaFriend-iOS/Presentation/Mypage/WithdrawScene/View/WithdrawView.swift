@@ -11,14 +11,14 @@ import SnapKit
 
 final class WithdrawView: UIView {
 
-    // MARK: - Properties
-    
-    var withdrawCheckSelected: Bool {
-        didSet {
-            
-        }
-    }
-    
+//    // MARK: - Properties
+//    
+//    var withdrawCheckSelected: Bool {
+//        didSet {
+//            
+//        }
+//    }
+//    
     // MARK: - UI Components
     
     let navigationView: CustomNavigationBar = {

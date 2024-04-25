@@ -136,6 +136,10 @@
 		A4BA87432BD42F920078FC4B /* UmbrellaReturnRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87422BD42F920078FC4B /* UmbrellaReturnRequestDto.swift */; };
 		A4BA87452BD438250078FC4B /* UmbrellaReturnPlaceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87442BD438250078FC4B /* UmbrellaReturnPlaceEntity.swift */; };
 		A4BA87472BD6A22E0078FC4B /* BlankEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87462BD6A22E0078FC4B /* BlankEntity.swift */; };
+		A4BA874A2BD81C870078FC4B /* VersionInfoEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87492BD81C870078FC4B /* VersionInfoEntity.swift */; };
+		A4BA87512BD8BC680078FC4B /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87502BD8BC680078FC4B /* WithdrawViewController.swift */; };
+		A4BA87532BD8BC9C0078FC4B /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87522BD8BC9C0078FC4B /* WithdrawView.swift */; };
+		A4BA87592BD8BF980078FC4B /* MypageWithdrawEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87582BD8BF980078FC4B /* MypageWithdrawEntity.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -278,6 +282,10 @@
 		A4BA87422BD42F920078FC4B /* UmbrellaReturnRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnRequestDto.swift; sourceTree = "<group>"; };
 		A4BA87442BD438250078FC4B /* UmbrellaReturnPlaceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnPlaceEntity.swift; sourceTree = "<group>"; };
 		A4BA87462BD6A22E0078FC4B /* BlankEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankEntity.swift; sourceTree = "<group>"; };
+		A4BA87492BD81C870078FC4B /* VersionInfoEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionInfoEntity.swift; sourceTree = "<group>"; };
+		A4BA87502BD8BC680078FC4B /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
+		A4BA87522BD8BC9C0078FC4B /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
+		A4BA87582BD8BF980078FC4B /* MypageWithdrawEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageWithdrawEntity.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD92BB0920100E46131 /* ReportNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNumberView.swift; sourceTree = "<group>"; };
@@ -564,8 +572,10 @@
 		A488FB0D2B9306EB004D4A09 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA875A2BDA63AE0078FC4B /* SettingScene */,
 				A43B237D2BAB3C4A00E15CC3 /* MyPageScene */,
 				A43B237E2BAB3C5000E15CC3 /* ReportScene */,
+				A4BA874C2BD8BBC70078FC4B /* WithdrawScene */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1044,10 +1054,10 @@
 		A4BA86D02BBAD6730078FC4B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				A4BA87142BCE41D70078FC4B /* Mypage */,
-				A4BA86DA2BBD23940078FC4B /* Umbrella */,
 				A43C73962B8A43A800B39F21 /* Home */,
-				A4BA87462BD6A22E0078FC4B /* BlankEntity.swift */,
+				A4BA86DA2BBD23940078FC4B /* Umbrella */,
+				A4BA87142BCE41D70078FC4B /* Mypage */,
+				A4BA874B2BD81CA70078FC4B /* Etc */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1103,6 +1113,7 @@
 			children = (
 				A4BA87152BCE41E80078FC4B /* MypageEntity.swift */,
 				A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */,
+				A4BA87582BD8BF980078FC4B /* MypageWithdrawEntity.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1171,6 +1182,47 @@
 				A4BA87422BD42F920078FC4B /* UmbrellaReturnRequestDto.swift */,
 			);
 			path = Umbrella;
+			sourceTree = "<group>";
+		};
+		A4BA874B2BD81CA70078FC4B /* Etc */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA87462BD6A22E0078FC4B /* BlankEntity.swift */,
+				A4BA87492BD81C870078FC4B /* VersionInfoEntity.swift */,
+			);
+			path = Etc;
+			sourceTree = "<group>";
+		};
+		A4BA874C2BD8BBC70078FC4B /* WithdrawScene */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA874E2BD8BBD80078FC4B /* View */,
+				A4BA874D2BD8BBD00078FC4B /* ViewController */,
+			);
+			path = WithdrawScene;
+			sourceTree = "<group>";
+		};
+		A4BA874D2BD8BBD00078FC4B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA87502BD8BC680078FC4B /* WithdrawViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4BA874E2BD8BBD80078FC4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA87522BD8BC9C0078FC4B /* WithdrawView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4BA875A2BDA63AE0078FC4B /* SettingScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SettingScene;
 			sourceTree = "<group>";
 		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
@@ -1339,6 +1391,7 @@
 				A4998C072B7F4B2500883017 /* SplashView.swift in Sources */,
 				A4BA86C42BBA7DAC0078FC4B /* HomeRepository.swift in Sources */,
 				A4C9EDDC2BB0930A00E46131 /* ReportNumberViewController.swift in Sources */,
+				A4BA87512BD8BC680078FC4B /* WithdrawViewController.swift in Sources */,
 				A4BA87282BCEA1FF0078FC4B /* AuthUseCase.swift in Sources */,
 				A488FB2D2B931A58004D4A09 /* AuthTarget.swift in Sources */,
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
@@ -1362,6 +1415,7 @@
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
 				A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */,
 				A4CBBCCC2B85D9E600D55085 /* HomeView.swift in Sources */,
+				A4BA874A2BD81C870078FC4B /* VersionInfoEntity.swift in Sources */,
 				A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */,
 				A4998C312B81CE0900883017 /* SignupView.swift in Sources */,
 				A488FB172B930725004D4A09 /* MypageViewModel.swift in Sources */,
@@ -1384,6 +1438,7 @@
 				A43C73B82B8B95DF00B39F21 /* UmbrellaMapView.swift in Sources */,
 				A4BA86C62BBA7F9C0078FC4B /* DefaultHomeUseCase.swift in Sources */,
 				A4998BAC2B70FE3700883017 /* MakeVibrate.swift in Sources */,
+				A4BA87592BD8BF980078FC4B /* MypageWithdrawEntity.swift in Sources */,
 				A488FB1F2B930F4C004D4A09 /* MypageTarget.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */,
@@ -1392,6 +1447,7 @@
 				A43C739B2B8A440D00B39F21 /* HomeService.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4BA86DE2BBD23CE0078FC4B /* UmbrellaRepository.swift in Sources */,
+				A4BA87532BD8BC9C0078FC4B /* WithdrawView.swift in Sources */,
 				A43C73BA2B8B95ED00B39F21 /* UmbrellaMapViewController.swift in Sources */,
 				A4998C272B80845300883017 /* PhotoAttachViewController.swift in Sources */,
 				A43B23822BAB3C9400E15CC3 /* ReportView.swift in Sources */,
