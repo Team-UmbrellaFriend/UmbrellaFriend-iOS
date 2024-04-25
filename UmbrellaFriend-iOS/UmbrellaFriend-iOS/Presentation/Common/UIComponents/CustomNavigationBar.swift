@@ -8,6 +8,8 @@
 import UIKit
 
 import SnapKit
+import RxSwift
+import RxCocoa
 
 protocol NavigationBarProtocol: AnyObject {
     
@@ -18,6 +20,7 @@ final class CustomNavigationBar: UIView {
     
     // MARK: - Properties
     
+    private let disposeBag = DisposeBag()
     weak var delegate: NavigationBarProtocol?
     
     var isBackButtonIncluded: Bool {
@@ -35,12 +38,10 @@ final class CustomNavigationBar: UIView {
         set { againButton.isHidden = !newValue }
     }
     
-    var isLogoutButtonInclued: Bool {
-        get { !logoutButton.isHidden }
-        set { logoutButton.isHidden = !newValue }
+    var isSettingButtonInclued: Bool {
+        get { !settingButton.isHidden }
+        set { settingButton.isHidden = !newValue }
     }
-    
-    private var backButtonAction: (() -> Void)?
     
     // MARK: - UI Components
     
@@ -70,11 +71,9 @@ final class CustomNavigationBar: UIView {
         return button
     }()
     
-    lazy var logoutButton: UIButton = {
+    lazy var settingButton: UIButton = {
         let button = UIButton()
-        button.setTitle("로그아웃", for: .normal)
-        button.titleLabel?.font = .umbrellaFont(.body2)
-        button.setTitleColor(.gray500, for: .normal)
+        button.setImage(UIImage(resource: .icSetting), for: .normal)
         button.isHidden = true
         return button
     }()
@@ -87,7 +86,6 @@ final class CustomNavigationBar: UIView {
         setUI()
         setHierarchy()
         setLayout()
-        setAddTarget()
     }
     
     @available(*, unavailable)
@@ -102,10 +100,16 @@ private extension CustomNavigationBar {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        
+        backButton.rx.tap
+            .subscribe(onNext: { _ in
+                self.delegate?.tapBackButton()
+            })
+            .disposed(by: disposeBag)
     }
     
     func setHierarchy() {
-        addSubviews(backButton, titleLabel, againButton, logoutButton)
+        addSubviews(backButton, titleLabel, againButton, settingButton)
     }
     
     func setLayout() {
@@ -130,20 +134,10 @@ private extension CustomNavigationBar {
             $0.height.equalTo(48)
         }
         
-        logoutButton.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(16)
+        settingButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(4)
             $0.centerY.equalToSuperview()
-            $0.width.equalTo(69)
-            $0.height.equalTo(48)
+            $0.size.equalTo(48)
         }
-    }
-    
-    func setAddTarget() {
-        backButton.addTarget(self, action: #selector(isTapped), for: .touchUpInside)
-    }
-    
-    @objc
-    func isTapped() {
-        delegate?.tapBackButton()
     }
 }
