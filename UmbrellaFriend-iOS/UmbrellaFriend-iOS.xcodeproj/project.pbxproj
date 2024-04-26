@@ -140,6 +140,12 @@
 		A4BA87512BD8BC680078FC4B /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87502BD8BC680078FC4B /* WithdrawViewController.swift */; };
 		A4BA87532BD8BC9C0078FC4B /* WithdrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87522BD8BC9C0078FC4B /* WithdrawView.swift */; };
 		A4BA87592BD8BF980078FC4B /* MypageWithdrawEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87582BD8BF980078FC4B /* MypageWithdrawEntity.swift */; };
+		A4BA875F2BDA67500078FC4B /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA875E2BDA67500078FC4B /* SettingTableViewCell.swift */; };
+		A4BA87612BDA67590078FC4B /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87602BDA67590078FC4B /* SettingView.swift */; };
+		A4BA87632BDA67610078FC4B /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87622BDA67610078FC4B /* SettingViewController.swift */; };
+		A4BA87652BDA78210078FC4B /* SettingMenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87642BDA78210078FC4B /* SettingMenuEntity.swift */; };
+		A4BA876A2BDA7CC30078FC4B /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA87692BDA7CC30078FC4B /* Differentiator */; };
+		A4BA876C2BDA7CC30078FC4B /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA876B2BDA7CC30078FC4B /* RxDataSources */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -286,6 +292,10 @@
 		A4BA87502BD8BC680078FC4B /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
 		A4BA87522BD8BC9C0078FC4B /* WithdrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawView.swift; sourceTree = "<group>"; };
 		A4BA87582BD8BF980078FC4B /* MypageWithdrawEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageWithdrawEntity.swift; sourceTree = "<group>"; };
+		A4BA875E2BDA67500078FC4B /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		A4BA87602BDA67590078FC4B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		A4BA87622BDA67610078FC4B /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		A4BA87642BDA78210078FC4B /* SettingMenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuEntity.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD92BB0920100E46131 /* ReportNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNumberView.swift; sourceTree = "<group>"; };
@@ -317,6 +327,8 @@
 				A43B231F2BA575E200E15CC3 /* FirebaseRemoteConfigSwift in Frameworks */,
 				A4BA873B2BCF8B060078FC4B /* Kingfisher in Frameworks */,
 				A43C73A82B8A461B00B39F21 /* RxCocoa in Frameworks */,
+				A4BA876A2BDA7CC30078FC4B /* Differentiator in Frameworks */,
+				A4BA876C2BDA7CC30078FC4B /* RxDataSources in Frameworks */,
 				A4998BDC2B77DC3B00883017 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,8 +584,8 @@
 		A488FB0D2B9306EB004D4A09 /* Mypage */ = {
 			isa = PBXGroup;
 			children = (
-				A4BA875A2BDA63AE0078FC4B /* SettingScene */,
 				A43B237D2BAB3C4A00E15CC3 /* MyPageScene */,
+				A4BA875A2BDA63AE0078FC4B /* SettingScene */,
 				A43B237E2BAB3C5000E15CC3 /* ReportScene */,
 				A4BA874C2BD8BBC70078FC4B /* WithdrawScene */,
 			);
@@ -1114,6 +1126,7 @@
 				A4BA87152BCE41E80078FC4B /* MypageEntity.swift */,
 				A4BA872E2BCF58400078FC4B /* MypageReportEntity.swift */,
 				A4BA87582BD8BF980078FC4B /* MypageWithdrawEntity.swift */,
+				A4BA87642BDA78210078FC4B /* SettingMenuEntity.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1221,8 +1234,35 @@
 		A4BA875A2BDA63AE0078FC4B /* SettingScene */ = {
 			isa = PBXGroup;
 			children = (
+				A4BA875D2BDA67250078FC4B /* Cell */,
+				A4BA875C2BDA671E0078FC4B /* View */,
+				A4BA875B2BDA67170078FC4B /* ViewController */,
 			);
 			path = SettingScene;
+			sourceTree = "<group>";
+		};
+		A4BA875B2BDA67170078FC4B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA87622BDA67610078FC4B /* SettingViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A4BA875C2BDA671E0078FC4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA87602BDA67590078FC4B /* SettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A4BA875D2BDA67250078FC4B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A4BA875E2BDA67500078FC4B /* SettingTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
@@ -1302,6 +1342,8 @@
 				A4C9EDCC2BAEB3C000E46131 /* RxGesture */,
 				A4BA87372BCF8A4E0078FC4B /* Lottie */,
 				A4BA873A2BCF8B060078FC4B /* Kingfisher */,
+				A4BA87692BDA7CC30078FC4B /* Differentiator */,
+				A4BA876B2BDA7CC30078FC4B /* RxDataSources */,
 			);
 			productName = "UmbrellaFriend-iOS";
 			productReference = A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */;
@@ -1339,6 +1381,7 @@
 				A4C9EDCB2BAEB3C000E46131 /* XCRemoteSwiftPackageReference "RxGesture" */,
 				A4BA87362BCF8A4E0078FC4B /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				A4BA87392BCF8B060078FC4B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A4BA87682BDA7CC30078FC4B /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = A431760C2B6FFBDE00093F0E /* Products */;
 			projectDirPath = "";
@@ -1426,6 +1469,7 @@
 				A4BA871A2BCE42A40078FC4B /* MypageUseCase.swift in Sources */,
 				A4998BA62B70FDFD00883017 /* UIStackView+.swift in Sources */,
 				A471D07A2B8A41A200109CA3 /* APIConstant.swift in Sources */,
+				A4BA875F2BDA67500078FC4B /* SettingTableViewCell.swift in Sources */,
 				A4998BB62B710B0D00883017 /* NSObject+.swift in Sources */,
 				A4BA86C22BBA7C950078FC4B /* NetworkServiceError.swift in Sources */,
 				A43C73982B8A43B400B39F21 /* HomeEntity.swift in Sources */,
@@ -1442,9 +1486,11 @@
 				A488FB1F2B930F4C004D4A09 /* MypageTarget.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
 				A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */,
+				A4BA87632BDA67610078FC4B /* SettingViewController.swift in Sources */,
 				A4BA86FE2BC7B1290078FC4B /* DefaultUmbrellaUseCase.swift in Sources */,
 				A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */,
 				A43C739B2B8A440D00B39F21 /* HomeService.swift in Sources */,
+				A4BA87652BDA78210078FC4B /* SettingMenuEntity.swift in Sources */,
 				A4998BEA2B79EA7200883017 /* UILabel+.swift in Sources */,
 				A4BA86DE2BBD23CE0078FC4B /* UmbrellaRepository.swift in Sources */,
 				A4BA87532BD8BC9C0078FC4B /* WithdrawView.swift in Sources */,
@@ -1459,6 +1505,7 @@
 				A4BA872F2BCF58400078FC4B /* MypageReportEntity.swift in Sources */,
 				A4998C292B80846000883017 /* PhotoAttachView.swift in Sources */,
 				A4BA86D92BBD16A60078FC4B /* DIContainer.swift in Sources */,
+				A4BA87612BDA67590078FC4B /* SettingView.swift in Sources */,
 				A4BA86DC2BBD23A60078FC4B /* UmbrellaExtendEntity.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
 				A488FB152B930717004D4A09 /* MypageView.swift in Sources */,
@@ -1773,6 +1820,14 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		A4BA87682BDA7CC30078FC4B /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		A4C9EDCB2BAEB3C000E46131 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
@@ -1863,6 +1918,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A4BA87392BCF8B060078FC4B /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		A4BA87692BDA7CC30078FC4B /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4BA87682BDA7CC30078FC4B /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		A4BA876B2BDA7CC30078FC4B /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4BA87682BDA7CC30078FC4B /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		A4C9EDCC2BAEB3C000E46131 /* RxGesture */ = {
 			isa = XCSwiftPackageProductDependency;
