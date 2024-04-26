@@ -16,7 +16,6 @@ final class WithdrawViewController: UIViewController {
     
     private let viewModel: MypageViewModel
     private let disposeBag = DisposeBag()
-    
     private let withdrawReasonData = BehaviorRelay<[MypageWithdrawEntity]>(value: MypageWithdrawEntity.mypageWithdrawEntityInitValue())
     
     // MARK: - UI Components

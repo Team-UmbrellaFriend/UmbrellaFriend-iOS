@@ -68,7 +68,7 @@ extension MypageViewController {
         
         mypageView.navigationView.settingButton.rx.tap
             .subscribe(onNext: {
-//                self.pushToSettingVC()
+                self.pushToSettingVC()
             })
             .disposed(by: disposeBag)
     }
@@ -111,6 +111,11 @@ extension MypageViewController {
     func pushToSignupVC() {
         let nav = SignupViewController(idx: self.id.value)
         nav.isAllValid = [true, true, true, true, false, false]
+        self.navigationController?.pushViewController(nav, animated: true)
+    }
+    
+    func pushToSettingVC() {
+        let nav = SettingViewController(viewModel: self.mypageViewModel)
         self.navigationController?.pushViewController(nav, animated: true)
     }
 }
