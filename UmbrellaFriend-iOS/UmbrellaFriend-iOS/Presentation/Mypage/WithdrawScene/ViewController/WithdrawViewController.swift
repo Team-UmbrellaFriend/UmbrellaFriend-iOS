@@ -9,6 +9,7 @@ import UIKit
 
 import RxSwift
 import RxCocoa
+import RxGesture
 
 final class WithdrawViewController: UIViewController {
     
@@ -41,10 +42,8 @@ final class WithdrawViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAPI()
         setUI()
-        setHierarchy()
-        setLayout()
+        bindUI()
         setDelegate()
     }
 }
@@ -58,6 +57,13 @@ extension WithdrawViewController {
     }
     
     func bindUI() {
+        withdrawView.rx.swipeGesture(.down)
+            .when(.recognized)
+            .bind { _ in
+                self.withdrawView.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
         self.withdrawReasonData
             .bind(to: withdrawView.withdrawReasonCollectionView.rx
                 .items(cellIdentifier: ReportCollectionViewCell.className,
@@ -75,41 +81,30 @@ extension WithdrawViewController {
             })
             .disposed(by: disposeBag)
         
-//        Observable.combineLatest(
-//            withdrawView.
-//            withdrawView.withdrawReasonCollectionView.rx.itemSelected,
-//            withdrawView.withdrawReasonTextView.rx.text.orEmpty
-//        )
-//        .subscribe(onNext: { [weak self] indexPath, text in
-//            guard let self = self else { return }
-//            
-//            if !text.isEmpty {
-//                if let selectedCell = self.reportView.reportCollectionView.cellForItem(at: indexPath) as? ReportCollectionViewCell {
-//                    selectedCell.isSelected = false
-//                }
-//            }
-//        })
-//        .disposed(by: disposeBag)
-    }
-    
-    func setHierarchy() {
-        
-    }
-    
-    func setLayout() {
-        
+        Observable.combineLatest(
+            withdrawView.withdrawReasonCollectionView.rx.itemSelected,
+            withdrawView.withdrawReasonTextView.rx.text.orEmpty
+        )
+        .subscribe(onNext: { [weak self] indexPath, text in
+            guard let self = self else { return }
+            
+            if !text.isEmpty {
+                if let selectedCell = self.withdrawView.withdrawReasonCollectionView.cellForItem(at: indexPath) as? ReportCollectionViewCell {
+                    selectedCell.isSelected = false
+                }
+            }
+        })
+        .disposed(by: disposeBag)
     }
     
     func setDelegate() {
-        
+        withdrawView.navigationView.delegate = self
     }
 }
 
-// MARK: - Network
-
-extension WithdrawViewController {
-
-    func getAPI() {
-        
+extension WithdrawViewController: NavigationBarProtocol {
+    
+    func tapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

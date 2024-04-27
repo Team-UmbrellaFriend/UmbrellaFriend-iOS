@@ -144,7 +144,7 @@ private extension SignupView {
     func setHierarchy() {
         addSubviews(navigationView, signupTitleLabel, scrollView, signupAlertView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle,  completeButton)
+        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle, completeButton)
     }
     
     func setLayout() {
