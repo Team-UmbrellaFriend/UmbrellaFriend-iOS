@@ -20,6 +20,8 @@ final class SettingViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel: MypageViewModel
     
+    private let logoutSubject = PublishSubject<Void>()
+    
     // MARK: - UI Components
     
     private let settingView = SettingView()
@@ -45,8 +47,7 @@ final class SettingViewController: UIViewController {
         
         setUI()
         setTableView()
-        //        bindUI()
-        //        bindViewModel()
+        bindViewModel()
         setDelegate()
     }
 }
@@ -112,7 +113,7 @@ extension SettingViewController {
         case settingView.settingAccountTableView:
             switch idx {
             case 0:
-                self.pushToReportVC()
+                self.logoutSubject.onNext(())
             case 1:
                 self.pushToWithdrawVC()
             default:
@@ -121,6 +122,23 @@ extension SettingViewController {
         default:
             break
         }
+    }
+    
+    func bindViewModel() {
+        let input = MypageViewModel.Input(
+            viewWillAppearEvent: Observable.empty(),
+            logoutButtonTapped: self.logoutSubject.asObserver(),
+            reportButtonTapped: Observable.empty(),
+            withdrawButtonTapped: Observable.empty()
+        )
+        let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)
+        
+        output.logoutData
+            .subscribe(onNext: { _ in
+                UserManager.shared.clearToken()
+                self.changeRootToSplashVC()
+            })
+            .disposed(by: disposeBag)
     }
     
     func setDelegate() {
