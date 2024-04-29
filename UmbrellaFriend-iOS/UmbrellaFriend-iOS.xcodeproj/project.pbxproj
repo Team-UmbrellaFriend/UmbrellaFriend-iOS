@@ -146,6 +146,13 @@
 		A4BA87652BDA78210078FC4B /* SettingMenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA87642BDA78210078FC4B /* SettingMenuEntity.swift */; };
 		A4BA876A2BDA7CC30078FC4B /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA87692BDA7CC30078FC4B /* Differentiator */; };
 		A4BA876C2BDA7CC30078FC4B /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA876B2BDA7CC30078FC4B /* RxDataSources */; };
+		A4C5A5122BDE77FD00267FE5 /* WithdrawRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5112BDE77FD00267FE5 /* WithdrawRequestDto.swift */; };
+		A4C5A5152BDF5DAF00267FE5 /* SplahViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5142BDF5DAF00267FE5 /* SplahViewModel.swift */; };
+		A4C5A5182BDF5DC900267FE5 /* SplashTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5172BDF5DC900267FE5 /* SplashTarget.swift */; };
+		A4C5A51C2BDF5DDB00267FE5 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A51B2BDF5DDB00267FE5 /* SplashService.swift */; };
+		A4C5A5202BDF5E8F00267FE5 /* DefaultSplashUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A51F2BDF5E8F00267FE5 /* DefaultSplashUseCase.swift */; };
+		A4C5A5222BDF5E9800267FE5 /* SplashUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5212BDF5E9800267FE5 /* SplashUseCase.swift */; };
+		A4C5A5242BDF5EE900267FE5 /* SplashRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5232BDF5EE900267FE5 /* SplashRepository.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -296,6 +303,13 @@
 		A4BA87602BDA67590078FC4B /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		A4BA87622BDA67610078FC4B /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A4BA87642BDA78210078FC4B /* SettingMenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuEntity.swift; sourceTree = "<group>"; };
+		A4C5A5112BDE77FD00267FE5 /* WithdrawRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRequestDto.swift; sourceTree = "<group>"; };
+		A4C5A5142BDF5DAF00267FE5 /* SplahViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplahViewModel.swift; sourceTree = "<group>"; };
+		A4C5A5172BDF5DC900267FE5 /* SplashTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashTarget.swift; sourceTree = "<group>"; };
+		A4C5A51B2BDF5DDB00267FE5 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
+		A4C5A51F2BDF5E8F00267FE5 /* DefaultSplashUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSplashUseCase.swift; sourceTree = "<group>"; };
+		A4C5A5212BDF5E9800267FE5 /* SplashUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUseCase.swift; sourceTree = "<group>"; };
+		A4C5A5232BDF5EE900267FE5 /* SplashRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRepository.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD92BB0920100E46131 /* ReportNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNumberView.swift; sourceTree = "<group>"; };
@@ -412,6 +426,7 @@
 		A43C73932B8A437400B39F21 /* APIService */ = {
 			isa = PBXGroup;
 			children = (
+				A4C5A5162BDF5DBA00267FE5 /* Splash */,
 				A488FB2B2B931A4B004D4A09 /* Auth */,
 				A488FB1D2B930F43004D4A09 /* Mypage */,
 				A43C73C12B8BA39700B39F21 /* Umbrella */,
@@ -858,6 +873,7 @@
 			isa = PBXGroup;
 			children = (
 				A4998C032B7F4B0500883017 /* View */,
+				A4C5A5132BDF5D9800267FE5 /* ViewModel */,
 				A4998C022B7F4AFD00883017 /* ViewController */,
 			);
 			path = Splash;
@@ -1039,6 +1055,7 @@
 				A4BA86DD2BBD23CE0078FC4B /* UmbrellaRepository.swift */,
 				A4BA871D2BCE431D0078FC4B /* MypageRepository.swift */,
 				A4BA87232BCEA0C70078FC4B /* AuthRepository.swift */,
+				A4C5A5232BDF5EE900267FE5 /* SplashRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1055,6 +1072,7 @@
 		A4BA86CF2BBAD66E0078FC4B /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				A4C5A51D2BDF5E7E00267FE5 /* Splash */,
 				A4BA87252BCEA1EC0078FC4B /* Auth */,
 				A4BA87172BCE428D0078FC4B /* Mypage */,
 				A4BA86DF2BBD23D50078FC4B /* Umbrella */,
@@ -1169,6 +1187,7 @@
 			isa = PBXGroup;
 			children = (
 				A4BA872C2BCECBEE0078FC4B /* MypageReportRequestDto.swift */,
+				A4C5A5112BDE77FD00267FE5 /* WithdrawRequestDto.swift */,
 			);
 			path = Mypage;
 			sourceTree = "<group>";
@@ -1263,6 +1282,40 @@
 				A4BA875E2BDA67500078FC4B /* SettingTableViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A4C5A5132BDF5D9800267FE5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5142BDF5DAF00267FE5 /* SplahViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A4C5A5162BDF5DBA00267FE5 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5172BDF5DC900267FE5 /* SplashTarget.swift */,
+				A4C5A51B2BDF5DDB00267FE5 /* SplashService.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		A4C5A51D2BDF5E7E00267FE5 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A51E2BDF5E8300267FE5 /* Protocol */,
+				A4C5A51F2BDF5E8F00267FE5 /* DefaultSplashUseCase.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		A4C5A51E2BDF5E8300267FE5 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5212BDF5E9800267FE5 /* SplashUseCase.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
@@ -1440,6 +1493,7 @@
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
 				A43C741A2B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift in Sources */,
 				A4BA87162BCE41E80078FC4B /* MypageEntity.swift in Sources */,
+				A4C5A5222BDF5E9800267FE5 /* SplashUseCase.swift in Sources */,
 				A4998C2B2B8088A000883017 /* UIButton+.swift in Sources */,
 				A4998BA42B70FDCC00883017 /* UITextField+.swift in Sources */,
 				A4998C0D2B7F4D8900883017 /* LogoViewController.swift in Sources */,
@@ -1461,8 +1515,10 @@
 				A4BA874A2BD81C870078FC4B /* VersionInfoEntity.swift in Sources */,
 				A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */,
 				A4998C312B81CE0900883017 /* SignupView.swift in Sources */,
+				A4C5A5152BDF5DAF00267FE5 /* SplahViewModel.swift in Sources */,
 				A488FB172B930725004D4A09 /* MypageViewModel.swift in Sources */,
 				A43C74272B90A95000B39F21 /* UmbrellaReturnViewModel.swift in Sources */,
+				A4C5A51C2BDF5DDB00267FE5 /* SplashService.swift in Sources */,
 				A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */,
 				A4998BAA2B70FE2B00883017 /* UICollectionViewRegisterable.swift in Sources */,
 				A488FB292B931A02004D4A09 /* UserProfileDto.swift in Sources */,
@@ -1485,7 +1541,9 @@
 				A4BA87592BD8BF980078FC4B /* MypageWithdrawEntity.swift in Sources */,
 				A488FB1F2B930F4C004D4A09 /* MypageTarget.swift in Sources */,
 				A4998C1D2B805AB000883017 /* CustomButton.swift in Sources */,
+				A4C5A5122BDE77FD00267FE5 /* WithdrawRequestDto.swift in Sources */,
 				A43C73D02B8E5DF900B39F21 /* UmbrellaRentBottomSheetView.swift in Sources */,
+				A4C5A5202BDF5E8F00267FE5 /* DefaultSplashUseCase.swift in Sources */,
 				A4BA87632BDA67610078FC4B /* SettingViewController.swift in Sources */,
 				A4BA86FE2BC7B1290078FC4B /* DefaultUmbrellaUseCase.swift in Sources */,
 				A471D07C2B8A426200109CA3 /* URLConstant.swift in Sources */,
@@ -1508,6 +1566,7 @@
 				A4BA87612BDA67590078FC4B /* SettingView.swift in Sources */,
 				A4BA86DC2BBD23A60078FC4B /* UmbrellaExtendEntity.swift in Sources */,
 				A4998C2F2B81CDFD00883017 /* SignupViewController.swift in Sources */,
+				A4C5A5182BDF5DC900267FE5 /* SplashTarget.swift in Sources */,
 				A488FB152B930717004D4A09 /* MypageView.swift in Sources */,
 				A4BA86CA2BBAB4160078FC4B /* Reactive+.swift in Sources */,
 				A4998BA82B70FE2000883017 /* UITableViewRegisterable.swift in Sources */,
@@ -1532,6 +1591,7 @@
 				A4BA871C2BCE42B30078FC4B /* DefaultMypageUseCase.swift in Sources */,
 				A4998BE62B77DC7400883017 /* UmbrellaRentView.swift in Sources */,
 				A4998C052B7F4B1900883017 /* SplashViewController.swift in Sources */,
+				A4C5A5242BDF5EE900267FE5 /* SplashRepository.swift in Sources */,
 				A43C73D32B8F108C00B39F21 /* UmbrellaRentViewModel.swift in Sources */,
 				A43C740F2B9087ED00B39F21 /* UmbrellaReturnView.swift in Sources */,
 				A4C9EDDA2BB0920100E46131 /* ReportNumberView.swift in Sources */,
