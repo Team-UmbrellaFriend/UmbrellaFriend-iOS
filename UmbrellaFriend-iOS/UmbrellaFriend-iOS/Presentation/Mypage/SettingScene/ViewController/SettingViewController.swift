@@ -21,6 +21,7 @@ final class SettingViewController: UIViewController {
     private let viewModel: MypageViewModel
     
     private let logoutSubject = PublishSubject<Void>()
+    private let myVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     // MARK: - UI Components
     
@@ -89,6 +90,13 @@ extension SettingViewController {
                 self.bindButton(idx: indexPath.row, tableView: self.settingView.settingAccountTableView)
             })
             .disposed(by: disposeBag)
+        
+        settingView.settingSupportTableView.rx.willDisplayCell
+            .subscribe(onNext: { [self] cell, indexPath in
+                guard indexPath.row == 1, let cell = cell as? SettingTableViewCell else { return }
+                cell.bindVersionCell(myVersion: self.myVersion ?? "", isSameAppversion: self.myVersion == UserManager.shared.getStoreVersion)
+            })
+            .disposed(by: self.disposeBag)
     }
     
     func bindButton(idx: Int, tableView: UITableView) {

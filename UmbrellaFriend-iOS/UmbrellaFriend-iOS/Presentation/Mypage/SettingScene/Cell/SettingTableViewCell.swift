@@ -25,7 +25,7 @@ final class SettingTableViewCell: UITableViewCell, UITableViewRegisterable {
         return label
     }()
     
-    let settingGoButton: UIButton = {
+    private let settingGoButton: UIButton = {
         let button = UIButton()
         button.setImage(.icRightSmall, for: .normal)
         return button
@@ -92,5 +92,13 @@ extension SettingTableViewCell {
 
     func configureSettingCell(menu: SettingMenuEntity) {
         titleLabel.text = menu.settingTitle
+    }
+    
+    func bindVersionCell(myVersion: String, isSameAppversion: Bool) {
+        titleLabel.text = "버전 \(myVersion)"
+        titleLabel.partColorChange(targetString: myVersion, textColor: .mainBlue)
+        settingGoButton.isHidden = true
+        updateLabel.text = isSameAppversion ? "최신 버전입니다" : "업데이트 필요"
+        updateLabel.isHidden = false
     }
 }
