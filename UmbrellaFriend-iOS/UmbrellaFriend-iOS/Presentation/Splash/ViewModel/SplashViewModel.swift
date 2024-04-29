@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Moya
 
-final class SplahViewModel: ViewModelType {
+final class SplashViewModel: ViewModelType {
     
     private let splashUseCase: SplashUseCase
     

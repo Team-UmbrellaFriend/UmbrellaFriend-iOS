@@ -147,12 +147,13 @@
 		A4BA876A2BDA7CC30078FC4B /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA87692BDA7CC30078FC4B /* Differentiator */; };
 		A4BA876C2BDA7CC30078FC4B /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = A4BA876B2BDA7CC30078FC4B /* RxDataSources */; };
 		A4C5A5122BDE77FD00267FE5 /* WithdrawRequestDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5112BDE77FD00267FE5 /* WithdrawRequestDto.swift */; };
-		A4C5A5152BDF5DAF00267FE5 /* SplahViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5142BDF5DAF00267FE5 /* SplahViewModel.swift */; };
+		A4C5A5152BDF5DAF00267FE5 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5142BDF5DAF00267FE5 /* SplashViewModel.swift */; };
 		A4C5A5182BDF5DC900267FE5 /* SplashTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5172BDF5DC900267FE5 /* SplashTarget.swift */; };
 		A4C5A51C2BDF5DDB00267FE5 /* SplashService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A51B2BDF5DDB00267FE5 /* SplashService.swift */; };
 		A4C5A5202BDF5E8F00267FE5 /* DefaultSplashUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A51F2BDF5E8F00267FE5 /* DefaultSplashUseCase.swift */; };
 		A4C5A5222BDF5E9800267FE5 /* SplashUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5212BDF5E9800267FE5 /* SplashUseCase.swift */; };
 		A4C5A5242BDF5EE900267FE5 /* SplashRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5232BDF5EE900267FE5 /* SplashRepository.swift */; };
+		A4C5A5272BDF64B500267FE5 /* VersionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C5A5262BDF64B500267FE5 /* VersionDto.swift */; };
 		A4C9EDCD2BAEB3C000E46131 /* RxGesture in Frameworks */ = {isa = PBXBuildFile; productRef = A4C9EDCC2BAEB3C000E46131 /* RxGesture */; };
 		A4C9EDD22BAF18DE00E46131 /* ReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */; };
 		A4C9EDD62BAF25C300E46131 /* UITextView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C9EDD52BAF25C300E46131 /* UITextView+.swift */; };
@@ -304,12 +305,13 @@
 		A4BA87622BDA67610078FC4B /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		A4BA87642BDA78210078FC4B /* SettingMenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMenuEntity.swift; sourceTree = "<group>"; };
 		A4C5A5112BDE77FD00267FE5 /* WithdrawRequestDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawRequestDto.swift; sourceTree = "<group>"; };
-		A4C5A5142BDF5DAF00267FE5 /* SplahViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplahViewModel.swift; sourceTree = "<group>"; };
+		A4C5A5142BDF5DAF00267FE5 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		A4C5A5172BDF5DC900267FE5 /* SplashTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashTarget.swift; sourceTree = "<group>"; };
 		A4C5A51B2BDF5DDB00267FE5 /* SplashService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashService.swift; sourceTree = "<group>"; };
 		A4C5A51F2BDF5E8F00267FE5 /* DefaultSplashUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSplashUseCase.swift; sourceTree = "<group>"; };
 		A4C5A5212BDF5E9800267FE5 /* SplashUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashUseCase.swift; sourceTree = "<group>"; };
 		A4C5A5232BDF5EE900267FE5 /* SplashRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRepository.swift; sourceTree = "<group>"; };
+		A4C5A5262BDF64B500267FE5 /* VersionDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionDto.swift; sourceTree = "<group>"; };
 		A4C9EDD12BAF18DE00E46131 /* ReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4C9EDD52BAF25C300E46131 /* UITextView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+.swift"; sourceTree = "<group>"; };
 		A4C9EDD92BB0920100E46131 /* ReportNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNumberView.swift; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 		A4BA86CC2BBAD63D0078FC4B /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				A4C5A5252BDF64A700267FE5 /* Spalsh */,
 				A4BA87412BD42F820078FC4B /* Umbrella */,
 				A4BA872B2BCECBBF0078FC4B /* Mypage */,
 			);
@@ -1287,7 +1290,7 @@
 		A4C5A5132BDF5D9800267FE5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A4C5A5142BDF5DAF00267FE5 /* SplahViewModel.swift */,
+				A4C5A5142BDF5DAF00267FE5 /* SplashViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1316,6 +1319,14 @@
 				A4C5A5212BDF5E9800267FE5 /* SplashUseCase.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A4C5A5252BDF64A700267FE5 /* Spalsh */ = {
+			isa = PBXGroup;
+			children = (
+				A4C5A5262BDF64B500267FE5 /* VersionDto.swift */,
+			);
+			path = Spalsh;
 			sourceTree = "<group>";
 		};
 		A4C9EDD02BAF18C400E46131 /* Cell */ = {
@@ -1507,6 +1518,7 @@
 				A4BA86FC2BC7AEFC0078FC4B /* UmbrellaService.swift in Sources */,
 				A4998C0F2B7F50A400883017 /* LogoView.swift in Sources */,
 				A4998C142B80501D00883017 /* LoginViewController.swift in Sources */,
+				A4C5A5272BDF64B500267FE5 /* VersionDto.swift in Sources */,
 				A43C74082B9057DC00B39F21 /* UmbrellaRentBottomSheetViewController.swift in Sources */,
 				A4BA86C82BBA7FC50078FC4B /* HomeUseCase.swift in Sources */,
 				A4998BAF2B70FE5400883017 /* Config.swift in Sources */,
@@ -1515,7 +1527,7 @@
 				A4BA874A2BD81C870078FC4B /* VersionInfoEntity.swift in Sources */,
 				A471D0762B8A410300109CA3 /* GeneralResponse.swift in Sources */,
 				A4998C312B81CE0900883017 /* SignupView.swift in Sources */,
-				A4C5A5152BDF5DAF00267FE5 /* SplahViewModel.swift in Sources */,
+				A4C5A5152BDF5DAF00267FE5 /* SplashViewModel.swift in Sources */,
 				A488FB172B930725004D4A09 /* MypageViewModel.swift in Sources */,
 				A43C74272B90A95000B39F21 /* UmbrellaReturnViewModel.swift in Sources */,
 				A4C5A51C2BDF5DDB00267FE5 /* SplashService.swift in Sources */,
