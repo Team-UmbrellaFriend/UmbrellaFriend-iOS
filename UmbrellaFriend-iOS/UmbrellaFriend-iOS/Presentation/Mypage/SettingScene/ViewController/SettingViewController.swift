@@ -166,7 +166,7 @@ extension SettingViewController {
     func changeRootToSplashVC() {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
-                let spalshVC = SplashViewController()
+                let spalshVC = DIContainer.shared.makeSpalshVC()
                 let navigationController = UINavigationController(rootViewController: spalshVC)
                 window.rootViewController = navigationController
             }
