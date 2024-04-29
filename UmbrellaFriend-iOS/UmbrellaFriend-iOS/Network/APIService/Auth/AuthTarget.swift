@@ -16,7 +16,7 @@ enum AuthTarget {
     case getLogout
     case putUserProfile(id: Int, email: String, pw: String, phone: String)
     case postSignup(username: String, email: String, pw: String, studentId: Int, img: Data, phone: String, fcmToken: String)
-    case delWithdraw
+    case delWithdraw(withdrawDto: WithdrawRequestDto)
 }
 
 extension AuthTarget: BaseTargetType {
@@ -84,8 +84,9 @@ extension AuthTarget: BaseTargetType {
             let phoneData = MultipartFormData(provider: .data(phone.data(using: .ascii)!), name: "profile.phoneNumber")
             let fcmData = MultipartFormData(provider: .data(fcmToken.data(using: .utf8)!), name: "fcm_token")
             return .uploadMultipart([nameData, emailData, pwData, pwData2, idData, imgData, phoneData, fcmData])
-        case .delWithdraw:
-            return .requestPlain
+        case .delWithdraw(withdrawDto: let withdrawDto):
+            return .requestParameters(parameters: ["check": withdrawDto.check, "withdrawal_reason": withdrawDto.withdrawalReason, "description": withdrawDto.description],
+                                      encoding: URLEncoding.default)
         }
     }
     

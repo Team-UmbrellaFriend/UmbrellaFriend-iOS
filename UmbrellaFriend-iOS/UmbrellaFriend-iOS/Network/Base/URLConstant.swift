@@ -38,7 +38,7 @@ enum URLConstant {
     static let userLogin = "/users/login/"
     static let userLogout = "/users/logout/"
     static let userProfile = "/users/profile/{UserId}/"
-    static let userWithdraw = "/users/withdraw/"
+    static let userWithdraw = "/users/withdrawal/"
     
     // etc
     

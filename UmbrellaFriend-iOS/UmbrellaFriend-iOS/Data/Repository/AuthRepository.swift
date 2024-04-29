@@ -14,7 +14,7 @@ protocol AuthRepository {
     var withdrawResult: String? { get set }
     
     func getLogout() -> Observable<BlankEntity>
-    func delWithdraw() -> Observable<String>
+    func delWithdraw(requestDto: WithdrawRequestDto) -> Observable<String>
 }
 
 final class DefaultAuthRepository {
@@ -46,8 +46,8 @@ extension DefaultAuthRepository: AuthRepository {
             .asObservable()
     }
     
-    func delWithdraw() -> Observable<String> {
-        authService.delWithdraw()
+    func delWithdraw(requestDto: WithdrawRequestDto) -> Observable<String> {
+        authService.delWithdraw(requestDto: requestDto)
             .do(onSuccess: { [weak self] in self?.withdrawResult = $0 } )
             .asObservable()
     }
