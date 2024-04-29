@@ -18,6 +18,7 @@ final class WithdrawViewController: UIViewController {
     private let viewModel: MypageViewModel
     private let disposeBag = DisposeBag()
     private let withdrawReasonData = BehaviorRelay<[MypageWithdrawEntity]>(value: MypageWithdrawEntity.mypageWithdrawEntityInitValue())
+    private let isChecked = PublishSubject<Bool>()
     
     // MARK: - UI Components
     
@@ -64,6 +65,14 @@ extension WithdrawViewController {
             }
             .disposed(by: disposeBag)
         
+        withdrawView.withdrawCheckView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                self.withdrawView.isWithdrawChecked.toggle()
+                self.isChecked.onNext(self.withdrawView.isWithdrawChecked)
+            }
+            .disposed(by: disposeBag)
+        
         self.withdrawReasonData
             .bind(to: withdrawView.withdrawReasonCollectionView.rx
                 .items(cellIdentifier: ReportCollectionViewCell.className,
@@ -93,6 +102,22 @@ extension WithdrawViewController {
                     selectedCell.isSelected = false
                 }
             }
+        })
+        .disposed(by: disposeBag)
+        
+        Observable.combineLatest(
+            withdrawView.withdrawReasonCollectionView.rx.itemSelected.map { _ in true }.startWith(false),
+            withdrawView.withdrawReasonTextView.rx.text.orEmpty.map { text in
+                return text != "기타사항 (직접 입력)"
+            },
+            self.isChecked.asObservable()
+        )
+        .map { isCellSelected, isTextViewFilled, isCheckTapped in
+            return (isCellSelected || isTextViewFilled) && isCheckTapped
+        }
+        .distinctUntilChanged()
+        .subscribe(onNext: { [weak self] isEnabled in
+            self?.withdrawView.withdrawButton.isEnabled = isEnabled
         })
         .disposed(by: disposeBag)
     }

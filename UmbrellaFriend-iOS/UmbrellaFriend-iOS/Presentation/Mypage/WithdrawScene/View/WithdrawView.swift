@@ -11,14 +11,14 @@ import SnapKit
 
 final class WithdrawView: UIView {
 
-//    // MARK: - Properties
-//    
-//    var withdrawCheckSelected: Bool {
-//        didSet {
-//            
-//        }
-//    }
-//    
+    // MARK: - Properties
+    
+    var isWithdrawChecked: Bool = false {
+        didSet {
+            updateWithdrawCheck()
+        }
+    }
+    
     // MARK: - UI Components
     
     private lazy var scrollView: UIScrollView = {
@@ -57,7 +57,7 @@ final class WithdrawView: UIView {
         return label
     }()
     
-    private let withdrawCheckView: UIView = {
+    let withdrawCheckView: UIView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray300
         imageView.layer.cornerRadius = 4
@@ -141,6 +141,7 @@ extension WithdrawView {
     func setUI() {
         backgroundColor = .umbrellaWhite
         withdrawAlertView.isHidden = true
+        withdrawCheckImage.isHidden = true
     }
     
     func setHierarchy() {
@@ -232,6 +233,11 @@ extension WithdrawView {
         withdrawReasonTextView.delegate = self
     }
     
+    func updateWithdrawCheck() {
+        withdrawCheckView.backgroundColor = isWithdrawChecked ? .mainBlue : .gray300
+        withdrawCheckImage.isHidden = isWithdrawChecked ? false : true
+    }
+    
     func checkMaxLength(_ textView: UITextView) {
         
         if textView.numberOfLines() <= 5 {
@@ -255,6 +261,11 @@ extension WithdrawView: UITextViewDelegate {
         if textView.text.isEmpty {
             textView.text = "기타사항 (직접 입력)"
             textView.textColor = .gray500
+            withdrawButton.isEnabled = false
+        } else {
+            if isWithdrawChecked {
+                withdrawButton.isEnabled = true
+            }
         }
     }
     
