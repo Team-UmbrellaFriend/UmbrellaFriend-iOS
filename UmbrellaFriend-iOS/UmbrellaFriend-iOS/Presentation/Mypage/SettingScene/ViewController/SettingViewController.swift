@@ -106,12 +106,12 @@ extension SettingViewController {
             case 0:
                 self.pushToReportVC()
             case 2:
-                if let url = URL(string: "") {
+                if let url = URL(string: "https://seed-cantaloupe-7de.notion.site/314515f247014f8d9baf20012b10e944?pvs=4") {
                     let safariViewController = SFSafariViewController(url: url)
                     self.present(safariViewController, animated: true, completion: nil)
                 }
             case 3:
-                if let url = URL(string: "") {
+                if let url = URL(string: "https://seed-cantaloupe-7de.notion.site/a5f353664d1d4196a6abb5ef2943c7e7?pvs=4") {
                     let safariViewController = SFSafariViewController(url: url)
                     self.present(safariViewController, animated: true, completion: nil)
                 }
