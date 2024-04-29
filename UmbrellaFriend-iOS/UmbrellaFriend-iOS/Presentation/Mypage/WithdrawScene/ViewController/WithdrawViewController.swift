@@ -18,7 +18,10 @@ final class WithdrawViewController: UIViewController {
     private let viewModel: MypageViewModel
     private let disposeBag = DisposeBag()
     private let withdrawReasonData = BehaviorRelay<[MypageWithdrawEntity]>(value: MypageWithdrawEntity.mypageWithdrawEntityInitValue())
+    private let withdrawSubject = PublishSubject<WithdrawRequestDto>()
+    
     private let isChecked = PublishSubject<Bool>()
+    private var isSuccessWithdraw: Bool = false
     
     // MARK: - UI Components
     
@@ -44,7 +47,9 @@ final class WithdrawViewController: UIViewController {
         super.viewDidLoad()
         
         setUI()
+        setCollectionView()
         bindUI()
+        bindViewModel()
         setDelegate()
     }
 }
@@ -57,22 +62,7 @@ extension WithdrawViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func bindUI() {
-        withdrawView.rx.swipeGesture(.down)
-            .when(.recognized)
-            .bind { _ in
-                self.withdrawView.endEditing(true)
-            }
-            .disposed(by: disposeBag)
-        
-        withdrawView.withdrawCheckView.rx.tapGesture()
-            .when(.recognized)
-            .bind { _ in
-                self.withdrawView.isWithdrawChecked.toggle()
-                self.isChecked.onNext(self.withdrawView.isWithdrawChecked)
-            }
-            .disposed(by: disposeBag)
-        
+    func setCollectionView() {
         self.withdrawReasonData
             .bind(to: withdrawView.withdrawReasonCollectionView.rx
                 .items(cellIdentifier: ReportCollectionViewCell.className,
@@ -122,8 +112,89 @@ extension WithdrawViewController {
         .disposed(by: disposeBag)
     }
     
+    func bindUI() {
+        withdrawView.rx.swipeGesture(.down)
+            .when(.recognized)
+            .bind { _ in
+                self.withdrawView.endEditing(true)
+            }
+            .disposed(by: disposeBag)
+        
+        withdrawView.withdrawCheckView.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in
+                self.withdrawView.isWithdrawChecked.toggle()
+                self.isChecked.onNext(self.withdrawView.isWithdrawChecked)
+            }
+            .disposed(by: disposeBag)
+        
+        let withdrawButtonTapped = withdrawView.withdrawButton.rx.tap.asObservable()
+        let selectedIndexPathObservable = withdrawView.withdrawReasonCollectionView.rx.itemSelected
+            .map { $0.item }
+            .startWith(-1)
+        let reasonObservable = selectedIndexPathObservable.map { selectedIndex in
+            switch selectedIndex {
+            case 0:
+                return "수량"
+            case 1:
+                return "관리"
+            case 2:
+                return "새계정"
+            default:
+                return "기타"
+            }
+        }
+        let descriptionObservable = withdrawView.withdrawReasonTextView.rx.text.orEmpty.asObservable()
+        
+        Observable.combineLatest(withdrawButtonTapped, reasonObservable, descriptionObservable)
+            .subscribe(onNext: { [weak self] _, reason, description in
+                guard let self = self else { return }
+                self.withdrawSubject.onNext(WithdrawRequestDto(check: true, withdrawalReason: reason, description: description))
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func bindViewModel() {
+        let input = MypageViewModel.Input(
+            viewWillAppearEvent: Observable.empty(),
+            logoutButtonTapped: Observable.empty(),
+            reportButtonTapped: Observable.empty(),
+            withdrawButtonTapped: self.withdrawSubject.asObserver()
+        )
+        
+        let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)
+        
+        output.withdrawData
+            .subscribe(onNext: { message in
+                self.withdrawView.withdrawAlertView.isHidden = false
+                self.isSuccessWithdraw = self.withdrawView.configureWithdrawAlert(message: message)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     func setDelegate() {
         withdrawView.navigationView.delegate = self
+        withdrawView.withdrawAlertView.delegate = self
+    }
+    
+    func changeRootToHomeVC() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                let homeVC = DIContainer.shared.makeHomeVC()
+                let navigationController = UINavigationController(rootViewController: homeVC)
+                window.rootViewController = navigationController
+            }
+        }
+    }
+    
+    func changeRootToSplashVC() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                let spalshVC = DIContainer.shared.makeSpalshVC()
+                let navigationController = UINavigationController(rootViewController: spalshVC)
+                window.rootViewController = navigationController
+            }
+        }
     }
 }
 
@@ -131,5 +202,17 @@ extension WithdrawViewController: NavigationBarProtocol {
     
     func tapBackButton() {
         self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension WithdrawViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        if isSuccessWithdraw {
+            UserManager.shared.clearToken()
+            self.changeRootToSplashVC()
+        } else {
+            self.changeRootToHomeVC()
+        }
     }
 }

@@ -28,7 +28,7 @@ final class MypageViewModel: ViewModelType {
         let viewWillAppearEvent: Observable<Void>
         let logoutButtonTapped: Observable<Void>
         let reportButtonTapped: Observable<MypageReportRequestDto>
-        let withdrawButtonTapped: Observable<Void>
+        let withdrawButtonTapped: Observable<WithdrawRequestDto>
     }
     
     struct Output {
@@ -57,6 +57,11 @@ final class MypageViewModel: ViewModelType {
         })
         .disposed(by: disposeBag)
         
+        input.withdrawButtonTapped.subscribe(with: self, onNext: { owner, dto in
+            owner.authUseCase.delWithdraw(requestDto: dto)
+        })
+        .disposed(by: disposeBag)
+        
         return output
     }
     
@@ -71,6 +76,10 @@ final class MypageViewModel: ViewModelType {
         
         mypageUseCase.mypageReportData
             .bind(to: output.mypageReportData)
+            .disposed(by: disposeBag)
+        
+        authUseCase.withdrawMessage
+            .bind(to: output.withdrawData)
             .disposed(by: disposeBag)
     }
 }

@@ -292,7 +292,7 @@ extension WithdrawView {
     
     func configureWithdrawAlert(message: String) -> Bool {
         withdrawAlertView.changedSubtitle = message
-        if !message.contains("성공") {
+        if !message.contains("완료되었습니다") {
             withdrawAlertView.alertIcon.image = .icAlertNotice
             withdrawAlertView.alertTitleLabel.text = "잠시만요!"
             return false
