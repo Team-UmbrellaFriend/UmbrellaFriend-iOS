@@ -85,8 +85,7 @@ extension AuthTarget: BaseTargetType {
             let fcmData = MultipartFormData(provider: .data(fcmToken.data(using: .utf8)!), name: "fcm_token")
             return .uploadMultipart([nameData, emailData, pwData, pwData2, idData, imgData, phoneData, fcmData])
         case .delWithdraw(withdrawDto: let withdrawDto):
-            return .requestParameters(parameters: ["check": withdrawDto.check, "withdrawal_reason": withdrawDto.withdrawalReason, "description": withdrawDto.description],
-                                      encoding: URLEncoding.default)
+            return .requestJSONEncodable(["withdrawal_reason": withdrawDto.withdrawalReason, "description": withdrawDto.description])
         }
     }
     

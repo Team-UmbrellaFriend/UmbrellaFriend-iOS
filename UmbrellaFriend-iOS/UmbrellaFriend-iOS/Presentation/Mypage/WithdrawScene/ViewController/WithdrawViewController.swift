@@ -149,7 +149,7 @@ extension WithdrawViewController {
         Observable.combineLatest(withdrawButtonTapped, reasonObservable, descriptionObservable)
             .subscribe(onNext: { [weak self] _, reason, description in
                 guard let self = self else { return }
-                self.withdrawSubject.onNext(WithdrawRequestDto(check: true, withdrawalReason: reason, description: description))
+                self.withdrawSubject.onNext(WithdrawRequestDto(withdrawalReason: reason, description: description))
             })
             .disposed(by: disposeBag)
     }
