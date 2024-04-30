@@ -16,5 +16,5 @@ protocol AuthUseCase {
     var withdrawMessage: PublishRelay<String> { get }
     
     func getLogout()
-    func delWithdraw()
+    func delWithdraw(requestDto: WithdrawRequestDto)
 }

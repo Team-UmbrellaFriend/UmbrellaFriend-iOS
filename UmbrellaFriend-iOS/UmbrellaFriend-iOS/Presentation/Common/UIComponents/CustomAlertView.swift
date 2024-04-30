@@ -47,7 +47,7 @@ final class CustomAlertView: UIView {
         return view
     }()
     
-    private let alertView: UIView = {
+    let alertView: UIView = {
         let view = UIView()
         view.backgroundColor = .umbrellaWhite
         view.clipsToBounds = true
@@ -73,7 +73,7 @@ final class CustomAlertView: UIView {
         return label
     }()
     
-    private lazy var alertCheckButton = CustomButton(status: true, title: "확인")
+    lazy var alertCheckButton = CustomButton(status: true, title: "확인")
     
     var changedSubtitle: String = "" {
         didSet {

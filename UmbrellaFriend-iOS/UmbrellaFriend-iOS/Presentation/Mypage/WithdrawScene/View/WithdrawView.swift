@@ -11,15 +11,25 @@ import SnapKit
 
 final class WithdrawView: UIView {
 
-//    // MARK: - Properties
-//    
-//    var withdrawCheckSelected: Bool {
-//        didSet {
-//            
-//        }
-//    }
-//    
+    // MARK: - Properties
+    
+    var isWithdrawChecked: Bool = false {
+        didSet {
+            updateWithdrawCheck()
+        }
+    }
+    
     // MARK: - UI Components
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .umbrellaWhite
+        return scrollView
+    }()
+    
+    private let contentView = UIView()
     
     let navigationView: CustomNavigationBar = {
         let nav = CustomNavigationBar()
@@ -43,10 +53,11 @@ final class WithdrawView: UIView {
         label.textColor = .gray700
         label.font = .umbrellaFont(.body3)
         label.numberOfLines = 0
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
-    private let withdrawCheckView: UIView = {
+    let withdrawCheckView: UIView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray300
         imageView.layer.cornerRadius = 4
@@ -76,7 +87,7 @@ final class WithdrawView: UIView {
     lazy var withdrawReasonCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = SizeLiterals.Screen.screenHeight * 12 / 812
+        flowLayout.minimumInteritemSpacing = 8
         flowLayout.itemSize = CGSize(width: SizeLiterals.Screen.screenWidth - 32, height: SizeLiterals.Screen.screenHeight * 54 / 812)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsVerticalScrollIndicator = false
@@ -130,10 +141,16 @@ extension WithdrawView {
     func setUI() {
         backgroundColor = .umbrellaWhite
         withdrawAlertView.isHidden = true
+        withdrawCheckImage.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(navigationView, withdrawTitleLabel, withdrawSubTitleLabel, withdrawCheckView, withdrawCheckImage, withdrawReasonTitle, withdrawReasonCollectionView, withdrawReasonTextView, withdrawButton, withdrawAlertView)
+        self.addSubviews(navigationView, scrollView, withdrawAlertView)
+        scrollView.addSubview(contentView)
+        withdrawCheckView.addSubview(withdrawCheckImage)
+        contentView.addSubviews(withdrawTitleLabel, withdrawSubTitleLabel,
+                    withdrawCheckView, withdrawCheckTitle, withdrawReasonTitle,
+                    withdrawReasonCollectionView, withdrawReasonTextView, withdrawButton)
     }
     
     func setLayout() {
@@ -142,8 +159,19 @@ extension WithdrawView {
             $0.leading.trailing.equalToSuperview()
         }
         
-        withdrawTitleLabel.snp.makeConstraints {
+        scrollView.snp.makeConstraints {
             $0.top.equalTo(navigationView.snp.bottom).offset(13)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(scrollView.contentLayoutGuide)
+            $0.height.greaterThanOrEqualTo(self.snp.height).priority(.low)
+            $0.width.equalTo(scrollView.snp.width)
+        }
+        
+        withdrawTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview()
             $0.leading.equalToSuperview().inset(16)
         }
         
@@ -159,8 +187,8 @@ extension WithdrawView {
         }
         
         withdrawCheckImage.snp.makeConstraints {
-            $0.top.leading.equalTo(withdrawCheckView)
-            $0.size.equalTo(24)
+            $0.center.equalToSuperview()
+            $0.size.equalTo(18)
         }
         
         withdrawCheckTitle.snp.makeConstraints {
@@ -177,11 +205,11 @@ extension WithdrawView {
             $0.top.equalTo(withdrawReasonTitle.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 186 / 812)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 178 / 812)
         }
         
         withdrawReasonTextView.snp.makeConstraints {
-            $0.top.equalTo(withdrawReasonCollectionView.snp.bottom)
+            $0.top.equalTo(withdrawReasonCollectionView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(152)
@@ -203,6 +231,11 @@ extension WithdrawView {
     
     func setDelegate() {
         withdrawReasonTextView.delegate = self
+    }
+    
+    func updateWithdrawCheck() {
+        withdrawCheckView.backgroundColor = isWithdrawChecked ? .mainBlue : .gray300
+        withdrawCheckImage.isHidden = isWithdrawChecked ? false : true
     }
     
     func checkMaxLength(_ textView: UITextView) {
@@ -230,7 +263,9 @@ extension WithdrawView: UITextViewDelegate {
             textView.textColor = .gray500
             withdrawButton.isEnabled = false
         } else {
-            withdrawButton.isEnabled = true
+            if isWithdrawChecked {
+                withdrawButton.isEnabled = true
+            }
         }
     }
     
@@ -257,7 +292,7 @@ extension WithdrawView {
     
     func configureWithdrawAlert(message: String) -> Bool {
         withdrawAlertView.changedSubtitle = message
-        if !message.contains("성공") {
+        if !message.contains("완료되었습니다") {
             withdrawAlertView.alertIcon.image = .icAlertNotice
             withdrawAlertView.alertTitleLabel.text = "잠시만요!"
             return false

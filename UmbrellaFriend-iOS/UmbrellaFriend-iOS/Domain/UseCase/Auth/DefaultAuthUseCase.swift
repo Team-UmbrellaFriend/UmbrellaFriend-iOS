@@ -31,8 +31,8 @@ extension DefaultAuthUseCase {
             }).disposed(by: disposeBag)
     }
     
-    func delWithdraw() {
-        authRepository.delWithdraw()
+    func delWithdraw(requestDto: WithdrawRequestDto) {
+        authRepository.delWithdraw(requestDto: requestDto)
             .subscribe(with: self, onNext: { owner, withdraw in
                 owner.withdrawMessage.accept(withdraw)
             }).disposed(by: disposeBag)

@@ -35,6 +35,34 @@ final class SplashView: UIView {
         return image
     }()
     
+    let forceUpdateAlert = CustomAlertView(type: .success,
+                                                   title: "새로운 버전 업데이트!",
+                                                   subTitle: "안정적인 서비스 사용을 위해\n최신 버전으로 업데이트해 주세요.")
+    
+    let recommendUpdateAlert = CustomAlertView(type: .success,
+                                                   title: "새로운 버전 업데이트!",
+                                                   subTitle: "안정적인 서비스 사용을 위해\n최신 버전으로 업데이트해 주세요.")
+    
+    let recommendCancelButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("다음에 할래요", for: .normal)
+        button.setTitleColor(.umbrellaWhite, for: .normal)
+        button.setBackgroundColor(.gray400, for: .normal)
+        button.titleLabel?.font = .umbrellaFont(.body1)
+        button.layer.cornerRadius = 12
+        return button
+    }()
+    
+    let recommendOkButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("업데이트", for: .normal)
+        button.setTitleColor(.umbrellaWhite, for: .normal)
+        button.setBackgroundColor(.mainBlue, for: .normal)
+        button.titleLabel?.font = .umbrellaFont(.body1)
+        button.layer.cornerRadius = 12
+        return button
+    }()
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
@@ -57,10 +85,14 @@ private extension SplashView {
 
     func setUI() {
         backgroundColor = .white
+        forceUpdateAlert.isHidden = true
+        recommendUpdateAlert.isHidden = true
+        recommendUpdateAlert.alertCheckButton.isHidden = true
     }
     
     func setHierarchy() {
-        addSubviews(subTitleLabel, titleLabel, logoImage)
+        recommendUpdateAlert.alertView.addSubviews(recommendCancelButton, recommendOkButton)
+        addSubviews(subTitleLabel, titleLabel, logoImage, forceUpdateAlert, recommendUpdateAlert)
     }
     
     func setLayout() {
@@ -79,6 +111,48 @@ private extension SplashView {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(275)
             $0.height.equalTo(196)
+        }
+        
+        forceUpdateAlert.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        recommendUpdateAlert.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        recommendCancelButton.snp.makeConstraints {
+            $0.leading.bottom.equalToSuperview().inset(16)
+            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 104) / 2)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 44 / 812)
+        }
+        
+        recommendOkButton.snp.makeConstraints {
+            $0.trailing.bottom.equalToSuperview().inset(16)
+            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 104) / 2)
+            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 44 / 812)
+        }
+    }
+}
+
+extension SplashView {
+    
+    func bindUpdateAlert(myVersion: String, version: VersionDto) -> Bool {
+        if myVersion == "1.0.0" {
+            return false
+        }
+        if myVersion <= version.forceVeresion {
+            forceUpdateAlert.isHidden = false
+            recommendUpdateAlert.isHidden = true
+            return true
+        } else if myVersion <= version.recommendVersion {
+            forceUpdateAlert.isHidden = true
+            recommendUpdateAlert.isHidden = false
+            return true
+        } else {
+            forceUpdateAlert.isHidden = true
+            recommendUpdateAlert.isHidden = true
+            return false
         }
     }
 }

@@ -15,6 +15,15 @@ final class DIContainer {
 
 extension DIContainer {
     
+    func makeSpalshVC() -> SplashViewController {
+        let spalshService = DefaultSplashService()
+        let splashRepo = DefaultSplashRepository(splashService: spalshService)
+        let splashUseCase = DefaultSplashUseCase(splashRepository: splashRepo)
+        let vm = SplashViewModel(splashUseCase: splashUseCase)
+        let vc = SplashViewController(viewModel: vm)
+        return vc
+    }
+    
     func makeUmbrellaRentVC() -> UmbrellaRentViewController {
         let umbrellaService = DefaultUmbrellaService()
         let umbrellaRepo = DefaultUmbrellaRepository(umbrellaService: umbrellaService)

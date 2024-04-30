@@ -43,7 +43,7 @@ struct DDay: Codable {
         case overdueDays = "overdue_days"
         case daysRemaining = "days_remaining"
         case hasUmbrella = "has_umbrella"
-        case extensionCount = "extension_count:"
+        case extensionCount = "extension_count"
     }
 }
 
