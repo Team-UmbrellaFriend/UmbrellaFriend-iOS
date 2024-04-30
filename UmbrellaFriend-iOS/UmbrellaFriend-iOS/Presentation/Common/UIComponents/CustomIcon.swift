@@ -18,6 +18,7 @@ final class CustomIcon: UIView {
         case homeRent
         case homeRentGray
         case homeReturn
+        case homeReturnGray
         case homeMap
         case mypageProfile
         
@@ -25,11 +26,9 @@ final class CustomIcon: UIView {
             switch self {
             case .homeProfile:
                 return .umbrellaWhite
-            case .homeRent:
+            case .homeRent, .homeRentGray:
                 return .umbrellaWhite.withAlphaComponent(0.6)
-            case .homeRentGray:
-                return .umbrellaWhite.withAlphaComponent(0.6)
-            case .homeReturn:
+            case .homeReturn, .homeReturnGray:
                 return .umbrellaWhite.withAlphaComponent(0.9)
             case .homeMap:
                 return .darkOrange
@@ -42,7 +41,7 @@ final class CustomIcon: UIView {
             switch self {
             case .homeProfile:
                 return 56
-            case .homeRent, .homeRentGray, .homeReturn, .homeMap:
+            case .homeRent, .homeRentGray, .homeReturn, .homeReturnGray, .homeMap:
                 return 54
             case .mypageProfile:
                 return 80
@@ -59,6 +58,8 @@ final class CustomIcon: UIView {
                 return UIImage(resource: .icUnfoldUmbrellaGray)
             case .homeReturn:
                 return UIImage(resource: .icFoldUmbrella)
+            case .homeReturnGray:
+                return UIImage(resource: .icFoldUmbrellaGray)
             case .homeMap:
                 return UIImage(resource: .icHomePlace)
             case .mypageProfile:
@@ -70,7 +71,7 @@ final class CustomIcon: UIView {
             switch self {
             case .homeProfile:
                 return CGSize(width: 26, height: 44)
-            case .homeRent, .homeRentGray, .homeReturn, .homeMap:
+            case .homeRent, .homeRentGray, .homeReturn, .homeReturnGray, .homeMap:
                 return CGSize(width: 32, height: 32)
             case .mypageProfile:
                 return CGSize(width: 38, height: 62)
