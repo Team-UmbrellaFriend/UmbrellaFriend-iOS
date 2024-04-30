@@ -30,7 +30,7 @@ final class UmbrellaReturnView: UIView {
     
     let exitButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.setImage(.icQrCancel, for: .normal)
         button.imageView?.tintColor = .umbrellaWhite
         return button
     }()
@@ -160,9 +160,9 @@ private extension UmbrellaReturnView {
         }
         
         exitButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(5)
-            $0.leading.equalToSuperview().inset(16)
-            $0.size.equalTo(20)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(8)
+            $0.leading.equalToSuperview()
+            $0.size.equalTo(48)
         }
         
         titleLabel.snp.makeConstraints {
