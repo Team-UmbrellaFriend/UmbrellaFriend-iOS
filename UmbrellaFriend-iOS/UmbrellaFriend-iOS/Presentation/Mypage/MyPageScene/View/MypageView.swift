@@ -90,7 +90,7 @@ final class MypageView: UIView {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.minimumInteritemSpacing = 12
-        flowLayout.itemSize = CGSize(width: SizeLiterals.Screen.screenWidth - 80, height: 35)
+        flowLayout.itemSize = CGSize(width: SizeLiterals.Screen.screenWidth - 80, height: 30)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.isScrollEnabled = true
