@@ -48,6 +48,7 @@ final class SplashView: UIView {
         button.setTitle("다음에 할래요", for: .normal)
         button.setTitleColor(.umbrellaWhite, for: .normal)
         button.setBackgroundColor(.gray400, for: .normal)
+        button.setBackgroundColor(.gray500, for: .highlighted)
         button.titleLabel?.font = .umbrellaFont(.body1)
         button.layer.cornerRadius = 12
         return button
@@ -58,6 +59,7 @@ final class SplashView: UIView {
         button.setTitle("업데이트", for: .normal)
         button.setTitleColor(.umbrellaWhite, for: .normal)
         button.setBackgroundColor(.mainBlue, for: .normal)
+        button.setBackgroundColor(.mainBlue, for: .highlighted)
         button.titleLabel?.font = .umbrellaFont(.body1)
         button.layer.cornerRadius = 12
         return button
