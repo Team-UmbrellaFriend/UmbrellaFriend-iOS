@@ -84,7 +84,7 @@ extension LoginView {
         }
         
         idTextField.snp.makeConstraints {
-            $0.top.equalTo(loginTitleLabel.snp.bottom).offset(68)
+            $0.top.equalTo(loginTitleLabel.snp.bottom).offset(40)
             $0.centerX.equalToSuperview()
         }
         
@@ -99,7 +99,7 @@ extension LoginView {
         }
         
         loginButton.snp.makeConstraints {
-            $0.top.equalTo(pwTextField.snp.bottom).offset(36)
+            $0.top.equalTo(pwTextField.snp.bottom).offset(48)
             $0.centerX.equalToSuperview()
         }
     }
