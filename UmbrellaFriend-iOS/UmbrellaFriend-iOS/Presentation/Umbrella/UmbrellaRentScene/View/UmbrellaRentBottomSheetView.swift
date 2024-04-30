@@ -219,7 +219,7 @@ extension UmbrellaRentBottomSheetView {
         } else {
             rentAlertView.alertTitleLabel.text = "잠깐만요!"
             rentAlertView.alertTitleLabel.textColor = .subOrange
-            rentAlertView.changedSubtitle = "\(message).\nQR코드를 다시 인식해주세요."
+            rentAlertView.changedSubtitle = message
             return false
         }
     }
