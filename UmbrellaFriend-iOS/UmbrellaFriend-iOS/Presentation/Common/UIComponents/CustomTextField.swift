@@ -82,7 +82,7 @@ private extension CustomTextField {
         self.backgroundColor = .gray100
         self.font = .umbrellaFont(.body2)
         self.attributedPlaceholder = NSAttributedString(string: placeHolder, attributes: [
-            .foregroundColor: UIColor.gray500,
+            .foregroundColor: UIColor.gray400,
             .font: UIFont.umbrellaFont(.body3)
         ])
         self.layer.cornerRadius =  12
