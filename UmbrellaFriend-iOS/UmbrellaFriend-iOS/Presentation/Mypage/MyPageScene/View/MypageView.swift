@@ -74,7 +74,7 @@ final class MypageView: UIView {
         let view = UIView()
         view.backgroundColor = .gray200
         view.clipsToBounds = true
-        view.layer.cornerRadius = 48 / 2
+        view.layer.cornerRadius = 36
         return view
     }()
     
