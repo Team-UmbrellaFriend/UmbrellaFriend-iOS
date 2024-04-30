@@ -146,12 +146,12 @@ private extension CustomAlertView {
         }
         
         alertTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(alertIcon.snp.bottom).offset(10)
+            $0.top.equalTo(alertIcon.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
         }
         
         alertSubTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(alertTitleLabel.snp.bottom).offset(10)
+            $0.top.equalTo(alertTitleLabel.snp.bottom).offset(8)
             $0.centerX.equalToSuperview()
         }
         
