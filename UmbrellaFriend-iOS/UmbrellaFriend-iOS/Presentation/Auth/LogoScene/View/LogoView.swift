@@ -82,7 +82,7 @@ private extension LogoView {
     
     func setLayout() {
         subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 136 / 812)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 140 / 812)
             $0.centerX.equalToSuperview()
         }
         
@@ -99,7 +99,7 @@ private extension LogoView {
         }
         
         signupButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-41)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-28)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(54)

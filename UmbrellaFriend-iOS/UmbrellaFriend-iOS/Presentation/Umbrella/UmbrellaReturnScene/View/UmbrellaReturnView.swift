@@ -154,19 +154,19 @@ private extension UmbrellaReturnView {
         }
         
         qrView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(176)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(180)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(SizeLiterals.Screen.screenWidth * 259 / 375)
         }
         
         exitButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(8)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.equalToSuperview()
             $0.size.equalTo(48)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(102)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(112)
             $0.centerX.equalToSuperview()
         }
         
@@ -176,7 +176,7 @@ private extension UmbrellaReturnView {
         }
         
         showPlaceButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 260 / 812)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 255 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(188)
             $0.height.equalTo(24)

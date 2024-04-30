@@ -155,7 +155,7 @@ extension WithdrawView {
     
     func setLayout() {
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -216,7 +216,7 @@ extension WithdrawView {
         }
         
         withdrawButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-23)
             $0.centerX.equalToSuperview()
         }
         

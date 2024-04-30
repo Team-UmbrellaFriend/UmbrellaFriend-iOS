@@ -279,7 +279,7 @@ private extension HomeView {
         }
         
         userView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 15 / 812)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 153 / 812)

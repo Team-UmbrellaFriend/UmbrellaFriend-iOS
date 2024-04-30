@@ -70,7 +70,7 @@ private extension ReportNumberView {
     
     func setLayout() {
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -90,7 +90,7 @@ private extension ReportNumberView {
         }
         
         nextButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-23)
             $0.centerX.equalToSuperview()
         }
     }

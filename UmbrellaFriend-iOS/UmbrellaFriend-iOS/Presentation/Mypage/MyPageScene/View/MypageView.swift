@@ -145,7 +145,7 @@ private extension MypageView {
     
     func setLayout() {
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         

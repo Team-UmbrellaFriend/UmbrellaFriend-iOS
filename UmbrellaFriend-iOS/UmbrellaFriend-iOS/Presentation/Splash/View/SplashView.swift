@@ -97,7 +97,7 @@ private extension SplashView {
     
     func setLayout() {
         subTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 188 / 812)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 192 / 812)
             $0.centerX.equalToSuperview()
         }
         
@@ -107,7 +107,7 @@ private extension SplashView {
         }
         
         logoImage.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-265)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-252)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(275)
             $0.height.equalTo(196)
