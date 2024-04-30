@@ -128,6 +128,7 @@ extension HomeViewController {
     
     func setToastMessage() {
         if isFromSplash {
+            self.isFromSplash = false
             homeView.toastMessageLabel.isHidden = false
             UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
                 self.homeView.toastMessageLabel.alpha = 0.0
