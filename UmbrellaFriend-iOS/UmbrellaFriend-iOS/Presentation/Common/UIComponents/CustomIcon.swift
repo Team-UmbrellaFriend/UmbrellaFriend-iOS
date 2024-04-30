@@ -16,6 +16,7 @@ final class CustomIcon: UIView {
     enum CustomIconType {
         case homeProfile
         case homeRent
+        case homeRentGray
         case homeReturn
         case homeMap
         case mypageProfile
@@ -25,6 +26,8 @@ final class CustomIcon: UIView {
             case .homeProfile:
                 return .umbrellaWhite
             case .homeRent:
+                return .umbrellaWhite.withAlphaComponent(0.6)
+            case .homeRentGray:
                 return .umbrellaWhite.withAlphaComponent(0.6)
             case .homeReturn:
                 return .umbrellaWhite.withAlphaComponent(0.9)
@@ -39,7 +42,7 @@ final class CustomIcon: UIView {
             switch self {
             case .homeProfile:
                 return 56
-            case .homeRent, .homeReturn, .homeMap:
+            case .homeRent, .homeRentGray, .homeReturn, .homeMap:
                 return 54
             case .mypageProfile:
                 return 80
@@ -52,6 +55,8 @@ final class CustomIcon: UIView {
                 return UIImage(resource: .graphicProfile)
             case .homeRent:
                 return UIImage(resource: .icUnfoldUmbrella)
+            case .homeRentGray:
+                return UIImage(resource: .icUnfoldUmbrellaGray)
             case .homeReturn:
                 return UIImage(resource: .icFoldUmbrella)
             case .homeMap:
@@ -65,7 +70,7 @@ final class CustomIcon: UIView {
             switch self {
             case .homeProfile:
                 return CGSize(width: 26, height: 44)
-            case .homeRent, .homeReturn, .homeMap:
+            case .homeRent, .homeRentGray, .homeReturn, .homeMap:
                 return CGSize(width: 32, height: 32)
             case .mypageProfile:
                 return CGSize(width: 38, height: 62)

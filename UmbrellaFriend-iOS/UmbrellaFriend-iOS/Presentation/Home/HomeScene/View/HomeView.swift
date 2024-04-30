@@ -138,6 +138,30 @@ final class HomeView: UIView {
         return label
     }()
     
+    let notRentView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 36
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+    
+    private let notRentTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "대여 불가"
+        label.textColor = .umbrellaBlack
+        label.font = .umbrellaFont(.body1)
+        return label
+    }()
+    
+    private let notRentSubTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "연체해서 대여할 수 없어요"
+        label.textColor = .gray700
+        label.font = .umbrellaFont(.caption1)
+        return label
+    }()
+    
     let returnView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray200
@@ -188,11 +212,13 @@ final class HomeView: UIView {
     
     private let userProfileIcon = CustomIcon(type: .homeProfile)
     private let rentIcon = CustomIcon(type: .homeRent)
-    let extendIcon = CustomIcon(type: .homeRent)
+    let extendIcon = CustomIcon(type: .homeRentGray)
+    let notRentIcon = CustomIcon(type: .homeRentGray)
     let returnIcon = CustomIcon(type: .homeReturn)
     private let mapIcon = CustomIcon(type: .homeMap)
     private let rentBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let extendBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
+    private let notRentBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let returnBackIcon = UIImageView(image: UIImage(resource: .icFoldUmbrellaBig))
     private let mapBackIcon = UIImageView(image: UIImage(resource: .icUmbrellaMap))
     
@@ -229,6 +255,7 @@ private extension HomeView {
         backgroundColor = .umbrellaWhite
         toastMessageLabel.isHidden = true
         extendView.isHidden = true
+        notRentView.isHidden = true
         homeAlertView.isHidden = true
     }
     
@@ -237,21 +264,22 @@ private extension HomeView {
         todayInfoView.addSubviews(todayDateLabel, todayRainTitleLabel, todayRainPercentLabel)
         rentView.addSubviews(rentIcon, rentBackIcon, rentTitleLabel, rentSubTitleLabel)
         extendView.addSubviews(extendIcon, extendBackIcon, extendTitleLabel, extendSubTitleLabel)
+        notRentView.addSubviews(notRentIcon, notRentBackIcon, notRentTitleLabel, notRentSubTitleLabel)
         returnView.addSubviews(returnIcon, returnBackIcon, returnTitleLabel, returnSubTitleLabel)
         mapView.addSubviews(mapIcon, mapBackIcon, mapTitleLabel, mapSubTitleLabel)
-        addSubviews(userView, todayInfoView, rentView, extendView, returnView, mapView, toastMessageLabel, homeAlertView)
+        addSubviews(userView, todayInfoView, rentView, extendView, notRentView, returnView, mapView, toastMessageLabel, homeAlertView)
     }
     
     func setLayout() {
         toastMessageLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 12 / 812)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 16 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(160)
             $0.height.equalTo(40)
         }
         
         userView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 4 / 812)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 15 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 153 / 812)
@@ -302,7 +330,7 @@ private extension HomeView {
             $0.centerX.equalToSuperview()
         }
         
-        [rentView, extendView].forEach {
+        [rentView, extendView, notRentView].forEach {
             $0.snp.makeConstraints {
                 $0.top.equalTo(todayInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
                 $0.leading.equalToSuperview().inset(16)
@@ -311,13 +339,13 @@ private extension HomeView {
             }
         }
         
-        [rentIcon, extendIcon].forEach {
+        [rentIcon, extendIcon, notRentIcon].forEach {
             $0.snp.makeConstraints {
                 $0.top.leading.equalToSuperview().inset(16)
             }
         }
         
-        [rentBackIcon, extendBackIcon].forEach {
+        [rentBackIcon, extendBackIcon, notRentBackIcon].forEach {
             $0.snp.makeConstraints {
                 $0.top.equalToSuperview().inset(53)
                 $0.leading.equalToSuperview().inset(16)
@@ -325,13 +353,13 @@ private extension HomeView {
             }
         }
         
-        [rentSubTitleLabel, extendSubTitleLabel].forEach {
+        [rentSubTitleLabel, extendSubTitleLabel, notRentSubTitleLabel].forEach {
             $0.snp.makeConstraints {
                 $0.bottom.leading.equalToSuperview().inset(16)
             }
         }
         
-        [rentTitleLabel, extendTitleLabel].forEach {
+        [rentTitleLabel, extendTitleLabel, notRentTitleLabel].forEach {
             $0.snp.makeConstraints {
                 $0.bottom.equalTo(rentSubTitleLabel.snp.top).offset(-2)
                 $0.leading.equalTo(rentSubTitleLabel.snp.leading)
@@ -399,18 +427,26 @@ private extension HomeView {
     func updateUI(_ dday: DDay) {
         if dday.isOverdue {
             rentView.isHidden = true
-            extendView.isHidden = false
-            returnView.isUserInteractionEnabled = true
+            notRentView.isHidden = false
+            extendView.isHidden = true
+            rentView.isHidden = true
+            if dday.hasUmbrella {
+                returnView.isUserInteractionEnabled = true
+            } else {
+                returnView.isUserInteractionEnabled = false
+            }
             returnIcon.returnDay = dday.overdueDays
         } else {
             if dday.daysRemaining < 0 {
                 rentView.isHidden = false
                 extendView.isHidden = true
+                notRentView.isHidden = true
                 returnView.isUserInteractionEnabled = false
                 returnIcon.returnDay = 0
             } else {
                 rentView.isHidden = true
                 extendView.isHidden = false
+                notRentView.isHidden = true
                 returnView.isUserInteractionEnabled = true
                 returnIcon.returnDay = -dday.daysRemaining
             }
