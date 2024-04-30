@@ -46,7 +46,6 @@ final class HomeViewController: UIViewController {
         setUI()
         bindUI()
         bindViewModel()
-        setToastMessage()
         setDelegate()
     }
 }
@@ -114,6 +113,7 @@ extension HomeViewController {
                 owner.homeView.configureHomeView(home)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     LoadingView.shared.hide()
+                    self.setToastMessage()
                 }
             })
             .disposed(by: disposeBag)
