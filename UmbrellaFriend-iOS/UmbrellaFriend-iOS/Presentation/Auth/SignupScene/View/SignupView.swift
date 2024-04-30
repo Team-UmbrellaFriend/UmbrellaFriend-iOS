@@ -100,7 +100,14 @@ final class SignupView: UIView {
         label.text = "*영어, 숫자로 이루어진 최소 8자 이상 (특수문자x)"
         label.textColor = .gray600
         label.font = .umbrellaFont(.caption1)
-        label.textColor = .gray1000
+        return label
+    }()
+    
+    let pwCorrectTitle: UILabel = {
+        let label = UILabel()
+        label.text = "*비밀번호가 일치하지 않습니다"
+        label.textColor = .umbrellaError
+        label.font = .umbrellaFont(.caption1)
         return label
     }()
     
@@ -139,12 +146,13 @@ private extension SignupView {
         pwTextField.isSecureTextEntry = true
         pwCheckTextField.isSecureTextEntry = true
         signupAlertView.isHidden = true
+        pwCorrectTitle.isHidden = true
     }
     
     func setHierarchy() {
         addSubviews(navigationView, signupTitleLabel, scrollView, signupAlertView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle, completeButton)
+        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle, pwCorrectTitle, completeButton)
     }
     
     func setLayout() {
@@ -237,7 +245,12 @@ private extension SignupView {
         
         pwInfoTitle.snp.makeConstraints {
             $0.top.equalTo(pwCheckTextField.snp.bottom).offset(8)
-            $0.leading.equalTo(pwCheckTextField.snp.leading).offset(8)
+            $0.leading.equalTo(pwCheckTextField.snp.leading)
+        }
+        
+        pwCorrectTitle.snp.makeConstraints {
+            $0.top.equalTo(pwInfoTitle.snp.bottom).offset(4)
+            $0.leading.equalTo(pwInfoTitle.snp.leading)
         }
         
         completeButton.snp.makeConstraints {

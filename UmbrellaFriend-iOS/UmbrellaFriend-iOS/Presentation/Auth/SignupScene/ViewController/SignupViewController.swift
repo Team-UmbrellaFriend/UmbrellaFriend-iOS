@@ -165,7 +165,9 @@ extension SignupViewController {
     }
     
     func isPasswordConfirmed(password: String, confirmPassword: String) -> Bool {
-        return password == confirmPassword
+        let isCorrect = (password == confirmPassword)
+        signupView.pwCorrectTitle.isHidden = isCorrect
+        return isCorrect
     }
     
     func validateTextField(textField: UITextField, isValid: Bool, type: Int) {
