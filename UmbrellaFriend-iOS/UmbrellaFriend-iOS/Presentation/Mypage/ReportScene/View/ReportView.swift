@@ -32,7 +32,7 @@ final class ReportView: UIView {
     lazy var reportCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = SizeLiterals.Screen.screenHeight * 12 / 812
+        flowLayout.minimumInteritemSpacing = 8
         flowLayout.itemSize = CGSize(width: SizeLiterals.Screen.screenWidth - 32, height: SizeLiterals.Screen.screenHeight * 54 / 812)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsVerticalScrollIndicator = false
@@ -113,7 +113,7 @@ private extension ReportView {
         }
         
         reportTextView.snp.makeConstraints {
-            $0.top.equalTo(reportCollectionView.snp.bottom).offset(10)
+            $0.top.equalTo(reportCollectionView.snp.bottom).offset(5)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(152)
