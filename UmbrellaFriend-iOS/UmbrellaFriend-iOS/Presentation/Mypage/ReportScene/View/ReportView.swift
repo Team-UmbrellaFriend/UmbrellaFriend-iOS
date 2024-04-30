@@ -198,7 +198,7 @@ extension ReportView: UITextViewDelegate {
 extension ReportView {
     
     func configureReportAlert(message: String) -> Bool {
-        if !message.contains("성공") {
+        if !message.contains("신고해 주셔서 감사합니다!") {
             reportAlertView.alertIcon.image = .icAlertFail
             reportAlertView.alertTitleLabel.text = "신고 접수 실패"
             reportAlertView.changedSubtitle = message
