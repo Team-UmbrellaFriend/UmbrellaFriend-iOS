@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "img_student.png",
+      "filename" : "img_renaissance.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "img_student@2x.png",
+      "filename" : "img_renaissance@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "img_student@3x.png",
+      "filename" : "img_renaissance@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

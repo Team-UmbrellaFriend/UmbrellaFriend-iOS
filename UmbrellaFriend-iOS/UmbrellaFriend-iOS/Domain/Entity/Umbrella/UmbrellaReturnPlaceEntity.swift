@@ -17,8 +17,8 @@ extension UmbrellaReturnPlaceEntity {
     static func umbrellaReturnPlace() -> [UmbrellaReturnPlaceEntity] {
         return [
             UmbrellaReturnPlaceEntity(placeImage: "img_myungsin", placeTitle: "명신관"),
-            UmbrellaReturnPlaceEntity(placeImage: "img_soonhun", placeTitle: "르네상스관"),
-            UmbrellaReturnPlaceEntity(placeImage: "img_library", placeTitle: "과학관")
+            UmbrellaReturnPlaceEntity(placeImage: "img_renaissance", placeTitle: "르네상스관"),
+            UmbrellaReturnPlaceEntity(placeImage: "img_science", placeTitle: "과학관")
         ]
     }
 }
