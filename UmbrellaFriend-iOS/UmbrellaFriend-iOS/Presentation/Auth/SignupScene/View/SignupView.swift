@@ -112,7 +112,7 @@ final class SignupView: UIView {
     }()
     
     let nameTextField = CustomTextField(placeHolder: "눈송이")
-    let idTextField = CustomTextField(placeHolder: "111111")
+    let idTextField = CustomTextField(placeHolder: "1234567")
     let phoneTextField = CustomTextField(placeHolder: "01012341234")
     let emailTextField = CustomTextField(placeHolder: "woosanfriend")
     let pwTextField = CustomTextField(placeHolder: "비밀번호")
