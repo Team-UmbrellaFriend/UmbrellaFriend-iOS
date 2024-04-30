@@ -29,6 +29,6 @@ extension SplashTarget: BaseTargetType {
     }
     
     var headers: [String : String]? {
-        return APIConstants.headerWithToken
+        return nil
     }
 }
