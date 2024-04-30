@@ -21,7 +21,7 @@ final class ReportNumberView: UIView {
     
     let reportTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "신고할 우산번호를\n입력해주세요"
+        label.text = "신고할 우산번호를\n입력해주세요."
         label.textAlignment = .left
         label.textColor = .umbrellaBlack
         label.font = .umbrellaFont(.heading3)
