@@ -116,7 +116,7 @@ final class SignupView: UIView {
     let phoneTextField = CustomTextField(placeHolder: "01012341234")
     let emailTextField = CustomTextField(placeHolder: "woosanfriend")
     let pwTextField = CustomTextField(placeHolder: "비밀번호")
-    let pwCheckTextField = CustomTextField(placeHolder: "비밀번호확인")
+    let pwCheckTextField = CustomTextField(placeHolder: "비밀번호 확인")
     lazy var completeButton = CustomButton(status: false, title: "완료")
     
     let signupAlertView = CustomAlertView(type: .fail, title: "회원가입 실패", subTitle: "")
