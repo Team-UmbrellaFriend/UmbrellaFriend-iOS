@@ -143,11 +143,11 @@ extension SplashView {
         if myVersion == "1.0.0" {
             return false
         }
-        if myVersion <= version.forceVeresion {
+        if myVersion < version.forceVeresion {
             forceUpdateAlert.isHidden = false
             recommendUpdateAlert.isHidden = true
             return true
-        } else if myVersion <= version.recommendVersion {
+        } else if myVersion < version.recommendVersion {
             forceUpdateAlert.isHidden = true
             recommendUpdateAlert.isHidden = false
             return true
