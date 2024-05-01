@@ -257,6 +257,7 @@ final class HomeView: UIView {
         
         rentView.applyGradient()
         extendView.applyGradient()
+        notRentView.applyGradient()
     }
     
     override init(frame: CGRect) {
