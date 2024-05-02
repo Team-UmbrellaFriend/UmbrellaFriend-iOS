@@ -13,9 +13,21 @@ final class HomeView: UIView {
     
     // MARK: - UI Components
     
-    var toastMessageLabel: UILabel = {
+    var loginToastMessage: UILabel = {
         let label = UILabel()
         label.text = "로그인되었어요!"
+        label.textColor = .umbrellaWhite
+        label.textAlignment = .center
+        label.font = .umbrellaFont(.body2)
+        label.backgroundColor = .middleBlue
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 8
+        return label
+    }()
+    
+    var returnToastMessage: UILabel = {
+        let label = UILabel()
+        label.text = "우산을 대여해야 반납이 가능해요."
         label.textColor = .umbrellaWhite
         label.textAlignment = .center
         label.font = .umbrellaFont(.body2)
@@ -56,7 +68,7 @@ final class HomeView: UIView {
         label.font = .umbrellaFont(.body3)
         label.clipsToBounds = true
         label.backgroundColor = .umbrellaWhite
-        label.layer.cornerRadius = 29
+        label.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 28 / 812
         return label
     }()
     
@@ -280,7 +292,8 @@ private extension HomeView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
-        toastMessageLabel.isHidden = true
+        loginToastMessage.isHidden = true
+        returnToastMessage.isHidden = true
         extendView.isHidden = true
         notRentView.isHidden = true
         notReturnView.isHidden = true
@@ -296,14 +309,21 @@ private extension HomeView {
         returnView.addSubviews(returnIcon, returnBackIcon, returnTitleLabel, returnSubTitleLabel)
         notReturnView.addSubviews(notReturnIcon, notReturnBackIcon, notReturnTitleLabel, notReturnSubTitleLabel)
         mapView.addSubviews(mapIcon, mapBackIcon, mapTitleLabel, mapSubTitleLabel)
-        addSubviews(userView, todayInfoView, rentView, extendView, notRentView, returnView, notReturnView, mapView, toastMessageLabel, homeAlertView)
+        addSubviews(userView, todayInfoView, rentView, extendView, notRentView, returnView, notReturnView, mapView, loginToastMessage, returnToastMessage, homeAlertView)
     }
     
     func setLayout() {
-        toastMessageLabel.snp.makeConstraints {
+        loginToastMessage.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 16 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(160)
+            $0.height.equalTo(40)
+        }
+        
+        returnToastMessage.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 16 / 812)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(263)
             $0.height.equalTo(40)
         }
         
@@ -482,7 +502,6 @@ private extension HomeView {
                 rentView.isHidden = false
                 extendView.isHidden = true
                 notRentView.isHidden = true
-                notReturnView.isUserInteractionEnabled = false
                 returnView.isHidden = true
                 notReturnView.isHidden = false
             } else {
