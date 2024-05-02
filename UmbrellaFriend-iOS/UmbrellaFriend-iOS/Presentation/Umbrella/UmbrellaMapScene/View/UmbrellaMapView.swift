@@ -10,6 +10,10 @@ import UIKit
 import SnapKit
 
 final class UmbrellaMapView: UIView {
+    
+    // MARK: - Properties
+    
+    private var isBigRatio: Bool = SizeLiterals.Screen.deviceRatio > 0.5 ? true : false
 
     // MARK: - UI Components
     
@@ -76,14 +80,15 @@ private extension UmbrellaMapView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        mapImage.image = isBigRatio ? .graphicMapS : .graphicMap
         horizontalScrollView.showsHorizontalScrollIndicator = false
         horizontalScrollView.bounces = false
          // '명신관': 1, '르네상스관': 2, '과학관': 3
         [mapIcon1, mapIcon2, mapIcon3].forEach {
-            $0.setImage(.icPlace, for: .normal)
-            $0.setImage(.icPlace, for: .highlighted)
+            $0.setImage(isBigRatio ? .icPlaceS : .icPlace, for: .normal)
+            $0.setImage(isBigRatio ? .icPlaceS : .icPlace, for: .highlighted)
             $0.snp.makeConstraints {
-                $0.size.equalTo(44)
+                $0.size.equalTo(isBigRatio ? 48 : 44)
             }
         }
     }
@@ -109,18 +114,18 @@ private extension UmbrellaMapView {
         }
         
         mapIcon1.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(115)
-            $0.trailing.equalToSuperview().inset(418)
+            $0.top.equalToSuperview().inset(isBigRatio ? 52 : 115)
+            $0.trailing.equalToSuperview().inset(isBigRatio ? 225 : 418)
         }
         
         mapIcon2.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(155)
-            $0.leading.equalToSuperview().inset(275)
+            $0.top.equalToSuperview().inset(isBigRatio ? 83 : 155)
+            $0.leading.equalToSuperview().inset(isBigRatio ? 206 : 275)
         }
         
         mapIcon3.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(220)
-            $0.bottom.equalToSuperview().inset(60)
+            $0.leading.equalToSuperview().inset(isBigRatio ? 164 : 220)
+            $0.bottom.equalToSuperview().inset(isBigRatio ? 65 : 60)
         }
         
         mapDetailTitle.snp.makeConstraints {
