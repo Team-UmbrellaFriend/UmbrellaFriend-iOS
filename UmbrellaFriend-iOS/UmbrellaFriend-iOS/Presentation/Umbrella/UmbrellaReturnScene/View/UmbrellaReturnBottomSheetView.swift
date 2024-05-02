@@ -98,7 +98,7 @@ private extension UmbrellaReturnBottomSheetView {
         }
         
         returnTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(41)
+            $0.top.equalToSuperview().inset(SizeLiterals.Screen.deviceRatio > 0.5 ? 24 : 41)
             $0.centerX.equalToSuperview()
         }
         

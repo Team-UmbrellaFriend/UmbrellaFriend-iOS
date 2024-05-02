@@ -141,7 +141,7 @@ private extension UmbrellaRentBottomSheetView {
         }
         
         rentTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(40)
+            $0.top.equalToSuperview().inset(SizeLiterals.Screen.deviceRatio > 0.5 ? 32 : 40)
             $0.centerX.equalToSuperview()
         }
         

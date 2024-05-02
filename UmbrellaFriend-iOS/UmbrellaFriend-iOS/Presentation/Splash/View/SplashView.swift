@@ -109,7 +109,7 @@ private extension SplashView {
         }
         
         logoImage.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-252)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 252 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(275)
             $0.height.equalTo(196)

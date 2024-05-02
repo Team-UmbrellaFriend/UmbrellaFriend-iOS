@@ -173,7 +173,7 @@ private extension SignupView {
         
         contentView.snp.makeConstraints {
             $0.edges.equalTo(scrollView.contentLayoutGuide)
-            $0.height.greaterThanOrEqualTo(self.snp.height).priority(.low)
+            $0.height.equalTo(910).priority(.low)
             $0.width.equalTo(scrollView.snp.width)
         }
         

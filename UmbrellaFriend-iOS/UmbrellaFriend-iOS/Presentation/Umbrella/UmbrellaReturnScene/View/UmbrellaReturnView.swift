@@ -156,7 +156,7 @@ private extension UmbrellaReturnView {
         qrView.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide).offset(180)
             $0.centerX.equalToSuperview()
-            $0.size.equalTo(SizeLiterals.Screen.screenWidth * 259 / 375)
+            $0.size.equalTo(SizeLiterals.Screen.deviceRatio > 0.5 ? 230 : SizeLiterals.Screen.screenWidth * 259 / 375)
         }
         
         exitButton.snp.makeConstraints {

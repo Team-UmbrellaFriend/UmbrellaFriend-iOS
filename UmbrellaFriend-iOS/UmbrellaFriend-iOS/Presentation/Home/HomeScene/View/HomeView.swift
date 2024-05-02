@@ -41,7 +41,7 @@ final class HomeView: UIView {
         let view = UIView()
         view.backgroundColor = .gray200
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -76,7 +76,7 @@ final class HomeView: UIView {
         let view = UIView()
         view.backgroundColor = .mainBlue
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -107,7 +107,7 @@ final class HomeView: UIView {
     let rentView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -130,7 +130,7 @@ final class HomeView: UIView {
     let extendView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -153,7 +153,7 @@ final class HomeView: UIView {
     let notRentView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         view.isUserInteractionEnabled = false
         return view
     }()
@@ -178,7 +178,7 @@ final class HomeView: UIView {
         let view = UIView()
         view.backgroundColor = .gray200
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -202,7 +202,7 @@ final class HomeView: UIView {
         let view = UIView()
         view.backgroundColor = .gray200
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -226,7 +226,7 @@ final class HomeView: UIView {
         let view = UIView()
         view.backgroundColor = .subOrange
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     

@@ -113,7 +113,7 @@ private extension ReportView {
         }
         
         reportTextView.snp.makeConstraints {
-            $0.top.equalTo(reportCollectionView.snp.bottom).offset(5)
+            $0.top.equalTo(reportCollectionView.snp.bottom).offset(SizeLiterals.Screen.deviceRatio > 0.5 ? 10 : 5)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(152)
