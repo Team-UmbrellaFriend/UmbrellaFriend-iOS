@@ -89,7 +89,7 @@ extension UmbrellaReturnViewController {
     }
     
     func pushToReturnBottomSheetVC() {
-        let nav = UmbrellaReturnBottomSheetViewController(viewModel: self.returnViewModel)
+        let nav = UmbrellaReturnBottomSheetViewController(viewModel: self.returnViewModel, view: self.umbrellaReturnView)
         nav.returnQRPlace = self.qrPlaceId
         nav.modalPresentationStyle = .overFullScreen
         self.present(nav, animated: false)
