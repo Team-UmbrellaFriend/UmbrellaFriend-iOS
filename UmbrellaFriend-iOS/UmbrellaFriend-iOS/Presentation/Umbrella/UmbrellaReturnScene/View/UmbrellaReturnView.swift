@@ -208,8 +208,8 @@ extension UmbrellaReturnView: AVCaptureMetadataOutputObjectsDelegate {
             default:
                 break
             }
+            makeVibrate()
             isProcessingMetadata = true
-//                self.place = extractedPlace
         }
     }
 }

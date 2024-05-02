@@ -202,6 +202,7 @@ extension UmbrellaRentView: AVCaptureMetadataOutputObjectsDelegate {
                 delegate?.didExtractNumber(number)
                 self.number = number
                 isProcessingMetadata = true
+                makeVibrate()
             }
         }
     }
