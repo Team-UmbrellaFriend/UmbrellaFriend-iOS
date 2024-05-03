@@ -13,9 +13,21 @@ final class HomeView: UIView {
     
     // MARK: - UI Components
     
-    var toastMessageLabel: UILabel = {
+    var loginToastMessage: UILabel = {
         let label = UILabel()
         label.text = "로그인되었어요!"
+        label.textColor = .umbrellaWhite
+        label.textAlignment = .center
+        label.font = .umbrellaFont(.body2)
+        label.backgroundColor = .middleBlue
+        label.clipsToBounds = true
+        label.layer.cornerRadius = 8
+        return label
+    }()
+    
+    var returnToastMessage: UILabel = {
+        let label = UILabel()
+        label.text = "우산을 대여해야 반납이 가능해요."
         label.textColor = .umbrellaWhite
         label.textAlignment = .center
         label.font = .umbrellaFont(.body2)
@@ -29,7 +41,7 @@ final class HomeView: UIView {
         let view = UIView()
         view.backgroundColor = .gray200
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -56,7 +68,7 @@ final class HomeView: UIView {
         label.font = .umbrellaFont(.body3)
         label.clipsToBounds = true
         label.backgroundColor = .umbrellaWhite
-        label.layer.cornerRadius = 29
+        label.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 28 / 812
         return label
     }()
     
@@ -64,7 +76,7 @@ final class HomeView: UIView {
         let view = UIView()
         view.backgroundColor = .mainBlue
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -95,7 +107,7 @@ final class HomeView: UIView {
     let rentView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -118,7 +130,7 @@ final class HomeView: UIView {
     let extendView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -138,11 +150,35 @@ final class HomeView: UIView {
         return label
     }()
     
+    let notRentView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
+        view.isUserInteractionEnabled = false
+        return view
+    }()
+    
+    private let notRentTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "대여 불가"
+        label.textColor = .umbrellaBlack
+        label.font = .umbrellaFont(.body1)
+        return label
+    }()
+    
+    private let notRentSubTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "연체해서 대여할 수 없어요"
+        label.textColor = .gray700
+        label.font = .umbrellaFont(.caption1)
+        return label
+    }()
+    
     let returnView: UIView = {
         let view = UIView()
         view.backgroundColor = .gray200
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -162,11 +198,35 @@ final class HomeView: UIView {
         return label
     }()
     
+    let notReturnView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray200
+        view.clipsToBounds = true
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
+        return view
+    }()
+    
+    private let notReturnTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "우산 반납"
+        label.textColor = .umbrellaBlack
+        label.font = .umbrellaFont(.body1)
+        return label
+    }()
+    
+    private let notReturnSubTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "사용한 우산을 반납해요"
+        label.textColor = .gray700
+        label.font = .umbrellaFont(.caption1)
+        return label
+    }()
+    
     let mapView: UIView = {
         let view = UIView()
         view.backgroundColor = .subOrange
         view.clipsToBounds = true
-        view.layer.cornerRadius = 36
+        view.layer.cornerRadius = SizeLiterals.Screen.screenHeight * 36 / 812
         return view
     }()
     
@@ -188,12 +248,16 @@ final class HomeView: UIView {
     
     private let userProfileIcon = CustomIcon(type: .homeProfile)
     private let rentIcon = CustomIcon(type: .homeRent)
-    let extendIcon = CustomIcon(type: .homeRent)
+    let extendIcon = CustomIcon(type: .homeRentGray)
+    let notRentIcon = CustomIcon(type: .homeRentGray)
     let returnIcon = CustomIcon(type: .homeReturn)
+    let notReturnIcon = CustomIcon(type: .homeReturnGray)
     private let mapIcon = CustomIcon(type: .homeMap)
     private let rentBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let extendBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
+    private let notRentBackIcon = UIImageView(image: UIImage(resource: .icFullUnfoldUmbrella).withTintColor(.umbrellaWhite))
     private let returnBackIcon = UIImageView(image: UIImage(resource: .icFoldUmbrellaBig))
+    private let notReturnBackIcon = UIImageView(image: UIImage(resource: .icFoldUmbrellaBig))
     private let mapBackIcon = UIImageView(image: UIImage(resource: .icUmbrellaMap))
     
     let homeAlertView = CustomAlertView(type: .success, title: "대여 연장 완료", subTitle: "")
@@ -205,6 +269,7 @@ final class HomeView: UIView {
         
         rentView.applyGradient()
         extendView.applyGradient()
+        notRentView.applyGradient()
     }
     
     override init(frame: CGRect) {
@@ -227,8 +292,11 @@ private extension HomeView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
-        toastMessageLabel.isHidden = true
+        loginToastMessage.isHidden = true
+        returnToastMessage.isHidden = true
         extendView.isHidden = true
+        notRentView.isHidden = true
+        notReturnView.isHidden = true
         homeAlertView.isHidden = true
     }
     
@@ -237,21 +305,30 @@ private extension HomeView {
         todayInfoView.addSubviews(todayDateLabel, todayRainTitleLabel, todayRainPercentLabel)
         rentView.addSubviews(rentIcon, rentBackIcon, rentTitleLabel, rentSubTitleLabel)
         extendView.addSubviews(extendIcon, extendBackIcon, extendTitleLabel, extendSubTitleLabel)
+        notRentView.addSubviews(notRentIcon, notRentBackIcon, notRentTitleLabel, notRentSubTitleLabel)
         returnView.addSubviews(returnIcon, returnBackIcon, returnTitleLabel, returnSubTitleLabel)
+        notReturnView.addSubviews(notReturnIcon, notReturnBackIcon, notReturnTitleLabel, notReturnSubTitleLabel)
         mapView.addSubviews(mapIcon, mapBackIcon, mapTitleLabel, mapSubTitleLabel)
-        addSubviews(userView, todayInfoView, rentView, extendView, returnView, mapView, toastMessageLabel, homeAlertView)
+        addSubviews(userView, todayInfoView, rentView, extendView, notRentView, returnView, notReturnView, mapView, loginToastMessage, returnToastMessage, homeAlertView)
     }
     
     func setLayout() {
-        toastMessageLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 12 / 812)
+        loginToastMessage.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 16 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(160)
             $0.height.equalTo(40)
         }
         
+        returnToastMessage.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 16 / 812)
+            $0.centerX.equalToSuperview()
+            $0.width.equalTo(263)
+            $0.height.equalTo(40)
+        }
+        
         userView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 4 / 812)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(SizeLiterals.Screen.screenHeight * 153 / 812)
@@ -302,7 +379,7 @@ private extension HomeView {
             $0.centerX.equalToSuperview()
         }
         
-        [rentView, extendView].forEach {
+        [rentView, extendView, notRentView].forEach {
             $0.snp.makeConstraints {
                 $0.top.equalTo(todayInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
                 $0.leading.equalToSuperview().inset(16)
@@ -311,13 +388,13 @@ private extension HomeView {
             }
         }
         
-        [rentIcon, extendIcon].forEach {
+        [rentIcon, extendIcon, notRentIcon].forEach {
             $0.snp.makeConstraints {
                 $0.top.leading.equalToSuperview().inset(16)
             }
         }
         
-        [rentBackIcon, extendBackIcon].forEach {
+        [rentBackIcon, extendBackIcon, notRentBackIcon].forEach {
             $0.snp.makeConstraints {
                 $0.top.equalToSuperview().inset(53)
                 $0.leading.equalToSuperview().inset(16)
@@ -325,43 +402,53 @@ private extension HomeView {
             }
         }
         
-        [rentSubTitleLabel, extendSubTitleLabel].forEach {
+        [rentSubTitleLabel, extendSubTitleLabel, notRentSubTitleLabel].forEach {
             $0.snp.makeConstraints {
                 $0.bottom.leading.equalToSuperview().inset(16)
             }
         }
         
-        [rentTitleLabel, extendTitleLabel].forEach {
+        [rentTitleLabel, extendTitleLabel, notRentTitleLabel].forEach {
             $0.snp.makeConstraints {
                 $0.bottom.equalTo(rentSubTitleLabel.snp.top).offset(-2)
                 $0.leading.equalTo(rentSubTitleLabel.snp.leading)
             }
         }
         
-        returnView.snp.makeConstraints {
-            $0.top.equalTo(todayInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
-            $0.trailing.equalToSuperview().inset(16)
-            $0.width.equalTo((SizeLiterals.Screen.screenWidth - 41) / 2)
-            $0.height.equalTo(SizeLiterals.Screen.screenHeight * 166 / 812)
+        [returnView, notReturnView].forEach {
+            $0.snp.makeConstraints {
+                $0.top.equalTo(todayInfoView.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 8 / 812)
+                $0.trailing.equalToSuperview().inset(16)
+                $0.width.equalTo((SizeLiterals.Screen.screenWidth - 41) / 2)
+                $0.height.equalTo(SizeLiterals.Screen.screenHeight * 166 / 812)
+            }
         }
         
-        returnIcon.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().inset(16)
+        [returnIcon, notReturnIcon].forEach {
+            $0.snp.makeConstraints {
+                $0.top.leading.equalToSuperview().inset(16)
+            }
         }
         
-        returnBackIcon.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(48)
-            $0.leading.equalToSuperview().inset(5)
-            $0.size.equalTo(192)
+        [returnBackIcon, notReturnBackIcon].forEach {
+            $0.snp.makeConstraints {
+                $0.top.equalToSuperview().inset(48)
+                $0.leading.equalToSuperview().inset(5)
+                $0.size.equalTo(192)
+            }
         }
         
-        returnSubTitleLabel.snp.makeConstraints {
-            $0.bottom.leading.equalToSuperview().inset(16)
+        [returnSubTitleLabel, notReturnSubTitleLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.bottom.leading.equalToSuperview().inset(16)
+            }
         }
         
-        returnTitleLabel.snp.makeConstraints {
-            $0.bottom.equalTo(returnSubTitleLabel.snp.top).offset(-2)
-            $0.leading.equalTo(returnSubTitleLabel.snp.leading)
+        [returnTitleLabel, notReturnTitleLabel].forEach {
+            $0.snp.makeConstraints {
+                $0.bottom.equalTo(returnSubTitleLabel.snp.top).offset(-2)
+                $0.leading.equalTo(returnSubTitleLabel.snp.leading)
+            }
         }
         
         mapView.snp.makeConstraints {
@@ -399,19 +486,31 @@ private extension HomeView {
     func updateUI(_ dday: DDay) {
         if dday.isOverdue {
             rentView.isHidden = true
-            extendView.isHidden = false
-            returnView.isUserInteractionEnabled = true
+            notRentView.isHidden = false
+            extendView.isHidden = true
+            rentView.isHidden = true
+            if dday.hasUmbrella {
+                returnView.isUserInteractionEnabled = true
+            } else {
+                returnView.isUserInteractionEnabled = false
+            }
+            returnView.isHidden = false
+            notReturnView.isHidden = true
             returnIcon.returnDay = dday.overdueDays
         } else {
             if dday.daysRemaining < 0 {
                 rentView.isHidden = false
                 extendView.isHidden = true
-                returnView.isUserInteractionEnabled = false
-                returnIcon.returnDay = 0
+                notRentView.isHidden = true
+                returnView.isHidden = true
+                notReturnView.isHidden = false
             } else {
                 rentView.isHidden = true
                 extendView.isHidden = false
+                notRentView.isHidden = true
                 returnView.isUserInteractionEnabled = true
+                returnView.isHidden = false
+                notReturnView.isHidden = true
                 returnIcon.returnDay = -dday.daysRemaining
             }
         }

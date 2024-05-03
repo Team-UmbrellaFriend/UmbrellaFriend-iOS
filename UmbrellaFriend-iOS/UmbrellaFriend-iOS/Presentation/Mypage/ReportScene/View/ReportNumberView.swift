@@ -21,7 +21,7 @@ final class ReportNumberView: UIView {
     
     let reportTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "신고할 우산번호를\n입력해주세요"
+        label.text = "신고할 우산번호를\n입력해주세요."
         label.textAlignment = .left
         label.textColor = .umbrellaBlack
         label.font = .umbrellaFont(.heading3)
@@ -70,7 +70,7 @@ private extension ReportNumberView {
     
     func setLayout() {
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -90,7 +90,7 @@ private extension ReportNumberView {
         }
         
         nextButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-23)
             $0.centerX.equalToSuperview()
         }
     }

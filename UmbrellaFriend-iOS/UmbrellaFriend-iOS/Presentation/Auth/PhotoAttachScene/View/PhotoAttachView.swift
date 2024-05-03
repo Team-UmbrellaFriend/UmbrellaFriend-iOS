@@ -50,8 +50,8 @@ final class PhotoAttachView: UIView {
     
     lazy var imageDeleteButton: UIButton = {
         let button = UIButton()
-        button.setImage(.icCancel, for: .normal)
-        button.setImage(.icCancel, for: .highlighted)
+        button.setImage(.icQrCancel, for: .normal)
+        button.setImage(.icQrCancel, for: .highlighted)
         button.clipsToBounds = true
         return button
     }()
@@ -95,7 +95,7 @@ private extension PhotoAttachView {
     
     func setLayout() {
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -110,12 +110,13 @@ private extension PhotoAttachView {
         }
         
         registerButton.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.top.equalTo(registerSubTitleLabel.snp.bottom).offset(SizeLiterals.Screen.screenHeight * 163 / 812)
+            $0.centerX.equalToSuperview()
             $0.size.equalTo(166)
         }
         
         nextButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-23)
             $0.centerX.equalToSuperview()
         }
         

@@ -98,7 +98,7 @@ final class UmbrellaRentBottomSheetView: UIView {
     }()
     
     private let rentIcon = UIImageView(image: UIImage(resource: .icBigUmbrella))
-    let rentAlertView = CustomAlertView(type: .notice, title: "잠시만요!", subTitle: "선택한 장소와 일치하지 않아요.\n다시 인증해주세요.")
+    let rentAlertView = CustomAlertView(type: .notice, title: "잠시만요!", subTitle: "")
     
     // MARK: - Life Cycles
     
@@ -141,7 +141,7 @@ private extension UmbrellaRentBottomSheetView {
         }
         
         rentTitleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(40)
+            $0.top.equalToSuperview().inset(SizeLiterals.Screen.deviceRatio > 0.5 ? 32 : 40)
             $0.centerX.equalToSuperview()
         }
         
@@ -211,16 +211,7 @@ extension UmbrellaRentBottomSheetView {
     }
     
     func configureAlertView(message: String) -> Bool {
-        if message.contains("대여했습니다") {
-            rentAlertView.alertTitleLabel.text = "대여완료!"
-            rentAlertView.alertTitleLabel.textColor = .mainBlue
-            rentAlertView.changedSubtitle = "\(message)."
-            return true
-        } else {
-            rentAlertView.alertTitleLabel.text = "잠깐만요!"
-            rentAlertView.alertTitleLabel.textColor = .subOrange
-            rentAlertView.changedSubtitle = "\(message).\nQR코드를 다시 인식해주세요."
-            return false
-        }
+        rentAlertView.changedSubtitle = message
+        return message.contains("대여했습니다")
     }
 }

@@ -100,16 +100,23 @@ final class SignupView: UIView {
         label.text = "*영어, 숫자로 이루어진 최소 8자 이상 (특수문자x)"
         label.textColor = .gray600
         label.font = .umbrellaFont(.caption1)
-        label.textColor = .gray1000
+        return label
+    }()
+    
+    let pwCorrectTitle: UILabel = {
+        let label = UILabel()
+        label.text = "*비밀번호가 일치하지 않습니다"
+        label.textColor = .umbrellaError
+        label.font = .umbrellaFont(.caption1)
         return label
     }()
     
     let nameTextField = CustomTextField(placeHolder: "눈송이")
-    let idTextField = CustomTextField(placeHolder: "111111")
+    let idTextField = CustomTextField(placeHolder: "1234567")
     let phoneTextField = CustomTextField(placeHolder: "01012341234")
     let emailTextField = CustomTextField(placeHolder: "woosanfriend")
     let pwTextField = CustomTextField(placeHolder: "비밀번호")
-    let pwCheckTextField = CustomTextField(placeHolder: "비밀번호확인")
+    let pwCheckTextField = CustomTextField(placeHolder: "비밀번호 확인")
     lazy var completeButton = CustomButton(status: false, title: "완료")
     
     let signupAlertView = CustomAlertView(type: .fail, title: "회원가입 실패", subTitle: "")
@@ -139,17 +146,18 @@ private extension SignupView {
         pwTextField.isSecureTextEntry = true
         pwCheckTextField.isSecureTextEntry = true
         signupAlertView.isHidden = true
+        pwCorrectTitle.isHidden = true
     }
     
     func setHierarchy() {
         addSubviews(navigationView, signupTitleLabel, scrollView, signupAlertView)
         scrollView.addSubview(contentView)
-        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle, completeButton)
+        contentView.addSubviews(nameTitle, nameTextField, idTitle, idTextField, phoneTitle, phoneTextField, emailTitle, emailTextField, emailFormLabel, pwTitle, pwTextField, pwCheckTextField, pwInfoTitle, pwCorrectTitle, completeButton)
     }
     
     func setLayout() {
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -165,7 +173,7 @@ private extension SignupView {
         
         contentView.snp.makeConstraints {
             $0.edges.equalTo(scrollView.contentLayoutGuide)
-            $0.height.greaterThanOrEqualTo(self.snp.height).priority(.low)
+            $0.height.equalTo(910).priority(.low)
             $0.width.equalTo(scrollView.snp.width)
         }
         
@@ -237,11 +245,16 @@ private extension SignupView {
         
         pwInfoTitle.snp.makeConstraints {
             $0.top.equalTo(pwCheckTextField.snp.bottom).offset(8)
-            $0.leading.equalTo(pwCheckTextField.snp.leading).offset(8)
+            $0.leading.equalTo(pwCheckTextField.snp.leading)
+        }
+        
+        pwCorrectTitle.snp.makeConstraints {
+            $0.top.equalTo(pwInfoTitle.snp.bottom).offset(4)
+            $0.leading.equalTo(pwInfoTitle.snp.leading)
         }
         
         completeButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-23)
             $0.centerX.equalToSuperview()
         }
         

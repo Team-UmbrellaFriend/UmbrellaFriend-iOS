@@ -19,6 +19,7 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private var bottomHeight: CGFloat = SizeLiterals.Screen.screenHeight * 395 / 812
     private let returnViewModel: UmbrellaReturnViewModel
+    private let umbrellaReturnView: UmbrellaReturnView
     
     var selectedIndexPath: IndexPath?
     var returnQRPlace: Int = 0
@@ -30,7 +31,8 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     
     // MARK: - Initializer
     
-    init(viewModel: UmbrellaReturnViewModel) {
+    init(viewModel: UmbrellaReturnViewModel, view: UmbrellaReturnView) {
+        self.umbrellaReturnView = view
         self.returnViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -198,6 +200,7 @@ extension UmbrellaReturnBottomSheetViewController {
                 self.view.layoutIfNeeded()
             }, completion: { _ in
                 if self.presentingViewController != nil {
+                    self.umbrellaReturnView.isProcessingMetadata = false
                     self.dismiss(animated: true, completion: nil)
                 }
             })

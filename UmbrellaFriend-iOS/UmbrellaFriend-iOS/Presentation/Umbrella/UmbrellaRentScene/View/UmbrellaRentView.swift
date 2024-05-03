@@ -30,7 +30,7 @@ final class UmbrellaRentView: UIView {
     
     let exitButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.setImage(.icQrCancel, for: .normal)
         button.imageView?.tintColor = .umbrellaWhite
         return button
     }()
@@ -154,19 +154,19 @@ private extension UmbrellaRentView {
         }
         
         qrView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(176)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(180)
             $0.centerX.equalToSuperview()
-            $0.size.equalTo(SizeLiterals.Screen.screenWidth * 259 / 375)
+            $0.size.equalTo(SizeLiterals.Screen.deviceRatio > 0.5 ? 230 : SizeLiterals.Screen.screenWidth * 259 / 375)
         }
         
         exitButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(5)
-            $0.leading.equalToSuperview().inset(16)
-            $0.size.equalTo(20)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
+            $0.leading.equalToSuperview()
+            $0.size.equalTo(48)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(102)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(112)
             $0.centerX.equalToSuperview()
         }
         
@@ -176,7 +176,7 @@ private extension UmbrellaRentView {
         }
         
         mapButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 260 / 812)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-SizeLiterals.Screen.screenHeight * 255 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(188)
             $0.height.equalTo(24)
@@ -202,6 +202,7 @@ extension UmbrellaRentView: AVCaptureMetadataOutputObjectsDelegate {
                 delegate?.didExtractNumber(number)
                 self.number = number
                 isProcessingMetadata = true
+                makeVibrate()
             }
         }
     }

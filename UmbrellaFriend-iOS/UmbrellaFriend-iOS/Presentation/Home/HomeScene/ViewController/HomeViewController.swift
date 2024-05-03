@@ -16,6 +16,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var isFromSplash: Bool = false
+    private var isNotRent: Bool = false
     private let homeViewModel: HomeViewModel
     private let disposeBag = DisposeBag()
     private let umbrellaExtendSubject = PublishSubject<Void>()
@@ -46,7 +47,6 @@ final class HomeViewController: UIViewController {
         setUI()
         bindUI()
         bindViewModel()
-        setToastMessage()
         setDelegate()
     }
 }
@@ -91,6 +91,12 @@ extension HomeViewController {
                 owner.pushToMypageVC()
             }).disposed(by: disposeBag)
         
+        homeView.notReturnView.rx.tapGesture()
+            .when(.recognized)
+            .subscribe(with: self, onNext: { owner, _ in
+                owner.setReturnToastMessage()
+            }).disposed(by: disposeBag)
+        
         self.rx.viewWillAppear
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
@@ -114,7 +120,17 @@ extension HomeViewController {
                 owner.homeView.configureHomeView(home)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     LoadingView.shared.hide()
+                    self.setToastMessage()
                 }
+            })
+            .disposed(by: disposeBag)
+        
+        output.homeData
+            .map { homeData in
+                return homeData.dDay.daysRemaining < 0
+            }
+            .subscribe(onNext: { notRent in
+                self.isNotRent = notRent
             })
             .disposed(by: disposeBag)
         
@@ -128,12 +144,25 @@ extension HomeViewController {
     
     func setToastMessage() {
         if isFromSplash {
-            homeView.toastMessageLabel.isHidden = false
+            self.isFromSplash = false
+            homeView.loginToastMessage.isHidden = false
             UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
-                self.homeView.toastMessageLabel.alpha = 0.0
+                self.homeView.loginToastMessage.alpha = 0.0
             }, completion: {_ in
-                self.homeView.toastMessageLabel.isHidden = true
-                self.homeView.toastMessageLabel.alpha = 1.0
+                self.homeView.loginToastMessage.isHidden = true
+                self.homeView.loginToastMessage.alpha = 1.0
+            })
+        }
+    }
+    
+    func setReturnToastMessage() {
+        if isNotRent {
+            homeView.returnToastMessage.isHidden = false
+            UIView.animate(withDuration: 0.5, delay: 0.7, options: .curveEaseOut, animations: {
+                self.homeView.returnToastMessage.alpha = 0.0
+            }, completion: {_ in
+                self.homeView.returnToastMessage.isHidden = true
+                self.homeView.returnToastMessage.alpha = 1.0
             })
         }
     }

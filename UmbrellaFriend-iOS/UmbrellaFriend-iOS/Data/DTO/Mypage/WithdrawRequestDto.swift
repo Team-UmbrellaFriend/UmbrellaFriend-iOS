@@ -8,7 +8,6 @@
 import Foundation
 
 struct WithdrawRequestDto {
-    let check: Bool
     let withdrawalReason: String
     let description: String
 }

@@ -32,7 +32,7 @@ final class ReportView: UIView {
     lazy var reportCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.minimumInteritemSpacing = SizeLiterals.Screen.screenHeight * 12 / 812
+        flowLayout.minimumInteritemSpacing = 8
         flowLayout.itemSize = CGSize(width: SizeLiterals.Screen.screenWidth - 32, height: SizeLiterals.Screen.screenHeight * 54 / 812)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsVerticalScrollIndicator = false
@@ -96,7 +96,7 @@ private extension ReportView {
     
     func setLayout() {
         navigationView.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(4)
             $0.leading.trailing.equalToSuperview()
         }
         
@@ -113,14 +113,14 @@ private extension ReportView {
         }
         
         reportTextView.snp.makeConstraints {
-            $0.top.equalTo(reportCollectionView.snp.bottom).offset(10)
+            $0.top.equalTo(reportCollectionView.snp.bottom).offset(SizeLiterals.Screen.deviceRatio > 0.5 ? 10 : 5)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 32)
             $0.height.equalTo(152)
         }
         
         reportButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-23)
             $0.centerX.equalToSuperview()
         }
         
@@ -198,7 +198,7 @@ extension ReportView: UITextViewDelegate {
 extension ReportView {
     
     func configureReportAlert(message: String) -> Bool {
-        if !message.contains("성공") {
+        if !message.contains("신고해 주셔서 감사합니다!") {
             reportAlertView.alertIcon.image = .icAlertFail
             reportAlertView.alertTitleLabel.text = "신고 접수 실패"
             reportAlertView.changedSubtitle = message

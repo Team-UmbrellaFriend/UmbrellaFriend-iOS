@@ -79,7 +79,7 @@ final class CustomAlertView: UIView {
         didSet {
             alertSubTitleLabel.text = changedSubtitle
             self.alertView.snp.updateConstraints {
-                $0.height.equalTo(changedSubtitle.contains("\n") ? SizeLiterals.Screen.screenHeight * 226 / 812 : SizeLiterals.Screen.screenHeight * 204 / 812)
+                $0.height.equalTo(SizeLiterals.Screen.deviceRatio > 0.5 ? 208 : (changedSubtitle.contains("\n") ? SizeLiterals.Screen.screenHeight * 226 / 812 : SizeLiterals.Screen.screenHeight * 204 / 812))
             }
             setNeedsLayout()
         }
@@ -136,7 +136,7 @@ private extension CustomAlertView {
             $0.top.equalToSuperview().inset(SizeLiterals.Screen.screenHeight * 277 / 812)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(SizeLiterals.Screen.screenWidth - 64)
-            $0.height.equalTo(lineNum < 2 ? SizeLiterals.Screen.screenHeight * 204 / 812 : SizeLiterals.Screen.screenHeight * 226 / 812)
+            $0.height.equalTo(SizeLiterals.Screen.deviceRatio > 0.5 ? 250 : (lineNum < 2 ? SizeLiterals.Screen.screenHeight * 204 / 812 : SizeLiterals.Screen.screenHeight * 226 / 812))
         }
         
         alertIcon.snp.makeConstraints {
@@ -146,12 +146,12 @@ private extension CustomAlertView {
         }
         
         alertTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(alertIcon.snp.bottom).offset(10)
+            $0.top.equalTo(alertIcon.snp.bottom).offset(12)
             $0.centerX.equalToSuperview()
         }
         
         alertSubTitleLabel.snp.makeConstraints {
-            $0.top.equalTo(alertTitleLabel.snp.bottom).offset(10)
+            $0.top.equalTo(alertTitleLabel.snp.bottom).offset(8)
             $0.centerX.equalToSuperview()
         }
         

@@ -60,7 +60,7 @@ extension LoginViewController {
             .subscribe(onNext: { message in
                 self.isSuccessLogin = self.loginView.configureLoginView(message: message)
                 if self.isSuccessLogin {
-                    self.pushToHomeVC()
+                    self.changeRootToHomeVC()
                 }
             })
             .disposed(by: disposeBag)
@@ -82,9 +82,14 @@ extension LoginViewController {
         view.endEditing(true)
     }
     
-    func pushToHomeVC() {
-        let nav = DIContainer.shared.makeHomeVC()
-        self.navigationController?.pushViewController(nav, animated: false)
+    func changeRootToHomeVC() {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                let homeViewController = DIContainer.shared.makeHomeVC()
+                let navigationController = UINavigationController(rootViewController: homeViewController)
+                window.rootViewController = navigationController
+            }
+        }
     }
 }
 

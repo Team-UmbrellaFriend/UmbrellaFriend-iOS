@@ -56,7 +56,7 @@ private extension UmbrellaReturnCompleteView {
     
     func setLayout() {
         returnCompleteLabel.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide).offset(92)
+            $0.top.equalTo(safeAreaLayoutGuide).offset(96)
             $0.centerX.equalToSuperview()
         }
         
@@ -68,7 +68,7 @@ private extension UmbrellaReturnCompleteView {
         }
         
         goHomeButton.snp.makeConstraints {
-            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-36)
+            $0.bottom.equalTo(safeAreaLayoutGuide).offset(-23)
             $0.centerX.equalToSuperview()
         }
     }
