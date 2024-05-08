@@ -76,11 +76,16 @@ final class UmbrellaReturnView: UIView {
         return view
     }()
     
+    let returnCameraAccessAlertView = CustomAlertView(type: .notice,
+                                                        title: "카메라 사용 권한 없음",
+                                                        subTitle: "설정 > {우산친구} 탭에서 접근을\n활성화 시킬 수 있습니다.")
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setUI()
         initCameraDevice()
         initCameraInputData()
         initCameraOutputData()
@@ -99,6 +104,11 @@ final class UmbrellaReturnView: UIView {
 
 private extension UmbrellaReturnView {
     
+    func setUI() {
+        returnCameraAccessAlertView.isHidden = true
+        returnCameraAccessAlertView.alertCheckButton.setTitle("설정으로 이동", for: .normal)
+    }
+    
     func initCameraDevice() {
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             print("Failed to get the camera device")
@@ -114,16 +124,21 @@ private extension UmbrellaReturnView {
                 if captureSession.canAddInput(input) { captureSession.addInput(input) }
             } catch {
                 print(error.localizedDescription)
-                return
             }
         }
     }
     
     func initCameraOutputData() {
         let captureMetadataOutput = AVCaptureMetadataOutput()
-        if captureSession.canAddOutput(captureMetadataOutput) { captureSession.addOutput(captureMetadataOutput) }
+        if captureSession.canAddOutput(captureMetadataOutput) { captureSession.addOutput(captureMetadataOutput)
+            if captureMetadataOutput.availableMetadataObjectTypes.contains(AVMetadataObject.ObjectType.qr) {
+                captureMetadataOutput.metadataObjectTypes = [.qr]
+            } else {
+                print("QR 코드가 지원되지 않는 디바이스입니다.")
+                returnCameraAccessAlertView.isHidden = false
+            }
+        }
         captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
     }
     
     func displayPreview() {
@@ -145,7 +160,7 @@ private extension UmbrellaReturnView {
         }
         addSubview(backgroundView)
         backgroundView.addSubview(qrView)
-        addSubviews(exitButton, titleLabel, subTitleLabel, showPlaceButton)
+        addSubviews(exitButton, titleLabel, subTitleLabel, showPlaceButton, returnCameraAccessAlertView)
     }
     
     func setLayout() {
@@ -180,6 +195,10 @@ private extension UmbrellaReturnView {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(188)
             $0.height.equalTo(24)
+        }
+        
+        returnCameraAccessAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
