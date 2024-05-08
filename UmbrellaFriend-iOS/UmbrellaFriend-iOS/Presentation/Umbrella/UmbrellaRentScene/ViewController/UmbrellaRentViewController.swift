@@ -68,6 +68,7 @@ private extension UmbrellaRentViewController {
     
     func setDelegate() {
         umbrellaRentView.delegate = self
+        umbrellaRentView.rentCameraAccessAlertView.delegate = self
     }
 }
 
@@ -75,6 +76,15 @@ extension UmbrellaRentViewController: UmbrellaRentDelegate {
     
     func didExtractNumber(_ number: String) {
         presentUmbrellaRentBottomSheetVC(num: Int(number) ?? -1)
+    }
+}
+
+extension UmbrellaRentViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        guard let settingURL = URL(string: UIApplication.openSettingsURLString),
+              UIApplication.shared.canOpenURL(settingURL) else { return }
+        UIApplication.shared.open(settingURL, options: [:])
     }
 }
 
