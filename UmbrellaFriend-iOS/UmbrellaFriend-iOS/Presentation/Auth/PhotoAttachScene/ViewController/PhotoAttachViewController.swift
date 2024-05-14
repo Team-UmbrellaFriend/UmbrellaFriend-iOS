@@ -74,8 +74,8 @@ extension PhotoAttachViewController {
         }
     }
     
-    func extractSevenDigitNumbers(from text: String) -> String {
-        let pattern = "\\b\\d{7}\\b"
+    func extractIdNumber(from text: String) -> String {
+        let pattern = "\\b\\d{5,7}\\b"
         
         do {
             let regex = try NSRegularExpression(pattern: pattern)
@@ -106,7 +106,7 @@ extension PhotoAttachViewController {
             
             for observation in observations {
                 if let topCandidate = observation.topCandidates(1).first,
-                   let range = topCandidate.string.range(of: "\\b\\d{7}\\b", options: .regularExpression) {
+                   let range = topCandidate.string.range(of: "\\b\\d{5,7}\\b", options: .regularExpression) {
                     if let line = observation.topCandidates(1).first?.string.components(separatedBy: "\n").first,
                        range.lowerBound >= line.startIndex && range.upperBound <= line.endIndex {
                         let koreanPattern = "[가-힣]+"
@@ -118,8 +118,8 @@ extension PhotoAttachViewController {
                 }
             }
             
-            let sevenDigitNumbers = self?.extractSevenDigitNumbers(from: text)
-            self?.photoId = sevenDigitNumbers ?? ""
+            let idNumber = self?.extractIdNumber(from: text)
+            self?.photoId = idNumber ?? ""
         }
         
         if #available(iOS 16.0, *) {
