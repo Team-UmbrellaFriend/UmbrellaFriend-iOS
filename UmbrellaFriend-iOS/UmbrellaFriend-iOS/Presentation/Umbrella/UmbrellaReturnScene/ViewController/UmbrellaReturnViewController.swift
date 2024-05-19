@@ -71,6 +71,7 @@ extension UmbrellaReturnViewController {
 
     func setDelegate() {
         umbrellaReturnView.delegate = self
+        umbrellaReturnView.returnCameraAccessAlertView.delegate = self
     }
 }
 
@@ -79,6 +80,15 @@ extension UmbrellaReturnViewController: UmbrellaReturnDelegate {
     func didExtractPlace(_ placeId: Int) {
         self.qrPlaceId = placeId
         pushToReturnBottomSheetVC()
+    }
+}
+
+extension UmbrellaReturnViewController: CustomAlertButtonDelegate {
+    
+    func tapCheckButton() {
+        guard let settingURL = URL(string: UIApplication.openSettingsURLString),
+              UIApplication.shared.canOpenURL(settingURL) else { return }
+        UIApplication.shared.open(settingURL, options: [:])
     }
 }
 

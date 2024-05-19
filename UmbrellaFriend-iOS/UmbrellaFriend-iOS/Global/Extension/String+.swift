@@ -16,7 +16,7 @@ extension String {
     }
     
     func isValidStudentID() -> Bool {
-        let studentIDRegex = #"^\d{7}$"#
+        let studentIDRegex = #"^\d{5}|\d{7}$"#
         let studentIDTest = NSPredicate(format: "SELF MATCHES %@", studentIDRegex)
         return studentIDTest.evaluate(with: self)
     }

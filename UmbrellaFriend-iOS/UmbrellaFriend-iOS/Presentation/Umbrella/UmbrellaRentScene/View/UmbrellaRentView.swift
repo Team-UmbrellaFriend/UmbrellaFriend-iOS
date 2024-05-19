@@ -76,11 +76,16 @@ final class UmbrellaRentView: UIView {
         return view
     }()
     
+    let rentCameraAccessAlertView = CustomAlertView(type: .notice,
+                                                        title: "카메라 사용 권한 없음",
+                                                        subTitle: "설정 > {우산친구} 탭에서 접근을\n활성화 시킬 수 있습니다.")
+    
     // MARK: - Life Cycles
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setUI()
         initCameraDevice()
         initCameraInputData()
         initCameraOutputData()
@@ -99,6 +104,11 @@ final class UmbrellaRentView: UIView {
 
 private extension UmbrellaRentView {
     
+    func setUI() {
+        rentCameraAccessAlertView.isHidden = true
+        rentCameraAccessAlertView.alertCheckButton.setTitle("설정으로 이동", for: .normal)
+    }
+    
     func initCameraDevice() {
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             print("Failed to get the camera device")
@@ -110,20 +120,26 @@ private extension UmbrellaRentView {
     func initCameraInputData() {
         if let cameraDevice = self.cameraDevice {
             do {
+                rentCameraAccessAlertView.isHidden = true
                 let input = try AVCaptureDeviceInput(device: cameraDevice)
                 if captureSession.canAddInput(input) { captureSession.addInput(input) }
             } catch {
                 print(error.localizedDescription)
-                return
             }
         }
     }
     
     func initCameraOutputData() {
         let captureMetadataOutput = AVCaptureMetadataOutput()
-        if captureSession.canAddOutput(captureMetadataOutput) { captureSession.addOutput(captureMetadataOutput) }
+        if captureSession.canAddOutput(captureMetadataOutput) { captureSession.addOutput(captureMetadataOutput)
+            if captureMetadataOutput.availableMetadataObjectTypes.contains(AVMetadataObject.ObjectType.qr) {
+                captureMetadataOutput.metadataObjectTypes = [.qr]
+            } else {
+                print("QR 코드가 지원되지 않는 디바이스입니다.")
+                rentCameraAccessAlertView.isHidden = false
+            }
+        }
         captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        captureMetadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
     }
     
     func displayPreview() {
@@ -145,7 +161,7 @@ private extension UmbrellaRentView {
         }
         addSubview(backgroundView)
         backgroundView.addSubview(qrView)
-        addSubviews(exitButton, titleLabel, subTitleLabel, mapButton)
+        addSubviews(exitButton, titleLabel, subTitleLabel, mapButton, rentCameraAccessAlertView)
     }
     
     func setLayout() {
@@ -180,6 +196,10 @@ private extension UmbrellaRentView {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(188)
             $0.height.equalTo(24)
+        }
+        
+        rentCameraAccessAlertView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
 }
