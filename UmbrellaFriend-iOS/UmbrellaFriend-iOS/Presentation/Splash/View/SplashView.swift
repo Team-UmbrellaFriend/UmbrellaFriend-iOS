@@ -140,9 +140,6 @@ private extension SplashView {
 extension SplashView {
     
     func bindUpdateAlert(myVersion: String, version: VersionDto) -> Bool {
-        if myVersion == "1.0.0" {
-            return false
-        }
         if myVersion < version.forceVeresion {
             forceUpdateAlert.isHidden = false
             recommendUpdateAlert.isHidden = true
