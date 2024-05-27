@@ -94,7 +94,8 @@ extension SettingViewController {
         settingView.settingSupportTableView.rx.willDisplayCell
             .subscribe(onNext: { [self] cell, indexPath in
                 guard indexPath.row == 1, let cell = cell as? SettingTableViewCell else { return }
-                cell.bindVersionCell(myVersion: self.myVersion ?? "", isSameAppversion: self.myVersion == UserManager.shared.getStoreVersion)
+                guard let version = self.myVersion else { return }
+                cell.bindVersionCell(myVersion: version, isSameAppversion: version >= UserManager.shared.getStoreVersion)
             })
             .disposed(by: self.disposeBag)
     }
