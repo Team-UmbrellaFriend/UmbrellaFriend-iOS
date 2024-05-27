@@ -111,9 +111,9 @@ final class SignupView: UIView {
         return label
     }()
     
-    let nameTextField = CustomTextField(placeHolder: "눈송이")
-    let idTextField = CustomTextField(placeHolder: "1234567")
-    let phoneTextField = CustomTextField(placeHolder: "01012341234")
+    let nameTextField = CustomTextField(placeHolder: "이름을 입력해주세요.")
+    let idTextField = CustomTextField(placeHolder: "학번 및 교번을 입력해주세요.")
+    let phoneTextField = CustomTextField(placeHolder: "전화번호를 입력해주세요.")
     let emailTextField = CustomTextField(placeHolder: "woosanfriend")
     let pwTextField = CustomTextField(placeHolder: "비밀번호")
     let pwCheckTextField = CustomTextField(placeHolder: "비밀번호 확인")
