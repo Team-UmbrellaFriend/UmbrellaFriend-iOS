@@ -14,7 +14,7 @@ struct SettingMenuEntity {
 extension SettingMenuEntity {
     
     static func settingSupportValue() -> [SettingMenuEntity] {
-        return [SettingMenuEntity(settingTitle: "신고하기"),
+        return [SettingMenuEntity(settingTitle: "우산 신고"),
                 SettingMenuEntity(settingTitle: "버전"),
                 SettingMenuEntity(settingTitle: "서비스 이용약관"),
                 SettingMenuEntity(settingTitle: "개인 정보 처리 방침")]
