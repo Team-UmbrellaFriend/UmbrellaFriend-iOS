@@ -37,7 +37,7 @@ final class ReportNumberView: UIView {
         return label
     }()
     
-    let numberTextField = CustomTextField(placeHolder: "1234")
+    let numberTextField = CustomTextField(placeHolder: "우산번호를 입력해주세요.")
     lazy var nextButton = CustomButton(status: false, title: "다음")
     
     // MARK: - Life Cycles
