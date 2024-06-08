@@ -64,6 +64,7 @@ extension LoginView {
 
     func setUI() {
         backgroundColor = .umbrellaWhite
+        idTextField.keyboardType = .numberPad
         pwTextField.isSecureTextEntry = true
         loginErrorLabel.isHidden = true
     }
