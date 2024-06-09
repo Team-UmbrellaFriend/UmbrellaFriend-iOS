@@ -23,6 +23,7 @@ final class UmbrellaReturnBottomSheetViewController: UIViewController {
     
     var selectedIndexPath: IndexPath?
     var returnQRPlace: Int = 0
+    var selectedIndexPaths = Set<IndexPath>()
     private let umbrellaReturnSubject = PublishSubject<UmbrellaReturnRequestDto>()
     
     // MARK: - UI Components
@@ -78,12 +79,19 @@ extension UmbrellaReturnBottomSheetViewController {
                 .items(cellIdentifier: UmbrellaReturnPlaceCollectionViewCell.className,
                        cellType: UmbrellaReturnPlaceCollectionViewCell.self)) { (index, model, cell) in
                 cell.configureCell(model: self.umbrellaPlace[index])
-                cell.isSelected = false
+                let indexPath = IndexPath(item: index, section: 0)
+                cell.isSelected = self.selectedIndexPaths.contains(indexPath)
+                if cell.isSelected {
+                    cell.setBorder(.selected)
+                } else {
+                    cell.setBorder(.nonselected)
+                }
             }
             .disposed(by: disposeBag)
         
         umbrellaReturnBottomSheetView.returnPlaceCollectionView.rx.itemSelected
             .subscribe(onNext: { indexPath in
+                self.selectedIndexPaths.insert(indexPath)
                 if let selectedIndexPath = self.selectedIndexPath {
                     self.umbrellaReturnBottomSheetView.returnPlaceCollectionView.deselectItem(at: selectedIndexPath, animated: false)
                     if let deselectedCell = self.umbrellaReturnBottomSheetView.returnPlaceCollectionView.cellForItem(at: selectedIndexPath) as? UmbrellaReturnPlaceCollectionViewCell {
@@ -101,6 +109,7 @@ extension UmbrellaReturnBottomSheetViewController {
         
         umbrellaReturnBottomSheetView.returnPlaceCollectionView.rx.itemDeselected
             .subscribe(onNext: { indexPath in
+                self.selectedIndexPaths.remove(indexPath)
                 if let deselectedCell = self.umbrellaReturnBottomSheetView.returnPlaceCollectionView.cellForItem(at: indexPath) as? UmbrellaReturnPlaceCollectionViewCell {
                     deselectedCell.setBorder(.nonselected)
                 }
@@ -138,6 +147,8 @@ extension UmbrellaReturnBottomSheetViewController {
                     return "르네상스관"
                 case 2:
                     return "과학관"
+                case 3:
+                    return "미술대학"
                 default:
                     return ""
                 }

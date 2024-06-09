@@ -224,6 +224,8 @@ extension UmbrellaReturnView: AVCaptureMetadataOutputObjectsDelegate {
                 delegate?.didExtractPlace(2)
             case "science":
                 delegate?.didExtractPlace(3)
+            case "art":
+                delegate?.didExtractPlace(4)
             default:
                 break
             }

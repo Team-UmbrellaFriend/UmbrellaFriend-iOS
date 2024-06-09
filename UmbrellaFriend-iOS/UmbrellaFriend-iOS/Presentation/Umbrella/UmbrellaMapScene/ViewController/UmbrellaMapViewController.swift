@@ -57,7 +57,7 @@ extension UmbrellaMapViewController {
     }
     
     func bindUI() {
-        let mapIcons = [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3]
+        let mapIcons = [umbrellaMapView.mapIcon1, umbrellaMapView.mapIcon2, umbrellaMapView.mapIcon3, umbrellaMapView.mapIcon4]
 
         mapIcons.enumerated().forEach { index, mapBtn in
             mapBtn.rx.tap

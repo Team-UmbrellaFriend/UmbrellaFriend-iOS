@@ -29,6 +29,7 @@ final class UmbrellaMapView: UIView {
     lazy var mapIcon1 = UIButton()
     lazy var mapIcon2 = UIButton()
     lazy var mapIcon3 = UIButton()
+    lazy var mapIcon4 = UIButton()
     
     private let mapDetailTitle: UILabel = {
         let label = UILabel()
@@ -83,8 +84,8 @@ private extension UmbrellaMapView {
         mapImage.image = isBigRatio ? .graphicMapS : .graphicMap
         horizontalScrollView.showsHorizontalScrollIndicator = false
         horizontalScrollView.bounces = false
-         // '명신관': 1, '르네상스관': 2, '과학관': 3
-        [mapIcon1, mapIcon2, mapIcon3].forEach {
+         // '명신관': 1, '르네상스관': 2, '과학관': 3, '미술대학' : 4
+        [mapIcon1, mapIcon2, mapIcon3, mapIcon4].forEach {
             $0.setImage(isBigRatio ? .icPlaceS : .icPlace, for: .normal)
             $0.setImage(isBigRatio ? .icPlaceS : .icPlace, for: .highlighted)
             $0.snp.makeConstraints {
@@ -94,7 +95,7 @@ private extension UmbrellaMapView {
     }
     
     func setHierarchy() {
-        horizontalScrollView.addSubviews(mapImage, mapIcon1, mapIcon2, mapIcon3)
+        horizontalScrollView.addSubviews(mapImage, mapIcon1, mapIcon2, mapIcon3, mapIcon4)
         addSubviews(navigationView, horizontalScrollView, mapDetailTitle, mapDetailSubTitle, umbrellaNumberTitle)
     }
     
@@ -126,6 +127,11 @@ private extension UmbrellaMapView {
         mapIcon3.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(isBigRatio ? 164 : 220)
             $0.bottom.equalToSuperview().inset(isBigRatio ? 65 : 60)
+        }
+        
+        mapIcon4.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(isBigRatio ? 192 : 264)
+            $0.leading.equalToSuperview().inset(isBigRatio ? 174 : 226)
         }
         
         mapDetailTitle.snp.makeConstraints {

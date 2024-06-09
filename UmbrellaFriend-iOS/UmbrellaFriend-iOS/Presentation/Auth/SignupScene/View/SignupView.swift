@@ -147,6 +147,8 @@ private extension SignupView {
         pwCheckTextField.isSecureTextEntry = true
         signupAlertView.isHidden = true
         pwCorrectTitle.isHidden = true
+        idTextField.keyboardType = .numberPad
+        phoneTextField.keyboardType = .numberPad
     }
     
     func setHierarchy() {
