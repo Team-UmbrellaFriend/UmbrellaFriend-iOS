@@ -134,6 +134,15 @@ extension HomeViewController {
             })
             .disposed(by: disposeBag)
         
+        output.homeData
+            .map { homeData in
+                return homeData.weather.weather.percent
+            }
+            .subscribe(onNext: { rainPercent in
+                UserDefaults.groupShared.set(rainPercent, forKey: "RainPercent")
+            })
+            .disposed(by: disposeBag)
+        
         output.extendMessageData
             .subscribe(onNext: { message in
                 self.homeView.homeAlertView.isHidden = false
