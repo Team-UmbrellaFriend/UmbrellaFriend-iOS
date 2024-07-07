@@ -16,6 +16,7 @@ enum FontLevel {
     case widgetNubmer
     case widgetPercent
     case widgetPlace
+    case widgetRent
 }
 
 extension FontLevel {
@@ -33,6 +34,8 @@ extension FontLevel {
             return 24
         case .widgetPlace:
             return 13
+        case .widgetRent:
+            return 22
         }
     }
     
@@ -44,11 +47,18 @@ extension FontLevel {
             return 40
         case .widgetPlace:
             return 20
+        case .widgetRent:
+            return 30
         }
     }
     
     var letterSpacing: CGFloat {
-        return -0.5
+        switch self {
+        case .widgetRent:
+            return 0
+        default:
+            return -0.5
+        }
     }
 }
 
@@ -70,7 +80,6 @@ struct UmbrellaTextModifier: ViewModifier {
     }
 }
 
-// View extension을 통한 modifier 사용 용이화
 extension View {
     func umbrellaWidgetFont(_ fontLevel: FontLevel) -> some View {
         self.modifier(UmbrellaTextModifier(fontLevel: fontLevel))
