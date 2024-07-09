@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct RentWidgetDto: Codable {
+    let isRent: Bool
+    let isOverdue: Bool
+    let returnDay: Int
+}

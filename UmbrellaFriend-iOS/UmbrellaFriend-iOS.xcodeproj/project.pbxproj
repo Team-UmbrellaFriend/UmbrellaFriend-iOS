@@ -103,7 +103,6 @@
 		A4A516B02C2A76EA00ED9CC1 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A516AF2C2A76EA00ED9CC1 /* WidgetKit.framework */; };
 		A4A516B22C2A76EA00ED9CC1 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4A516B12C2A76EA00ED9CC1 /* SwiftUI.framework */; };
 		A4A516B52C2A76EA00ED9CC1 /* UmbrellaFriendWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516B42C2A76EA00ED9CC1 /* UmbrellaFriendWidgetBundle.swift */; };
-		A4A516B72C2A76EA00ED9CC1 /* UmbrellaFriendWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516B62C2A76EA00ED9CC1 /* UmbrellaFriendWidgetLiveActivity.swift */; };
 		A4A516B92C2A76EA00ED9CC1 /* UmbrellaFriendWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516B82C2A76EA00ED9CC1 /* UmbrellaFriendWidget.swift */; };
 		A4A516BB2C2A76EC00ED9CC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A516BA2C2A76EC00ED9CC1 /* Assets.xcassets */; };
 		A4A516BF2C2A76EC00ED9CC1 /* UmbrellaFriendWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A4A516AD2C2A76EA00ED9CC1 /* UmbrellaFriendWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -113,6 +112,9 @@
 		A4A516CA2C2B197C00ED9CC1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4998BF52B7F403400883017 /* Colors.xcassets */; };
 		A4A516CB2C2B1B5E00ED9CC1 /* TmoneyRoundWindExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A4998BFF2B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf */; };
 		A4A516CF2C2B1CA400ED9CC1 /* WidgetFontLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516CD2C2B1C6F00ED9CC1 /* WidgetFontLiterals.swift */; };
+		A4A516D52C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516D42C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift */; };
+		A4A516DE2C371C2200ED9CC1 /* RentWidgetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516DD2C371C2200ED9CC1 /* RentWidgetDto.swift */; };
+		A4A516DF2C371C6E00ED9CC1 /* RentWidgetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516DD2C371C2200ED9CC1 /* RentWidgetDto.swift */; };
 		A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */; };
 		A4BA86BE2BBA6E5C0078FC4B /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86BD2BBA6E5C0078FC4B /* ViewModelType.swift */; };
 		A4BA86C02BBA7C630078FC4B /* Single+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86BF2BBA7C630078FC4B /* Single+.swift */; };
@@ -300,7 +302,6 @@
 		A4A516AF2C2A76EA00ED9CC1 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		A4A516B12C2A76EA00ED9CC1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		A4A516B42C2A76EA00ED9CC1 /* UmbrellaFriendWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaFriendWidgetBundle.swift; sourceTree = "<group>"; };
-		A4A516B62C2A76EA00ED9CC1 /* UmbrellaFriendWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaFriendWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		A4A516B82C2A76EA00ED9CC1 /* UmbrellaFriendWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaFriendWidget.swift; sourceTree = "<group>"; };
 		A4A516BA2C2A76EC00ED9CC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4A516BC2C2A76EC00ED9CC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -308,6 +309,8 @@
 		A4A516C62C2AEEF500ED9CC1 /* UmbrellaFriendWidgetExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UmbrellaFriendWidgetExtensionDebug.entitlements; sourceTree = "<group>"; };
 		A4A516C72C2B088400ED9CC1 /* AppGroupUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupUserDefaults.swift; sourceTree = "<group>"; };
 		A4A516CD2C2B1C6F00ED9CC1 /* WidgetFontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFontLiterals.swift; sourceTree = "<group>"; };
+		A4A516D42C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaFriendRentWidget.swift; sourceTree = "<group>"; };
+		A4A516DD2C371C2200ED9CC1 /* RentWidgetDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentWidgetDto.swift; sourceTree = "<group>"; };
 		A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A4BA86BD2BBA6E5C0078FC4B /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		A4BA86BF2BBA7C630078FC4B /* Single+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+.swift"; sourceTree = "<group>"; };
@@ -1107,12 +1110,20 @@
 			children = (
 				A4A516B42C2A76EA00ED9CC1 /* UmbrellaFriendWidgetBundle.swift */,
 				A4A516B82C2A76EA00ED9CC1 /* UmbrellaFriendWidget.swift */,
-				A4A516B62C2A76EA00ED9CC1 /* UmbrellaFriendWidgetLiveActivity.swift */,
+				A4A516D42C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift */,
 				A4A516BA2C2A76EC00ED9CC1 /* Assets.xcassets */,
 				A4A516BC2C2A76EC00ED9CC1 /* Info.plist */,
 				A4A516CD2C2B1C6F00ED9CC1 /* WidgetFontLiterals.swift */,
 			);
 			path = UmbrellaFriendWidget;
+			sourceTree = "<group>";
+		};
+		A4A516DC2C371BFD00ED9CC1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A4A516DD2C371C2200ED9CC1 /* RentWidgetDto.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		A4BA86CB2BBAD62C0078FC4B /* Data */ = {
@@ -1127,6 +1138,7 @@
 		A4BA86CC2BBAD63D0078FC4B /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				A4A516DC2C371BFD00ED9CC1 /* Home */,
 				A4C5A5252BDF64A700267FE5 /* Spalsh */,
 				A4BA87412BD42F820078FC4B /* Umbrella */,
 				A4BA872B2BCECBBF0078FC4B /* Mypage */,
@@ -1617,6 +1629,7 @@
 				A4C9EDDC2BB0930A00E46131 /* ReportNumberViewController.swift in Sources */,
 				A4BA87512BD8BC680078FC4B /* WithdrawViewController.swift in Sources */,
 				A4BA87282BCEA1FF0078FC4B /* AuthUseCase.swift in Sources */,
+				A4A516DE2C371C2200ED9CC1 /* RentWidgetDto.swift in Sources */,
 				A488FB2D2B931A58004D4A09 /* AuthTarget.swift in Sources */,
 				A4998BA02B70FDAA00883017 /* SizeLiterals.swift in Sources */,
 				A43C741A2B90975D00B39F21 /* UmbrellaReturnPlaceCollectionViewCell.swift in Sources */,
@@ -1734,10 +1747,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A516B92C2A76EA00ED9CC1 /* UmbrellaFriendWidget.swift in Sources */,
+				A4A516DF2C371C6E00ED9CC1 /* RentWidgetDto.swift in Sources */,
 				A4A516C42C2AE58B00ED9CC1 /* HomeEntity.swift in Sources */,
 				A4A516CF2C2B1CA400ED9CC1 /* WidgetFontLiterals.swift in Sources */,
-				A4A516B72C2A76EA00ED9CC1 /* UmbrellaFriendWidgetLiveActivity.swift in Sources */,
 				A4A516B52C2A76EA00ED9CC1 /* UmbrellaFriendWidgetBundle.swift in Sources */,
+				A4A516D52C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift in Sources */,
 				A4A516C92C2B088600ED9CC1 /* AppGroupUserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
