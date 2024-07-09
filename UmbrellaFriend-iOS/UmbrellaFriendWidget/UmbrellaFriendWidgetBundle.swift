@@ -12,6 +12,6 @@ import SwiftUI
 struct UmbrellaFriendWidgetBundle: WidgetBundle {
     var body: some Widget {
         UmbrellaFriendWidget()
-        UmbrellaFriendWidgetLiveActivity()
+        UmbrellaFriendRentWidget()
     }
 }
