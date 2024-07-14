@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxGesture
+import WidgetKit
 
 final class HomeViewController: UIViewController {
     
@@ -134,12 +135,51 @@ extension HomeViewController {
             })
             .disposed(by: disposeBag)
         
+        output.homeData
+            .map { homeData in
+                return homeData.weather.weather.percent
+            }
+            .subscribe(onNext: { rainPercent in
+                UserDefaults.groupShared.set(rainPercent, forKey: "RainPercent")
+                WidgetCenter.shared.reloadAllTimelines()
+            })
+            .disposed(by: disposeBag)
+        
+        output.homeData
+            .map { homeData in
+                let dday = homeData.dDay
+                if dday.isOverdue {
+                    return RentWidgetDto(isRent: true, isOverdue: true, returnDay: dday.overdueDays)
+                } else {
+                    if dday.daysRemaining < 0 {
+                        return RentWidgetDto(isRent: false, isOverdue: false, returnDay: 0)
+                    } else {
+                        return RentWidgetDto(isRent: true, isOverdue: false, returnDay: dday.daysRemaining)
+                    }
+                }
+            }
+            .subscribe(onNext: { rentData in
+                self.saveRentData(rentDto: rentData)
+                WidgetCenter.shared.reloadAllTimelines()
+            })
+            .disposed(by: disposeBag)
+        
         output.extendMessageData
             .subscribe(onNext: { message in
                 self.homeView.homeAlertView.isHidden = false
                 self.homeView.configureHomeAlertView(message)
             })
             .disposed(by: disposeBag)
+    }
+    
+    func saveRentData(rentDto: RentWidgetDto) {
+        let encoder = JSONEncoder()
+        do {
+            let encoded = try encoder.encode(rentDto)
+            UserDefaults.groupShared.set(encoded, forKey: "rentData")
+        } catch {
+            print("Failed to encode RentWidgetDto: \(error)")
+        }
     }
     
     func setToastMessage() {
