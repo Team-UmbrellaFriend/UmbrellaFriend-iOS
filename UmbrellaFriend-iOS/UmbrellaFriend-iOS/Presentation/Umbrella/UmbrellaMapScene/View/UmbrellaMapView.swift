@@ -92,6 +92,10 @@ private extension UmbrellaMapView {
                 $0.size.equalTo(isBigRatio ? 48 : 44)
             }
         }
+        
+        [mapIcon1, mapIcon3, mapIcon4].forEach {
+            $0.isHidden = true
+        }
     }
     
     func setHierarchy() {

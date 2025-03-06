@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A402DAEE2D79D779005EBE5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A402DAED2D79D779005EBE5C /* GoogleService-Info.plist */; };
+		A402DAF12D79DBE3005EBE5C /* ConfigDev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A402DAF02D79DBE3005EBE5C /* ConfigDev.xcconfig */; };
+		A402DAF22D79DBE3005EBE5C /* ConfigDev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A402DAF02D79DBE3005EBE5C /* ConfigDev.xcconfig */; };
+		A402DAF42D79DC37005EBE5C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A402DAF32D79DC37005EBE5C /* PrivacyInfo.xcprivacy */; };
+		A402DAF52D79DC37005EBE5C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A402DAF32D79DC37005EBE5C /* PrivacyInfo.xcprivacy */; };
 		A431760F2B6FFBDE00093F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A431760E2B6FFBDE00093F0E /* AppDelegate.swift */; };
 		A43176112B6FFBDE00093F0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43176102B6FFBDE00093F0E /* SceneDelegate.swift */; };
 		A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A43176172B6FFBE000093F0E /* Assets.xcassets */; };
@@ -17,7 +22,6 @@
 		A43B231F2BA575E200E15CC3 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A43B231E2BA575E200E15CC3 /* FirebaseRemoteConfigSwift */; };
 		A43B23212BA575E200E15CC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23202BA575E200E15CC3 /* FirebaseStorage */; };
 		A43B23232BA575E200E15CC3 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = A43B23222BA575E200E15CC3 /* FirebaseStorageCombine-Community */; };
-		A43B23252BA582AA00E15CC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */; };
 		A43B23272BA58E6600E15CC3 /* MakeAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23262BA58E6600E15CC3 /* MakeAlert.swift */; };
 		A43B23822BAB3C9400E15CC3 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23812BAB3C9400E15CC3 /* ReportView.swift */; };
 		A43B23852BAB3CA600E15CC3 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43B23842BAB3CA600E15CC3 /* ReportViewController.swift */; };
@@ -115,7 +119,6 @@
 		A4A516D52C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516D42C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift */; };
 		A4A516DE2C371C2200ED9CC1 /* RentWidgetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516DD2C371C2200ED9CC1 /* RentWidgetDto.swift */; };
 		A4A516DF2C371C6E00ED9CC1 /* RentWidgetDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A516DD2C371C2200ED9CC1 /* RentWidgetDto.swift */; };
-		A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */; };
 		A4BA86BE2BBA6E5C0078FC4B /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86BD2BBA6E5C0078FC4B /* ViewModelType.swift */; };
 		A4BA86C02BBA7C630078FC4B /* Single+.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86BF2BBA7C630078FC4B /* Single+.swift */; };
 		A4BA86C22BBA7C950078FC4B /* NetworkServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA86C12BBA7C950078FC4B /* NetworkServiceError.swift */; };
@@ -215,6 +218,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A402DAED2D79D779005EBE5C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A402DAF02D79DBE3005EBE5C /* ConfigDev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDev.xcconfig; sourceTree = "<group>"; };
+		A402DAF32D79DC37005EBE5C /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A431760B2B6FFBDE00093F0E /* UmbrellaFriend-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UmbrellaFriend-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A431760E2B6FFBDE00093F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A43176102B6FFBDE00093F0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -222,7 +228,6 @@
 		A431761A2B6FFBE000093F0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A431761C2B6FFBE000093F0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43B22EF2BA2D89800E15CC3 /* UmbrellaFriend-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "UmbrellaFriend-iOS.entitlements"; sourceTree = "<group>"; };
-		A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A43B23262BA58E6600E15CC3 /* MakeAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAlert.swift; sourceTree = "<group>"; };
 		A43B23812BAB3C9400E15CC3 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		A43B23842BAB3CA600E15CC3 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +251,6 @@
 		A43C741F2B90A5E000B39F21 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		A43C74262B90A95000B39F21 /* UmbrellaReturnViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnViewModel.swift; sourceTree = "<group>"; };
 		A43C742A2B90C63700B39F21 /* UmbrellaReturnCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaReturnCompleteView.swift; sourceTree = "<group>"; };
-		A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigDev.xcconfig; sourceTree = "<group>"; };
 		A471D0752B8A410300109CA3 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		A471D0772B8A419200109CA3 /* NetworkLoggerPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLoggerPlugin.swift; sourceTree = "<group>"; };
 		A471D0792B8A41A200109CA3 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
@@ -311,7 +315,6 @@
 		A4A516CD2C2B1C6F00ED9CC1 /* WidgetFontLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFontLiterals.swift; sourceTree = "<group>"; };
 		A4A516D42C3716BE00ED9CC1 /* UmbrellaFriendRentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UmbrellaFriendRentWidget.swift; sourceTree = "<group>"; };
 		A4A516DD2C371C2200ED9CC1 /* RentWidgetDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentWidgetDto.swift; sourceTree = "<group>"; };
-		A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A4BA86BD2BBA6E5C0078FC4B /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		A4BA86BF2BBA7C630078FC4B /* Single+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+.swift"; sourceTree = "<group>"; };
 		A4BA86C12BBA7C950078FC4B /* NetworkServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceError.swift; sourceTree = "<group>"; };
@@ -434,7 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				A4A516C52C2AE75000ED9CC1 /* UmbrellaFriend-iOSDebug.entitlements */,
-				A43B23242BA582AA00E15CC3 /* GoogleService-Info.plist */,
+				A402DAED2D79D779005EBE5C /* GoogleService-Info.plist */,
 				A43B22EF2BA2D89800E15CC3 /* UmbrellaFriend-iOS.entitlements */,
 				A4998B952B70FD1D00883017 /* Application */,
 				A4BA86CB2BBAD62C0078FC4B /* Data */,
@@ -443,8 +446,8 @@
 				A4998B932B70FD1000883017 /* Network */,
 				A4998B922B70FD0900883017 /* Presentation */,
 				A431761C2B6FFBE000093F0E /* Info.plist */,
-				A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */,
-				A4BA869B2BB6D4430078FC4B /* PrivacyInfo.xcprivacy */,
+				A402DAF02D79DBE3005EBE5C /* ConfigDev.xcconfig */,
+				A402DAF32D79DC37005EBE5C /* PrivacyInfo.xcprivacy */,
 			);
 			path = "UmbrellaFriend-iOS";
 			sourceTree = "<group>";
@@ -1535,7 +1538,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					A431760A2B6FFBDE00093F0E = {
 						CreatedOnToolsVersion = 15.2;
@@ -1581,15 +1584,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4998BFD2B7F431A00883017 /* SUIT-Bold.ttf in Resources */,
-				A43B23252BA582AA00E15CC3 /* GoogleService-Info.plist in Resources */,
 				A4998BED2B79ED4300883017 /* SUIT-SemiBold.ttf in Resources */,
+				A402DAF12D79DBE3005EBE5C /* ConfigDev.xcconfig in Resources */,
 				A4998BFE2B7F431A00883017 /* SUIT-Regular.ttf in Resources */,
 				A4998C002B7F432B00883017 /* TmoneyRoundWindExtraBold.ttf in Resources */,
 				A4BA87402BCFB2370078FC4B /* LoadingLottie.json in Resources */,
+				A402DAF42D79DC37005EBE5C /* PrivacyInfo.xcprivacy in Resources */,
 				A4998BF62B7F403400883017 /* Colors.xcassets in Resources */,
 				A4998BFC2B7F431A00883017 /* SUIT-Medium.ttf in Resources */,
 				A431761B2B6FFBE000093F0E /* LaunchScreen.storyboard in Resources */,
-				A4BA869C2BB6D4430078FC4B /* PrivacyInfo.xcprivacy in Resources */,
+				A402DAEE2D79D779005EBE5C /* GoogleService-Info.plist in Resources */,
 				A43176182B6FFBE000093F0E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1600,6 +1604,8 @@
 			files = (
 				A4A516CB2C2B1B5E00ED9CC1 /* TmoneyRoundWindExtraBold.ttf in Resources */,
 				A4A516BB2C2A76EC00ED9CC1 /* Assets.xcassets in Resources */,
+				A402DAF22D79DBE3005EBE5C /* ConfigDev.xcconfig in Resources */,
+				A402DAF52D79DC37005EBE5C /* PrivacyInfo.xcprivacy in Resources */,
 				A4A516CA2C2B197C00ED9CC1 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1780,6 +1786,7 @@
 /* Begin XCBuildConfiguration section */
 		A431761D2B6FFBE000093F0E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A402DAF02D79DBE3005EBE5C /* ConfigDev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1901,7 +1908,7 @@
 		};
 		A43176202B6FFBE000093F0E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */;
+			baseConfigurationReference = A402DAF02D79DBE3005EBE5C /* ConfigDev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1941,7 +1948,6 @@
 		};
 		A43176212B6FFBE000093F0E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A471D0732B8A3E8500109CA3 /* ConfigDev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1981,6 +1987,7 @@
 		};
 		A4A516C12C2A76EC00ED9CC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A402DAF02D79DBE3005EBE5C /* ConfigDev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
